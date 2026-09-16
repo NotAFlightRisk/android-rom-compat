@@ -14,7 +14,7 @@
 
 ## About
 
-Covers GrapheneOS, LineageOS, CalyxOS, /e/OS, crDroid and iodéOS, official builds only. Every bit of data lives as YAML in [`data/`](../data), so fixing a mistake is just a pull request away - no coding needed.
+Covers GrapheneOS, LineageOS, CalyxOS, /e/OS, crDroid and iodéOS, official builds only. Every bit of data lives as YAML in [`data/`](../data), so fixing a mistake just means editing a file - no coding needed.
 
 It'd rather leave a gap than guess, so anything nobody has checked shows as unknown.
 
@@ -28,7 +28,7 @@ Know a feature works (or doesn't) on your phone? Spotted something out of date? 
 
 ## API
 
-The whole dataset is published as static JSON, rebuilt on every change. No key and no rate limit.
+The whole dataset is published as static JSON, rebuilt everytime teh data changes. No key and no rate limit.
 
 - [`/api/devices.json`](https://android-rom-compat.peng.ly/api/devices.json) - every device, with codenames, model numbers and bootloader info
 - [`/api/roms.json`](https://android-rom-compat.peng.ly/api/roms.json) - the ROMs and how they compare
