@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Bobby Panarisi (306bobby)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#bramble
+install: https://xdaforums.com/t/rom-official-13-14-15-crdroid-for-pixel-4a5g-bramble.4664667/

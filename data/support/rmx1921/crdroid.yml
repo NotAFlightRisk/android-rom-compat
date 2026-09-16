@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 13
+verified: 2026-09-16
+source: https://crdroid.net/downloads#RMX1921
+install: https://forum.xda-developers.com/t/rom-11-0-crdroid-android-7-3-official-13-03-2021.4122075

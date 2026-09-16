@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 9
+codenames: [merlinx]
+released: 2020
+soc: Mediatek Helio G85
+bootloader:
+  unlock: unknown
+  relock: unknown

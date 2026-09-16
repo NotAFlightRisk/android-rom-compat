@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone 5Z (ZS620KL)
+codenames: [z01r]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi A3
+codenames: [laurel_sprout]
+aliases: [M1906F9SH, M1906F9SI]
+released: 2019
+soc: Qualcomm SM6125 Snapdragon 665
+bootloader:
+  unlock: unknown
+  relock: unknown

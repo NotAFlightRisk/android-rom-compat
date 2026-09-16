@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia XZ Premium
+codenames: [maple]
+bootloader:
+  unlock: unknown
+  relock: unknown

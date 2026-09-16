@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Brands",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["key", "name"],
+    "additionalProperties": false,
+    "properties": {
+      "key": { "$ref": "#/$defs/key" },
+      "name": { "type": "string", "minLength": 1 },
+      "website": { "$ref": "#/$defs/link" }
+    }
+  },
+  "$defs": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "lowercase letters, numbers and hyphens"
+    },
+    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+  }
+}

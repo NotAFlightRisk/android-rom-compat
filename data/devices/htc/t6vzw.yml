@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: One Max (Verizon)
+codenames: [t6vzw]
+released: 2013
+soc: Qualcomm APQ8064T Snapdragon 600
+bootloader:
+  unlock: unknown
+  relock: unknown

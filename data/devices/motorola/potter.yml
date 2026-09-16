@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Moto G5 Plus
+codenames: [potter]
+bootloader:
+  unlock: unknown
+  relock: unknown

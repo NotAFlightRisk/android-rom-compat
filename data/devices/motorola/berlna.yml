@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: edge 2021
+codenames: [berlna]
+aliases: [XT2141-2]
+released: 2021
+soc: Qualcomm SM7325 Snapdragon 778G 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

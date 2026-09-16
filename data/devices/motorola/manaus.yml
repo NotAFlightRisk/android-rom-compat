@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: edge 40 neo
+codenames: [manaus]
+aliases: [XT2307-1, XT2307-2, XT2307-3]
+released: 2023
+soc: Mediatek Dimensity 7030
+bootloader:
+  unlock: unknown
+  relock: unknown

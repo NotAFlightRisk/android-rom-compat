@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord 4
+codenames: [avalon]
+aliases: [CPH2661, CPH2663]
+released: 2024
+soc: Qualcomm SM7675-AB Snapdragon 7+ Gen 3
+bootloader:
+  unlock: unknown
+  relock: unknown

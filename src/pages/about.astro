@@ -1,0 +1,49 @@
+---
+import Base from '../components/layout/Base.astro';
+import { site } from '../lib/site.js';
+
+const endpoints = ['devices', 'roms', 'support', 'features'];
+---
+
+<Base
+  title="About"
+  description="What Android ROM Compat is, where the data comes from, how to use the API, and the licences."
+  crumbs={[{ label: 'About', url: '/about/' }]}
+>
+  <section>
+    <h1>About</h1>
+    <p>
+      A list of which Android ROMs officially support which phones, and what works on each. It only covers official
+      builds, and would rather leave a gap than guess, so anything nobody has checked shows as unknown.
+    </p>
+    <p>
+      Device lists were seeded from each ROM's own published list, and every entry links back to its source. Things
+      change fast, so anything not checked for a year is marked stale.
+    </p>
+  </section>
+
+  <section aria-labelledby="disclaimer">
+    <h2 id="disclaimer">Before you flash anything</h2>
+    <p>
+      Unlocking a bootloader and installing a ROM can wipe your data, brick your phone or void its warranty. This site
+      isn't an install guide. Follow the ROM's own instructions for your exact model, and check them first.
+    </p>
+  </section>
+
+  <section aria-labelledby="api">
+    <h2 id="api">API</h2>
+    <p>The whole dataset is available as static JSON, rebuilt on every change. No key, no rate limit.</p>
+    <ul>
+      {endpoints.map((name) => <li><a href={`/api/${name}.json`}><code>/api/{name}.json</code></a></li>)}
+    </ul>
+  </section>
+
+  <section aria-labelledby="licences">
+    <h2 id="licences">Licences</h2>
+    <p>
+      The code is <a href={`${site.repo}/blob/main/LICENSE`}>MIT</a>. The data is
+      <a href={`${site.repo}/blob/main/data/LICENSE`}>CC BY-SA 4.0</a>, so you can reuse it as long as you credit this
+      project and share alike. ROM names and logos belong to their projects.
+    </p>
+  </section>
+</Base>

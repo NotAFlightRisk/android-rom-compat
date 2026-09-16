@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto e5 plus (XT1924-1/2/4/5)
+codenames: [rhannah]
+aliases: [XT1924-1, XT1924-2, XT1924-4, XT1924-5]
+released: 2018
+soc: Qualcomm MSM8917 Snapdragon 425
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Odin2 Portal
+codenames: [odin2portal]
+released: 2025
+soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+bootloader:
+  unlock: unknown
+  relock: unknown

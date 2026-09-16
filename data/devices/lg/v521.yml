@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G Pad X (T-Mobile)
+codenames: [v521]
+released: 2016
+soc: Qualcomm MSM8952 Snapdragon 617
+bootloader:
+  unlock: unknown
+  relock: unknown

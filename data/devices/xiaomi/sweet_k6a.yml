@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 12 Pro 4G
+slug: redmi-note-12-pro-4g-sweet-k6a
+codenames: [sweet_k6a]
+bootloader:
+  unlock: unknown
+  relock: unknown

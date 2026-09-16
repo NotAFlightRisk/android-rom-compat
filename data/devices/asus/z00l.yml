@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone 2 Laser (720p)
+codenames: [z00l]
+aliases: [ZE500KL, ZE550KL]
+released: 2015
+soc: Qualcomm MSM8939 Snapdragon 615 / Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: no
+  relock: unknown

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nexus Player
+codenames: [fugu]
+released: 2014
+soc: Intel Atom Z3560
+bootloader:
+  unlock: unknown
+  relock: unknown

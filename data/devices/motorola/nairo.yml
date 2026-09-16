@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g 5G plus
+codenames: [nairo]
+aliases: [moto one 5G, XT2075-3, XT2075-5, One 5G, XT2075-2]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: R7 Plus (International)
+codenames: [r7plus]
+aliases: [R7plusf]
+released: 2015
+soc: Qualcomm MSM8939 Snapdragon 615
+bootloader:
+  unlock: unknown
+  relock: unknown

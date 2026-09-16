@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Le Max2
+codenames: [x2]
+aliases: [LEX820, LEX821, LEX822, LEX829]
+released: 2016
+soc: Qualcomm MSM8996 Snapdragon 820
+bootloader:
+  unlock: unknown
+  relock: unknown

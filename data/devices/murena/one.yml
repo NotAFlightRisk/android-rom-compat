@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: One
+codenames: [one]
+aliases: [Murena One]
+released: 2022
+bootloader:
+  unlock: unknown
+  relock: yes

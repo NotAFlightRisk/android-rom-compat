@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S5 Neo
+codenames: [s5neolte]
+aliases: [SM-G903F, SM-G903F/DS, SM-G903M, SM-G903W]
+released: 2015
+soc: Samsung Exynos 7580
+bootloader:
+  unlock: unknown
+  relock: unknown

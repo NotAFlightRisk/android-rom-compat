@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 11T Pro
+codenames: [vili]
+bootloader:
+  unlock: unknown
+  relock: unknown

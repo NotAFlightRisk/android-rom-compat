@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#wayne
+install: https://forum.xda-developers.com/mi-a2/how-to/rom-crdroid-6-7-mi-6x-wayne-19-6-2020-t4119385

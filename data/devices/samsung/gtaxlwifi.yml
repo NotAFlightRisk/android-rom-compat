@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Tab A6 (SM-T580)
+codenames: [gtaxlwifi]
+bootloader:
+  unlock: unknown
+  relock: unknown

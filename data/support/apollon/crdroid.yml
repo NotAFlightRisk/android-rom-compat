@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 13
+verified: 2026-09-16
+source: https://crdroid.net/downloads#apollon
+install: https://forum.xda-developers.com/t/rom-13-0-rk30su-mi10t-mi10tp-apollon-official-crdroid-v9-5-29-05-2023.4284377/

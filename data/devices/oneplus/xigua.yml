@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Ace 2 Pro
+codenames: [xigua]
+bootloader:
+  unlock: unknown
+  relock: unknown

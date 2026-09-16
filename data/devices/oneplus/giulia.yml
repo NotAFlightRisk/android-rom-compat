@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 13R
+codenames: [giulia]
+aliases: [CPH2691, CPH2647, CPH2645]
+released: 2025
+soc: Qualcomm SM8650 Snapdragon 8 Gen3
+bootloader:
+  unlock: unknown
+  relock: unknown

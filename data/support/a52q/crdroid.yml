@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: TestaMic
+verified: 2026-09-16
+source: https://crdroid.net/downloads#a52q
+install: https://xdaforums.com/t/crdroid-12-0-stable-android-16-qpr0-for-a52-4g-a52q-official.4672356/

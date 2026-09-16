@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Odin 2
+codenames: [odin2]
+aliases: [Odin 2]
+released: 2023
+soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+bootloader:
+  unlock: unknown
+  relock: unknown

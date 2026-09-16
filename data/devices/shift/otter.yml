@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: SHIFTphone 8.0
+codenames: [otter]
+aliases: [SHIFTphone 8.1]
+released: 2026
+soc: Qualcomm Dragonwing™ QCM6490 (QCM6490)
+bootloader:
+  unlock: unknown
+  relock: yes

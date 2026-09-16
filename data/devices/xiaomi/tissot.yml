@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi A1
+codenames: [tissot]
+released: 2017
+soc: Qualcomm MSM8953 Snapdragon 625
+bootloader:
+  unlock: unknown
+  relock: unknown

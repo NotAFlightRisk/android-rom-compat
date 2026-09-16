@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S10
+codenames: [beyond1lte]
+aliases: [SM-G973F, SM-G973F/DS, SM-G973N]
+released: 2019
+soc: Samsung Exynos 9820
+bootloader:
+  unlock: unknown
+  relock: unknown

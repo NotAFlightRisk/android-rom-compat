@@ -1,0 +1,81 @@
+---
+import Search from '../ui/Search.astro';
+
+const links = [
+  { label: 'Devices', url: '/devices/' },
+  { label: 'ROMs', url: '/roms/' },
+  { label: 'Contribute', url: '/contribute/' },
+];
+const current = (url) => Astro.url.pathname.startsWith(url);
+---
+
+<header>
+  <a class="home" href="/">
+    <img src="/logo.svg" alt="" width="36" height="36" />
+    <span>Android ROM Compat</span>
+  </a>
+  <nav aria-label="Main">
+    <ul>
+      {links.map((link) => (
+        <li><a href={link.url} aria-current={current(link.url) ? 'page' : undefined}>{link.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+  <Search />
+</header>
+
+<style>
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-sm) var(--space-lg);
+    inline-size: 100%;
+    max-inline-size: var(--page);
+    margin-inline: auto;
+    padding: var(--space-sm) var(--space-md);
+    border-block-end: 1px solid var(--border);
+
+    @media (width < 48rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .home {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    display: block;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--surface-raised);
+      color: var(--text);
+    }
+
+    &[aria-current='page'] {
+      color: var(--text);
+      box-shadow: inset 0 -2px var(--accent);
+    }
+  }
+</style>

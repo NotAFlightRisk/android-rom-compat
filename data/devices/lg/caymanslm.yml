@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Velvet
+codenames: [caymanslm]
+aliases: [LM-G910EMW, LM-G910HM, LM-G910HMW]
+released: 2020
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

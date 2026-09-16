@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A73 5G
+codenames: [a73xq]
+aliases: [SM-A736B, SM-A736B/DS]
+released: 2022
+soc: Qualcomm SM7325 Snapdragon 778G 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

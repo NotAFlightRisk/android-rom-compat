@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g84 5G
+codenames: [bangkk]
+aliases: [XT2347-1, XT2347-2]
+released: 2023
+soc: Qualcomm SM6375 Snapdragon 695
+bootloader:
+  unlock: unknown
+  relock: yes

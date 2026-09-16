@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Style3
+codenames: [style3lm]
+aliases: [L-41A]
+released: 2020
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

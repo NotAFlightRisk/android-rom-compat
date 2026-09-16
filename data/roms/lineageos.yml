@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: LineageOS
+description: The biggest community ROM, running on hundreds of devices. Ships without Google apps, which you can add yourself.
+status: active
+base: aosp
+focus: [customisation, near-stock]
+google: optional
+app_store: none
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  monthly_patches: true
+install: [recovery]
+root: false
+links:
+  website: https://lineageos.org
+  source: https://github.com/LineageOS
+  docs: https://wiki.lineageos.org
+  community: https://lineageos.org/community/

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pad 2 Pro
+codenames: [erhai]
+aliases: [Pad 3, OPD2413, OPD2415]
+released: 2025
+soc: Qualcomm SM8750 Snapdragon 8 Elite
+bootloader:
+  unlock: unknown
+  relock: unknown

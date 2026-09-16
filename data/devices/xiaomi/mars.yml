@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 11 Pro
+codenames: [mars]
+aliases: [M2102K1AC]
+released: 2021
+soc: Qualcomm SM8350 Snapdragon 888
+bootloader:
+  unlock: unknown
+  relock: unknown

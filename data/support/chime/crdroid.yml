@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Josema (jomadeto)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#chime
+install: https://xdaforums.com/t/rom-16-0-official-chime-crdroid-v12-5-20-01-2026.4776195/

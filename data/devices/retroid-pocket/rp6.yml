@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "6"
+codenames: [rp6]
+released: 2026
+soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A72
+codenames: [a72q]
+aliases: [SM-A725F, SM-A725M, SM-A725F/DS, SM-A725M/DS]
+released: 2021
+soc: Qualcomm SM7125 Snapdragon 720G
+bootloader:
+  unlock: unknown
+  relock: unknown

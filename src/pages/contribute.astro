@@ -1,0 +1,61 @@
+---
+import Base from '../components/layout/Base.astro';
+import { site, issueUrl } from '../lib/site.js';
+
+const forms = [
+  { template: 'add-device', label: 'Add a device', hint: "A phone that a ROM supports but we don't list" },
+  { template: 'report-feature', label: 'Report what works', hint: 'VoLTE, NFC, Android Auto and the rest, on one ROM and phone' },
+  { template: 'correction', label: 'Fix a mistake', hint: 'Anything wrong on a page' },
+];
+---
+
+<Base
+  title="Contribute"
+  description="Add a device, report what works on a ROM, or fix a mistake. Everything lives in YAML files on GitHub."
+  crumbs={[{ label: 'Contribute', url: '/contribute/' }]}
+>
+  <section>
+    <h1>Contribute</h1>
+    <p>
+      All the data is plain YAML on GitHub, so anyone can add to it. Fill in a form and we'll add it for you, or
+      edit the files yourself. Every page has an edit link at the bottom.
+    </p>
+  </section>
+
+  <section aria-labelledby="forms">
+    <h2 id="forms">Quickest: fill in a form</h2>
+    <ul>
+      {forms.map((form) => (
+        <li><a href={issueUrl(form.template)}>{form.label}</a> <span>{form.hint}</span></li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="edit">
+    <h2 id="edit">Or edit the data</h2>
+    <p>
+      The <a href={`${site.repo}/blob/main/.github/CONTRIBUTING.md`}>contributing guide</a> shows where each file lives,
+      what to copy, and how to check your change. You can do the whole thing in GitHub's web editor.
+    </p>
+    <p>Always link a source. A ROM's own device page, wiki or changelog is best. A "works for me" from a forum is fine too, just say so in a note.</p>
+  </section>
+</Base>
+
+<style>
+  ul {
+    display: grid;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+  }
+
+  span {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+</style>

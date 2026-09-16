@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia TX
+codenames: [hayabusa]
+released: 2012
+soc: Qualcomm MSM8260A Snapdragon S4
+bootloader:
+  unlock: unknown
+  relock: unknown

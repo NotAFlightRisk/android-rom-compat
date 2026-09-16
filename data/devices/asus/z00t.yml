@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone 2 Laser (1080p)
+codenames: [z00t]
+aliases: [Zenfone 2 Selfie (1080p)]
+released: 2015
+soc: Qualcomm MSM8939 Snapdragon 615
+bootloader:
+  unlock: no
+  relock: unknown

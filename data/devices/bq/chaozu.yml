@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris U
+codenames: [chaozu]
+released: 2016
+soc: Qualcomm MSM8937 Snapdragon 430
+bootloader:
+  unlock: unknown
+  relock: unknown

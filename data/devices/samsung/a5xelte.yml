@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A5 (2016)
+codenames: [a5xelte]
+aliases: [SM-A510F, SM-A510F/DS, SM-A510M, SM-A510Y, SM-A510K, SM-A510L, SM-A510S, SM-A5108]
+released: 2015
+soc: Samsung Exynos 7580
+bootloader:
+  unlock: unknown
+  relock: unknown

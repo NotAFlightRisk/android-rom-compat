@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: One (M8) Dual SIM
+codenames: [m8d]
+released: 2014
+soc: Qualcomm MSM8974AB Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 1 VI
+codenames: [pdx245]
+aliases: [XQ-EC54, XQ-EC72]
+released: 2024
+soc: Qualcomm SM8650 Snapdragon 8 Gen3
+bootloader:
+  unlock: unknown
+  relock: unknown

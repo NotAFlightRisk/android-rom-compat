@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Developer Kit (S905X4-B/K)
+codenames: [ohm]
+aliases: [ADT-4/4+/4 (Low Ram)]
+released: 2023
+soc: Amlogic S905X4
+bootloader:
+  unlock: unknown
+  relock: unknown

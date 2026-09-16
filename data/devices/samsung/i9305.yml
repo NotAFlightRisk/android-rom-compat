@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S III (LTE / International)
+codenames: [i9305]
+aliases: [GT-I9305, GT-I9305T, GT-I9305N]
+released: 2012
+soc: Samsung Exynos 4412
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 7T
+codenames: [hotdogb]
+aliases: [7T (T-Mobile), HD1900, HD1901, HD1903, HD1905, HD1907]
+released: 2019
+soc: Qualcomm SM8150-AC Snapdragon 855+
+bootloader:
+  unlock: unknown
+  relock: unknown

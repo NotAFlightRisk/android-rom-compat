@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S III Neo (Samsung Camera)
+codenames: [s3ve3gjv]
+aliases: [GT-I9301I, GT-I9301Q]
+released: 2014
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

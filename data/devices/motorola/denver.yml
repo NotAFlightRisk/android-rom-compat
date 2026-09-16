@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g stylus 5G
+codenames: [denver]
+aliases: [XT2131-1]
+released: 2021
+soc: Qualcomm SM4350 Snapdragon 480
+bootloader:
+  unlock: unknown
+  relock: unknown

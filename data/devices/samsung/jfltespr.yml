@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S4 (SCH-R970, SPH-L720)
+codenames: [jfltespr]
+aliases: [SCH-R970/C/X, SPH-L720]
+released: 2013
+soc: Qualcomm APQ8064T Snapdragon 600
+bootloader:
+  unlock: unknown
+  relock: unknown

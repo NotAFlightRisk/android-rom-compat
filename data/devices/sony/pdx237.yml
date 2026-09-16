@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 5 V
+codenames: [pdx237]
+aliases: [XQ-DE44, XQ-DE54, XQ-DE72]
+released: 2023
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: unknown
+  relock: unknown

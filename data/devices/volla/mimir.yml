@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Tablet
+codenames: [mimir]
+released: 2025
+soc: Mediatek Helio G99
+bootloader:
+  unlock: unknown
+  relock: yes

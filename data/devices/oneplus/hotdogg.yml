@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 7T Pro 5G Mclaren
+codenames: [hotdogg]
+bootloader:
+  unlock: unknown
+  relock: unknown

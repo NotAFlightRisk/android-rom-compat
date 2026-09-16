@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone Max Pro M2
+codenames: [x01bd]
+released: 2018
+soc: Qualcomm SDM660 Snapdragon 660
+bootloader:
+  unlock: no
+  relock: unknown

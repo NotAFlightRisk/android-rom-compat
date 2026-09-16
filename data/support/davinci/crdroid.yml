@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Firebird11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#davinci
+install: https://xdaforums.com/t/rom-15-davinci-crdroid-v11-2-official.4719650/

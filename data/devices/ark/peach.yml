@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Benefit A3
+codenames: [peach]
+released: 2015
+soc: Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: unknown
+  relock: unknown

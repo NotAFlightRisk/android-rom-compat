@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: OV1
+codenames: [pyrite]
+released: 2022
+soc: Qualcomm SM8350-AC Snapdragon 888+
+bootloader:
+  unlock: unknown
+  relock: unknown

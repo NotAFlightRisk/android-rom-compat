@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M20
+codenames: [m20lte]
+aliases: [SM-M205F, SM-M205FN, SM-M205G, SM-M205M, SM-M205N]
+released: 2019
+soc: Samsung Exynos 7904
+bootloader:
+  unlock: unknown
+  relock: unknown

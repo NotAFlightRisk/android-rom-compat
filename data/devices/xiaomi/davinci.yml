@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 9T
+codenames: [davinci]
+aliases: [Redmi K20 (China), Redmi K20 (India), M1903F10G, M1903F10A, M1903F10C, M1903F10I, Mi 9T, M1903F10T]
+released: 2019
+soc: Qualcomm SM7150-AA Snapdragon 730
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G7 ThinQ (G710AWM/EM/EMW)
+codenames: [judyln]
+aliases: [G7+ ThinQ, LM-G710AWM, LM-G710EM, LM-G710EMW, LM-G710EAW]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

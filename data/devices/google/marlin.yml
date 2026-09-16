@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel XL
+codenames: [marlin]
+released: 2016
+soc: Qualcomm MSM8996 Pro Snapdragon 821
+bootloader:
+  unlock: conditional
+  relock: yes
+  notes: Carrier models, like Verizon's, can't be unlocked.

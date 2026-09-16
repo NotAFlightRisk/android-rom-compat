@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 7 plus
+codenames: [b2n]
+aliases: [TA-1041, TA-1062, TA-1046]
+released: 2018
+soc: Qualcomm SDM660 Snapdragon 660
+bootloader:
+  unlock: no
+  relock: unknown

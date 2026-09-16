@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mini 5G
+codenames: [tp1803]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: unknown
+  relock: unknown

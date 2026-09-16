@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: one vision
+codenames: [kane]
+aliases: [p50, XT1970-1, XT1970-2, XT1970-3, XT1970-5]
+released: 2019
+soc: Samsung Exynos 9609
+bootloader:
+  unlock: unknown
+  relock: unknown

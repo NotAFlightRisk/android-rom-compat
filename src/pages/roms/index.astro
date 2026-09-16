@@ -1,0 +1,37 @@
+---
+import Base from '../../components/layout/Base.astro';
+import Matrix from '../../components/table/Matrix.astro';
+import { getModel } from '../../lib/data/model.js';
+import { romCells, romColumns } from '../../lib/table.js';
+import { listOf } from '../../lib/slug.js';
+
+const { roms } = getModel();
+const columns = [{ key: 'devices', label: 'Devices' }, ...romColumns];
+const rowsOf = (list) =>
+  list.map((rom) => {
+    const devices = rom.support.filter((row) => row.active).length;
+    return {
+      key: rom.key,
+      search: rom.name.toLowerCase(),
+      head: { label: rom.name, href: rom.url },
+      cells: { devices: { text: devices, sort: devices }, ...romCells(rom) },
+    };
+  });
+const live = roms.filter((rom) => rom.status === 'active');
+const gone = roms.filter((rom) => rom.status !== 'active');
+---
+
+<Base
+  title="Android ROMs compared"
+  description={`${listOf(live.map((rom) => rom.name), 'and')} side by side: Google apps, security, install methods and supported devices.`}
+  crumbs={[{ label: 'ROMs', url: '/roms/' }]}
+>
+  <h1>ROMs</h1>
+  <Matrix id="roms" caption="ROMs side by side" rowLabel="ROM" columns={columns} rows={rowsOf(live)} urlState />
+  {gone.length > 0 && (
+    <details>
+      <summary>Discontinued ROMs</summary>
+      <Matrix id="roms-gone" caption="Discontinued ROMs" rowLabel="ROM" columns={columns} rows={rowsOf(gone)} controls={false} />
+    </details>
+  )}
+</Base>

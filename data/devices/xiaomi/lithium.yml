@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi MIX
+codenames: [lithium]
+released: 2016
+soc: Qualcomm MSM8996 Pro Snapdragon 821
+bootloader:
+  unlock: unknown
+  relock: unknown

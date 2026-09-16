@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A20
+codenames: [a20]
+bootloader:
+  unlock: unknown
+  relock: unknown

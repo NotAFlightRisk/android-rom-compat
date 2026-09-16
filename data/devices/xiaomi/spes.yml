@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 11
+codenames: [spes]
+bootloader:
+  unlock: unknown
+  relock: unknown

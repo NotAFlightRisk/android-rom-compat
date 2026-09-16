@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nexus 6P
+codenames: [angler]
+released: 2015
+soc: Qualcomm MSM8994 Snapdragon 810
+bootloader:
+  unlock: unknown
+  relock: unknown

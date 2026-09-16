@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 3a
+codenames: [sargo]
+aliases: [G020F, G020G, G020H]
+released: 2019
+soc: Qualcomm SDM670 Snapdragon 670
+bootloader:
+  unlock: conditional
+  relock: yes
+  notes: Carrier models, like Verizon's, can't be unlocked.

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 10
+codenames: [frankel]
+bootloader:
+  unlock: conditional
+  relock: yes
+  notes: Carrier models, like Verizon's, can't be unlocked.

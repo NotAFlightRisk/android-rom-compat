@@ -1,0 +1,104 @@
+---
+import Base from '../../../components/layout/Base.astro';
+import Matrix from '../../../components/table/Matrix.astro';
+import Facts from '../../../components/ui/Facts.astro';
+import { getModel } from '../../../lib/data/model.js';
+import { reportedFeatures, romCells, romColumns, splitByActive, supportCells, supportColumns } from '../../../lib/table.js';
+import { labelOf, yesNo } from '../../../lib/labels.js';
+import { listOf } from '../../../lib/slug.js';
+
+export const getStaticPaths = () =>
+  getModel().devices.map((device) => ({
+    params: { brand: device.brand.key, slug: device.slug },
+    props: { device },
+  }));
+
+const { device } = Astro.props;
+const features = reportedFeatures(getModel().features, device.support);
+const { bootloader } = device;
+const [current, ended] = splitByActive(device.support);
+const columns = [
+  { key: 'official', label: 'Official' },
+  ...supportColumns(features),
+  ...romColumns.map((column) => ({ ...column, hidden: true })),
+];
+const rowsOf = (list) =>
+  list.map((row) => ({
+    key: row.rom.key,
+    search: row.rom.name.toLowerCase(),
+    stale: row.stale,
+    head: {
+      label: row.rom.name,
+      href: row.rom.url,
+      links: row.install ? [{ label: 'Install guide', href: row.install }] : [],
+    },
+    cells: { official: { text: yesNo(row.official) }, ...supportCells(row, features), ...romCells(row.rom) },
+  }));
+const romNames = current.map((row) => row.rom.name);
+const codename = device.codenames[0];
+const unlockTone = { yes: 'working', conditional: 'partial', no: 'broken' };
+const relockTone = { yes: 'working', no: 'broken' };
+---
+
+<Base
+  title={`${device.title} (${codename}) custom ROM support`}
+  description={romNames.length
+    ? `Which ROMs run on the ${device.title} and what works: ${listOf(romNames, 'and')}.`
+    : `Custom ROM support for the ${device.title} (${codename}), and whether its bootloader unlocks.`}
+  crumbs={[
+    { label: 'Devices', url: '/devices/' },
+    { label: device.brand.name, url: device.brand.url },
+    { label: device.name, url: device.url },
+  ]}
+  jsonLd={[{
+    '@type': 'Product',
+    name: device.title,
+    brand: { '@type': 'Brand', name: device.brand.name },
+    model: codename,
+    ...(device.aliases?.length && { mpn: device.aliases[0] }),
+    ...(device.released && { releaseDate: String(device.released) }),
+  }]}
+  edit={[device.file, ...device.support.map((row) => row.file)]}
+>
+  <article data-pagefind-body data-pagefind-meta={`hint:${device.brand.name} · ${device.codenames.join(', ')}`}>
+    <section>
+      <h1 data-pagefind-meta="title">{device.title}</h1>
+      <Facts items={[
+        { label: device.codenames.length > 1 ? 'Codenames' : 'Codename', value: device.codenames.join(', '), code: true },
+        { label: 'Model numbers', value: device.aliases?.join(', '), code: true },
+        { label: 'Released', value: device.released },
+        { label: 'Chip', value: device.soc },
+      ]} />
+    </section>
+
+    <section aria-labelledby="bootloader">
+      <h2 id="bootloader">Bootloader</h2>
+      <Facts items={[
+        { label: 'Unlock', value: labelOf(bootloader.unlock), tone: unlockTone[bootloader.unlock] },
+        { label: 'Relock with a custom ROM', value: labelOf(bootloader.relock), tone: relockTone[bootloader.relock] },
+      ]} />
+      {bootloader.notes && <p>{bootloader.notes}</p>}
+    </section>
+
+    <section aria-labelledby="roms">
+      <h2 id="roms">ROMs</h2>
+      <p><small>Features show up once someone reports them. <a href="/contribute/">Know how one works?</a></small></p>
+      {current.length > 0
+        ? <Matrix id="support" caption={`ROMs for the ${device.title}`} rowLabel="ROM" columns={columns} rows={rowsOf(current)} urlState />
+        : <p>No ROM we track officially supports this one right now. Know different? <a href="/contribute/">Add it</a>.</p>}
+      {ended.length > 0 && (
+        <details>
+          <summary>Support that has ended ({listOf(ended.map((row) => row.rom.name), 'and')})</summary>
+          <Matrix id="support-ended" caption={`Ended support for the ${device.title}`} rowLabel="ROM" columns={columns} rows={rowsOf(ended)} controls={false} />
+        </details>
+      )}
+    </section>
+  </article>
+</Base>
+
+<style>
+  article {
+    display: grid;
+    gap: var(--space-xl);
+  }
+</style>

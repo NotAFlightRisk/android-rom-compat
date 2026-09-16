@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Bojan Tanasic (bojantanasic)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#kebab
+install: https://xdaforums.com/t/rom-14-official-8t-crdroid-v10-8-14-09-2024.4692700/

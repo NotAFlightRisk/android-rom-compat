@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia M
+codenames: [nicki]
+released: 2013
+soc: Qualcomm MSM8227 Snapdragon S4 Plus
+bootloader:
+  unlock: unknown
+  relock: unknown

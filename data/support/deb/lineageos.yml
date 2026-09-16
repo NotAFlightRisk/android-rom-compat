@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 7
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/deb/
+install: https://wiki.lineageos.org/devices/deb/install/

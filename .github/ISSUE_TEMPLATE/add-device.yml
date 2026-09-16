@@ -1,0 +1,70 @@
+name: 📱 Add a device
+description: A phone or tablet that a ROM officially supports, but isn't listed
+title: "[Device]: "
+labels: ["data", "new-device"]
+body:
+  - type: input
+    id: brand
+    attributes:
+      label: Brand
+      placeholder: Google
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: name
+      description: The device name, without the brand
+      placeholder: Pixel 7
+    validations:
+      required: true
+  - type: input
+    id: codenames
+    attributes:
+      label: codenames
+      description: The codename the ROM uses, plus any others, comma separated
+      placeholder: panther
+    validations:
+      required: true
+  - type: input
+    id: aliases
+    attributes:
+      label: aliases
+      description: Model numbers and other names, comma separated
+      placeholder: GVU6C, GQML3, GO3Z5
+  - type: dropdown
+    id: unlock
+    attributes:
+      label: bootloader.unlock
+      options: [unknown, "yes", "no", conditional]
+    validations:
+      required: true
+  - type: dropdown
+    id: relock
+    attributes:
+      label: bootloader.relock
+      description: Can it be locked again with a custom ROM installed?
+      options: [unknown, "yes", "no"]
+    validations:
+      required: true
+  - type: input
+    id: notes
+    attributes:
+      label: bootloader.notes
+      description: Needed if unlocking is conditional
+      placeholder: Carrier models, like Verizon's, can't be unlocked.
+  - type: input
+    id: roms
+    attributes:
+      label: ROMs that support it
+      placeholder: LineageOS, crDroid
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: source
+      description: A link to the ROM's own page for this device
+      placeholder: https://wiki.lineageos.org/devices/panther/
+    validations:
+      required: true

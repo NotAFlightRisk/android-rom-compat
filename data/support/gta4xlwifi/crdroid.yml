@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 14
+verified: 2026-09-16
+source: https://crdroid.net/downloads#gta4xlwifi
+install: https://forum.xda-developers.com/t/rom-unofficial-gta4xl-gta4xlwifi-13-0-crdroidandroid-v9-7-tab-s6-lite.4610281/

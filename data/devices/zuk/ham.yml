@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Z1
+codenames: [ham]
+released: 2015
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

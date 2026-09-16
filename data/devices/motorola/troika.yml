@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: one action
+codenames: [troika]
+aliases: [XT2013-1, XT2013-2, XT2013-3, XT2013-4]
+released: 2019
+soc: Samsung Exynos 9609
+bootloader:
+  unlock: unknown
+  relock: unknown

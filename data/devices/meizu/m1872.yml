@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 16X
+codenames: [m1872]
+bootloader:
+  unlock: unknown
+  relock: unknown

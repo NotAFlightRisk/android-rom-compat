@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 5 Plus/Redmi Note 5
+codenames: [vince]
+bootloader:
+  unlock: unknown
+  relock: unknown

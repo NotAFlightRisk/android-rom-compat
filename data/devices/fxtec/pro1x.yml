@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pro¹ X
+codenames: [pro1x]
+released: 2022
+soc: Qualcomm SM6115 Snapdragon 662
+bootloader:
+  unlock: unknown
+  relock: unknown

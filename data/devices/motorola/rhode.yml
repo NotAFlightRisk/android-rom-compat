@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g52
+codenames: [rhode]
+aliases: [XT2221-1, XT2221-2]
+released: 2022
+soc: Qualcomm SM6225 Snapdragon 680 4G
+bootloader:
+  unlock: unknown
+  relock: yes

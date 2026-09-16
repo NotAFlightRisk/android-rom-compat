@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Odin2 Mini
+codenames: [odin2mini]
+aliases: [Odin2 Mini]
+released: 2024
+soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+bootloader:
+  unlock: unknown
+  relock: unknown

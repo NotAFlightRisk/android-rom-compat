@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S4 Mini (International LTE)
+codenames: [serranoltexx]
+aliases: [GT-I9195, SGH-I257M, SHV-E370K]
+released: 2013
+soc: Qualcomm MSM8930AB Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

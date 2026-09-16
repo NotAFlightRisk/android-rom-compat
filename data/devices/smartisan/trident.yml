@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: R1
+codenames: [trident]
+aliases: [DE106]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

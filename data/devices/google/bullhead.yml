@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nexus 5X
+codenames: [bullhead]
+released: 2015
+soc: Qualcomm MSM8992 Snapdragon 808
+bootloader:
+  unlock: unknown
+  relock: unknown

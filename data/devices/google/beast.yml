@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: ADT-2
+codenames: [beast]
+released: 2018
+soc: Amlogic S905X
+bootloader:
+  unlock: unknown
+  relock: unknown

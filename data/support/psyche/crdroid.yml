@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+verified: 2026-09-16
+source: https://crdroid.net/downloads#psyche
+install: https://xdaforums.com/t/rom-16-ota-crdroid-12-for-xiaomi-12x-psyche-official.4779416/

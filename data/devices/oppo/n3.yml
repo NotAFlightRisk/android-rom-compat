@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: N3
+codenames: [n3]
+released: 2015
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

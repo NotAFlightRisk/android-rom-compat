@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../schema/features.json
+# Each feature is a column in the tables. Custom values go best first
+
+- key: camera
+  name: Camera
+  description: Photos and video, including the extra lenses
+- key: fingerprint
+  name: Fingerprint
+  description: Unlocking with the fingerprint reader
+  requires: fingerprint
+- key: face_unlock
+  name: Face unlock
+  description: Unlocking with your face
+  requires: face_unlock
+- key: nfc
+  name: NFC
+  description: Contactless payments and tags
+  requires: nfc
+- key: volte
+  name: VoLTE
+  description: Calls over 4G
+  requires: volte
+- key: vowifi
+  name: VoWiFi
+  description: Calls over Wi-Fi
+  requires: vowifi
+- key: 5g
+  name: 5G
+  description: 5G mobile data
+  requires: 5g
+- key: esim
+  name: eSIM
+  description: Adding and switching eSIMs
+  requires: esim
+- key: bluetooth_audio
+  name: Bluetooth audio
+  description: Headphones, speakers and codecs
+- key: android_auto
+  name: Android Auto
+  description: Connecting to a car
+- key: widevine
+  name: Widevine
+  description: DRM level, which decides streaming quality
+  values: [L1, L3, none]
+- key: integrity
+  name: Play Integrity
+  description: Highest Play Integrity verdict passed
+  values: [strong, device, basic, none]

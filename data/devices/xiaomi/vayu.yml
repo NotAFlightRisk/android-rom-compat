@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO X3 Pro
+codenames: [vayu]
+aliases: [M2102J20SG, M2102J20SI]
+released: 2021
+soc: Qualcomm SM8150-AC Snapdragon 860
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord N200
+codenames: [dre]
+aliases: [DE2117]
+released: 2021
+soc: Qualcomm SM4350 Snapdragon 480
+bootloader:
+  unlock: unknown
+  relock: unknown

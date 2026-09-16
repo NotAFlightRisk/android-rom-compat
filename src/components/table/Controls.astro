@@ -1,0 +1,105 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const { id, columns, brands, total } = Astro.props;
+---
+
+<div class="controls" data-controls hidden>
+  <label>
+    <span class="visually-hidden">Filter rows</span>
+    <input type="search" name="q" placeholder="Filter" autocomplete="off" />
+  </label>
+  {brands.length > 1 && (
+    <label>
+      <span class="visually-hidden">Brand</span>
+      <select name="brand">
+        <option value="">All brands</option>
+        {brands.map((brand) => <option value={brand.key}>{brand.name}</option>)}
+      </select>
+    </label>
+  )}
+  <details>
+    <summary><Icon name="columns" /> Columns</summary>
+    <fieldset>
+      <legend class="visually-hidden">Show columns</legend>
+      {columns.map((column) => (
+        <label>
+          <input type="checkbox" name="col" value={column.key} checked={!column.hidden} aria-controls={id} />
+          {column.label}
+        </label>
+      ))}
+    </fieldset>
+  </details>
+  <p role="status" data-count>{total} shown</p>
+</div>
+
+<style>
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  input[type='search'] {
+    inline-size: 14rem;
+    max-inline-size: 100%;
+  }
+
+  details {
+    position: relative;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    min-block-size: 2.5rem;
+    padding-inline: var(--space-sm);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      border-color: var(--text-muted);
+    }
+  }
+
+  fieldset {
+    position: absolute;
+    inset-block-start: calc(100% + var(--space-2xs));
+    z-index: 3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    inline-size: min(36rem, 90vw);
+    margin: 0;
+    padding: var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-2xs);
+      cursor: pointer;
+    }
+  }
+
+  [data-count] {
+    margin-inline-start: auto;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+</style>

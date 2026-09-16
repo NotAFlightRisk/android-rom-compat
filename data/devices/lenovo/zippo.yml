@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Z6 Pro
+codenames: [zippo]
+aliases: [L78051]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Note 12 5G/Poco X5
+slug: note-12-5g-poco-x5-stone
+codenames: [stone]
+bootloader:
+  unlock: unknown
+  relock: unknown

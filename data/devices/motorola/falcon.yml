@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g
+codenames: [falcon]
+aliases: [XT1031, XT1032, XT1033, XT1034]
+released: 2013
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

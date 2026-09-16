@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 15
+maintainer: ArianK16a, Nanhumly
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/sagit/
+install: https://wiki.lineageos.org/devices/sagit/install/

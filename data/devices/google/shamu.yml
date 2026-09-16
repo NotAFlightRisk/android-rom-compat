@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nexus 6
+codenames: [shamu]
+released: 2014
+soc: Qualcomm APQ8084 Snapdragon 805
+bootloader:
+  unlock: unknown
+  relock: unknown

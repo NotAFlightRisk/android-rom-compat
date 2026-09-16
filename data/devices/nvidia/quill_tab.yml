@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Jetson TX2 [Tablet]
+codenames: [quill_tab]
+aliases: ["Jetson TX2 NX [Tablet]", lanai]
+released: 2017
+soc: NVIDIA Tegra X2 (T186)
+bootloader:
+  unlock: unknown
+  relock: unknown

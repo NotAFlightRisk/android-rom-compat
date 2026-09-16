@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "13"
+codenames: [dodge]
+aliases: [CPH2649, CPH2653, CPH2655, PJZ110]
+released: 2025
+soc: Qualcomm SM8750 Snapdragon 8 Elite
+bootloader:
+  unlock: unknown
+  relock: unknown

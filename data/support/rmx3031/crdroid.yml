@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 13
+verified: 2026-09-16
+source: https://crdroid.net/downloads#RMX3031
+install: https://forum.xda-developers.com/t/rom-13-rmx3031-crdroid-9-7-official-30-07-2023.4610865/

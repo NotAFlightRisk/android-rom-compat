@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab 3 7.0 LTE
+codenames: [lt02ltespr]
+aliases: [SM-T217S]
+released: 2016
+soc: Qualcomm MSM8930AB Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

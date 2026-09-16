@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#z3dual
+install: https://forum.xda-developers.com/t/rom-11-0-unofficial-z3dual-crdroid-v7-11-11-10-2021.4345999/

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G2 Mini
+codenames: [g2m]
+released: 2014
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone 3
+codenames: [zenfone3]
+aliases: [ZE520KL, ZE552KL]
+released: 2016
+soc: Qualcomm MSM8953 Snapdragon 625
+bootloader:
+  unlock: no
+  relock: unknown

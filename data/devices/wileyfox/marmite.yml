@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Swift 2/2+/2X
+codenames: [marmite]
+bootloader:
+  unlock: unknown
+  relock: unknown

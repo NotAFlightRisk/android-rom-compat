@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S2 9.7 Wi-Fi (2016)
+codenames: [gts210vewifi]
+aliases: [SM-T813]
+released: 2016
+soc: Qualcomm MSM8976 Snapdragon 652
+bootloader:
+  unlock: unknown
+  relock: unknown

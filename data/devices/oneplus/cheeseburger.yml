@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "5"
+codenames: [cheeseburger]
+released: 2017
+soc: Qualcomm MSM8998 Snapdragon 835
+bootloader:
+  unlock: unknown
+  relock: unknown

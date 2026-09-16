@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A52s 5G
+codenames: [a52sxq]
+aliases: [SM-A528B, SM-A528N, SM-A528B/DS]
+released: 2021
+soc: Qualcomm SM7325 Snapdragon 778G 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

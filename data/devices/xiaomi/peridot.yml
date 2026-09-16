@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO F6
+codenames: [peridot]
+aliases: [Redmi Turbo 3, 24069PC21G, 24069PC21I, 24069RA21C]
+released: 2024
+soc: Qualcomm SM8635 Snapdragon 8s Gen3
+bootloader:
+  unlock: unknown
+  relock: unknown

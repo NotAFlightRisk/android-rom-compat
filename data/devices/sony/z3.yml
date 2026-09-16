@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia Z3
+codenames: [z3]
+aliases: [D6603]
+released: 2014
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

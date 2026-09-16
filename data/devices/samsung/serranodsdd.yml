@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S4 Mini (International Dual SIM)
+codenames: [serranodsdd]
+aliases: [GT-I9192]
+released: 2013
+soc: Qualcomm MSM8930AB Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

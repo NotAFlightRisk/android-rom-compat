@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: 306bobby
+verified: 2026-09-16
+source: https://crdroid.net/downloads#blazer
+install: https://xdaforums.com/t/rom-official-16-0-crdroid-12-x-for-pixel-10-pro-pro-xl-blazer-mustang.4785628/

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pad Pro
+codenames: [caihong]
+aliases: [Pad 2, OPD2404, OPD2403]
+released: 2024
+soc: Qualcomm SM8650 Snapdragon 8 Gen3
+bootloader:
+  unlock: unknown
+  relock: unknown

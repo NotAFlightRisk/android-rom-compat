@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S4 (GT-I9505, SGH-I337M, SGH-M919/V)
+codenames: [jfltexx]
+aliases: [GT-I9505, SGH-I337M, SGH-M919, SGH-M919V]
+released: 2013
+soc: Qualcomm APQ8064T Snapdragon 600
+bootloader:
+  unlock: unknown
+  relock: unknown

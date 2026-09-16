@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S22+
+codenames: [g0s]
+aliases: [SM-S906B, SM-S906B/DS]
+released: 2022
+soc: Samsung Exynos 2200
+bootloader:
+  unlock: no
+  relock: unknown

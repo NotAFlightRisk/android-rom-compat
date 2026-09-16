@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S III Neo (Sony Camera)
+codenames: [s3ve3gxx]
+released: 2014
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

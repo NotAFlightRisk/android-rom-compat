@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi K30 5G
+codenames: [picasso]
+bootloader:
+  unlock: unknown
+  relock: unknown

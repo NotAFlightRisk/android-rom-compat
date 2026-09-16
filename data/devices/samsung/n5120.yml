@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note 8.0 (LTE)
+codenames: [n5120]
+released: 2013
+soc: Samsung Exynos 4412
+bootloader:
+  unlock: unknown
+  relock: unknown

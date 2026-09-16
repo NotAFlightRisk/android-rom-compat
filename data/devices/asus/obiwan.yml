@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: ROG Phone 3
+codenames: [obiwan]
+aliases: [ZS661KS]
+released: 2020
+soc: Qualcomm SM8250-AB Snapdragon 865+
+bootloader:
+  unlock: no
+  relock: unknown

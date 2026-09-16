@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab E 8.0 LTE (Sprint)
+codenames: [gtesqltespr]
+aliases: [SM-T377P]
+released: 2016
+soc: Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: unknown
+  relock: unknown

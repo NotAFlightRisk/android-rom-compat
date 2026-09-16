@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "5"
+codenames: [fp5]
+released: 2023
+soc: Qualcomm Dragonwing™ QCM6490 (QCM6490)
+bootloader:
+  unlock: unknown
+  relock: yes

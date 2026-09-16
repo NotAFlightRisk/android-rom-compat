@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 9 Speed Edition
+codenames: [ice]
+bootloader:
+  unlock: unknown
+  relock: unknown

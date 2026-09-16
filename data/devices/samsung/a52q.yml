@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A52 4G
+codenames: [a52q]
+aliases: [SM-A525F, SM-A525M, SM-A525F/DS, SM-A525M/DS]
+released: 2021
+soc: Qualcomm SM7125 Snapdragon 720G
+bootloader:
+  unlock: unknown
+  relock: unknown

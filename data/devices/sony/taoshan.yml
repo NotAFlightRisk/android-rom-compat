@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia L
+codenames: [taoshan]
+released: 2013
+soc: Qualcomm MSM8230 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

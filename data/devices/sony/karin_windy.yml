@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia Z4 Tablet WiFi
+codenames: [karin_windy]
+released: 2015
+soc: Qualcomm MSM8994 Snapdragon 810
+bootloader:
+  unlock: unknown
+  relock: unknown

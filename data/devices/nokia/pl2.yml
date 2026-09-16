@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 6.1 (2018)
+codenames: [pl2]
+aliases: [TA-1043, TA-1089]
+released: 2018
+soc: Qualcomm SDM630 Snapdragon 630
+bootloader:
+  unlock: no
+  relock: unknown

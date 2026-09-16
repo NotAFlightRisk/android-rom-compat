@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Axon 9 Pro
+codenames: [akershus]
+aliases: [P845A01, P845A02]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

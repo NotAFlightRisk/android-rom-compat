@@ -1,0 +1,49 @@
+name: ✅ Report what works
+description: Whether a feature works on a ROM and device
+title: "[Feature]: "
+labels: ["data", "feature-status"]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: Name or codename
+      placeholder: Pixel 7 (panther)
+    validations:
+      required: true
+  - type: input
+    id: rom
+    attributes:
+      label: ROM
+      placeholder: GrapheneOS
+    validations:
+      required: true
+  - type: input
+    id: feature
+    attributes:
+      label: Feature
+      description: Any of the keys in data/features.yml
+      placeholder: volte
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: status
+      description: Widevine and Play Integrity use their own values, put those in the note
+      options: [working, partial, broken, n/a, other]
+    validations:
+      required: true
+  - type: input
+    id: note
+    attributes:
+      label: note
+      description: Needed for partial and broken
+      placeholder: Works on EE, not on Three
+  - type: input
+    id: source
+    attributes:
+      label: source
+      description: A link, or "tested it myself" plus the ROM build you're on
+    validations:
+      required: true

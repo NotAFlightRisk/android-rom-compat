@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#mi8937

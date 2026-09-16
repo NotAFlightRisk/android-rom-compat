@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 15
+maintainer: SyberHexen, deadman96385, erfanoabdi, npjohnson
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/channel/
+install: https://wiki.lineageos.org/devices/channel/install/

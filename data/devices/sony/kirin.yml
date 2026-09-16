@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10
+codenames: [kirin]
+aliases: [I3113, I3123, I4113, I4193]
+released: 2019
+soc: Qualcomm SDM630 Snapdragon 630
+bootloader:
+  unlock: unknown
+  relock: unknown

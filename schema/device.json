@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Device",
+  "type": "object",
+  "required": ["name", "codenames", "bootloader"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "codenames": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/codename" }
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "released": { "type": "integer", "minimum": 2008, "maximum": 2100 },
+    "soc": { "type": "string", "minLength": 1 },
+    "hardware": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+        "description": "lowercase letters, numbers and underscores"
+      }
+    },
+    "bootloader": {
+      "type": "object",
+      "required": ["unlock", "relock"],
+      "additionalProperties": false,
+      "properties": {
+        "unlock": { "enum": ["yes", "no", "conditional", "unknown"] },
+        "relock": { "enum": ["yes", "no", "unknown"] },
+        "notes": { "type": "string", "minLength": 1 }
+      },
+      "if": { "properties": { "unlock": { "const": "conditional" } } },
+      "then": { "required": ["notes"] }
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "lowercase letters, numbers and hyphens"
+    }
+  },
+  "$defs": {
+    "codename": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([_-][a-z0-9]+)*$",
+      "description": "lowercase letters, numbers, hyphens and underscores"
+    }
+  }
+}

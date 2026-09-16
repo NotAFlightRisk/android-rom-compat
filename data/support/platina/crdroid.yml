@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 12
+verified: 2026-09-16
+source: https://crdroid.net/downloads#platina
+install: https://forum.xda-developers.com/t/rom-12-1-official-platina-crdroid-v8-x.4445883/

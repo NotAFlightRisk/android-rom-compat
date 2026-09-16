@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Nexus LTE (Sprint)
+codenames: [toroplus]
+released: 2012
+soc: TI OMAP4460
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 4
+codenames: [flame]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: conditional
+  relock: yes
+  notes: Carrier models, like Verizon's, can't be unlocked.

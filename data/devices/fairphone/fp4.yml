@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "4"
+codenames: [fp4]
+released: 2021
+soc: Qualcomm SM7225 Snapdragon 750G
+bootloader:
+  unlock: unknown
+  relock: yes

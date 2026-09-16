@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10 Plus
+codenames: [mermaid]
+aliases: [I3213, I3223, I4213, I4293]
+released: 2019
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: unknown
+  relock: unknown

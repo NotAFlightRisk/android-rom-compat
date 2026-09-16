@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: edge
+codenames: [racer]
+aliases: [XT2063-2, XT2063-3]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+bootloader:
+  unlock: unknown
+  relock: unknown

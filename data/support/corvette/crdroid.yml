@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Pranav Vashi (neobuddy89)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#corvette
+install: https://xdaforums.com/t/rom-16-oneplus-ace-3-pro-crdroid-v12-official.4771858/

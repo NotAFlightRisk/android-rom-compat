@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 12R
+codenames: [aston]
+aliases: [CPH2585, CPH2609, CPH2611]
+released: 2024
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: unknown
+  relock: unknown

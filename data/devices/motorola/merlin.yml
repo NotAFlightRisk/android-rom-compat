@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g3 turbo
+codenames: [merlin]
+aliases: [XT1556, XT1557]
+released: 2015
+soc: Qualcomm MSM8939 Snapdragon 615
+bootloader:
+  unlock: unknown
+  relock: unknown

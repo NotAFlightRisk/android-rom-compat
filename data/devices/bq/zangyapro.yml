@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris X2 Pro
+codenames: [zangyapro]
+released: 2018
+soc: Qualcomm SDM660 Snapdragon 660
+bootloader:
+  unlock: unknown
+  relock: unknown

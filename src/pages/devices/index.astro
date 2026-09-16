@@ -1,0 +1,41 @@
+---
+import Base from '../../components/layout/Base.astro';
+import DeviceTables from '../../components/ui/DeviceTables.astro';
+import { getModel } from '../../lib/data/model.js';
+
+const { devices, roms, brands } = getModel();
+---
+
+<Base
+  title="Devices"
+  description={`${devices.length} Android phones and tablets, the custom ROMs that officially support each one, and whether the bootloader unlocks.`}
+  crumbs={[{ label: 'Devices', url: '/devices/' }]}
+>
+  <section>
+    <h1>Devices</h1>
+    <nav aria-label="Brands">
+      <ul class="brands">
+        {brands.map((brand) => (
+          <li><a href={brand.url}>{brand.name}</a> <span>{brand.devices.length}</span></li>
+        ))}
+      </ul>
+    </nav>
+  </section>
+  <DeviceTables id="devices" label="Devices" devices={devices} roms={roms} brands={brands} />
+</Base>
+
+<style>
+  .brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-lg);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    span {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+</style>

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10 IV
+codenames: [pdx225]
+aliases: [XQ-CC54, XQ-CC72]
+released: 2022
+soc: Qualcomm SM6375 Snapdragon 695
+bootloader:
+  unlock: unknown
+  relock: unknown

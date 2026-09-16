@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "8.1"
+codenames: [pnx_sprout]
+bootloader:
+  unlock: unknown
+  relock: unknown

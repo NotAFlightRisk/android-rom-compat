@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone Max M1
+codenames: [x00p]
+released: 2018
+soc: Qualcomm MSM8937 Snapdragon 430
+bootloader:
+  unlock: no
+  relock: unknown

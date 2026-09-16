@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 5 Pro
+codenames: [rmx1971]
+bootloader:
+  unlock: unknown
+  relock: unknown

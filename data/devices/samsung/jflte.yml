@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S4
+codenames: [jflte]
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S20 Ultra (5G)
+codenames: [z3s]
+aliases: [SM-G988B, SM-G988B/DS]
+released: 2020
+soc: Samsung Exynos 990
+bootloader:
+  unlock: unknown
+  relock: unknown

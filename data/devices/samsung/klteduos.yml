@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S5 LTE Duos (G900FD/MD)
+codenames: [klteduos]
+aliases: [SM-G900FD, SM-G900MD]
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

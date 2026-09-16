@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: edge 30 fusion
+codenames: [tundra]
+aliases: [moto S30 Pro, XT2243-1, XT2243-2]
+released: 2022
+soc: Qualcomm SM8350-AC Snapdragon 888+
+bootloader:
+  unlock: unknown
+  relock: unknown

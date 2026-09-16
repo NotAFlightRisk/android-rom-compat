@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 12 5G
+codenames: [sky]
+bootloader:
+  unlock: unknown
+  relock: unknown

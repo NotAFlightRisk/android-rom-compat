@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Note 13 4G/NFC
+codenames: [sapphire]
+bootloader:
+  unlock: unknown
+  relock: unknown

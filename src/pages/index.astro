@@ -1,0 +1,138 @@
+---
+import Base from '../components/layout/Base.astro';
+import Search from '../components/ui/Search.astro';
+import { getModel } from '../lib/data/model.js';
+import { site } from '../lib/site.js';
+import { listOf } from '../lib/slug.js';
+
+const { devices, roms, support } = getModel();
+const live = roms.filter((rom) => rom.status === 'active');
+const popular = devices
+  .filter((device) => device.activeCount > 0)
+  .toSorted((a, b) => b.activeCount - a.activeCount || (b.released ?? 0) - (a.released ?? 0))
+  .slice(0, 10);
+const recent = support
+  .filter((row) => row.active)
+  .toSorted((a, b) => b.verified.localeCompare(a.verified))
+  .slice(0, 8);
+---
+
+<Base
+  title={site.name}
+  description={`Which custom ROMs run on your Android phone, what works, and whether the bootloader unlocks. Covers ${listOf(live.map((rom) => rom.name), 'and')}.`}
+>
+  <section class="intro">
+    <h1>What can your phone run?</h1>
+    <p>Official ROM support for {devices.length} Android devices, what works on each, and whether the bootloader unlocks.</p>
+    <Search id="home-search" large />
+  </section>
+
+  <div class="columns">
+    <section aria-labelledby="popular">
+      <h2 id="popular">Most supported</h2>
+      <ol class="rows">
+        {popular.map((device) => (
+          <li>
+            <a href={device.url}>{device.title}</a>
+            <code>{device.codenames[0]}</code>
+            <span>{device.activeCount} ROMs</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section aria-labelledby="recent">
+      <h2 id="recent">Recently checked</h2>
+      <ol class="rows">
+        {recent.map((row) => (
+          <li>
+            <a href={row.device.url}>{row.device.title}</a>
+            <span>{row.rom.name}</span>
+            <time datetime={row.verified}>{row.verified}</time>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </div>
+
+  <section aria-labelledby="roms">
+    <h2 id="roms">ROMs</h2>
+    <ul class="roms">
+      {live.map((rom) => (
+        <li>
+          <a href={rom.url}>{rom.name}</a>
+          <p>{rom.description}</p>
+          <span>{rom.support.filter((row) => row.active).length} devices</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .intro {
+    justify-items: start;
+    gap: var(--space-sm);
+    padding-block: var(--space-xl) var(--space-lg);
+
+    p {
+      color: var(--text-muted);
+      font-size: var(--text-lg);
+    }
+
+    :global(form) {
+      inline-size: min(100%, 40rem);
+      margin-block-start: var(--space-sm);
+    }
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: var(--space-xl);
+  }
+
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rows li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: baseline;
+    gap: var(--space-md);
+    padding-block: var(--space-xs);
+    border-block-end: 1px solid var(--border);
+
+    > :not(a) {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+
+  .roms {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-md) var(--space-xl);
+
+    li {
+      display: grid;
+      gap: var(--space-2xs);
+      padding-block: var(--space-sm);
+      border-block-start: 2px solid var(--accent);
+    }
+
+    a {
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
+    span {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+</style>

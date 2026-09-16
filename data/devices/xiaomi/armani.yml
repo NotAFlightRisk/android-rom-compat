@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 1S
+codenames: [armani]
+released: 2014
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

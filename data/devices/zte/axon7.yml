@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Axon 7
+codenames: [axon7]
+released: 2016
+soc: Qualcomm MSM8996 Snapdragon 820
+bootloader:
+  unlock: unknown
+  relock: unknown

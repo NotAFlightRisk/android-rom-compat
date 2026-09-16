@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto z2 force
+codenames: [nash]
+aliases: [moto z (2018), XT1789-02, XT1789-03, XT1789-04, XT1789-05, XT1789-06, XT1789-07]
+released: 2017
+soc: Qualcomm MSM8998 Snapdragon 835
+bootloader:
+  unlock: unknown
+  relock: unknown

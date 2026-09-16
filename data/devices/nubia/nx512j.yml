@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Z9 Max
+codenames: [nx512j]
+released: 2015
+soc: Qualcomm MSM8939 Snapdragon 615
+bootloader:
+  unlock: unknown
+  relock: unknown

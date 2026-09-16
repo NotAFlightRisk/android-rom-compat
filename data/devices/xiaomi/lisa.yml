@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 11 Lite 5G NE
+codenames: [lisa]
+aliases: [11 Lite NE 5G, Mi 11 LE, 2109119DG, 2109119DI, 2107119DC]
+released: 2021
+soc: Qualcomm SM7325 Snapdragon 778G 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

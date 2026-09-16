@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: X50 Pro 5G
+codenames: [bladerunner]
+bootloader:
+  unlock: unknown
+  relock: unknown

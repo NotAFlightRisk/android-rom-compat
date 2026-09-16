@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: CalyxOS
+description: Privacy-focused Android from the Calyx Institute, with optional microG and a relockable bootloader.
+status: active
+base: aosp
+focus: [privacy, security]
+google: microg
+app_store: fdroid
+org: non-profit
+security:
+  relockable_bootloader: true
+  verified_boot: true
+  monthly_patches: true
+install: [web-installer, cli]
+root: false
+links:
+  website: https://calyxos.org
+  source: https://gitlab.com/CalyxOS
+  docs: https://calyxos.org/docs/
+  community: https://calyxos.org/community/

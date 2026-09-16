@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Honor View 10
+codenames: [berkeley]
+aliases: [BKL-AL00, BKL-AL10, BKL-AL20, BKL-L09, BKL-TL10, BKL-TL20]
+released: 2018
+soc: HiSilicon Kirin 970
+bootloader:
+  unlock: no
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S2 9.7 (LTE)
+codenames: [gts210ltexx]
+aliases: [SM-T815]
+released: 2015
+soc: Samsung Exynos 5433
+bootloader:
+  unlock: unknown
+  relock: unknown

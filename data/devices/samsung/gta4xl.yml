@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S6 Lite (LTE)
+codenames: [gta4xl]
+aliases: [SM-P615]
+released: 2020
+soc: Samsung Exynos 9611
+bootloader:
+  unlock: unknown
+  relock: unknown

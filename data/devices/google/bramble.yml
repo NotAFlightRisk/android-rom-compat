@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 4a 5G
+codenames: [bramble]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+bootloader:
+  unlock: conditional
+  relock: yes
+  notes: Carrier models, like Verizon's, can't be unlocked.
+aliases: [G025E]

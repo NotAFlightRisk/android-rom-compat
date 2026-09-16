@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 10S
+codenames: [rosemary]
+aliases: [Redmi Note 10S NFC, Redmi Note 10S Latin America, POCO M5s]
+released: 2021
+soc: Mediatek Helio G95
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note 3 LTE (N9005/P)
+codenames: [hlte]
+aliases: [SM-N9005, SM-N900P]
+released: 2013
+soc: Qualcomm MSM8974 Snapdragon 800
+bootloader:
+  unlock: unknown
+  relock: unknown

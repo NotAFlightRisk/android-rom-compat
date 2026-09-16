@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Note 11T/11 5G/11S 5G
+codenames: [everpal]
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 8 SE
+codenames: [xmsirius]
+aliases: [M1805E2A]
+released: 2018
+soc: Qualcomm SDM710 Snapdragon 710
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 13
+verified: 2026-09-16
+source: https://crdroid.net/downloads#picasso
+install: https://forum.xda-developers.com/t/rom-unofficial-13-0_r16-stable-picasso-crdroid-v9-0-redmi-k30-k30i-5g.4537457/

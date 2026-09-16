@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 3
+codenames: [kenzo]
+released: 2016
+soc: Qualcomm MSM8956 Snapdragon 650
+bootloader:
+  unlock: unknown
+  relock: unknown

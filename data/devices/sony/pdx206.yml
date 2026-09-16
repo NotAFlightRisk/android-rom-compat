@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 5 II
+codenames: [pdx206]
+aliases: [XQ-AS72, XQ-AS62, XQ-AS52, XQ-AS42]
+released: 2020
+soc: Qualcomm SM8250 Snapdragon 865
+bootloader:
+  unlock: unknown
+  relock: unknown

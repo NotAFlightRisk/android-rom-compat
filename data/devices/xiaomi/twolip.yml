@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 6 Pro
+codenames: [twolip]
+released: 2018
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: unknown
+  relock: unknown

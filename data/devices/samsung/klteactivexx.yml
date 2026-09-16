@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S5 Active (G870F)
+codenames: [klteactivexx]
+aliases: [SM-G870F]
+released: 2014
+soc: Qualcomm MSM8974PRO Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

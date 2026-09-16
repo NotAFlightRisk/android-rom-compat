@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab Pro 8.4
+codenames: [mondrianwifi]
+released: 2014
+soc: Qualcomm MSM8974 Snapdragon 800
+bootloader:
+  unlock: unknown
+  relock: unknown

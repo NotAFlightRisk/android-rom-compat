@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 7 Pro
+codenames: [rmx2170]
+bootloader:
+  unlock: unknown
+  relock: unknown

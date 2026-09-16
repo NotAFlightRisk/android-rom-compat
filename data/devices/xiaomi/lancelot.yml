@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 9
+codenames: [lancelot]
+released: 2020
+soc: Mediatek Helio G80
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A71
+codenames: [a71]
+aliases: [SM-A715F, SM-A715F/DS, SM-A715F/DSN, SM-A715F/DSM]
+released: 2020
+soc: Qualcomm SM7150-AA Snapdragon 730
+bootloader:
+  unlock: unknown
+  relock: unknown

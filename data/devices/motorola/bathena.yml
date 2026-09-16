@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: defy 2021
+codenames: [bathena]
+aliases: [XT2083-8, XT2083-9]
+released: 2021
+soc: Qualcomm SM6115 Snapdragon 662
+bootloader:
+  unlock: unknown
+  relock: unknown

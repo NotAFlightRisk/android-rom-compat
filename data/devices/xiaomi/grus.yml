@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 9 SE
+codenames: [grus]
+aliases: [M1903F2G, M1903F2A]
+released: 2019
+soc: Qualcomm SDM712 Snapdragon 712
+bootloader:
+  unlock: unknown
+  relock: unknown

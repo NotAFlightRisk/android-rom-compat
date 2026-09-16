@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Phone (1)
+codenames: [spacewar]
+aliases: [A063]
+released: 2022
+soc: Qualcomm SM7325-AE Snapdragon 778G+ 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: One M9
+codenames: [hima]
+bootloader:
+  unlock: unknown
+  relock: unknown

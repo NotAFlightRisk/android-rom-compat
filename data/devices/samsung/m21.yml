@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M21
+codenames: [m21]
+bootloader:
+  unlock: unknown
+  relock: unknown

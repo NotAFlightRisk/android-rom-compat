@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: X2 Pro
+codenames: [samurai]
+bootloader:
+  unlock: unknown
+  relock: unknown

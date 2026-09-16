@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g5s
+codenames: [montana]
+aliases: [XT1790, XT1791, XT1792, XT1793, XT1794, XT1795, XT1797, XT1799-2]
+released: 2017
+soc: Qualcomm MSM8937 Snapdragon 430
+bootloader:
+  unlock: unknown
+  relock: unknown

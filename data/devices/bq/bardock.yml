@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris X
+codenames: [bardock]
+released: 2017
+soc: Qualcomm MSM8953 Pro Snapdragon 626
+bootloader:
+  unlock: unknown
+  relock: unknown

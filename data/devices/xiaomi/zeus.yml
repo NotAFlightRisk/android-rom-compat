@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 12 Pro
+codenames: [zeus]
+aliases: [2201122C, 2201122G]
+released: 2021
+soc: Qualcomm SM8450 Snapdragon 8 Gen1
+bootloader:
+  unlock: unknown
+  relock: unknown

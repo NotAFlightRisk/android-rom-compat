@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S20 (4G/5G)
+codenames: [x1s]
+aliases: [SM-G980F, SM-G980F/DS, SM-G981B, SM-G981B/DS]
+released: 2020
+soc: Samsung Exynos 990
+bootloader:
+  unlock: unknown
+  relock: unknown

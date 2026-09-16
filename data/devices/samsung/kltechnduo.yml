@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S5 LTE Duos (G9006W/8W)
+codenames: [kltechnduo]
+aliases: [SM-G9006W, SM-G9008W, SM-G9009W]
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

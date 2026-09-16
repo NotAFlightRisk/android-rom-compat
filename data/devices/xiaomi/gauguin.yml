@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 10T Lite 5G
+codenames: [gauguin]
+aliases: [Mi 10i 5G, Redmi Note 9 Pro 5G, M2007J17G, M2007J17I, M2007J17C, Mi 10i]
+released: 2020
+soc: Qualcomm SM7225 Snapdragon 750G 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

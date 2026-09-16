@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO M3
+slug: poco-m3-juice
+codenames: [juice]
+bootloader:
+  unlock: unknown
+  relock: unknown

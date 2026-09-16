@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 7/Narzo 20 Pro/30
+codenames: [salaa]
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S23
+codenames: [dm1q]
+aliases: [SM-S911B, SM-S911B/DS]
+released: 2023
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: no
+  relock: unknown

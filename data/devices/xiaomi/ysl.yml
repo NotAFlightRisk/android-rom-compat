@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Y2/S2
+codenames: [ysl]
+bootloader:
+  unlock: unknown
+  relock: unknown

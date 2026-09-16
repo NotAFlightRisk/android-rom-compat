@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi G80 Series
+codenames: [lava]
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Shield Portable
+codenames: [roth]
+released: 2013
+soc: NVIDIA Tegra 4 (T114)
+bootloader:
+  unlock: unknown
+  relock: unknown

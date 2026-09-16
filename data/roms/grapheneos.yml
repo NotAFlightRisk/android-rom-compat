@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: GrapheneOS
+description: Security-hardened Android for Pixels, with Google Play as an optional, sandboxed app.
+status: active
+base: aosp
+focus: [security, privacy]
+google: sandboxed
+app_store: grapheneos
+org: non-profit
+security:
+  relockable_bootloader: true
+  verified_boot: true
+  monthly_patches: true
+install: [web-installer, cli]
+root: false
+links:
+  website: https://grapheneos.org
+  source: https://github.com/GrapheneOS
+  docs: https://grapheneos.org/usage
+  community: https://discuss.grapheneos.org

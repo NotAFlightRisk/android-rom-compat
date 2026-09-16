@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: onn. TV Box 4K (2021)
+codenames: [dopinder]
+released: 2021
+soc: Amlogic S905Y2
+bootloader:
+  unlock: no
+  relock: unknown

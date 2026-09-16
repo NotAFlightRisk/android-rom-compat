@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris X2
+codenames: [zangya]
+released: 2018
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: unknown
+  relock: unknown

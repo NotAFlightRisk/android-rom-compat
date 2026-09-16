@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 13
+verified: 2026-09-16
+source: https://crdroid.net/downloads#Z01R
+install: https://forum.xda-developers.com/t/rom-13-0-t-official-crdroid-9-x-z01r.4519375/

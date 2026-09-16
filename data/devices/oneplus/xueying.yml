@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Open
+codenames: [xueying]
+bootloader:
+  unlock: unknown
+  relock: unknown

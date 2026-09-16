@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 15
+maintainer: BadDaemon, bgcngm, intervigil, mccreary, npjohnson, tdm
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/pro1/
+install: https://wiki.lineageos.org/devices/pro1/install/

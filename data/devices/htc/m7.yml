@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: One (GSM)
+codenames: [m7]
+released: 2013
+soc: Qualcomm APQ8064T Snapdragon 600
+bootloader:
+  unlock: unknown
+  relock: unknown

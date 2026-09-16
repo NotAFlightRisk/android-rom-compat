@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g4
+codenames: [athene]
+aliases: [XT1622, XT1624, XT1625, XT1626, XT1640, XT1641, XT1642, XT1643, XT1644]
+released: 2016
+soc: Qualcomm MSM8952 Snapdragon 617
+bootloader:
+  unlock: unknown
+  relock: unknown

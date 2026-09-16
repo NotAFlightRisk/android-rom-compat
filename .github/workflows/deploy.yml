@@ -1,0 +1,65 @@
+name: 🚀 Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: 🚀 Build and deploy
+    if: github.repository_owner == 'NotAFlightRisk'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://android-rom-compat.peng.ly
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+      - name: Describe the Worker
+        run: |
+          cat > "$RUNNER_TEMP/wrangler.json" <<JSON
+          {
+            "name": "android-rom-compat",
+            "compatibility_date": "2026-09-01",
+            "assets": { "directory": "$PWD/dist", "not_found_handling": "404-page" },
+            "routes": [{ "pattern": "android-rom-compat.peng.ly", "custom_domain": true }]
+          }
+          JSON
+
+      - name: Push it to Cloudflare
+        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --config ${{ runner.temp }}/wrangler.json
+
+      - name: Check the site picked it up
+        run: |
+          site=$(node -p "require('./package.json').homepage")
+          want=$(sha1sum dist/api/support.json | cut -d' ' -f1)
+          for i in $(seq 1 10); do
+            if [ "$(curl -fsS "$site/api/support.json" | sha1sum | cut -d' ' -f1)" = "$want" ]; then
+              echo "✅ [$site]($site) is serving this build" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            sleep 6
+          done
+          echo "❌ [$site]($site) is still on an older build" >> "$GITHUB_STEP_SUMMARY"
+          exit 1

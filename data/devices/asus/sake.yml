@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: ZenFone 8
+codenames: [sake]
+aliases: [I006D, ZS590KS]
+released: 2021
+soc: Qualcomm SM8350 Snapdragon 888
+bootloader:
+  unlock: no
+  relock: unknown

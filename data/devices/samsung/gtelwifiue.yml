@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab E 9.6 (WiFi)
+codenames: [gtelwifiue]
+aliases: [SM-T560NU]
+released: 2015
+soc: Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: unknown
+  relock: unknown

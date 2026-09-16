@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Honor 4
+codenames: [cherry]
+aliases: [Honor 4X]
+released: 2014
+soc: Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: no
+  relock: unknown

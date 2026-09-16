@@ -1,0 +1,24 @@
+---
+import Base from '../components/layout/Base.astro';
+import Search from '../components/ui/Search.astro';
+---
+
+<Base title="Page not found" description="That page doesn't exist. Search for a phone or ROM instead.">
+  <section class="lost">
+    <h1>Page not found</h1>
+    <p>That page doesn't exist, or it moved. Try searching for the phone or ROM.</p>
+    <Search id="lost-search" large />
+    <p><a href="/devices/">Browse all devices</a> or <a href="/roms/">compare ROMs</a>.</p>
+  </section>
+</Base>
+
+<style>
+  .lost {
+    justify-items: start;
+    padding-block: var(--space-xl);
+
+    :global(form) {
+      inline-size: min(100%, 40rem);
+    }
+  }
+</style>

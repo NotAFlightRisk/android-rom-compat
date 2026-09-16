@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S4 Value Edition (GT-I9515/L)
+codenames: [jfvelte]
+aliases: [GT-I9515, GT-I9515L]
+released: 2014
+soc: Qualcomm APQ8064T Snapdragon 600
+bootloader:
+  unlock: unknown
+  relock: unknown

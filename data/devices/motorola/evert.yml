@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g6 plus
+codenames: [evert]
+aliases: [XT1926-2, XT1926-3, XT1926-5, XT1926-6, XT1926-7, XT1926-8, XT1926-9]
+released: 2018
+soc: Qualcomm SDM630 Snapdragon 630
+bootloader:
+  unlock: unknown
+  relock: unknown

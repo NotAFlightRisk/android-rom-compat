@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 10 Lite 5G
+codenames: [monet]
+aliases: [M2002J9G]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+bootloader:
+  unlock: unknown
+  relock: unknown

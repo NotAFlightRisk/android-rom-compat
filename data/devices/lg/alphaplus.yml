@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G8 ThinQ
+codenames: [alphaplus]
+aliases: [G8 ThinQ (Korea), LM-G820UM, LM-G820QM, LM-G820N]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: no
+  relock: unknown

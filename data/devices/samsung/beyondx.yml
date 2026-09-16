@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S10 5G
+codenames: [beyondx]
+aliases: [SM-G977B, SM-G977N]
+released: 2019
+soc: Samsung Exynos 9820
+bootloader:
+  unlock: unknown
+  relock: unknown

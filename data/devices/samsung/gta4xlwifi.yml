@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S6 Lite (Wi-Fi)
+codenames: [gta4xlwifi]
+aliases: [SM-P610]
+released: 2020
+soc: Samsung Exynos 9611
+bootloader:
+  unlock: unknown
+  relock: unknown

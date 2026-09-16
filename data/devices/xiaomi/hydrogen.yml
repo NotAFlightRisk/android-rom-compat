@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi Max
+codenames: [hydrogen]
+released: 2016
+soc: Qualcomm MSM8956 Snapdragon 650
+bootloader:
+  unlock: unknown
+  relock: unknown

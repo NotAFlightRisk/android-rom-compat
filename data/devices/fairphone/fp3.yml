@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "3"
+codenames: [fp3]
+aliases: [3+, FP3+]
+released: 2019
+soc: Qualcomm SDM632 Snapdragon 632
+bootloader:
+  unlock: unknown
+  relock: yes

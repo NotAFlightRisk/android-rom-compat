@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zenfone 2 (ZE500CL)
+codenames: [z00d]
+released: 2015
+soc: Intel Atom Z2560
+bootloader:
+  unlock: no
+  relock: unknown

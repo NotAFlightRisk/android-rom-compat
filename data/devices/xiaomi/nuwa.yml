@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 13 Pro
+codenames: [nuwa]
+aliases: [2210132G, 2210132C]
+released: 2022
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: unknown
+  relock: unknown

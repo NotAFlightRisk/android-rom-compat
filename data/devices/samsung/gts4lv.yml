@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S5e (LTE)
+codenames: [gts4lv]
+aliases: [SM-T725, SM-T725C, SM-T725N, SM-T727]
+released: 2019
+soc: Qualcomm SDM670 Snapdragon 670
+bootloader:
+  unlock: unknown
+  relock: unknown

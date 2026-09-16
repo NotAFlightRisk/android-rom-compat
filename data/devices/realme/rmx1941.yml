@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: C2
+codenames: [rmx1941]
+bootloader:
+  unlock: unknown
+  relock: unknown

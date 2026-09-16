@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 10T
+codenames: [apollon]
+aliases: [Mi 10T Pro, Redmi K30S Ultra, M2007J3SY, M2007J3SG, M2007J3SC]
+released: 2020
+soc: Qualcomm SM8250 Snapdragon 865
+bootloader:
+  unlock: unknown
+  relock: unknown

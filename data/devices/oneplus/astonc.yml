@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Ace 3
+codenames: [astonc]
+aliases: [PJE110]
+released: 2024
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: unknown
+  relock: unknown

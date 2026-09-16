@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 14
+verified: 2026-09-16
+source: https://crdroid.net/downloads#lemonades
+install: https://xdaforums.com/t/official-14-crdroid-10-x-for-oneplus-9r-lemonades.4636354/

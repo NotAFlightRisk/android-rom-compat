@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Nexus GSM
+codenames: [maguro]
+released: 2011
+soc: TI OMAP4460
+bootloader:
+  unlock: unknown
+  relock: unknown

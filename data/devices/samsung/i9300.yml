@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S III (International)
+codenames: [i9300]
+aliases: [GT-I9300, GT-I9300T]
+released: 2012
+soc: Samsung Exynos 4412
+bootloader:
+  unlock: unknown
+  relock: unknown

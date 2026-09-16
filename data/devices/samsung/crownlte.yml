@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note 9
+codenames: [crownlte]
+aliases: [SM-N960F, SM-N960F/DS, SM-N960N]
+released: 2018
+soc: Samsung Exynos 9810
+bootloader:
+  unlock: unknown
+  relock: unknown

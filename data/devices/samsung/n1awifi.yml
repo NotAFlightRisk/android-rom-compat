@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note 10.1 Wi-Fi (2014)
+codenames: [n1awifi]
+aliases: [SM-P600]
+released: 2013
+soc: Samsung Exynos 5420
+bootloader:
+  unlock: unknown
+  relock: unknown

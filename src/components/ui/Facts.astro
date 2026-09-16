@@ -1,0 +1,43 @@
+---
+const { items } = Astro.props;
+---
+
+<dl>
+  {items.filter((item) => item.value !== undefined && item.value !== '').map((item) => (
+    <div>
+      <dt>{item.label}</dt>
+      <dd data-tone={item.tone}>{item.code ? <code>{item.value}</code> : item.value}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+    gap: var(--space-md) var(--space-lg);
+    margin: 0;
+  }
+
+  dt {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  [data-tone='working'] {
+    color: var(--working-text);
+  }
+
+  [data-tone='partial'] {
+    color: var(--partial-text);
+  }
+
+  [data-tone='broken'] {
+    color: var(--broken-text);
+  }
+</style>

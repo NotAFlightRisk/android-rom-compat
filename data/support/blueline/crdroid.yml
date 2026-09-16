@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 15
+maintainer: Evelyn (Lost-Entrepreneur439)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#blueline
+install: https://xdaforums.com/t/rom-official-15-0-crdroid-11-for-google-pixel-3-blueline.4755365/

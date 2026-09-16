@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 9RT
+codenames: [martini]
+aliases: [MT2110, MT2111]
+released: 2021
+soc: Qualcomm SM8350 Snapdragon 888
+bootloader:
+  unlock: unknown
+  relock: unknown

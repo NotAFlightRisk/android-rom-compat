@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy F62
+codenames: [f62]
+aliases: [Galaxy M62, SM-E625F, SM-E625F/DS, SM-M625F, SM-M625F/DS]
+released: 2021
+soc: Samsung Exynos 9825
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto z3 play
+codenames: [beckham]
+aliases: [XT1929-2, XT1929-3, XT1929-4, XT1929-5, XT1929-6]
+released: 2018
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto z3
+codenames: [messi]
+aliases: [XT1929-15, XT1929-17]
+released: 2018
+soc: Qualcomm MSM8998 Snapdragon 835
+bootloader:
+  unlock: no
+  relock: unknown

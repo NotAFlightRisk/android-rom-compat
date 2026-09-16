@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Optimus L70
+codenames: [w5]
+released: 2014
+soc: Qualcomm MSM8210 Snapdragon 200
+bootloader:
+  unlock: unknown
+  relock: unknown

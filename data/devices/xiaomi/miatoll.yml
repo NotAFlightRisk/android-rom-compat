@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO M2 Pro
+codenames: [miatoll]
+aliases: [Redmi Note 9S, Redmi Note 9 Pro (Global), Redmi Note 9 Pro (India), Redmi Note 9 Pro Max, Redmi Note 10 Lite, M2003J6CI, M2003J6A1G, M2003J6A1R, M2003J6B2G, M2003J6A1I, M2003J6B1I, 2109106A1I, Redmi Note 9 Pro]
+released: 2020
+soc: Qualcomm SM7125 Snapdragon 720G
+bootloader:
+  unlock: unknown
+  relock: unknown

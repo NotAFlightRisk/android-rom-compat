@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto e7 plus
+codenames: [guam]
+aliases: [K12, XT2081-1, XT2081-2, XT2081-3, XT2081-4]
+released: 2020
+soc: Qualcomm SM4250 Snapdragon 460
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A3 (2016)
+codenames: [a3xelte]
+aliases: [SM-A310F, SM-A310F/DS, SM-A310M, SM-A310N0, SM-A310Y]
+released: 2015
+soc: Samsung Exynos 7578
+bootloader:
+  unlock: unknown
+  relock: unknown

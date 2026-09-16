@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia XZ2 Compact
+codenames: [xz2c]
+aliases: [H8314, H8324]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Z2 Plus
+codenames: [z2_plus]
+released: 2016
+soc: Qualcomm MSM8996 Snapdragon 820
+bootloader:
+  unlock: unknown
+  relock: unknown

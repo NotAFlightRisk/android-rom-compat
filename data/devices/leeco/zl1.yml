@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Le Pro3
+codenames: [zl1]
+aliases: [Le Pro3 Elite, LEX720, LEX722, LEX727]
+released: 2016
+soc: Qualcomm MSM8996 Pro Snapdragon 821
+bootloader:
+  unlock: unknown
+  relock: unknown

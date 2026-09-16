@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A21s
+codenames: [a21s]
+aliases: [SM-A217F, SM-A217M, SM-A217F/DS, SM-A217F/DSN, SM-A217M/DS]
+released: 2020
+soc: Samsung Exynos 850
+bootloader:
+  unlock: unknown
+  relock: unknown

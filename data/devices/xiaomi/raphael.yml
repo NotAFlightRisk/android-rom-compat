@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 9T Pro
+codenames: [raphael]
+bootloader:
+  unlock: unknown
+  relock: unknown

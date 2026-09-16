@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Brax3
+codenames: [brax3]
+bootloader:
+  unlock: unknown
+  relock: yes

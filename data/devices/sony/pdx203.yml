@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 1 II
+codenames: [pdx203]
+aliases: [XQ-AT72, XQ-AT52, XQ-AT51, XQ-AT42]
+released: 2020
+soc: Qualcomm SM8250 Snapdragon 865
+bootloader:
+  unlock: unknown
+  relock: unknown

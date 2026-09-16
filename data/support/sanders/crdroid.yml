@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#sanders
+install: https://forum.xda-developers.com/t/rom-22-06-2021-crdroidandroid-11-0-v7-7-android-11-sanders.4295399/

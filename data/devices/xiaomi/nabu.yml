@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pad 5
+codenames: [nabu]
+released: 2021
+bootloader:
+  unlock: unknown
+  relock: unknown

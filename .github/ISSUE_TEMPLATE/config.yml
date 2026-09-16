@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/NotAFlightRisk/android-rom-compat/security/policy
+    about: Never report vulnerabilities in a public issue. Read our security policy and disclose privately.
+
+  - name: 🛠️ Contributing guide
+    url: https://github.com/NotAFlightRisk/android-rom-compat/blob/main/.github/CONTRIBUTING.md
+    about: Rather edit the data yourself? It's all YAML, and you don't need to install anything.
+
+  - name: 💬 Questions and ideas
+    url: https://github.com/NotAFlightRisk/android-rom-compat/discussions
+    about: Ask a question, or suggest a ROM or feature to track.

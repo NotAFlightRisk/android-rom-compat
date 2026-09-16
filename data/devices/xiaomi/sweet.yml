@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 10 Pro
+codenames: [sweet]
+aliases: [Redmi Note 10 Pro (India), Redmi Note 10 Pro Max (India), M2101K6G, M2101K6R, M2101K6P, M2101K6I]
+released: 2021
+soc: Qualcomm SM7150-AC Snapdragon 732G
+bootloader:
+  unlock: unknown
+  relock: unknown

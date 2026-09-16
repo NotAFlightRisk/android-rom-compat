@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 13 Pro 5G
+codenames: [garnet]
+aliases: [Redmi Note 13 Pro 5G (India), Redmi Note 13 Pro 5G (China), POCO X6 5G, POCO X6 5G (India), 2312DRA50G, XIG05, 2312DRA50I, 2312DRA50C, 2312CRAD3C, 23122PCD1G, 23122PCD1I]
+released: 2023
+soc: Qualcomm SM7435-AB Snapdragon 7s Gen 2
+bootloader:
+  unlock: unknown
+  relock: unknown

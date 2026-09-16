@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 7A
+slug: redmi-7a-pine
+codenames: [pine]
+bootloader:
+  unlock: unknown
+  relock: unknown

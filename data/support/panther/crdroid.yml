@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Vikas(Optimus)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#panther
+install: https://xdaforums.com/t/rom-official-panther-16-0-crdroidandroid-v12-x.4757539/

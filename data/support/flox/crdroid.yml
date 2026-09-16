@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+maintainer: Santiago García Mantiñán (manty)
+verified: 2026-09-16
+source: https://crdroid.net/downloads#flox
+install: https://forum.xda-developers.com/t/rom-11-flox-official-crdroid-7-google-nexus-7-2013-repartitioned.4343085/

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 7
+codenames: [lavender]
+released: 2019
+soc: Qualcomm SDM660 Snapdragon 660
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G5 (T-Mobile)
+codenames: [h830]
+released: 2016
+soc: Qualcomm MSM8996 Snapdragon 820
+bootloader:
+  unlock: no
+  relock: unknown

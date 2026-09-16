@@ -1,0 +1,36 @@
+---
+const { trail } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb">
+  <ol>
+    {trail.map((crumb, i) => (
+      <li>
+        {i === trail.length - 1 ? <span aria-current="page">{crumb.label}</span> : <a href={crumb.url}>{crumb.label}</a>}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+    margin: 0 0 calc(-1 * var(--space-md));
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  li:not(:last-child)::after {
+    content: '/';
+    margin-inline-start: var(--space-xs);
+    color: var(--border-strong);
+  }
+
+  a {
+    color: inherit;
+  }
+</style>

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#m1852
+install: https://forum.xda-developers.com/general/general/meizu-x8-sd710-usb-c-small-notch-t3914631/page7#post83742773

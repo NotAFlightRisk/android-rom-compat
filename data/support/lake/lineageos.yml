@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 15
+maintainer: jro1979, npjohnson
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/lake/
+install: https://wiki.lineageos.org/devices/lake/install/

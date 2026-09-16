@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g200 5G
+codenames: [xpeng]
+aliases: [Edge S30, XT2175-1, XT2175-2]
+released: 2021
+soc: Qualcomm SM8350-AC Snapdragon 888+
+bootloader:
+  unlock: unknown
+  relock: unknown

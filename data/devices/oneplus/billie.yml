@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord N10
+codenames: [billie]
+aliases: [BE2029, BE2025, BE2026, BE2028]
+released: 2020
+soc: Qualcomm SM6350 Snapdragon 690 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

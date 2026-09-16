@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: one power
+codenames: [chef]
+aliases: [XT1942-1, XT1942-2]
+released: 2018
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: unknown
+  relock: unknown

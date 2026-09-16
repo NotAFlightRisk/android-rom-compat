@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Odin (M0)
+codenames: [odin_m0]
+released: 2022
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: unknown
+  relock: unknown

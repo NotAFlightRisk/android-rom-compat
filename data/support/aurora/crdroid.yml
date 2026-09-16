@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 14
+verified: 2026-09-16
+source: https://crdroid.net/downloads#aurora
+install: https://xdaforums.com/t/unofficial-14-0-crdroid-10-6-for-xperia-xz2-premium-aurora.4685876/

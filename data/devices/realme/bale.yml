@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: GT Neo6
+codenames: [bale]
+aliases: [RMX3852]
+released: 2024
+soc: Qualcomm SM8635 Snapdragon 8s Gen3
+bootloader:
+  unlock: unknown
+  relock: unknown

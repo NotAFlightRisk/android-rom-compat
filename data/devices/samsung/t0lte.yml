@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note 2 (LTE)
+codenames: [t0lte]
+aliases: [GT-N7105/N7105T, SGH-I317/I317M, SGH-T889/T889V, SHV-E250S/E250K/E250L]
+released: 2012
+soc: Samsung Exynos 4412
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g15
+codenames: [lamu]
+aliases: [moto g15 power, moto g05, XT2521-2, XT2521-3, XT2521-4, XT2521-5, XT2521-6, XT2523-2, XT2523-3, XT2523-4, XT2523-5, XT2523-9, XT2523-10, XT2523-11]
+released: 2024
+soc: Mediatek Helio G81 Extreme
+bootloader:
+  unlock: unknown
+  relock: unknown

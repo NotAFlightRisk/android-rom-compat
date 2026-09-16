@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G7 ThinQ (G710ULM/VMX)
+codenames: [g710ulm]
+aliases: [LM-G710ULM, LM-G710VMX]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

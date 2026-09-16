@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S 10.5 Wi-Fi
+codenames: [chagallwifi]
+aliases: [SM-T800]
+released: 2014
+soc: Samsung Exynos 5420
+bootloader:
+  unlock: unknown
+  relock: unknown

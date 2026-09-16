@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Moto G6
+codenames: [ali]
+bootloader:
+  unlock: unknown
+  relock: unknown

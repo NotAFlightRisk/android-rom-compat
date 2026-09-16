@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Ace 3V
+codenames: [audi]
+aliases: [PJF110]
+released: 2024
+soc: Qualcomm SM7675-AB Snapdragon 7+ Gen 3
+bootloader:
+  unlock: unknown
+  relock: unknown

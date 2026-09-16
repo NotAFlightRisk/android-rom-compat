@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto e
+codenames: [condor]
+aliases: [XT1021, XT1022, XT1023]
+released: 2014
+soc: Qualcomm MSM8212 Snapdragon 200
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S6 Edge
+codenames: [zeroltexx]
+aliases: [SM-G925F]
+released: 2015
+soc: Samsung Exynos 7420
+bootloader:
+  unlock: unknown
+  relock: unknown

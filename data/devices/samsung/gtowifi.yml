@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab A 8.0 (2019)
+codenames: [gtowifi]
+aliases: [SM-T290]
+released: 2019
+soc: Qualcomm SDM429 Snapdragon 429
+bootloader:
+  unlock: unknown
+  relock: unknown

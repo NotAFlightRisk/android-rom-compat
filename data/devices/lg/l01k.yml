@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: V30 (Japan)
+codenames: [l01k]
+aliases: [L-01K, LGV35]
+released: 2017
+soc: Qualcomm MSM8998 Snapdragon 835
+bootloader:
+  unlock: no
+  relock: unknown

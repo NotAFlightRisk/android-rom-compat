@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: ZenPad 8.0 (Z380KL)
+codenames: [p024]
+released: 2015
+soc: Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: unknown
+  relock: unknown

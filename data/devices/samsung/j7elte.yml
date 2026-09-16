@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy J7 (2015)
+codenames: [j7elte]
+aliases: [SM-J700F, SM-J700F/DS, SM-J700H, SM-J700M]
+released: 2015
+soc: Samsung Exynos 7580
+bootloader:
+  unlock: unknown
+  relock: unknown

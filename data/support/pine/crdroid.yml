@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#pine
+install: https://forum.xda-developers.com/t/11-0-pine-arm64-crdroid-android-v7-official.4355179/

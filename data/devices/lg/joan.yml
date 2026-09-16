@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: V30 (Unlocked)
+codenames: [joan]
+aliases: [V30 (T-Mobile), V30 (Other), H930, H930DS, US998, H932, H931, H933, LS998, V300L, V300K, V300S, VS996]
+released: 2017
+soc: Qualcomm MSM8998 Snapdragon 835
+bootloader:
+  unlock: no
+  relock: unknown

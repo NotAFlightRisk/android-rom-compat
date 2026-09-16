@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: L90
+codenames: [w7]
+aliases: [D410, D410hn, D405, D405n, D415]
+released: 2014
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

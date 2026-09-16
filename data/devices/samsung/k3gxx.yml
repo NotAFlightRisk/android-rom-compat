@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S5 (International 3G)
+codenames: [k3gxx]
+aliases: [SM-G900H]
+released: 2014
+soc: Samsung Exynos 5422
+bootloader:
+  unlock: unknown
+  relock: unknown

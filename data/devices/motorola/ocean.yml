@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g7 power
+codenames: [ocean]
+aliases: [XT1955-1, XT1955-2, XT1955-4, XT1955-5, XT1955-7]
+released: 2019
+soc: Qualcomm SDM632 Snapdragon 632
+bootloader:
+  unlock: unknown
+  relock: unknown

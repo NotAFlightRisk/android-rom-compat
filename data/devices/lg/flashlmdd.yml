@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: V50 ThinQ
+codenames: [flashlmdd]
+aliases: [LM-V500EM, LM-V500N]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: no
+  relock: unknown

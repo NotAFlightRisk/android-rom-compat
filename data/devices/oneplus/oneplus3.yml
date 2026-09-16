@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "3"
+codenames: [oneplus3]
+aliases: [3T, A3000, A3003]
+released: 2016
+soc: Qualcomm MSM8996 Snapdragon 820
+bootloader:
+  unlock: unknown
+  relock: unknown

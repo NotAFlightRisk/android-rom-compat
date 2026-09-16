@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10 V
+codenames: [pdx235]
+aliases: [XQ-DC54, XQ-DC72]
+released: 2023
+soc: Qualcomm SM6375 Snapdragon 695
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 8i
+codenames: [spaced]
+bootloader:
+  unlock: unknown
+  relock: unknown

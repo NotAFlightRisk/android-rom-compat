@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris M5
+codenames: [piccolo]
+released: 2015
+soc: Qualcomm MSM8939 Snapdragon 615
+bootloader:
+  unlock: unknown
+  relock: unknown

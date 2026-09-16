@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#herolte
+install: https://forum.xda-developers.com/t/rom-unofficial-11-crdroid-v7-2-for-samsung-galaxy-s7.4187673/

@@ -1,0 +1,61 @@
+---
+import Icon from '../ui/Icon.astro';
+import { site, editUrl } from '../../lib/site.js';
+
+const { edit } = Astro.props;
+---
+
+<footer>
+  <p>
+    Flashing a ROM can brick your phone or void its warranty. Always follow the ROM's own install guide.
+  </p>
+  {edit.length > 0 && (
+    <ul class="edit" aria-label="Edit this data">
+      {edit.map((file) => (
+        <li>
+          <a href={editUrl(file)}>
+            <Icon name="edit" />
+            Edit <code>{file.slice(file.indexOf('data/'))}</code> on GitHub
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+  <p>
+    Code is <a href={`${site.repo}/blob/main/LICENSE`}>MIT</a>, data is
+    <a href={`${site.repo}/blob/main/data/LICENSE`}>CC BY-SA 4.0</a>.
+    <a href={site.repo}>Source on GitHub</a> · <a href="/about/">About</a> · <a href="/api/devices.json">API</a>
+  </p>
+</footer>
+
+<style>
+  footer {
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+    border-block-start: 1px solid var(--border);
+    background: var(--surface-raised);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+
+    > * {
+      inline-size: 100%;
+      max-inline-size: var(--page);
+      margin-inline: auto;
+    }
+  }
+
+  .edit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-lg);
+    padding: 0;
+    list-style: none;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+    }
+  }
+</style>

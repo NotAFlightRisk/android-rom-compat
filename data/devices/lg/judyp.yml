@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: V35 ThinQ
+codenames: [judyp]
+aliases: [LM-V350AWM, LM-V350N]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

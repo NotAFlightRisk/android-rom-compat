@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: V40 ThinQ
+codenames: [judypn]
+aliases: [LM-V405QA7, LM-V405UA, LM-V405UA0, LM-V405EBW, LM-V405EAW, LM-V409N]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: no
+  relock: unknown

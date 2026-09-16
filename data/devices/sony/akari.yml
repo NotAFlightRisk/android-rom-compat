@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia XZ2
+codenames: [akari]
+aliases: [H8216, H8266, H8276, H8296]
+released: 2018
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: unknown
+  relock: unknown

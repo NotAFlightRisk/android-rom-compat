@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g 5G - 2024
+codenames: [fogo]
+aliases: [XT2417-1]
+released: 2024
+soc: Qualcomm SM4375 Snapdragon 4 Gen 1
+bootloader:
+  unlock: unknown
+  relock: yes

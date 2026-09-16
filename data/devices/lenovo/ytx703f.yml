@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Yoga Tab 3 Plus Wi-Fi
+codenames: [ytx703f]
+released: 2016
+soc: Qualcomm APQ8076 Snapdragon 652
+bootloader:
+  unlock: unknown
+  relock: unknown

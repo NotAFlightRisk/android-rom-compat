@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S5e (Wi-Fi)
+codenames: [gts4lvwifi]
+aliases: [SM-T720, SM-T720N]
+released: 2019
+soc: Qualcomm SDM670 Snapdragon 670
+bootloader:
+  unlock: unknown
+  relock: unknown

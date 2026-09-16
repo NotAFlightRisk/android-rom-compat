@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S III (T-Mobile)
+codenames: [d2tmo]
+aliases: [SGH-T999]
+released: 2012
+soc: Qualcomm MSM8960 Snapdragon S4 Plus
+bootloader:
+  unlock: unknown
+  relock: unknown

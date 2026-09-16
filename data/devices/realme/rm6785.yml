@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: RM6785
+codenames: [rm6785]
+bootloader:
+  unlock: unknown
+  relock: unknown

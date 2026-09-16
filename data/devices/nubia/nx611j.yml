@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Z18 Mini
+codenames: [nx611j]
+aliases: [M3]
+released: 2018
+soc: Qualcomm SDM660 Snapdragon 660
+bootloader:
+  unlock: unknown
+  relock: unknown

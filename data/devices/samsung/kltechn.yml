@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S5 LTE (G9006V/8V)
+codenames: [kltechn]
+aliases: [SM-G9006V, SM-G9008V]
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

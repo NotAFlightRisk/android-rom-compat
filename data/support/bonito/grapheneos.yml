@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+maintainer: GrapheneOS
+verified: 2026-09-16
+source: https://grapheneos.org/faq#supported-devices

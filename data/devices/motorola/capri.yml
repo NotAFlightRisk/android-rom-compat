@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g10
+codenames: [capri]
+aliases: [moto g10 power, K13 Note, XT2127-1, XT2127-2, XT2127-4, XT2127-3]
+released: 2021
+soc: Qualcomm SM4250 Snapdragon 460
+bootloader:
+  unlock: unknown
+  relock: unknown

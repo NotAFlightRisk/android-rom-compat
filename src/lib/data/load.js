@@ -1,0 +1,41 @@
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { join, relative, sep } from 'node:path';
+import { parse } from 'yaml';
+
+const yamlFiles = (dir) =>
+  existsSync(dir)
+    ? readdirSync(dir, { recursive: true })
+        .filter((file) => file.endsWith('.yml'))
+        .map((file) => join(dir, file))
+        .sort()
+    : [];
+
+const segments = (root, file) => relative(root, file).replace(/\.yml$/, '').split(sep);
+
+/** Reads every data file, keeping YAML that won't parse as an error rather than a crash */
+export function loadData(root = 'data') {
+  const errors = [];
+  const read = (file) => {
+    try {
+      return parse(readFileSync(file, 'utf8'));
+    } catch (error) {
+      const detail = error.message.split('\n')[0].replace(/:$/, '');
+      const reason = error.code === 'ENOENT' ? 'is missing' : `won't parse: ${detail}`;
+      errors.push({ file, path: '', message: `this file ${reason}` });
+    }
+  };
+  const records = (dir, toKeys) =>
+    yamlFiles(join(root, dir))
+      .map((file) => ({ file, ...toKeys(segments(join(root, dir), file)), data: read(file) }))
+      .filter((record) => record.data !== undefined);
+
+  return {
+    root,
+    brands: { file: join(root, 'brands.yml'), data: read(join(root, 'brands.yml')) ?? [] },
+    features: { file: join(root, 'features.yml'), data: read(join(root, 'features.yml')) ?? [] },
+    roms: records('roms', ([key]) => ({ key })),
+    devices: records('devices', ([brand, key, ...rest]) => ({ brand, key, misplaced: !key || rest.length > 0 })),
+    support: records('support', ([codename, rom, ...rest]) => ({ codename, rom, misplaced: !rom || rest.length > 0 })),
+    errors,
+  };
+}

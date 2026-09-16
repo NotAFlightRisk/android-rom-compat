@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "7"
+codenames: [guacamoleb]
+aliases: [GM1900, GM1901, GM1903, GM1905]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: unknown
+  relock: unknown

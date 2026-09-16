@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: DROID BIONIC
+codenames: [targa]
+aliases: [XT875]
+released: 2011
+soc: TI OMAP4430
+bootloader:
+  unlock: unknown
+  relock: unknown

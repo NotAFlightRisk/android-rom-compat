@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris X5 Plus
+codenames: [gohan]
+released: 2016
+soc: Qualcomm MSM8976 Snapdragon 652
+bootloader:
+  unlock: unknown
+  relock: unknown

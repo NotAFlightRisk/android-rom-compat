@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: MI9
+codenames: [cepheus]
+bootloader:
+  unlock: unknown
+  relock: unknown

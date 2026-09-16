@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Robin
+codenames: [ether]
+released: 2016
+soc: Qualcomm MSM8992 Snapdragon 808
+bootloader:
+  unlock: unknown
+  relock: unknown

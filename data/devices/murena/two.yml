@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Two
+codenames: [two]
+aliases: [Murena Two]
+released: 2023
+soc: MediaTek MT6771 Helio P70
+bootloader:
+  unlock: unknown
+  relock: yes

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 9 Pro 5G
+codenames: [oscar]
+aliases: [9 5G, Q5, RMX3471, RMX3472, RMX3474, RMX3478]
+released: 2022
+soc: Qualcomm SM6375 Snapdragon 695
+bootloader:
+  unlock: no
+  relock: unknown

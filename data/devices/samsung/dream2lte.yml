@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S8+
+codenames: [dream2lte]
+aliases: [G955F]
+released: 2017
+soc: Samsung Exynos 8895
+bootloader:
+  unlock: unknown
+  relock: unknown

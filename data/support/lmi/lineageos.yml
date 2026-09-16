@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: SebaUbuntu
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/lmi/
+install: https://wiki.lineageos.org/devices/lmi/install/variant1/

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://android-rom-compat.peng.ly/sitemap-index.xml

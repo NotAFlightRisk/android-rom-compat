@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 10 Ultra
+codenames: [cas]
+aliases: [M2007J1SC]
+released: 2020
+soc: Qualcomm SM8250 Snapdragon 865
+bootloader:
+  unlock: unknown
+  relock: unknown

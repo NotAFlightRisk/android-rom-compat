@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S7 Edge
+codenames: [hero2lte]
+aliases: [SM-G935F, SM-G935FD, SM-G935S, SM-G935K, SM-G935L, SM-G935W8]
+released: 2016
+soc: Samsung Exynos 8890
+bootloader:
+  unlock: unknown
+  relock: unknown

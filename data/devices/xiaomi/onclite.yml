@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 7
+codenames: [onclite]
+aliases: [Redmi Y3]
+released: 2019
+soc: Qualcomm SDM632 Snapdragon 632
+bootloader:
+  unlock: unknown
+  relock: unknown

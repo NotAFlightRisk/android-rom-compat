@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel C
+codenames: [dragon]
+released: 2015
+soc: NVIDIA Tegra X1 (T210)
+bootloader:
+  unlock: unknown
+  relock: unknown

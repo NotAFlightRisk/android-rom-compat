@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 12
+verified: 2026-09-16
+source: https://calyxos.org/docs/guide/device-support/

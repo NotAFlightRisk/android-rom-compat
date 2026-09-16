@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note 3 (International 3G)
+codenames: [ha3g]
+aliases: [SM-N9000]
+released: 2013
+soc: Samsung Exynos 5420
+bootloader:
+  unlock: unknown
+  relock: unknown

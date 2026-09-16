@@ -1,0 +1,8 @@
+- key: nfc
+  name: NFC
+  description: Tap to pay
+  requires: nfc
+- key: widevine
+  name: Widevine
+  description: DRM level
+  values: [L1, L3, none]

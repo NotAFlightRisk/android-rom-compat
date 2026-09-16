@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S10e
+codenames: [beyond0lte]
+aliases: [SM-G970F, SM-G970F/DS, SM-G970N]
+released: 2019
+soc: Samsung Exynos 9820
+bootloader:
+  unlock: unknown
+  relock: unknown

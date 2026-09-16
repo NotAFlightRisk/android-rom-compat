@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#tucana
+install: https://forum.xda-developers.com/t/rom-11-official-tucana-crdroid-7-x.4285945/

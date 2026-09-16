@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G8X ThinQ (G850EM/EMW)
+codenames: [mh2lm]
+aliases: [G8X ThinQ (G850QM/UM), V50S ThinQ, LM-G850EM, LM-G850EMW, LM-G850QM, LM-G850UM, LM-V510N]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+bootloader:
+  unlock: no
+  relock: unknown

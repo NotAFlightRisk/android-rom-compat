@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ROM",
+  "type": "object",
+  "required": [
+    "name", "description", "status", "base", "focus", "google", "app_store",
+    "org", "security", "install", "root", "links"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "status": { "enum": ["active", "discontinued"] },
+    "base": { "enum": ["aosp", "lineageos", "other"] },
+    "focus": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["security", "privacy", "degoogled", "customisation", "performance", "near-stock"]
+      }
+    },
+    "google": { "enum": ["none", "microg", "sandboxed", "optional", "bundled"] },
+    "app_store": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 24,
+      "description": "a short key, like none, fdroid or app-lounge"
+    },
+    "org": { "enum": ["company", "non-profit", "community"] },
+    "security": {
+      "type": "object",
+      "required": ["relockable_bootloader", "verified_boot", "monthly_patches"],
+      "additionalProperties": false,
+      "properties": {
+        "relockable_bootloader": { "type": "boolean" },
+        "verified_boot": { "type": "boolean" },
+        "monthly_patches": { "type": "boolean" }
+      }
+    },
+    "install": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["web-installer", "cli", "recovery"] }
+    },
+    "root": { "type": "boolean" },
+    "links": {
+      "type": "object",
+      "required": ["website"],
+      "additionalProperties": false,
+      "properties": {
+        "website": { "$ref": "#/$defs/link" },
+        "source": { "$ref": "#/$defs/link" },
+        "docs": { "$ref": "#/$defs/link" },
+        "community": { "$ref": "#/$defs/link" }
+      }
+    }
+  },
+  "$defs": {
+    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+  }
+}

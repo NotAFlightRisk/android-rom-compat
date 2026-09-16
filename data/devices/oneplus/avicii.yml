@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord
+codenames: [avicii]
+aliases: [AC2001, AC2003, AC2001(India), AC2003(EU)]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+bootloader:
+  unlock: unknown
+  relock: unknown

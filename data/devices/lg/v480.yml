@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G Pad 8.0 (Wi-Fi)
+codenames: [v480]
+released: 2014
+soc: Qualcomm MSM8226 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

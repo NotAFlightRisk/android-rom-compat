@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: YagizErdemir06
+verified: 2026-09-16
+source: https://crdroid.net/downloads#rubyx
+install: https://xdaforums.com/t/rom-16-redmi-note-12-pro-pro-plus-5g-crdroid-v12-8-official.4783719/#post-90538792

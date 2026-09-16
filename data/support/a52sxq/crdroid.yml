@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Nguyen Phong
+verified: 2026-09-16
+source: https://crdroid.net/downloads#a52sxq
+install: https://xdaforums.com/t/rom-16-0-official-crdroid-12-for-galaxy-a52s-5g.4758496/

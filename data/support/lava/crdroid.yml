@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 12
+verified: 2026-09-16
+source: https://crdroid.net/downloads#lava
+install: https://forum.xda-developers.com/t/rom-official-crdroidandroid-for-redmi-9-poco-m2-lancelot-galahad-shiva.4333181/

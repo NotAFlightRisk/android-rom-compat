@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note20 Ultra (4G/5G)
+codenames: [c2s]
+aliases: [SM-N985F, SM-N985F/DS, SM-N986B, SM-N986B/DS]
+released: 2020
+soc: Samsung Exynos 990
+bootloader:
+  unlock: unknown
+  relock: unknown

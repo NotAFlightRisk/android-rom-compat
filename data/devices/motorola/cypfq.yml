@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Moto G51 5G
+codenames: [cypfq]
+bootloader:
+  unlock: unknown
+  relock: unknown

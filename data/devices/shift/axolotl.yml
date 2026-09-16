@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: SHIFT6mq
+codenames: [axolotl]
+released: 2020
+soc: Qualcomm SDM845 Snapdragon 845
+bootloader:
+  unlock: unknown
+  relock: yes

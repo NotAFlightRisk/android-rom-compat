@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord 5
+codenames: [lexus]
+aliases: [CPH2707, CPH2709]
+released: 2025
+soc: Qualcomm SM8635 Snapdragon 8s Gen3
+bootloader:
+  unlock: unknown
+  relock: unknown

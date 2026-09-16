@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 6/6i/6s/Narzo
+codenames: [nemo]
+bootloader:
+  unlock: unknown
+  relock: unknown

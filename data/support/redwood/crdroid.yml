@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: jomadeto
+verified: 2026-09-16
+source: https://crdroid.net/downloads#redwood
+install: https://xdaforums.com/t/rom-16-0-redwood-crdroid-v12-x-official.4776460/

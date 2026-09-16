@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Yoga Tab 3 Plus LTE
+codenames: [ytx703l]
+aliases: [YTX703X]
+released: 2016
+soc: Qualcomm MSM8976 Snapdragon 652
+bootloader:
+  unlock: unknown
+  relock: unknown

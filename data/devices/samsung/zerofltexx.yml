@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy S6
+codenames: [zerofltexx]
+aliases: [SM-G920F]
+released: 2015
+soc: Samsung Exynos 7420
+bootloader:
+  unlock: unknown
+  relock: unknown

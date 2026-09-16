@@ -1,0 +1,6 @@
+name: Rocket 2
+codenames: [rocket, rocket_eea]
+aliases: [RK-2]
+released: 2024
+hardware: [nfc]
+bootloader: { unlock: conditional, relock: unknown, notes: Carrier models are locked. }

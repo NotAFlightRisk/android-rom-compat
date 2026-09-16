@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 12
+verified: 2026-09-16
+source: https://crdroid.net/downloads#X01BD
+install: https://forum.xda-developers.com/t/rom-12-1-unofficial-x01bd-crdroid-v8-4.4432437/#post-86756591

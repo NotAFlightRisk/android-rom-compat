@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G2 (AT&T)
+codenames: [d800]
+released: 2013
+soc: Qualcomm MSM8974 Snapdragon 800
+bootloader:
+  unlock: unknown
+  relock: unknown

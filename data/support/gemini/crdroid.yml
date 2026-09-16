@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 13
+verified: 2026-09-16
+source: https://crdroid.net/downloads#gemini
+install: https://forum.xda-developers.com/t/rom-unofficial-crdroidandroid-13-0-monthly-for-xiaomi-mi-5.4530631

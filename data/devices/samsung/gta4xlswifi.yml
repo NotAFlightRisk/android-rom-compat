@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S6 Lite 2024 (Wi-Fi)
+codenames: [gta4xlswifi]
+aliases: [SM-P620]
+released: 2024
+soc: Samsung Exynos 1280
+bootloader:
+  unlock: no
+  relock: unknown

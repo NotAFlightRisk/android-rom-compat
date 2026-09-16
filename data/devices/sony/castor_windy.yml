@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia Tablet Z2 Wi-Fi
+codenames: [castor_windy]
+aliases: [SGP511, SGP512]
+released: 2014
+soc: Qualcomm MSM8974AC Snapdragon 801
+bootloader:
+  unlock: unknown
+  relock: unknown

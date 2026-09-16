@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g LTE (2014)
+codenames: [thea]
+aliases: [XT1072, XT1077, XT1078, XT1079]
+released: 2015
+soc: Qualcomm MSM8926 Snapdragon 400
+bootloader:
+  unlock: unknown
+  relock: unknown

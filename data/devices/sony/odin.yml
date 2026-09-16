@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia ZL
+codenames: [odin]
+released: 2013
+soc: Qualcomm APQ8064 Snapdragon S4 Pro
+bootloader:
+  unlock: unknown
+  relock: unknown

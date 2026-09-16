@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 1 III
+codenames: [pdx215]
+aliases: [XQ-BC72, XQ-BC62, XQ-BC52, XQ-BC42]
+released: 2021
+soc: Qualcomm SM8350 Snapdragon 888
+bootloader:
+  unlock: unknown
+  relock: unknown

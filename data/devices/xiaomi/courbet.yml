@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 11 Lite 4G
+codenames: [courbet]
+bootloader:
+  unlock: unknown
+  relock: unknown

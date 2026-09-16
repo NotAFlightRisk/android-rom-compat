@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: V20 (AT&T)
+codenames: [h910]
+released: 2016
+soc: Qualcomm MSM8996 Snapdragon 820
+bootloader:
+  unlock: unknown
+  relock: unknown

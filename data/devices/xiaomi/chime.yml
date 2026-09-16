@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO M3
+codenames: [chime]
+aliases: [Redmi 9T]
+bootloader:
+  unlock: unknown
+  relock: unknown

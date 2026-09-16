@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g7 plus
+codenames: [lake]
+aliases: [XT1965-2, XT1965-3, XT1965-6, XT1965-T]
+released: 2019
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: unknown
+  relock: unknown

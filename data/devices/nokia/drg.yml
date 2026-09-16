@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 6.1 Plus
+codenames: [drg]
+aliases: [TA-1083]
+released: 2018
+soc: Qualcomm SDM636 Snapdragon 636
+bootloader:
+  unlock: no
+  relock: unknown

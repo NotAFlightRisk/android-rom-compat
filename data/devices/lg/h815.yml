@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G4 (International)
+codenames: [h815]
+released: 2015
+soc: Qualcomm MSM8992 Snapdragon 808
+bootloader:
+  unlock: no
+  relock: unknown

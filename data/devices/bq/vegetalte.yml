@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aquaris E5 4G
+codenames: [vegetalte]
+aliases: [Aquaris E5s]
+released: 2014
+soc: Qualcomm MSM8916 Snapdragon 410
+bootloader:
+  unlock: unknown
+  relock: unknown

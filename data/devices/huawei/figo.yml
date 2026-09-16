@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: P Smart
+codenames: [figo]
+aliases: [FIG-LX1, FIG-LA1, FIG-LX2, FIG-LX3, FIG-TL10, FIG-AL10]
+released: 2017
+soc: HiSilicon Kirin 659
+bootloader:
+  unlock: no
+  relock: unknown

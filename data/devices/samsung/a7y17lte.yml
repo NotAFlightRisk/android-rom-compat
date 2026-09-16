@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A7 (2017)
+codenames: [a7y17lte]
+aliases: [SM-A720F, SM-A720F/DS, SM-A720S]
+released: 2017
+soc: Samsung Exynos 7880
+bootloader:
+  unlock: unknown
+  relock: unknown

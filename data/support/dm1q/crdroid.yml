@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: pckotzer
+verified: 2026-09-16
+source: https://crdroid.net/downloads#dm1q
+install: https://xdaforums.com/t/rom-crdroid-12-8-official-dm1q-sm-s911x.4701238/

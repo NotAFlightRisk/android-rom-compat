@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Red Magic
+codenames: [nx609j]
+released: 2018
+soc: Qualcomm MSM8998 Snapdragon 835
+bootloader:
+  unlock: unknown
+  relock: unknown

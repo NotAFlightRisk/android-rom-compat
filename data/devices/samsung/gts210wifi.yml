@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S2 9.7 (Wi-Fi)
+codenames: [gts210wifi]
+aliases: [SM-T810]
+released: 2015
+soc: Samsung Exynos 5433
+bootloader:
+  unlock: unknown
+  relock: unknown

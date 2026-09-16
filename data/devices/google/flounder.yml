@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nexus 9 (Wi-Fi)
+codenames: [flounder]
+released: 2014
+soc: NVIDIA Tegra K1 (T124)
+bootloader:
+  unlock: unknown
+  relock: unknown

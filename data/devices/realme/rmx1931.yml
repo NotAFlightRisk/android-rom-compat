@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: X2 Pro
+slug: x2-pro-rmx1931
+codenames: [rmx1931]
+bootloader:
+  unlock: unknown
+  relock: unknown

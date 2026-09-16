@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#PNX_sprout
+install: https://forum.xda-developers.com/t/rom-11-0-official-crdroid-v7-10-phoenix.4320963/

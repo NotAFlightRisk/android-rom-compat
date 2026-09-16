@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Play 5G
+codenames: [nx651j]
+aliases: [Red Magic 5G Lite, NX651J-EEA]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+bootloader:
+  unlock: unknown
+  relock: unknown

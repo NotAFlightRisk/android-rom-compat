@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto z2 play
+codenames: [albus]
+aliases: [XT1710-01, XT1710-02, XT1710-07, XT1710-08, XT1710-09, XT1710-10, XT1710-11]
+released: 2017
+soc: Qualcomm MSM8953 Pro Snapdragon 626
+bootloader:
+  unlock: unknown
+  relock: unknown

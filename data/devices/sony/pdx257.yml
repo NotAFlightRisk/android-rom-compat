@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10 VII
+codenames: [pdx257]
+aliases: [XQ-FE54, XQ-FE72]
+released: 2025
+soc: Qualcomm SM6475-AB Snapdragon 6 Gen 3
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 5/5i/5s
+codenames: [r5x]
+bootloader:
+  unlock: unknown
+  relock: unknown

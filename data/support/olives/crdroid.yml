@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://crdroid.net/downloads#olives
+install: https://forum.xda-developers.com/t/custom-rom-android11-olivelite-wood-crdroid-7-9-official-12-08-2021.4319055/

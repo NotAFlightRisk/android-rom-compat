@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 8 Pro
+codenames: [instantnoodlep]
+aliases: [IN2020, IN2021, IN2023, IN2025]
+released: 2020
+soc: Qualcomm SM8250 Snapdragon 865
+bootloader:
+  unlock: unknown
+  relock: unknown

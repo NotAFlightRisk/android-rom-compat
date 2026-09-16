@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G3 (dualsim)
+codenames: [g3ds]
+bootloader:
+  unlock: unknown
+  relock: unknown

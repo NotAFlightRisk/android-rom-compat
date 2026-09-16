@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note10 5G
+codenames: [d1x]
+aliases: [SM-N971N]
+released: 2019
+soc: Samsung Exynos 9825
+bootloader:
+  unlock: unknown
+  relock: unknown

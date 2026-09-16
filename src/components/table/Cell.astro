@@ -1,0 +1,18 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const { id, column, cell } = Astro.props;
+---
+
+<td data-col={column.key} data-sort={cell.sort} data-tone={cell.tone} hidden={column.hidden}>
+  {cell.date ? <time datetime={cell.date}>{cell.date}</time> : cell.text}
+  {cell.stale && <span class="stale">stale</span>}
+  {cell.note && (
+    <>
+      <button type="button" class="note" popovertarget={`${id}-note`} aria-label={`Note on ${column.label}`}>
+        <Icon name="note" />
+      </button>
+      <span popover id={`${id}-note`}><strong>{column.label}:</strong> {cell.note}</span>
+    </>
+  )}
+</td>

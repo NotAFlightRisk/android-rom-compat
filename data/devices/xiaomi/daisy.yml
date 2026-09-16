@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi A2 Lite
+codenames: [daisy]
+bootloader:
+  unlock: unknown
+  relock: unknown

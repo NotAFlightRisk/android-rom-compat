@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Zero (S905Y2, eMMC Only) [Android TV]
+codenames: [radxa0]
+released: 2020
+soc: Amlogic S905Y2
+bootloader:
+  unlock: unknown
+  relock: unknown

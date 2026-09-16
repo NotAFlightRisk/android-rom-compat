@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi 11 Lite 5G
+codenames: [renoir]
+aliases: [M2101K9G, M2101K9C, M2101K9R]
+released: 2021
+soc: Qualcomm SM7350-AB Snapdragon 780G 5G
+bootloader:
+  unlock: unknown
+  relock: unknown

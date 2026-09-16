@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO X3 NFC
+codenames: [surya]
+aliases: [M2007J20CG, M2007J20CI]
+released: 2020
+soc: Qualcomm SM7150-AC Snapdragon 732G
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi CC9 Meitu Edition
+codenames: [vela]
+aliases: [M1904F3BT]
+released: 2019
+soc: Qualcomm SDM710 Snapdragon 710
+bootloader:
+  unlock: unknown
+  relock: unknown

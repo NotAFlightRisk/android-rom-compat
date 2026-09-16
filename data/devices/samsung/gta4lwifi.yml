@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab A7 10.4 2020 (Wi-Fi)
+codenames: [gta4lwifi]
+aliases: [SM-T500]
+released: 2020
+soc: Qualcomm SM6115 Snapdragon 662
+bootloader:
+  unlock: unknown
+  relock: unknown

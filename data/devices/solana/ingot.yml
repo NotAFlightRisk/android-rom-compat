@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Saga
+codenames: [ingot]
+released: 2023
+soc: Qualcomm SM8475 Snapdragon 8+ Gen1
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto z play
+codenames: [addison]
+aliases: [XT1635-01, XT1635-02, XT1635-03]
+released: 2016
+soc: Qualcomm MSM8953 Snapdragon 625
+bootloader:
+  unlock: unknown
+  relock: unknown

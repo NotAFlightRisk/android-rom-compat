@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: ODROID-C4 (S905X3, eMMC Only) [Android TV]
+codenames: [odroidc4]
+released: 2020
+soc: Amlogic S905X3
+bootloader:
+  unlock: unknown
+  relock: unknown

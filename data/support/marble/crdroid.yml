@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Chaitanya
+verified: 2026-09-16
+source: https://crdroid.net/downloads#marble
+install: https://xdaforums.com/t/rom-android-16-official-redmi-note-12t-poco-f5-crdroid-v12-x.4688667/

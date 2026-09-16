@@ -1,0 +1,98 @@
+---
+import Icon from './Icon.astro';
+
+const { id = 'site-search', large = false } = Astro.props;
+---
+
+<form role="search" action="/devices/" method="get" data-site-search class:list={{ large }}>
+  <label class="visually-hidden" for={id}>Search phones and ROMs</label>
+  <Icon name="search" />
+  <input
+    id={id}
+    type="search"
+    name="q"
+    placeholder="Phone, codename or model number"
+    autocomplete="off"
+    spellcheck="false"
+    aria-controls={`${id}-results`}
+  />
+  <div class="results" id={`${id}-results`} hidden>
+    <p role="status"></p>
+    <ul></ul>
+  </div>
+</form>
+
+<script>
+  import { enhanceSearch } from '../../scripts/search.js';
+  document.querySelectorAll('[data-site-search]').forEach(enhanceSearch);
+</script>
+
+<style>
+  form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-inline-size: min(100%, 20rem);
+
+    > :global(svg) {
+      position: absolute;
+      inset-inline-start: var(--space-sm);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+  }
+
+  input {
+    inline-size: 100%;
+    padding-inline-start: 2.25rem;
+  }
+
+  .large input {
+    min-block-size: 3.25rem;
+    font-size: var(--text-lg);
+  }
+
+  .results {
+    position: absolute;
+    inset-block-start: calc(100% + var(--space-2xs));
+    inset-inline: 0;
+    z-index: 5;
+    min-inline-size: min(24rem, 90vw);
+    max-block-size: 70vh;
+    overflow-y: auto;
+    padding: var(--space-xs);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+
+    p {
+      padding: var(--space-2xs) var(--space-xs);
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    :global(a) {
+      display: grid;
+      padding: var(--space-xs);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible {
+        background: var(--accent-soft);
+      }
+    }
+
+    :global(small) {
+      color: var(--text-muted);
+    }
+  }
+</style>

@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: Addster
+verified: 2026-09-16
+source: https://crdroid.net/downloads#everpal
+install: https://xdaforums.com/t/rom-16-crdroid-for-redmi-note-11t-11-5g-11s-5g-poco-m4-pro-5g-everpal.4785369

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 3
+codenames: [ido]
+aliases: [Redmi 3 Prime]
+released: 2016
+soc: Qualcomm MSM8939v2 Snapdragon 616
+bootloader:
+  unlock: unknown
+  relock: unknown

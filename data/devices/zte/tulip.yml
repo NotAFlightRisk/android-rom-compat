@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Axon 7 Mini
+codenames: [tulip]
+released: 2016
+soc: Qualcomm MSM8952 Snapdragon 617
+bootloader:
+  unlock: unknown
+  relock: unknown

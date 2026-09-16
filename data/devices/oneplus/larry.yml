@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord CE 3 Lite 5G
+codenames: [larry]
+aliases: [Nord N30 5G, CPH2467, CPH2465, CPH2513]
+released: 2023
+soc: Qualcomm SM6375 Snapdragon 695
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: one zoom
+codenames: [parker]
+aliases: [XT2010-1]
+released: 2019
+soc: Qualcomm SM6150 Snapdragon 675
+bootloader:
+  unlock: unknown
+  relock: unknown

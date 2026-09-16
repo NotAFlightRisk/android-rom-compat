@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: P2
+codenames: [kuntao]
+aliases: [P2a42]
+released: 2016
+soc: Qualcomm MSM8953 Snapdragon 625
+bootloader:
+  unlock: unknown
+  relock: unknown

@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Mi Pad 4
+codenames: [clover]
+bootloader:
+  unlock: unknown
+  relock: unknown

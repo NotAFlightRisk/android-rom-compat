@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: X3 Series
+codenames: [x3]
+bootloader:
+  unlock: unknown
+  relock: unknown

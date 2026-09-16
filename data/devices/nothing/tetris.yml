@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: CMF Phone 1
+codenames: [tetris]
+aliases: [Nothing CMF Phone 1]
+released: 2024
+soc: Mediatek Dimensity 7300
+bootloader:
+  unlock: unknown
+  relock: unknown

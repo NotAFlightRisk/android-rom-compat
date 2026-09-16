@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Jetson Nano [Tablet]
+codenames: [porg_tab]
+aliases: ["Jetson Nano 2GB [Tablet]", batuu]
+released: 2019
+soc: NVIDIA Tegra X1 (T210)
+bootloader:
+  unlock: unknown
+  relock: unknown

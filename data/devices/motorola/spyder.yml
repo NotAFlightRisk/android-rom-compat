@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: DROID RAZR (CDMA)
+codenames: [spyder]
+aliases: [DROID RAZR MAXX (CDMA), XT912]
+released: 2011
+soc: TI OMAP4430
+bootloader:
+  unlock: unknown
+  relock: unknown

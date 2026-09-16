@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Switch v1 [Tablet]
+codenames: [nx_tab]
+aliases: ["Switch v2 [Tablet]", "Switch Lite [Tablet]", "Switch OLED [Tablet]", v1 (odin), v2 (modin), Lite (vali), OLED (fric)]
+released: 2017
+soc: NVIDIA Tegra X1 (T210)
+bootloader:
+  unlock: no
+  relock: unknown

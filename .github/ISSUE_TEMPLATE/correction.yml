@@ -1,0 +1,26 @@
+name: 🛠️ Fix a mistake
+description: Something on the site is wrong or out of date
+title: "[Correction]: "
+labels: ["data", "correction"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://android-rom-compat.peng.ly/devices/google/pixel-7/
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong
+      description: And what it should say instead
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: source
+      description: A link that backs it up
+    validations:
+      required: true

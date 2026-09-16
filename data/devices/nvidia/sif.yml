@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Shield TV (2019) [Android TV]
+codenames: [sif]
+released: 2019
+soc: NVIDIA Tegra X1+ (T210b01)
+bootloader:
+  unlock: unknown
+  relock: unknown

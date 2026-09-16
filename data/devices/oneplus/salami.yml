@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 11 5G
+codenames: [salami]
+aliases: [CPH2447, CPH2449, CPH2451, PHB110]
+released: 2023
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: unknown
+  relock: unknown

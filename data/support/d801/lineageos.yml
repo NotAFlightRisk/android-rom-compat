@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: discontinued
+android: 11
+verified: 2026-09-16
+source: https://wiki.lineageos.org/devices/d801/
+install: https://wiki.lineageos.org/devices/d801/install/

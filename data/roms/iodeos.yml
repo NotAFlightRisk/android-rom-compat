@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: iodéOS
+description: Privacy-focused LineageOS build from iodé, with microG, a built-in ad and tracker blocker, and monthly updates.
+status: active
+base: lineageos
+focus: [privacy, degoogled]
+google: microg
+app_store: aurora
+org: company
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  monthly_patches: true
+install: [recovery]
+root: false
+links:
+  website: https://iode.tech/iodeos/
+  source: https://gitlab.iode.tech
+  docs: https://iode.tech/installation/

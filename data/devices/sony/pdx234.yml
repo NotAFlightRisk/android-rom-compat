@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 1 V
+codenames: [pdx234]
+aliases: [XQ-DQ54, XQ-DQ72]
+released: 2023
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+bootloader:
+  unlock: unknown
+  relock: unknown

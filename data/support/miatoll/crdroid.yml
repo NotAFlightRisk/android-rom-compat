@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/support.json
+official: true
+status: active
+android: 16
+maintainer: swiitchOFF
+verified: 2026-09-16
+source: https://crdroid.net/downloads#miatoll
+install: https://xdaforums.com/t/rom-oss-15-0-16-0-official-crdroid-v11-x-v12-x-for-curtana-excalibur-gram-joyuese-miatoll.4782339/

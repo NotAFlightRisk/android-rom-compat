@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: crDroid
+description: LineageOS-based ROM packed with extra customisation options, with Google apps as an optional add-on.
+status: active
+base: lineageos
+focus: [customisation, performance]
+google: optional
+app_store: none
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  monthly_patches: true
+install: [recovery]
+root: false
+links:
+  website: https://crdroid.net
+  source: https://github.com/crdroidandroid

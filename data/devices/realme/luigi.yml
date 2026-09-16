@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 10 Pro 5G
+codenames: [luigi]
+aliases: [RMX3660, RMX3661]
+released: 2022
+soc: Qualcomm SM6375 Snapdragon 695
+bootloader:
+  unlock: no
+  relock: unknown

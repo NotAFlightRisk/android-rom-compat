@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: G6 (EU Unlocked - ENG BL)
+codenames: [h870d]
+released: 2017
+soc: Qualcomm MSM8996 Pro Snapdragon 821
+bootloader:
+  unlock: unknown
+  relock: unknown

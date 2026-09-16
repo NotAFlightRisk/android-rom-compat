@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: /e/OS
+description: De-Googled LineageOS fork with microG built in and its own App Lounge store.
+status: active
+base: lineageos
+focus: [privacy, degoogled]
+google: microg
+app_store: app-lounge
+org: non-profit
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  monthly_patches: false
+install: [web-installer, recovery]
+root: false
+links:
+  website: https://e.foundation/e-os/
+  source: https://gitlab.e.foundation/e
+  docs: https://doc.e.foundation
+  community: https://community.e.foundation

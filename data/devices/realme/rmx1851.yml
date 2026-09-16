@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 3 Pro
+codenames: [rmx1851]
+released: 2019
+soc: Qualcomm SDM710 Snapdragon 710
+bootloader:
+  unlock: unknown
+  relock: unknown

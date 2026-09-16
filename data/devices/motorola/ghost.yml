@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto x
+codenames: [ghost]
+aliases: [xt1052, xt1053, xt1055, xt1056, xt1058, xt1060]
+released: 2013
+soc: Qualcomm MSM8960DT Snapdragon S4 Pro
+bootloader:
+  unlock: unknown
+  relock: unknown

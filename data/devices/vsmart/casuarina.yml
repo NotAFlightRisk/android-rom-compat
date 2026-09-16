@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Joy 3
+codenames: [casuarina]
+aliases: [Joy 3+, V430A, V430E]
+released: 2020
+soc: Qualcomm SDM632 Snapdragon 632
+bootloader:
+  unlock: no
+  relock: unknown

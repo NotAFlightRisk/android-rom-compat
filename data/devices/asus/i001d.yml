@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: ROG Phone 2 (ZS660KL)
+codenames: [i001d]
+released: 2019
+soc: Qualcomm SM8150-AC Snapdragon 855+
+bootloader:
+  unlock: no
+  relock: unknown
