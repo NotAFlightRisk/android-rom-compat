@@ -23,9 +23,6 @@ const { id = 'site-search', label = 'Site search', large = false } = Astro.props
     placeholder="Phone, codename or model"
     autocomplete="off"
     spellcheck="false"
-    role="combobox"
-    aria-autocomplete="list"
-    aria-expanded="false"
     aria-controls={`${id}-results`}
   />
   <div class="results" id={`${id}-results`} hidden>
@@ -44,7 +41,8 @@ const { id = 'site-search', label = 'Site search', large = false } = Astro.props
     position: relative;
     display: flex;
     align-items: center;
-    inline-size: min(100%, 20rem);
+    inline-size: 20rem;
+    max-inline-size: 100%;
 
     > :global(svg) {
       position: absolute;

@@ -25,10 +25,7 @@ export function enhanceSearch(form) {
   const status = panel.querySelector('[role="status"]');
   const list = panel.querySelector('ul');
   let latest = 0;
-  const show = (open) => {
-    panel.hidden = !open;
-    input.setAttribute('aria-expanded', String(open));
-  };
+  const show = (open) => (panel.hidden = !open);
   const close = () => {
     latest++;
     show(false);

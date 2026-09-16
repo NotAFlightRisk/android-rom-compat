@@ -44,6 +44,10 @@ const current = (url) => Astro.url.pathname.startsWith(url);
 
     @media (width < 48rem) {
       grid-template-columns: 1fr;
+
+      :global(form) {
+        inline-size: 100%;
+      }
     }
   }
 

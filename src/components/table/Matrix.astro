@@ -74,7 +74,6 @@ const {
     min-inline-size: 0;
 
     .scroller {
-      max-block-size: 75dvh;
       overflow: auto;
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -82,6 +81,10 @@ const {
 
       &[data-more] {
         mask-image: linear-gradient(to left, transparent, #000 2.5rem);
+      }
+
+      @media (width >= 48rem) {
+        max-block-size: 75dvh;
       }
     }
 
@@ -202,6 +205,10 @@ const {
 
     [aria-sort='descending'] button::after {
       mask-image: url('/icons/sort-down.svg');
+    }
+
+    td code {
+      font-size: 1em;
     }
 
     tbody tr:hover > * {
