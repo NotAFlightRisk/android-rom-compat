@@ -1,13 +1,14 @@
 import { loadData } from './load.js';
 import { cellValue, toneOf } from './status.js';
-import { slugify } from '../slug.js';
+import { slugify } from '../text.js';
 
 const STALE_AFTER_DAYS = 365;
 const byName = (key) => (a, b) => a[key].localeCompare(b[key], 'en', { sensitivity: 'base' });
 
 function resolveCell(feature, raw, device) {
   if (raw === undefined) {
-    const lacksIt = feature.requires && device.hardware && !device.hardware.includes(feature.requires);
+    const lacksIt =
+      feature.requires && device.hardware && !device.hardware.includes(feature.requires);
     const value = lacksIt ? 'n/a' : 'unknown';
     return { value, tone: value };
   }
@@ -20,11 +21,17 @@ export function buildModel(data = loadData(), now = new Date()) {
   const staleBefore = new Date(now - STALE_AFTER_DAYS * 864e5).toISOString().slice(0, 10);
   const features = data.features.data;
   const brands = new Map(
-    data.brands.data.map((brand) => [brand.key, { ...brand, url: `/devices/${brand.key}/`, devices: [] }]),
+    data.brands.data.map((brand) => [
+      brand.key,
+      { ...brand, url: `/devices/${brand.key}/`, devices: [] },
+    ]),
   );
 
   const roms = new Map(
-    data.roms.map(({ file, key, data: rom }) => [key, { ...rom, key, file, url: `/roms/${key}/`, support: [] }]),
+    data.roms.map(({ file, key, data: rom }) => [
+      key,
+      { ...rom, key, file, url: `/roms/${key}/`, support: [] },
+    ]),
   );
 
   const devices = new Map(
@@ -58,7 +65,10 @@ export function buildModel(data = loadData(), now = new Date()) {
       stale: entry.verified < staleBefore,
       active: entry.status === 'active' && rom.status === 'active',
       cells: Object.fromEntries(
-        features.map((feature) => [feature.key, resolveCell(feature, entry.features?.[feature.key], device)]),
+        features.map((feature) => [
+          feature.key,
+          resolveCell(feature, entry.features?.[feature.key], device),
+        ]),
       ),
     };
     device.support.push(row);
@@ -70,7 +80,8 @@ export function buildModel(data = loadData(), now = new Date()) {
     device.support.sort((a, b) => a.rom.name.localeCompare(b.rom.name));
     device.activeCount = device.support.filter((row) => row.active).length;
   }
-  for (const rom of roms.values()) rom.support.sort((a, b) => a.device.title.localeCompare(b.device.title));
+  for (const rom of roms.values())
+    rom.support.sort((a, b) => a.device.title.localeCompare(b.device.title));
   for (const brand of brands.values()) brand.devices.sort(byName('title'));
 
   return {

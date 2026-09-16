@@ -4,8 +4,12 @@ import { fetchJson, fetchText, mapLimit, report, upsertDevice, writeSupport } fr
 const WIKI = 'https://wiki.lineageos.org/devices';
 const RAW = 'https://raw.githubusercontent.com/LineageOS/lineage_wiki/main';
 
-const { tree } = await fetchJson('https://api.github.com/repos/LineageOS/lineage_wiki/git/trees/main?recursive=1');
-const paths = tree.map((item) => item.path).filter((path) => /^_data\/devices\/[^/]+\.yml$/.test(path));
+const { tree } = await fetchJson(
+  'https://api.github.com/repos/LineageOS/lineage_wiki/git/trees/main?recursive=1',
+);
+const paths = tree
+  .map((item) => item.path)
+  .filter((path) => /^_data\/devices\/[^/]+\.yml$/.test(path));
 const files = await mapLimit(paths, 8, async (path) => parse(await fetchText(`${RAW}/${path}`)));
 
 const byCodename = Map.groupBy(
@@ -18,7 +22,9 @@ const codenames = new Set([...byCodename.keys()].map((codename) => codename.toLo
 for (const [codename, [first, ...variants]] of byCodename) {
   const names = [...new Set([first, ...variants].map((file) => file.name))];
   const models = [first, ...variants].flatMap((file) => file.models ?? []).map(String);
-  const aliases = [...names.slice(1), ...models].filter((alias) => !codenames.has(alias.toLowerCase()));
+  const aliases = [...names.slice(1), ...models].filter(
+    (alias) => !codenames.has(alias.toLowerCase()),
+  );
   const key = upsertDevice(first.vendor, {
     name: names[0],
     codenames: [codename.toLowerCase()],

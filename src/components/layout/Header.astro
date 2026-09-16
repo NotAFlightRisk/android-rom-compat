@@ -1,6 +1,8 @@
 ---
 import Search from '../ui/Search.astro';
 
+const { search } = Astro.props;
+
 const links = [
   { label: 'Devices', url: '/devices/' },
   { label: 'ROMs', url: '/roms/' },
@@ -17,11 +19,15 @@ const current = (url) => Astro.url.pathname.startsWith(url);
   <nav aria-label="Main">
     <ul>
       {links.map((link) => (
-        <li><a href={link.url} aria-current={current(link.url) ? 'page' : undefined}>{link.label}</a></li>
+        <li>
+          <a href={link.url} aria-current={current(link.url) ? 'page' : undefined}>
+            {link.label}
+          </a>
+        </li>
       ))}
     </ul>
   </nav>
-  <Search />
+  {search && <Search />}
 </header>
 
 <style>

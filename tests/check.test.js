@@ -4,12 +4,17 @@ import { loadData } from '../src/lib/data/load.js';
 import { check } from '../src/lib/data/check.js';
 
 const problemsIn = (fixture) =>
-  check(loadData(`tests/fixtures/${fixture}`)).map(({ file, path, message }) =>
-    `${file.split(`/${fixture}/`)[1]} ${path ? `${path}: ` : ''}${message}`);
+  check(loadData(`tests/fixtures/${fixture}`)).map(
+    ({ file, path, message }) =>
+      `${file.split(`/${fixture}/`)[1]} ${path ? `${path}: ` : ''}${message}`,
+  );
 
 const bad = problemsIn('bad');
 const expectProblem = (pattern) =>
-  assert.ok(bad.some((line) => pattern.test(line)), `nothing matched ${pattern}\n${bad.join('\n')}`);
+  assert.ok(
+    bad.some((line) => pattern.test(line)),
+    `nothing matched ${pattern}\n${bad.join('\n')}`,
+  );
 
 test('clean data has no problems', () => {
   assert.deepEqual(problemsIn('good'), []);
@@ -21,7 +26,9 @@ test('broken YAML is reported instead of crashing', () => {
 });
 
 test('schema errors read like English', () => {
-  expectProblem(/rocket\.yml bootloader\.unlock: "maybe" isn't allowed\. Use yes, no, conditional or unknown/);
+  expectProblem(
+    /rocket\.yml bootloader\.unlock: "maybe" isn't allowed\. Use yes, no, conditional or unknown/,
+  );
   expectProblem(/comet\.yml bootloader\.notes: is missing/);
   expectProblem(/verified: "2026-02-30" isn't a real date/);
 });

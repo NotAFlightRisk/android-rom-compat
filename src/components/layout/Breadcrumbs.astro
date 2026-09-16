@@ -6,7 +6,11 @@ const { trail } = Astro.props;
   <ol>
     {trail.map((crumb, i) => (
       <li>
-        {i === trail.length - 1 ? <span aria-current="page">{crumb.label}</span> : <a href={crumb.url}>{crumb.label}</a>}
+        {i === trail.length - 1 ? (
+          <span aria-current="page">{crumb.label}</span>
+        ) : (
+          <a href={crumb.url}>{crumb.label}</a>
+        )}
       </li>
     ))}
   </ol>

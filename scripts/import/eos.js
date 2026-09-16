@@ -3,19 +3,24 @@ import { fetchText, mapLimit, report, upsertDevice, writeSupport, withoutBrand }
 
 const paths = [];
 const DOCS = 'https://doc.e.foundation/devices';
-let page = 'https://gitlab.e.foundation/api/v4/projects/464/repository/tree?path=data/devices'
-  + '&per_page=100&pagination=keyset&order_by=path&sort=asc';
+let page =
+  'https://gitlab.e.foundation/api/v4/projects/464/repository/tree?path=data/devices' +
+  '&per_page=100&pagination=keyset&order_by=path&sort=asc';
 while (page) {
   const response = await fetch(page);
   if (!response.ok) throw new Error(`${response.status} from ${page}`);
-  paths.push(...(await response.json()).map((file) => file.path).filter((path) => path.endsWith('.yaml')));
+  paths.push(
+    ...(await response.json()).map((file) => file.path).filter((path) => path.endsWith('.yaml')),
+  );
   page = response.headers.get('link')?.match(/<([^>]+)>;\s*rel="next"/)?.[1];
 }
 
 const androidOf = (version) => Number(version?.match(/\d+/)?.[0]) || undefined;
 
 await mapLimit(paths, 3, async (path) => {
-  const device = parse(await fetchText(`https://gitlab.e.foundation/e/documentation/user/-/raw/main/${path}`));
+  const device = parse(
+    await fetchText(`https://gitlab.e.foundation/e/documentation/user/-/raw/main/${path}`),
+  );
   const { vendor, compatibility = {} } = device;
   const codename = String(device.codename);
   if (compatibility.release_type === 'test') return;

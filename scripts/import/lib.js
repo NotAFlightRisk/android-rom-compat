@@ -2,13 +2,22 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { dirname, join, relative } from 'node:path';
 import { parseArgs } from 'node:util';
 import { Document, parse, visit } from 'yaml';
-import { slugify } from '../../src/lib/slug.js';
+import { slugify } from '../../src/lib/text.js';
 
 export const DATA = process.env.DATA_DIR ?? new URL('../../data/', import.meta.url).pathname;
-export const { values: args } = parseArgs({ options: { force: { type: 'boolean' } }, strict: false });
+export const { values: args } = parseArgs({
+  options: { force: { type: 'boolean' } },
+  strict: false,
+});
 export const today = new Date().toISOString().slice(0, 10);
 
-const brandAliases = { poco: 'xiaomi', redmi: 'xiaomi', mi: 'xiaomi', moto: 'motorola', 'f-x-tec': 'fxtec' };
+const brandAliases = {
+  poco: 'xiaomi',
+  redmi: 'xiaomi',
+  mi: 'xiaomi',
+  moto: 'motorola',
+  'f-x-tec': 'fxtec',
+};
 export const brandKey = (vendor) => brandAliases[slugify(vendor)] ?? slugify(vendor);
 
 export const withoutBrand = (text, brand) =>
@@ -21,7 +30,9 @@ export async function fetchText(url, tries = 5) {
   if (token && url.startsWith('https://api.github.com/')) headers.authorization = `Bearer ${token}`;
   const response = await fetch(url, { headers });
   if (response.status === 429 && tries > 1) {
-    await new Promise((resolve) => setTimeout(resolve, (Number(response.headers.get('retry-after')) || 10) * 1000));
+    await new Promise((resolve) =>
+      setTimeout(resolve, (Number(response.headers.get('retry-after')) || 10) * 1000),
+    );
     return fetchText(url, tries - 1);
   }
   if (!response.ok) throw new Error(`${response.status} from ${url}`);
@@ -59,14 +70,20 @@ const devicesDir = join(DATA, 'devices');
 const existing = new Map();
 const slugs = new Set();
 const claimed = new Set();
+const claim = (names) => names.forEach((name) => claimed.add(name.toLowerCase()));
+const unclaimed = (names = []) => [...new Set(names)].filter((name) => !claimed.has(name.toLowerCase()));
+
+function track(entry) {
+  entry.device.codenames.forEach((codename) => existing.set(codename, entry));
+  claim([...entry.device.codenames, ...(entry.device.aliases ?? [])]);
+  slugs.add(`${entry.brand}/${entry.device.slug ?? slugify(entry.device.name)}`);
+}
+
 if (existsSync(devicesDir)) {
-  for (const path of readdirSync(devicesDir, { recursive: true }).filter((path) => path.endsWith('.yml'))) {
+  const files = readdirSync(devicesDir, { recursive: true }).filter((path) => path.endsWith('.yml'));
+  for (const path of files) {
     const [brand, file] = path.split('/');
-    const device = read(join(devicesDir, path));
-    const entry = { brand, key: file.replace('.yml', ''), device };
-    device.codenames.forEach((codename) => existing.set(codename, entry));
-    [...device.codenames, ...(device.aliases ?? [])].forEach((name) => claimed.add(name.toLowerCase()));
-    slugs.add(`${brand}/${device.slug ?? slugify(device.name)}`);
+    track({ brand, key: file.replace('.yml', ''), device: read(join(devicesDir, path)) });
   }
 }
 
@@ -81,68 +98,78 @@ export function ensureBrand(key, name) {
   save(file, brands, 'brands');
 }
 
+function createDevice(brand, { name, codenames, aliases, released, soc, bootloader }) {
+  const slug = slugify(name);
+  const clash = slugs.has(`${brand}/${slug}`);
+  const newAliases = unclaimed(aliases);
+  const entry = {
+    brand,
+    key: codenames[0],
+    device: {
+      name,
+      ...(clash && { slug: `${slug}-${slugify(codenames[0])}` }),
+      codenames: [codenames[0], ...unclaimed(codenames.slice(1))],
+      ...(newAliases.length && { aliases: newAliases }),
+      ...(released && { released }),
+      ...(soc && { soc }),
+      bootloader: { unlock: 'unknown', relock: 'unknown', ...bootloader },
+    },
+  };
+  track(entry);
+  stats.devices++;
+  return entry;
+}
+
+function fillGaps(current, { released, soc, aliases, bootloader = {} }) {
+  current.released ??= released;
+  current.soc ??= soc;
+  const { unlock, relock, notes } = bootloader;
+  if (current.bootloader.unlock === 'unknown' && unlock && unlock !== 'unknown') {
+    Object.assign(current.bootloader, { unlock }, notes && { notes });
+  }
+  if (current.bootloader.relock === 'unknown' && relock) current.bootloader.relock = relock;
+  const newAliases = unclaimed(aliases);
+  if (newAliases.length) current.aliases = [...(current.aliases ?? []), ...newAliases];
+  claim(newAliases);
+}
+
 /**
- * Finds or creates a device, filling only fields that are missing or unknown.
+ * Finds or creates a device, only ever filling fields that are missing or unknown.
  * Returns its primary codename, or null when another brand already owns the codename
  */
 export function upsertDevice(brandName, device) {
   const brand = brandKey(brandName);
   const found = existing.get(device.codenames[0]);
   if (found && found.brand !== brand) {
-    stats.skipped.push(`${device.codenames[0]} (${brandName} ${device.name}) clashes with ${found.brand}/${found.key}`);
+    const who = `${brandName} ${device.name}`;
+    stats.skipped.push(`${device.codenames[0]} (${who}) clashes with ${found.brand}/${found.key}`);
     return null;
   }
   ensureBrand(brand, brandName);
 
-  const unclaimed = (names) => names.filter((name) => !claimed.has(name.toLowerCase()));
-  if (!found) {
-    const aliases = [...new Set(unclaimed(device.aliases ?? []))];
-    let slug = slugify(device.name);
-    const clash = slugs.has(`${brand}/${slug}`);
-    if (clash) slug = `${slug}-${slugify(device.codenames[0])}`;
-    const entry = { brand, key: device.codenames[0], device: {
-      name: device.name,
-      ...(clash && { slug }),
-      codenames: [device.codenames[0], ...unclaimed(device.codenames.slice(1))],
-      ...(aliases.length && { aliases }),
-      ...(device.released && { released: device.released }),
-      ...(device.soc && { soc: device.soc }),
-      bootloader: { unlock: 'unknown', relock: 'unknown', ...device.bootloader },
-    } };
-    [...entry.device.codenames, ...aliases].forEach((name) => claimed.add(name.toLowerCase()));
-    entry.device.codenames.forEach((codename) => existing.set(codename, entry));
-    slugs.add(`${brand}/${slug}`);
+  const entry = found ?? createDevice(brand, device);
+  const before = found && JSON.stringify(entry.device);
+  if (found) fillGaps(entry.device, device);
+  if (!found || JSON.stringify(entry.device) !== before) {
     save(join(devicesDir, brand, `${entry.key}.yml`), entry.device, 'device');
-    stats.devices++;
-    return entry.key;
   }
-
-  const current = found.device;
-  const before = JSON.stringify(current);
-  for (const field of ['released', 'soc']) current[field] ??= device[field];
-  const { unlock, relock, notes } = device.bootloader ?? {};
-  if (current.bootloader.unlock === 'unknown' && unlock && unlock !== 'unknown') {
-    Object.assign(current.bootloader, { unlock }, notes && { notes });
-  }
-  if (current.bootloader.relock === 'unknown' && relock) current.bootloader.relock = relock;
-  const aliases = unclaimed(device.aliases ?? []);
-  if (aliases.length) {
-    current.aliases = [...(current.aliases ?? []), ...new Set(aliases)];
-    aliases.forEach((alias) => claimed.add(alias.toLowerCase()));
-  }
-  if (JSON.stringify(current) !== before) save(join(devicesDir, found.brand, `${found.key}.yml`), current, 'device');
-  return found.key;
+  return entry.key;
 }
 
 export function writeSupport(codename, rom, support) {
   const file = join(DATA, 'support', codename, `${rom}.yml`);
   if (existsSync(file) && !args.force) return void stats.kept++;
   const { status, android, maintainer, source, install, features } = support;
-  save(file, { official: true, status, android, maintainer, verified: today, source, install, features }, 'support');
+  save(
+    file,
+    { official: true, status, android, maintainer, verified: today, source, install, features },
+    'support',
+  );
   stats.support++;
 }
 
 export function report(rom) {
-  console.log(`${rom}: ${stats.devices} new devices, ${stats.support} support files, ${stats.kept} kept as they were`);
+  const { devices, support, kept } = stats;
+  console.log(`${rom}: ${devices} new devices, ${support} support files, ${kept} kept as they were`);
   for (const line of stats.skipped) console.log(`  skipped ${line}`);
 }

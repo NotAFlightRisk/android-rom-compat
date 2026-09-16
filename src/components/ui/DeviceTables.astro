@@ -2,9 +2,12 @@
 import Matrix from '../table/Matrix.astro';
 import { deviceColumns, deviceRows } from '../../lib/table.js';
 
-const { id, devices, roms, brands = [], label } = Astro.props;
+const { id, devices, roms, brands = [], label, ended = true } = Astro.props;
 const liveRoms = roms.filter((rom) => rom.status === 'active');
-const columns = deviceColumns(liveRoms).map((column) => ({ ...column, hidden: column.key === 'brand' && !brands.length }));
+const columns = deviceColumns(liveRoms).map((column) => ({
+  ...column,
+  hidden: column.key === 'brand' && !brands.length,
+}));
 const current = devices.filter((device) => device.activeCount > 0);
 const retired = devices.filter((device) => device.activeCount === 0);
 ---
@@ -18,7 +21,14 @@ const retired = devices.filter((device) => device.activeCount === 0);
   brands={brands}
   urlState
 />
-{retired.length > 0 && (
+{retired.length > 0 && !ended && (
+  <p>
+    <small>
+      {retired.length} more have support that has ended. They're listed on each brand's page.
+    </small>
+  </p>
+)}
+{retired.length > 0 && ended && (
   <details>
     <summary>{retired.length} more with support that has ended</summary>
     <Matrix

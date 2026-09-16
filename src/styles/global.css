@@ -161,6 +161,13 @@ svg {
   max-inline-size: 100%;
 }
 
+summary {
+  inline-size: fit-content;
+  color: var(--accent-text);
+  font-weight: 500;
+  cursor: pointer;
+}
+
 input,
 select,
 button {

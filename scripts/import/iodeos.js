@@ -7,7 +7,9 @@ const table = html.match(/<table id="tablepress-1"[\s\S]*?<tbody[^>]*>([\s\S]*?)
 const entities = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 const decode = (text) =>
   text
-    .replace(/&#(x?)([0-9a-f]+);/gi, (_, hex, code) => String.fromCodePoint(parseInt(code, hex ? 16 : 10)))
+    .replace(/&#(x?)([0-9a-f]+);/gi, (_, hex, code) =>
+      String.fromCodePoint(parseInt(code, hex ? 16 : 10)),
+    )
     .replace(/&(\w+);/g, (entity, name) => entities[name] ?? entity);
 const cellsOf = (row) =>
   [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map(([, cell]) =>
@@ -21,7 +23,10 @@ for (const [, row] of table.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)) {
   const key = upsertDevice(brand, {
     name: withoutBrand(fullName, brand).replace(/\s+/g, ' '),
     codenames: [codename.toLowerCase()],
-    aliases: variants.split(/[;,\n]/).map((variant) => variant.trim()).filter(Boolean),
+    aliases: variants
+      .split(/[;,\n]/)
+      .map((variant) => variant.trim())
+      .filter(Boolean),
     ...(locked === 'yes' && { bootloader: { relock: 'yes' } }),
   });
   if (!key) continue;

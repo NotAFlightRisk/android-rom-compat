@@ -3,12 +3,14 @@ const { items } = Astro.props;
 ---
 
 <dl>
-  {items.filter((item) => item.value !== undefined && item.value !== '').map((item) => (
-    <div>
-      <dt>{item.label}</dt>
-      <dd data-tone={item.tone}>{item.code ? <code>{item.value}</code> : item.value}</dd>
-    </div>
-  ))}
+  {items
+    .filter((item) => item.value !== undefined && item.value !== '')
+    .map((item) => (
+      <div>
+        <dt>{item.label}</dt>
+        <dd>{item.code ? <code>{item.value}</code> : item.value}</dd>
+      </div>
+    ))}
 </dl>
 
 <style>
@@ -27,17 +29,5 @@ const { items } = Astro.props;
   dd {
     margin: 0;
     font-weight: 500;
-  }
-
-  [data-tone='working'] {
-    color: var(--working-text);
-  }
-
-  [data-tone='partial'] {
-    color: var(--partial-text);
-  }
-
-  [data-tone='broken'] {
-    color: var(--broken-text);
   }
 </style>

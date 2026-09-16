@@ -10,12 +10,19 @@ const [installer, faq, releases] = await Promise.all([
 const supported = installer.match(/supportedDevices\s*=\s*\[([^\]]*)\]/)[1].match(/[a-z0-9]+/g);
 const android = Number(releases.match(/initial release of GrapheneOS based on Android (\d+)/)[1]);
 const named = new Map(
-  [...faq.matchAll(/((?:Pixel|Nexus|Samsung Galaxy)[\w ]*?(?: \(5G\))?) \((?:<code>)?([a-z0-9]+)(?:<\/code>)?\)/g)]
-    .map(([, name, codename]) => [codename, name]),
+  [
+    ...faq.matchAll(
+      /((?:Pixel|Nexus|Samsung Galaxy)[\w ]*?(?: \(5G\))?) \((?:<code>)?([a-z0-9]+)(?:<\/code>)?\)/g,
+    ),
+  ].map(([, name, codename]) => [codename, name]),
 );
 
 // Carrier Pixels stay locked, but every GrapheneOS Pixel relocks once it's installed
-const pixel = { unlock: 'conditional', relock: 'yes', notes: "Carrier models, like Verizon's, can't be unlocked." };
+const pixel = {
+  unlock: 'conditional',
+  relock: 'yes',
+  notes: "Carrier models, like Verizon's, can't be unlocked.",
+};
 
 for (const [codename, fullName] of named) {
   const active = supported.includes(codename);

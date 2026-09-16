@@ -3,17 +3,25 @@ import Base from '../../components/layout/Base.astro';
 import Matrix from '../../components/table/Matrix.astro';
 import Facts from '../../components/ui/Facts.astro';
 import { getModel } from '../../lib/data/model.js';
-import { deviceSearchText, reportedFeatures, splitByActive, supportCells, supportColumns } from '../../lib/table.js';
+import {
+  deviceSearchText,
+  reportedFeatures,
+  splitByActive,
+  supportCells,
+  supportColumns,
+} from '../../lib/table.js';
 import { labelOf, yesNo } from '../../lib/labels.js';
 
-export const getStaticPaths = () => getModel().roms.map((rom) => ({ params: { rom: rom.key }, props: { rom } }));
+export const getStaticPaths = () =>
+  getModel().roms.map((rom) => ({ params: { rom: rom.key }, props: { rom } }));
 
 const { rom } = Astro.props;
 const features = reportedFeatures(getModel().features, rom.support);
 const [current, ended] = splitByActive(rom.support);
 const columns = [{ key: 'brand', label: 'Brand', hidden: true }, ...supportColumns(features)];
-const brands = [...new Map(rom.support.map((row) => [row.device.brand.key, row.device.brand])).values()]
-  .sort((a, b) => a.name.localeCompare(b.name));
+const brands = [
+  ...new Map(rom.support.map((row) => [row.device.brand.key, row.device.brand])).values(),
+].sort((a, b) => a.name.localeCompare(b.name));
 const rowsOf = (list) =>
   list.map((row) => ({
     key: row.device.key,
@@ -26,56 +34,90 @@ const rowsOf = (list) =>
       code: row.device.codenames.join(', '),
       links: row.install ? [{ label: 'Install guide', href: row.install }] : [],
     },
-    cells: { brand: { text: row.device.brand.name, sort: row.device.brand.name }, ...supportCells(row, features) },
+    cells: { brand: { text: row.device.brand.name }, ...supportCells(row, features) },
   }));
 const { links, security } = rom;
 ---
 
 <Base
-  title={`${rom.name} supported devices`}
+  title={`${rom.name}: supported devices`}
   description={rom.description}
-  crumbs={[{ label: 'ROMs', url: '/roms/' }, { label: rom.name, url: rom.url }]}
-  jsonLd={[{
-    '@type': 'SoftwareApplication',
-    name: rom.name,
-    description: rom.description,
-    applicationCategory: 'OperatingSystem',
-    operatingSystem: 'Android',
-    url: links.website,
-    offers: { '@type': 'Offer', price: 0, priceCurrency: 'GBP' },
-  }]}
+  crumbs={[
+    { label: 'ROMs', url: '/roms/' },
+    { label: rom.name, url: rom.url },
+  ]}
+  jsonLd={[
+    {
+      '@type': 'SoftwareApplication',
+      name: rom.name,
+      description: rom.description,
+      applicationCategory: 'OperatingSystem',
+      operatingSystem: 'Android',
+      url: links.website,
+      offers: { '@type': 'Offer', price: 0, priceCurrency: 'GBP' },
+    },
+  ]}
   edit={[rom.file]}
 >
   <article data-pagefind-body data-pagefind-meta={`hint:ROM · ${current.length} devices`}>
     <section>
       <h1 data-pagefind-meta="title">{rom.name}</h1>
       <p>{rom.description}</p>
-      {rom.status === 'discontinued' && <p><strong>This ROM is discontinued.</strong></p>}
-      <Facts items={[
-        { label: 'Based on', value: labelOf(rom.base) },
-        { label: 'Google apps', value: labelOf(rom.google) },
-        { label: 'App store', value: labelOf(rom.app_store) },
-        { label: 'Focus', value: rom.focus.map(labelOf).join(', ') },
-        { label: 'Run by', value: labelOf(rom.org) },
-        { label: 'Install with', value: rom.install.map(labelOf).join(', ') },
-        { label: 'Relockable bootloader', value: yesNo(security.relockable_bootloader) },
-        { label: 'Verified boot', value: yesNo(security.verified_boot) },
-        { label: 'Monthly patches', value: yesNo(security.monthly_patches) },
-        { label: 'Root', value: yesNo(rom.root) },
-      ]} />
+      {rom.status === 'discontinued' && (
+        <p>
+          <strong>This ROM is discontinued.</strong>
+        </p>
+      )}
+      <Facts
+        items={[
+          { label: 'Based on', value: labelOf(rom.base) },
+          { label: 'Google apps', value: labelOf(rom.google) },
+          { label: 'App store', value: labelOf(rom.app_store) },
+          { label: 'Focus', value: rom.focus.map(labelOf).join(', ') },
+          { label: 'Run by', value: labelOf(rom.org) },
+          { label: 'Install with', value: rom.install.map(labelOf).join(', ') },
+          { label: 'Relockable bootloader', value: yesNo(security.relockable_bootloader) },
+          { label: 'Verified boot', value: yesNo(security.verified_boot) },
+          { label: 'Monthly patches', value: yesNo(security.monthly_patches) },
+          { label: 'Root', value: yesNo(rom.root) },
+        ]}
+      />
       <ul class="links">
-        {Object.entries(links).map(([kind, href]) => <li><a href={href}>{labelOf(kind)}</a></li>)}
+        {Object.entries(links).map(([kind, href]) => (
+          <li>
+            <a href={href}>{labelOf(kind)}</a>
+          </li>
+        ))}
       </ul>
     </section>
 
     <section aria-labelledby="devices">
       <h2 id="devices">Devices</h2>
-      <p><small>Features show up once someone reports them. <a href="/contribute/">Know how one works?</a></small></p>
-      <Matrix id="devices" caption={`Devices ${rom.name} officially supports`} rowLabel="Device" columns={columns} rows={rowsOf(current)} brands={brands} urlState />
+      <p>
+        <small>
+          Features show up once someone reports them. <a href="/contribute/">Know how one works?</a>
+        </small>
+      </p>
+      <Matrix
+        id="devices"
+        caption={`Devices ${rom.name} officially supports`}
+        rowLabel="Device"
+        columns={columns}
+        rows={rowsOf(current)}
+        brands={brands}
+        urlState
+      />
       {ended.length > 0 && (
         <details>
           <summary>{ended.length} devices where support has ended</summary>
-          <Matrix id="devices-ended" caption={`Devices ${rom.name} no longer supports`} rowLabel="Device" columns={columns} rows={rowsOf(ended)} controls={false} />
+          <Matrix
+            id="devices-ended"
+            caption={`Devices ${rom.name} no longer supports`}
+            rowLabel="Device"
+            columns={columns}
+            rows={rowsOf(ended)}
+            controls={false}
+          />
         </details>
       )}
     </section>

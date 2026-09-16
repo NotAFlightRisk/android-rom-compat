@@ -4,7 +4,11 @@ import { getModel } from './src/lib/data/model.js';
 import { site } from './src/lib/site.js';
 
 const { devices, roms, brands } = getModel();
-const latest = (rows) => rows.map((row) => row.verified).sort().at(-1);
+const latest = (rows) =>
+  rows
+    .map((row) => row.verified)
+    .sort()
+    .at(-1);
 
 const lastChecked = new Map([
   ...devices.map((device) => [device.url, latest(device.support)]),
@@ -13,7 +17,9 @@ const lastChecked = new Map([
 ]);
 
 const codenameRedirects = Object.fromEntries(
-  devices.flatMap((device) => device.codenames.map((codename) => [`/devices/${codename}/`, device.url])),
+  devices.flatMap((device) =>
+    device.codenames.map((codename) => [`/devices/${codename}/`, device.url]),
+  ),
 );
 
 export default defineConfig({

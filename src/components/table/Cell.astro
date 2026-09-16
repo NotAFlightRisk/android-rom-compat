@@ -2,17 +2,119 @@
 import Icon from '../ui/Icon.astro';
 
 const { id, column, cell } = Astro.props;
+const noteId = `${id}-note`;
 ---
 
-<td data-col={column.key} data-sort={cell.sort} data-tone={cell.tone} hidden={column.hidden}>
-  {cell.date ? <time datetime={cell.date}>{cell.date}</time> : cell.text}
+<td data-sort={cell.sort} data-tone={cell.tone} hidden={column.hidden}>
+  {cell.date ? (
+    <time datetime={cell.date}>{cell.date}</time>
+  ) : cell.code ? (
+    <code>{cell.text}</code>
+  ) : (
+    cell.text
+  )}
   {cell.stale && <span class="stale">stale</span>}
   {cell.note && (
     <>
-      <button type="button" class="note" popovertarget={`${id}-note`} aria-label={`Note on ${column.label}`} aria-describedby={`${id}-note`}>
+      <button
+        type="button"
+        class="note"
+        popovertarget={noteId}
+        aria-label={`Note on ${column.label}`}
+        aria-describedby={noteId}
+      >
         <Icon name="note" />
       </button>
-      <span popover id={`${id}-note`}><strong>{column.label}:</strong> {cell.note}</span>
+      <span popover id={noteId}>
+        <strong>{column.label}:</strong> {cell.note}
+      </span>
     </>
   )}
 </td>
+
+<style is:global>
+  .matrix {
+    td[data-tone]::before,
+    .stale::before {
+      content: '';
+      display: inline-block;
+      inline-size: 1em;
+      block-size: 1em;
+      margin-inline-end: var(--space-2xs);
+      vertical-align: -0.15em;
+      background: currentColor;
+      mask: var(--icon) center / contain no-repeat;
+    }
+
+    [data-tone='working'] {
+      --icon: url('/icons/working.svg');
+      background: var(--working-bg);
+      color: var(--working-text);
+    }
+
+    [data-tone='partial'] {
+      --icon: url('/icons/partial.svg');
+      background: var(--partial-bg);
+      color: var(--partial-text);
+    }
+
+    [data-tone='broken'] {
+      --icon: url('/icons/broken.svg');
+      background: var(--broken-bg);
+      color: var(--broken-text);
+    }
+
+    [data-tone='unknown'] {
+      --icon: url('/icons/unknown.svg');
+      color: var(--unknown-text);
+    }
+
+    [data-tone='ended'] {
+      --icon: url('/icons/ended.svg');
+      background: var(--unknown-bg);
+      color: var(--unknown-text);
+    }
+
+    [data-tone='n/a'] {
+      --icon: url('/icons/na.svg');
+      color: var(--text-muted);
+    }
+
+    .stale {
+      --icon: url('/icons/stale.svg');
+      margin-inline-start: var(--space-2xs);
+      padding-inline: var(--space-2xs);
+      border-radius: var(--radius-sm);
+      background: var(--partial-bg);
+      color: var(--partial-text);
+      font-size: 0.75rem;
+    }
+
+    .note {
+      display: inline-grid;
+      place-items: center;
+      margin-inline-start: var(--space-2xs);
+      padding: var(--space-2xs);
+      border: 0;
+      border-radius: var(--radius-pill);
+      background: none;
+      vertical-align: middle;
+      cursor: pointer;
+
+      &:hover {
+        background: color-mix(in srgb, currentColor 15%, transparent);
+      }
+    }
+
+    [popover] {
+      max-inline-size: min(22rem, 90vw);
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      white-space: normal;
+    }
+  }
+</style>

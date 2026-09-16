@@ -8,18 +8,32 @@ export const getStaticPaths = () =>
 
 const { brand } = Astro.props;
 const { roms } = getModel();
-const romNames = [...new Set(brand.devices.flatMap((device) => device.support.map((row) => row.rom.name)))];
+const romNames = [
+  ...new Set(brand.devices.flatMap((device) => device.support.map((row) => row.rom.name))),
+];
 ---
 
 <Base
-  title={`${brand.name} custom ROM support`}
+  title={`${brand.name} phones: custom ROM support`}
   description={`Which custom ROMs run on ${brand.name} phones${romNames.length ? `: ${romNames.join(', ')}` : ''}.`}
-  crumbs={[{ label: 'Devices', url: '/devices/' }, { label: brand.name, url: brand.url }]}
+  crumbs={[
+    { label: 'Devices', url: '/devices/' },
+    { label: brand.name, url: brand.url },
+  ]}
   edit={['data/brands.yml']}
 >
   <section>
     <h1>{brand.name}</h1>
-    {brand.website && <p><a href={brand.website}>{new URL(brand.website).hostname}</a></p>}
+    {brand.website && (
+      <p>
+        <a href={brand.website}>{new URL(brand.website).hostname}</a>
+      </p>
+    )}
   </section>
-  <DeviceTables id="brand-devices" label={`${brand.name} devices`} devices={brand.devices} roms={roms} />
+  <DeviceTables
+    id="brand-devices"
+    label={`${brand.name} devices`}
+    devices={brand.devices}
+    roms={roms}
+  />
 </Base>

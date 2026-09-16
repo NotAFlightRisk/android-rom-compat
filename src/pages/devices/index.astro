@@ -13,23 +13,33 @@ const { devices, roms, brands } = getModel();
 >
   <section>
     <h1>Devices</h1>
-    <nav aria-label="Brands">
+    <details>
+      <summary>Browse by brand</summary>
       <ul class="brands">
         {brands.map((brand) => (
-          <li><a href={brand.url}>{brand.name}</a> <span>{brand.devices.length}</span></li>
+          <li>
+            <a href={brand.url}>{brand.name}</a> <span>{brand.devices.length}</span>
+          </li>
         ))}
       </ul>
-    </nav>
+    </details>
   </section>
-  <DeviceTables id="devices" label="Devices" devices={devices} roms={roms} brands={brands} />
+  <DeviceTables
+    id="devices"
+    label="Devices"
+    devices={devices}
+    roms={roms}
+    brands={brands}
+    ended={false}
+  />
 </Base>
 
 <style>
   .brands {
     display: flex;
+    margin-block-start: var(--space-sm);
     flex-wrap: wrap;
     gap: var(--space-xs) var(--space-lg);
-    margin: 0;
     padding: 0;
     list-style: none;
 

@@ -4,14 +4,23 @@ import Icon from './Icon.astro';
 const { id = 'site-search', label = 'Site search', large = false } = Astro.props;
 ---
 
-<form role="search" aria-label={label} action="/devices/" method="get" data-site-search="/pagefind/pagefind.js" class:list={{ large }}>
-  <label class="visually-hidden" for={id}>Search phones and ROMs</label>
+<form
+  role="search"
+  aria-label={label}
+  action="/devices/"
+  method="get"
+  data-site-search="/pagefind/pagefind.js"
+  class:list={{ large }}
+>
+  <label class="visually-hidden" for={id}>
+    Search phones and ROMs
+  </label>
   <Icon name="search" />
   <input
     id={id}
     type="search"
     name="q"
-    placeholder="Phone, codename or model number"
+    placeholder="Phone, codename or model"
     autocomplete="off"
     spellcheck="false"
     role="combobox"
@@ -35,7 +44,7 @@ const { id = 'site-search', label = 'Site search', large = false } = Astro.props
     position: relative;
     display: flex;
     align-items: center;
-    min-inline-size: min(100%, 20rem);
+    inline-size: min(100%, 20rem);
 
     > :global(svg) {
       position: absolute;

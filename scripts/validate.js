@@ -4,9 +4,13 @@ import { fileURLToPath } from 'node:url';
 import { loadData } from '../src/lib/data/load.js';
 import { check, fileCount } from '../src/lib/data/check.js';
 
-const { values: args } = parseArgs({ options: { file: { type: 'string' }, data: { type: 'string' } } });
+const { values: args } = parseArgs({
+  options: { file: { type: 'string' }, data: { type: 'string' } },
+});
 const data = loadData(args.data ?? fileURLToPath(new URL('../data', import.meta.url)));
-const problems = check(data).filter((problem) => !args.file || resolve(problem.file) === resolve(args.file));
+const problems = check(data).filter(
+  (problem) => !args.file || resolve(problem.file) === resolve(args.file),
+);
 
 const byFile = Map.groupBy(problems, (problem) => relative(process.cwd(), problem.file));
 for (const [file, list] of byFile) {
@@ -23,5 +27,7 @@ if (problems.length) {
   console.log(`\n${plural(problems.length, 'problem')} in ${plural(byFile.size, 'file')}`);
   process.exitCode = 1;
 } else {
-  console.log(`✓ ${args.file ?? `All ${plural(fileCount(data), 'file')}`} look${args.file ? 's' : ''} good`);
+  console.log(
+    `✓ ${args.file ?? `All ${plural(fileCount(data), 'file')}`} look${args.file ? 's' : ''} good`,
+  );
 }

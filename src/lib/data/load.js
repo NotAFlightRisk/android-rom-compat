@@ -10,7 +10,10 @@ const yamlFiles = (dir) =>
         .sort()
     : [];
 
-const segments = (root, file) => relative(root, file).replace(/\.yml$/, '').split(sep);
+const segments = (root, file) =>
+  relative(root, file)
+    .replace(/\.yml$/, '')
+    .split(sep);
 
 /** Reads every data file, keeping YAML that won't parse as an error rather than a crash */
 export function loadData(root = 'data') {
@@ -22,7 +25,10 @@ export function loadData(root = 'data') {
       return value;
     } catch (error) {
       const detail = error.message.split('\n')[0].replace(/:$/, '');
-      const reasons = { ENOENT: 'is missing', TypeError: "has an anchor that points back at itself" };
+      const reasons = {
+        ENOENT: 'is missing',
+        TypeError: 'has an anchor that points back at itself',
+      };
       const reason = reasons[error.code ?? error.name] ?? `won't parse: ${detail}`;
       errors.push({ file, path: '', message: `this file ${reason}` });
     }
@@ -37,8 +43,16 @@ export function loadData(root = 'data') {
     brands: { file: join(root, 'brands.yml'), data: read(join(root, 'brands.yml')) ?? [] },
     features: { file: join(root, 'features.yml'), data: read(join(root, 'features.yml')) ?? [] },
     roms: records('roms', ([key, ...rest]) => ({ key, misplaced: rest.length > 0 })),
-    devices: records('devices', ([brand, key, ...rest]) => ({ brand, key, misplaced: !key || rest.length > 0 })),
-    support: records('support', ([codename, rom, ...rest]) => ({ codename, rom, misplaced: !rom || rest.length > 0 })),
+    devices: records('devices', ([brand, key, ...rest]) => ({
+      brand,
+      key,
+      misplaced: !key || rest.length > 0,
+    })),
+    support: records('support', ([codename, rom, ...rest]) => ({
+      codename,
+      rom,
+      misplaced: !rom || rest.length > 0,
+    })),
     errors,
   };
 }

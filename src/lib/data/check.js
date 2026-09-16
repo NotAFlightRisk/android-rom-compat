@@ -1,7 +1,8 @@
 import { readFileSync } from 'node:fs';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
-import { slugify, listOf } from '../slug.js';
+import { slugify, listOf } from '../text.js';
+import { explain, pathOf } from './explain.js';
 import { NEEDS_NOTE, allowedValues, cellValue } from './status.js';
 
 const ajv = addFormats(new Ajv({ allErrors: true, verbose: true }));
@@ -12,56 +13,9 @@ const schemas = Object.fromEntries(
   }),
 );
 
-const pathOf = (pointer, extra) =>
-  [...pointer.split('/').slice(1), ...(extra ? [extra] : [])]
-    .reduce((out, part) => {
-      if (/^\d+$/.test(part)) return `${out}[${part}]`;
-      return out ? `${out}.${part}` : part;
-    }, '');
-
-const strings = (value) => (Array.isArray(value) ? value.filter((item) => typeof item === 'string') : []);
+const strings = (value) =>
+  Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [];
 const isObject = (value) => typeof value === 'object' && value !== null && !Array.isArray(value);
-
-const typeNames = { boolean: 'true or false', integer: 'a whole number', number: 'a number' };
-
-function explain({ keyword, params, data, parentSchema }) {
-  const shown = JSON.stringify(data);
-  switch (keyword) {
-    case 'required':
-      return 'is missing';
-    case 'additionalProperties':
-      return `"${params.additionalProperty}" isn't a field we know, check the spelling`;
-    case 'enum':
-      return `${shown} isn't allowed. Use ${listOf(params.allowedValues)}`;
-    case 'type':
-      return `should be ${typeNames[params.type] ?? `a ${params.type}`}`;
-    case 'format':
-      return params.format === 'date'
-        ? `${shown} isn't a real date. Use YYYY-MM-DD, like 2026-08-01`
-        : `${shown} isn't a full link, like https://example.com`;
-    case 'pattern':
-      return parentSchema.format === 'uri'
-        ? `${shown} isn't a full link, like https://example.com`
-        : `${shown} can only use ${parentSchema.description}`;
-    case 'maxLength':
-      return `is ${data.length} characters, keep it to ${params.limit}`;
-    case 'minItems':
-      return `needs at least ${params.limit}`;
-    case 'uniqueItems':
-      return `has ${JSON.stringify(data[params.j])} twice`;
-    case 'anyOf':
-      return 'should be a status, or { status, note }';
-    default:
-      return `${shown} ${ajvMessage(keyword, params)}`;
-  }
-}
-
-const ajvMessage = (keyword, { limit }) =>
-  ({
-    minimum: `is too small, the lowest is ${limit}`,
-    maximum: `is too big, the highest is ${limit}`,
-    minLength: "can't be empty",
-  })[keyword] ?? `breaks the "${keyword}" rule`;
 
 /** Runs every rule over the loaded data and returns a flat list of problems */
 export function check(data) {
@@ -86,7 +40,8 @@ export function check(data) {
     const items = new Map();
     for (const item of Array.isArray(record.data) ? record.data : []) {
       if (typeof item?.key !== 'string') continue;
-      if (items.has(item.key)) report(record.file, item.key, `${label} "${item.key}" is listed twice`);
+      if (items.has(item.key))
+        report(record.file, item.key, `${label} "${item.key}" is listed twice`);
       items.set(item.key, item);
     }
     return items;
@@ -126,7 +81,9 @@ export function check(data) {
       report(file, 'codenames[0]', `"${codenames[0]}" should match the file name "${key}"`);
     }
     codenames.forEach((codename, i) => claim(codename, file, `codenames[${i}]`));
-    strings(fields.aliases).forEach((alias, i) => claim(alias.toLowerCase(), file, `aliases[${i}]`));
+    strings(fields.aliases).forEach((alias, i) =>
+      claim(alias.toLowerCase(), file, `aliases[${i}]`),
+    );
     strings(fields.hardware).forEach((item, i) => {
       if (!hardware.has(item)) {
         report(file, `hardware[${i}]`, `"${item}" isn't used by any feature in data/features.yml`);
@@ -150,9 +107,13 @@ export function check(data) {
     }
     if (!primaries.has(codename)) {
       const owner = names.get(codename);
-      report(file, '', owner
-        ? `"${codename}" is another name for ${owner}, move this into its folder`
-        : `there's no device with the codename "${codename}"`);
+      report(
+        file,
+        '',
+        owner
+          ? `"${codename}" is another name for ${owner}, move this into its folder`
+          : `there's no device with the codename "${codename}"`,
+      );
     }
     if (!roms.has(rom)) report(file, '', `there's no ROM called "${rom}" in data/roms/`);
     if (!validate('support', entry) && !isObject(entry.data)) continue;
@@ -180,5 +141,4 @@ export function check(data) {
   return problems;
 }
 
-export const fileCount = (data) =>
-  2 + data.roms.length + data.devices.length + data.support.length;
+export const fileCount = (data) => 2 + data.roms.length + data.devices.length + data.support.length;

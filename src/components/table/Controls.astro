@@ -4,7 +4,7 @@ import Icon from '../ui/Icon.astro';
 const { id, columns, brands, total } = Astro.props;
 ---
 
-<div class="controls" data-controls hidden>
+<div class="controls" data-controls>
   <label>
     <span class="visually-hidden">Filter rows</span>
     <input type="search" name="q" placeholder="Filter" autocomplete="off" />
@@ -14,23 +14,35 @@ const { id, columns, brands, total } = Astro.props;
       <span class="visually-hidden">Brand</span>
       <select name="brand">
         <option value="">All brands</option>
-        {brands.map((brand) => <option value={brand.key}>{brand.name}</option>)}
+        {brands.map((brand) => (
+          <option value={brand.key}>{brand.name}</option>
+        ))}
       </select>
     </label>
   )}
   <details>
-    <summary><Icon name="columns" /> Columns</summary>
+    <summary>
+      <Icon name="columns" /> Columns
+    </summary>
     <fieldset>
       <legend class="visually-hidden">Show columns</legend>
       {columns.map((column) => (
         <label>
-          <input type="checkbox" name="col" value={column.key} checked={!column.hidden} aria-controls={id} />
+          <input
+            type="checkbox"
+            name="col"
+            value={column.key}
+            checked={!column.hidden}
+            aria-controls={id}
+          />
           {column.label}
         </label>
       ))}
     </fieldset>
   </details>
-  <p role="status" data-count>{total} shown</p>
+  <p role="status" data-count>
+    {total} shown
+  </p>
 </div>
 
 <style>
@@ -39,10 +51,6 @@ const { id, columns, brands, total } = Astro.props;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-xs);
-
-    &[hidden] {
-      display: none;
-    }
   }
 
   input[type='search'] {

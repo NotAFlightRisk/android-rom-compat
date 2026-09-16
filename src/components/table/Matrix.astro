@@ -2,7 +2,16 @@
 import Cell from './Cell.astro';
 import Controls from './Controls.astro';
 
-const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlState = false } = Astro.props;
+const {
+  id,
+  caption,
+  rowLabel,
+  columns,
+  rows,
+  brands = [],
+  controls = true,
+  urlState = false,
+} = Astro.props;
 ---
 
 <div class="matrix" data-matrix data-url-state={urlState ? '' : undefined}>
@@ -12,7 +21,9 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
       <caption id={`${id}-caption`}>{caption}</caption>
       <thead>
         <tr>
-          <th scope="col" data-col="name">{rowLabel}</th>
+          <th scope="col" data-col="name">
+            {rowLabel}
+          </th>
           {columns.map((column) => (
             <th scope="col" data-col={column.key} hidden={column.hidden} title={column.description}>
               {column.label}
@@ -22,21 +33,33 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr data-search={row.search} data-brand={row.brand} data-stale={row.stale ? '' : undefined}>
-            <th scope="row" data-col="name" data-sort={row.head.label}>
+          <tr data-search={row.search} data-brand={row.brand}>
+            <th scope="row">
               <a href={row.head.href}>{row.head.label}</a>
               {row.head.code && <code>{row.head.code}</code>}
-              {row.head.links?.map((link) => <a class="minor" href={link.href}>{link.label}</a>)}
+              {row.head.links?.map((link) => (
+                <a class="minor" href={link.href}>
+                  {link.label}
+                </a>
+              ))}
             </th>
             {columns.map((column) => (
-              <Cell id={`${id}-${row.key}-${column.key}`} column={column} cell={row.cells[column.key]} />
+              <Cell
+                id={`${id}-${row.key}-${column.key}`}
+                column={column}
+                cell={row.cells[column.key]}
+              />
             ))}
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  {controls && <p class="empty" data-empty hidden>Nothing matches that. Try a codename or model number.</p>}
+  {controls && (
+    <p class="empty" data-empty hidden>
+      Nothing matches that. Try a codename or model number.
+    </p>
+  )}
 </div>
 
 <script>
@@ -51,9 +74,15 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
     min-inline-size: 0;
 
     .scroller {
-      overflow-x: auto;
+      max-block-size: 75dvh;
+      overflow: auto;
       border: 1px solid var(--border);
       border-radius: var(--radius);
+      overscroll-behavior-inline: contain;
+
+      &[data-more] {
+        mask-image: linear-gradient(to left, transparent, #000 2.5rem);
+      }
     }
 
     table {
@@ -75,7 +104,6 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
       padding: var(--space-xs) var(--space-sm);
       border-block-end: 1px solid var(--border);
       text-align: start;
-      vertical-align: middle;
       white-space: nowrap;
     }
 
@@ -84,10 +112,19 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
     }
 
     thead th {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 2;
       background: var(--surface-raised);
       color: var(--text-muted);
       font-weight: 600;
       vertical-align: bottom;
+
+      &:first-child {
+        inset-inline-start: 0;
+        z-index: 3;
+        border-inline-end: 1px solid var(--border);
+      }
     }
 
     th[scope='row'] {
@@ -96,8 +133,8 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
       z-index: 1;
       min-inline-size: 11rem;
       max-inline-size: 16rem;
-      background: var(--surface);
       border-inline-end: 1px solid var(--border);
+      background: var(--surface);
       font-weight: 500;
       white-space: normal;
 
@@ -111,14 +148,22 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
         line-height: 1.5rem;
       }
 
-      code {
-        color: var(--text-muted);
-        font-size: 0.8rem;
-      }
-
+      code,
       .minor {
         font-size: 0.8rem;
         font-weight: 400;
+      }
+
+      code {
+        color: var(--text-muted);
+      }
+    }
+
+    thead th {
+      padding-inline-end: calc(var(--space-sm) + 1.15em);
+
+      &:has(button) {
+        padding-inline-end: var(--space-sm);
       }
     }
 
@@ -134,8 +179,12 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
       cursor: pointer;
 
       &::after {
-        content: '↕';
-        opacity: 0.35;
+        content: '';
+        inline-size: 0.9em;
+        block-size: 0.9em;
+        background: currentColor;
+        mask: url('/icons/sort.svg') center / contain no-repeat;
+        opacity: 0.4;
       }
 
       &:hover {
@@ -143,123 +192,26 @@ const { id, caption, rowLabel, columns, rows, brands = [], controls = true, urlS
       }
     }
 
-    th[aria-sort='ascending'] button::after {
-      content: '↑';
+    [aria-sort] button::after {
       opacity: 1;
     }
 
-    th[aria-sort='descending'] button::after {
-      content: '↓';
-      opacity: 1;
+    [aria-sort='ascending'] button::after {
+      mask-image: url('/icons/sort-up.svg');
     }
 
-    thead th[data-col='name'] {
-      position: sticky;
-      inset-inline-start: 0;
-      z-index: 2;
-      border-inline-end: 1px solid var(--border);
+    [aria-sort='descending'] button::after {
+      mask-image: url('/icons/sort-down.svg');
     }
 
     tbody tr:hover > * {
       background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
     }
 
-    tr[data-stale] th[scope='row'] {
-      box-shadow: inset 3px 0 var(--partial-text);
-    }
-
     .empty {
       padding: var(--space-lg);
       color: var(--text-muted);
       text-align: center;
-    }
-
-    td[data-tone] {
-      &::before {
-        content: '';
-        display: inline-block;
-        inline-size: 1em;
-        block-size: 1em;
-        margin-inline-end: var(--space-2xs);
-        vertical-align: -0.15em;
-        background: currentColor;
-        mask: var(--icon) center / contain no-repeat;
-      }
-    }
-
-    td[data-tone='working'] {
-      --icon: url('/icons/working.svg');
-      background: var(--working-bg);
-      color: var(--working-text);
-    }
-
-    td[data-tone='partial'] {
-      --icon: url('/icons/partial.svg');
-      background: var(--partial-bg);
-      color: var(--partial-text);
-    }
-
-    td[data-tone='broken'] {
-      --icon: url('/icons/broken.svg');
-      background: var(--broken-bg);
-      color: var(--broken-text);
-    }
-
-    td[data-tone='unknown'] {
-      --icon: url('/icons/unknown.svg');
-      color: var(--unknown-text);
-    }
-
-    td[data-tone='n/a'] {
-      --icon: url('/icons/na.svg');
-      color: var(--text-muted);
-    }
-
-    .stale {
-      margin-inline-start: var(--space-2xs);
-      padding-inline: var(--space-2xs);
-      border-radius: var(--radius-sm);
-      background: var(--partial-bg);
-      color: var(--partial-text);
-      font-size: 0.75rem;
-
-      &::before {
-        content: '';
-        display: inline-block;
-        inline-size: 1em;
-        block-size: 1em;
-        margin-inline-end: 0.2em;
-        vertical-align: -0.15em;
-        background: currentColor;
-        mask: url('/icons/stale.svg') center / contain no-repeat;
-      }
-    }
-
-    .note {
-      display: inline-grid;
-      place-items: center;
-      margin-inline-start: var(--space-2xs);
-      padding: var(--space-2xs);
-      border: 0;
-      border-radius: var(--radius-pill);
-      background: none;
-      vertical-align: middle;
-      cursor: pointer;
-
-      &:hover {
-        background: color-mix(in srgb, currentColor 15%, transparent);
-      }
-    }
-
-    [popover] {
-      max-inline-size: min(22rem, 90vw);
-      padding: var(--space-sm) var(--space-md);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      color: var(--text);
-      box-shadow: var(--shadow);
-      white-space: normal;
     }
   }
 </style>

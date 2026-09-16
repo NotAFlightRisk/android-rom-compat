@@ -3,27 +3,41 @@ import Base from '../components/layout/Base.astro';
 import Search from '../components/ui/Search.astro';
 import { getModel } from '../lib/data/model.js';
 import { site } from '../lib/site.js';
-import { listOf } from '../lib/slug.js';
+import { listOf } from '../lib/text.js';
 
-const { devices, roms, support } = getModel();
+const { devices, roms } = getModel();
 const live = roms.filter((rom) => rom.status === 'active');
 const popular = devices
   .filter((device) => device.activeCount > 0)
   .toSorted((a, b) => b.activeCount - a.activeCount || (b.released ?? 0) - (a.released ?? 0))
   .slice(0, 10);
-const recent = support
-  .filter((row) => row.active)
-  .toSorted((a, b) => b.verified.localeCompare(a.verified))
+const lastChecked = (device) =>
+  device.support
+    .map((row) => row.verified)
+    .sort()
+    .at(-1);
+const recent = devices
+  .filter((device) => device.activeCount > 0)
+  .toSorted(
+    (a, b) => lastChecked(b).localeCompare(lastChecked(a)) || a.title.localeCompare(b.title),
+  )
   .slice(0, 8);
 ---
 
 <Base
+  headerSearch={false}
   title={site.name}
-  description={`Which custom ROMs run on your Android phone, what works, and whether the bootloader unlocks. Covers ${listOf(live.map((rom) => rom.name), 'and')}.`}
+  description={`Which custom ROMs run on your Android phone, what works, and whether the bootloader unlocks. Covers ${listOf(
+    live.map((rom) => rom.name),
+    'and',
+  )}.`}
 >
   <section class="intro">
     <h1>What can your phone run?</h1>
-    <p>Official ROM support for {devices.length} Android devices, what works on each, and whether the bootloader unlocks.</p>
+    <p>
+      Official ROM support for {devices.length} Android devices, what works on each, and whether the
+      bootloader unlocks.
+    </p>
     <Search id="home-search" label="Find your phone" large />
   </section>
 
@@ -44,11 +58,16 @@ const recent = support
     <section aria-labelledby="recent">
       <h2 id="recent">Recently checked</h2>
       <ol class="rows">
-        {recent.map((row) => (
+        {recent.map((device) => (
           <li>
-            <a href={row.device.url}>{row.device.title}</a>
-            <span>{row.rom.name}</span>
-            <time datetime={row.verified}>{row.verified}</time>
+            <a href={device.url}>{device.title}</a>
+            <span>
+              {device.support
+                .filter((row) => row.active)
+                .map((row) => row.rom.name)
+                .join(', ')}
+            </span>
+            <time datetime={lastChecked(device)}>{lastChecked(device)}</time>
           </li>
         ))}
       </ol>

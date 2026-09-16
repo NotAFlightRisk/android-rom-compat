@@ -41,7 +41,9 @@ export function enhanceSearch(form) {
     try {
       const search = await (await loadPagefind(form.dataset.siteSearch)).debouncedSearch(query);
       if (!search || run !== latest) return;
-      const results = await Promise.all(search.results.slice(0, LIMIT).map((result) => result.data()));
+      const results = await Promise.all(
+        search.results.slice(0, LIMIT).map((result) => result.data()),
+      );
       if (run !== latest) return;
       list.replaceChildren(...results.map(resultItem));
       status.textContent = results.length ? `${search.results.length} found` : 'Nothing found';

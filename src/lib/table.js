@@ -1,7 +1,5 @@
 import { labelOf, yesNo } from './labels.js';
 
-const toneRank = { working: 0, partial: 1, broken: 2, unknown: 3, 'n/a': 4 };
-
 export const featureColumns = (features) =>
   features.map(({ key, name, description }) => ({ key, label: name, description }));
 
@@ -18,7 +16,7 @@ export const romColumns = [
   { key: 'root', label: 'Root' },
 ];
 
-const text = (value) => ({ text: value, sort: value });
+const text = (value) => ({ text: value });
 
 export const romCells = (rom) => ({
   base: text(labelOf(rom.base)),
@@ -35,12 +33,12 @@ export const romCells = (rom) => ({
 
 /** Android version, last check and one status cell per feature, for a single support file */
 export const supportCells = (row, features) => ({
-  android: { text: row.android ?? '?', sort: row.android ?? 0 },
-  verified: { date: row.verified, stale: row.stale, sort: row.verified },
+  android: { text: row.android ?? '?', code: true },
+  verified: { date: row.verified, stale: row.stale },
   ...Object.fromEntries(
     features.map(({ key }) => {
       const cell = row.cells[key];
-      return [key, { tone: cell.tone, text: labelOf(cell.value), note: cell.note, sort: toneRank[cell.tone] }];
+      return [key, { tone: cell.tone, text: labelOf(cell.value), note: cell.note }];
     }),
   ),
 });
@@ -58,7 +56,10 @@ export const supportColumns = (features) => [
 export const deviceSearchText = (device) =>
   [device.title, ...device.codenames, ...(device.aliases ?? [])].join(' ').toLowerCase();
 
-export const splitByActive = (rows) => [rows.filter((row) => row.active), rows.filter((row) => !row.active)];
+export const splitByActive = (rows) => [
+  rows.filter((row) => row.active),
+  rows.filter((row) => !row.active),
+];
 
 export const deviceColumns = (roms) => [
   { key: 'brand', label: 'Brand' },
@@ -69,11 +70,11 @@ export const deviceColumns = (roms) => [
 
 const romStatus = (device, rom) => {
   const row = device.support.find((entry) => entry.rom === rom);
-  if (!row) return { tone: 'n/a', text: 'No', sort: 2 };
-  return row.active ? { tone: 'working', text: 'Official', sort: 0 } : { tone: 'unknown', text: 'Ended', sort: 1 };
+  if (!row) return { tone: 'n/a', text: 'No' };
+  return row.active ? { tone: 'working', text: 'Official' } : { tone: 'ended', text: 'Ended' };
 };
 
-const unlockTone = { yes: 'working', conditional: 'partial', no: 'broken' };
+const unlockTone = { yes: 'working', conditional: 'partial', no: 'broken', unknown: 'unknown' };
 
 export const deviceRows = (devices, roms) =>
   devices.map((device) => ({
@@ -83,8 +84,11 @@ export const deviceRows = (devices, roms) =>
     head: { label: device.title, href: device.url, code: device.codenames.join(', ') },
     cells: {
       brand: text(device.brand.name),
-      released: { text: device.released ?? '?', sort: device.released ?? 0 },
-      unlock: { tone: unlockTone[device.bootloader.unlock], text: labelOf(device.bootloader.unlock) },
+      released: { text: device.released ?? '?' },
+      unlock: {
+        tone: unlockTone[device.bootloader.unlock],
+        text: labelOf(device.bootloader.unlock),
+      },
       ...Object.fromEntries(roms.map((rom) => [rom.key, romStatus(device, rom)])),
     },
   }));
