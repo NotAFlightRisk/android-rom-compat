@@ -3,7 +3,6 @@
 
   --surface: #ffffff;
   --surface-raised: #f2f6f7;
-  --surface-sunken: #e8eef0;
   --border: #d5dfe2;
   --border-strong: #b3c2c6;
   --text: #121a1d;
@@ -44,14 +43,12 @@
   --shadow: 0 0.5rem 1.5rem -0.5rem rgb(18 26 29 / 0.2);
   --measure: 68ch;
   --page: 80rem;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --surface: #0e1416;
     --surface-raised: #151e21;
-    --surface-sunken: #1b262a;
     --border: #28353a;
     --border-strong: #3c4d53;
     --text: #e4eef0;
