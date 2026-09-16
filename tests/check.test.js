@@ -17,6 +17,7 @@ test('clean data has no problems', () => {
 
 test('broken YAML is reported instead of crashing', () => {
   expectProblem(/^roms\/broken\.yml this file won't parse/);
+  expectProblem(/^devices\/acme\/loop\.yml this file has an anchor that points back at itself/);
 });
 
 test('schema errors read like English', () => {
@@ -35,6 +36,7 @@ test('files must point at a real brand, device and ROM', () => {
   expectProblem(/nope\/acme\.yml brand folder "nope" isn't in/);
   expectProblem(/ghost\/tidyos\.yml there's no device with the codename "ghost"/);
   expectProblem(/rocket\/missingos\.yml there's no ROM called "missingos"/);
+  expectProblem(/^roms\/nested\/deep\.yml ROMs live at data\/roms/);
 });
 
 test('feature values are checked against features.yml', () => {

@@ -1,8 +1,7 @@
 const LIMIT = 8;
 let pagefind;
 
-const loadPagefind = async () => {
-  const url = '/pagefind/pagefind.js';
+const loadPagefind = async (url) => {
   pagefind ??= import(/* @vite-ignore */ url).then(async (module) => {
     await module.init();
     return module;
@@ -25,18 +24,28 @@ export function enhanceSearch(form) {
   const panel = form.querySelector('.results');
   const status = panel.querySelector('[role="status"]');
   const list = panel.querySelector('ul');
-  const close = () => (panel.hidden = true);
+  let latest = 0;
+  const show = (open) => {
+    panel.hidden = !open;
+    input.setAttribute('aria-expanded', String(open));
+  };
+  const close = () => {
+    latest++;
+    show(false);
+  };
 
   input.addEventListener('input', async () => {
     const query = input.value.trim();
-    if (!query) return close();
+    const run = ++latest;
+    if (!query) return show(false);
     try {
-      const search = await (await loadPagefind()).debouncedSearch(query);
-      if (!search || input.value.trim() !== query) return;
+      const search = await (await loadPagefind(form.dataset.siteSearch)).debouncedSearch(query);
+      if (!search || run !== latest) return;
       const results = await Promise.all(search.results.slice(0, LIMIT).map((result) => result.data()));
+      if (run !== latest) return;
       list.replaceChildren(...results.map(resultItem));
       status.textContent = results.length ? `${search.results.length} found` : 'Nothing found';
-      panel.hidden = false;
+      show(true);
     } catch {
       close();
     }

@@ -17,10 +17,13 @@ export function loadData(root = 'data') {
   const errors = [];
   const read = (file) => {
     try {
-      return parse(readFileSync(file, 'utf8'));
+      const value = parse(readFileSync(file, 'utf8'));
+      JSON.stringify(value);
+      return value;
     } catch (error) {
       const detail = error.message.split('\n')[0].replace(/:$/, '');
-      const reason = error.code === 'ENOENT' ? 'is missing' : `won't parse: ${detail}`;
+      const reasons = { ENOENT: 'is missing', TypeError: "has an anchor that points back at itself" };
+      const reason = reasons[error.code ?? error.name] ?? `won't parse: ${detail}`;
       errors.push({ file, path: '', message: `this file ${reason}` });
     }
   };
@@ -33,7 +36,7 @@ export function loadData(root = 'data') {
     root,
     brands: { file: join(root, 'brands.yml'), data: read(join(root, 'brands.yml')) ?? [] },
     features: { file: join(root, 'features.yml'), data: read(join(root, 'features.yml')) ?? [] },
-    roms: records('roms', ([key]) => ({ key })),
+    roms: records('roms', ([key, ...rest]) => ({ key, misplaced: rest.length > 0 })),
     devices: records('devices', ([brand, key, ...rest]) => ({ brand, key, misplaced: !key || rest.length > 0 })),
     support: records('support', ([codename, rom, ...rest]) => ({ codename, rom, misplaced: !rom || rest.length > 0 })),
     errors,

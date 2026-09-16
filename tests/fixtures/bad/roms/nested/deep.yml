@@ -1,0 +1,12 @@
+name: TidyOS
+description: A ROM that only exists in tests.
+status: active
+base: aosp
+focus: [privacy]
+google: none
+app_store: fdroid
+org: community
+security: { relockable_bootloader: false, verified_boot: true, monthly_patches: true }
+install: [recovery]
+root: false
+links: { website: https://example.com }

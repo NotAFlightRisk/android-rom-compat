@@ -81,24 +81,26 @@ export function check(data) {
     return false;
   };
 
-  const keysOf = (schema, record, label) => {
-    const keys = new Set();
-    if (!validate(schema, record)) return keys;
-    for (const { key } of record.data) {
-      if (keys.has(key)) report(record.file, key, `${label} "${key}" is listed twice`);
-      keys.add(key);
+  const keyed = (schema, record, label) => {
+    validate(schema, record);
+    const items = new Map();
+    for (const item of Array.isArray(record.data) ? record.data : []) {
+      if (typeof item?.key !== 'string') continue;
+      if (items.has(item.key)) report(record.file, item.key, `${label} "${item.key}" is listed twice`);
+      items.set(item.key, item);
     }
-    return keys;
+    return items;
   };
 
-  const brands = keysOf('brands', data.brands, 'brand');
-  const features = keysOf('features', data.features, 'feature').size
-    ? new Map(data.features.data.map((feature) => [feature.key, feature]))
-    : new Map();
+  const brands = keyed('brands', data.brands, 'brand');
+  const features = keyed('features', data.features, 'feature');
   const hardware = new Set([...features.values()].map((feature) => feature.requires));
 
-  for (const rom of data.roms) validate('rom', rom);
-  const roms = new Set(data.roms.map((rom) => rom.key));
+  for (const rom of data.roms) {
+    if (rom.misplaced) report(rom.file, '', 'ROMs live at data/roms/<rom>.yml');
+    else validate('rom', rom);
+  }
+  const roms = new Set(data.roms.filter((rom) => !rom.misplaced).map((rom) => rom.key));
 
   const names = new Map();
   const slugs = new Map();

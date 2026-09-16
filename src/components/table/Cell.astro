@@ -9,7 +9,7 @@ const { id, column, cell } = Astro.props;
   {cell.stale && <span class="stale">stale</span>}
   {cell.note && (
     <>
-      <button type="button" class="note" popovertarget={`${id}-note`} aria-label={`Note on ${column.label}`}>
+      <button type="button" class="note" popovertarget={`${id}-note`} aria-label={`Note on ${column.label}`} aria-describedby={`${id}-note`}>
         <Icon name="note" />
       </button>
       <span popover id={`${id}-note`}><strong>{column.label}:</strong> {cell.note}</span>

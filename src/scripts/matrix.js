@@ -22,7 +22,8 @@ export function enhanceMatrix(root) {
   const empty = root.querySelector('[data-empty]');
   const useUrl = root.hasAttribute('data-url-state');
   const params = new URLSearchParams(useUrl ? location.search : '');
-  let sort = params.get('sort') ?? '';
+  const sortable = headers.map((header) => header.dataset.col);
+  let sort = sortable.includes((params.get('sort') ?? '').replace(/^-/, '')) ? params.get('sort') : '';
 
   filter.value = params.get('q') ?? '';
   if (brand) brand.value = params.get('brand') ?? '';

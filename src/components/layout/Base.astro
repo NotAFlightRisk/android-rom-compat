@@ -8,7 +8,7 @@ import Footer from './Footer.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import { site } from '../../lib/site.js';
 
-const { title, description, crumbs = [], jsonLd = [], edit = [], ogType = 'website' } = Astro.props;
+const { title, description, crumbs = [], jsonLd = [], edit = [], ogType = 'website', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
 const trail = [{ label: 'Home', url: '/' }, ...crumbs];
@@ -35,7 +35,7 @@ const image = new URL('/og.png', Astro.site).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="preload" href={roboto} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />

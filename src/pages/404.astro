@@ -3,11 +3,11 @@ import Base from '../components/layout/Base.astro';
 import Search from '../components/ui/Search.astro';
 ---
 
-<Base title="Page not found" description="That page doesn't exist. Search for a phone or ROM instead.">
+<Base title="Page not found" description="That page doesn't exist. Search for a phone or ROM instead." noindex>
   <section class="lost">
     <h1>Page not found</h1>
     <p>That page doesn't exist, or it moved. Try searching for the phone or ROM.</p>
-    <Search id="lost-search" large />
+    <Search id="lost-search" label="Find a phone or ROM" large />
     <p><a href="/devices/">Browse all devices</a> or <a href="/roms/">compare ROMs</a>.</p>
   </section>
 </Base>

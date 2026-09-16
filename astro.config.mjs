@@ -20,6 +20,7 @@ export default defineConfig({
   site: site.url,
   trailingSlash: 'always',
   redirects: codenameRedirects,
+  vite: { build: { assetsInlineLimit: 0 } },
   integrations: [
     sitemap({
       serialize: (item) => {
