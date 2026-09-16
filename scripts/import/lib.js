@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { parseArgs } from 'node:util';
-import { Document, parse, visit } from 'yaml';
+import { Document, isScalar, parse, visit } from 'yaml';
 import { slugify } from '../../src/lib/text.js';
 
 export const DATA = process.env.DATA_DIR ?? new URL('../../data/', import.meta.url).pathname;
@@ -59,7 +59,7 @@ const read = (file) => parse(readFileSync(file, 'utf8'));
 
 function save(file, value, schema) {
   const doc = new Document(value);
-  visit(doc, { Seq: (_, node) => void (node.flow = true) });
+  visit(doc, { Seq: (_, node) => void (node.flow = node.items.every(isScalar)) });
   const depth = relative(DATA, file).split('/').length;
   const hint = `# yaml-language-server: $schema=${'../'.repeat(depth)}schema/${schema}.json\n`;
   mkdirSync(dirname(file), { recursive: true });
