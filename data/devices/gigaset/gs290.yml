@@ -3,6 +3,6 @@ name: GS290
 codenames: [gs290]
 released: 2020
 soc: Media Tek Helio P23 (MT6763V)
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

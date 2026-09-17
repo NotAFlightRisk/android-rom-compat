@@ -1,9 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: Jetson TX2 [Android TV]
-codenames: [quill]
-aliases: ["Jetson TX2 NX [Android TV]"]
-released: 2017
-soc: NVIDIA Tegra X2 (T186)
-bootloader:
-  unlock: unknown
-  relock: unknown

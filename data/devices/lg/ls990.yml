@@ -3,6 +3,6 @@ name: G3 (Sprint)
 codenames: [ls990]
 released: 2014
 soc: Qualcomm MSM8974AC Snapdragon 801
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

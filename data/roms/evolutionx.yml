@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: Evolution X
+description: LineageOS-based ROM that copies the Pixel look and feel, with Google apps built in and loads of customisation on top.
+status: active
+base: lineageos
+focus: [customisation, near-stock]
+google: bundled
+app_store: play-store
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  patches: best-effort
+install: [recovery]
+root: false
+links:
+  website: https://evolution-x.org
+  source: https://github.com/Evolution-X
+  docs: https://wiki.evolution-x.org
+  community: https://t.me/EvolutionX
+features:
+  push: { status: working, inferred: true, note: 'Google apps come built in, except on the vanilla builds', source: https://wiki.evolution-x.org/installing-evolution-x }
+  integrity: { status: basic, inferred: true, note: Ships a Play Integrity Fix setting that aims for basic integrity, source: https://github.com/Evolution-X/packages_apps_Evolver/blob/cnb/res/values/evolution_strings.xml }
+  wallet: { status: broken, inferred: true, note: Tap-to-pay needs a stronger Play Integrity verdict than the basic one it aims for, source: https://github.com/Evolution-X/packages_apps_Evolver/blob/cnb/res/values/evolution_strings.xml }

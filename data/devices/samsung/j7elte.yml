@@ -4,6 +4,6 @@ codenames: [j7elte]
 aliases: [SM-J700F, SM-J700F/DS, SM-J700H, SM-J700M]
 released: 2015
 soc: Samsung Exynos 7580
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

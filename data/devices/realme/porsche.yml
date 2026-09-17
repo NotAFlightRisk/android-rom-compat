@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: GT 2
+codenames: [porsche]
+bootloader:
+  unlock: unknown

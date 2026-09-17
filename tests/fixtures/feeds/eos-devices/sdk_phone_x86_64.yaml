@@ -1,0 +1,9 @@
+codename: sdk_phone_x86_64
+maintainers:
+  - /e/OS Build Team
+name: /e/OS emulator
+release: 2026
+type: emulator
+vendor: /e/OS
+compatibility:
+  release_type: test

@@ -3,6 +3,6 @@ name: Nexus 5X
 codenames: [bullhead]
 released: 2015
 soc: Qualcomm MSM8992 Snapdragon 808
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

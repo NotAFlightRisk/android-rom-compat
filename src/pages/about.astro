@@ -2,7 +2,18 @@
 import Base from '../components/layout/Base.astro';
 import { site } from '../lib/site.js';
 
-const endpoints = ['devices', 'roms', 'support', 'features'];
+const endpoints = [
+  {
+    name: 'devices',
+    hint: 'every device, with codenames, model numbers, bootloader and stock support',
+  },
+  { name: 'roms', hint: 'the ROMs, how they compare, and what they say works on every device' },
+  {
+    name: 'support',
+    hint: 'which ROM supports which device, its latest build, and what works, and where each answer came from',
+  },
+  { name: 'features', hint: 'the features we track' },
+];
 ---
 
 <Base
@@ -13,13 +24,19 @@ const endpoints = ['devices', 'roms', 'support', 'features'];
   <section>
     <h1>About</h1>
     <p>
-      A list of which Android ROMs officially support which phones, and what works on each. It only
-      covers official builds, and would rather leave a gap than guess, so anything nobody has
-      checked shows as unknown.
+      A list of which Android ROMs support which phones, and what works on each. It covers official
+      builds only, and would rather leave a gap than guess, so anything nobody has checked shows as
+      unknown.
     </p>
     <p>
-      Device lists were seeded from each ROM's own published list, and every entry links back to its
-      source. Things change fast, so anything not checked for a year is marked stale.
+      Device lists and build dates come from each ROM's own published list, refreshed every week.
+      What works comes from reports, a ROM's docs for that device, or what the ROM says holds on
+      every device, and each cell says which. Anything worked out rather than stated outright is
+      marked inferred.
+    </p>
+    <p>
+      A report goes stale once the ROM moves to a newer Android than it was checked on, or when
+      it's over a year old.
     </p>
   </section>
 
@@ -36,13 +53,15 @@ const endpoints = ['devices', 'roms', 'support', 'features'];
     <h2 id="api">API</h2>
     <p>
       The whole dataset is available as static JSON, rebuilt on every change. No key, no rate limit.
+      Features missing from a support row are unknown.
     </p>
     <ul>
-      {endpoints.map((name) => (
+      {endpoints.map(({ name, hint }) => (
         <li>
           <a href={`/api/${name}.json`}>
             <code>/api/{name}.json</code>
-          </a>
+          </a>{' '}
+          - {hint}
         </li>
       ))}
     </ul>

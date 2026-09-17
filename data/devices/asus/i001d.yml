@@ -3,6 +3,6 @@ name: ROG Phone 2 (ZS660KL)
 codenames: [i001d]
 released: 2019
 soc: Qualcomm SM8150-AC Snapdragon 855+
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

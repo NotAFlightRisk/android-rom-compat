@@ -3,4 +3,3 @@ name: Redmi 12 4G
 codenames: [fire]
 bootloader:
   unlock: unknown
-  relock: unknown

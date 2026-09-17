@@ -10,7 +10,7 @@ org: non-profit
 security:
   relockable_bootloader: false
   verified_boot: false
-  monthly_patches: false
+  patches: monthly
 install: [web-installer, recovery]
 root: false
 links:
@@ -18,3 +18,8 @@ links:
   source: https://gitlab.e.foundation/e
   docs: https://doc.e.foundation
   community: https://community.e.foundation
+features:
+  wallet: { status: broken, inferred: true, note: Payment apps gated on Play Integrity keep failing, source: https://doc.e.foundation/os/learn/bootloader-relocking/#what-relocking-does-not-fix }
+  push: { status: working, note: Through microG, source: https://doc.e.foundation/os/apps/microg/ }
+  android_auto: { status: working, note: Install it from App Lounge and connect over USB, source: https://doc.e.foundation/os/how-to/android-auto/ }
+  integrity: { status: basic, note: Needs a system-wide Google sign-in through App Lounge, source: https://doc.e.foundation/os/apps/microg/#passing-play-integrity-basic }

@@ -4,6 +4,6 @@ codenames: [guacamole]
 aliases: [7 Pro (T-Mobile), GM1910, GM1911, GM1913, GM1917, GM1915]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

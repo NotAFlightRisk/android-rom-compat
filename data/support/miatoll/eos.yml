@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 15
-maintainer: Core.entin
-verified: 2026-09-16
-source: https://doc.e.foundation/devices/miatoll/
-install: https://doc.e.foundation/devices/miatoll/install/

@@ -1,10 +1,11 @@
 {
+  "$id": "features.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Features",
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["key", "name", "description"],
+    "required": ["key", "group", "name", "description"],
     "additionalProperties": false,
     "properties": {
       "key": {
@@ -12,6 +13,7 @@
         "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
         "description": "lowercase letters, numbers and underscores"
       },
+      "group": { "enum": ["calls", "google", "hardware", "media"] },
       "name": { "type": "string", "minLength": 1 },
       "description": { "type": "string", "minLength": 1 },
       "requires": {

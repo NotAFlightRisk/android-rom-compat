@@ -4,6 +4,6 @@ codenames: [tomato]
 aliases: [Yureka Plus, AO5510, YU5510]
 released: 2014
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

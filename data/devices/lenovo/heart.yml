@@ -4,6 +4,6 @@ codenames: [heart]
 aliases: [L78032]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

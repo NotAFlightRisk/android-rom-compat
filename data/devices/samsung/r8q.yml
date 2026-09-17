@@ -4,6 +4,6 @@ codenames: [r8q]
 aliases: [Galaxy S20 FE 5G, SM-G780G, SM-G780G/DS, SM-G781B, SM-G781B/DS, SM-G781N, SM-G7810]
 released: 2021
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

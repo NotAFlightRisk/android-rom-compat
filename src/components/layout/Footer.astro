@@ -2,7 +2,7 @@
 import Icon from '../ui/Icon.astro';
 import { site, editUrl } from '../../lib/site.js';
 
-const { edit } = Astro.props;
+const { edit, sources } = Astro.props;
 ---
 
 <footer>
@@ -25,6 +25,17 @@ const { edit } = Astro.props;
         ))}
       </ul>
     </nav>
+  )}
+  {sources.length > 0 && (
+    <p>
+      Data from{' '}
+      {sources.map((source, i) => (
+        <>
+          {i > 0 && ', '}
+          <a href={source.href}>{source.label}</a>
+        </>
+      ))}
+    </p>
   )}
   <p>
     Code is <a href={`${site.repo}/blob/main/LICENSE`}>MIT</a>, data is{' '}

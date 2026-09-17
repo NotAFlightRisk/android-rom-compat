@@ -3,4 +3,3 @@ name: Redmi Note 10
 codenames: [mojito]
 bootloader:
   unlock: unknown
-  relock: unknown

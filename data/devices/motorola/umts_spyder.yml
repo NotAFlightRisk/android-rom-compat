@@ -4,6 +4,6 @@ codenames: [umts_spyder]
 aliases: [DROID RAZR MAXX (GSM), XT910]
 released: 2011
 soc: TI OMAP4430
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

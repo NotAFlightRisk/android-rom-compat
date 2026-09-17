@@ -4,6 +4,6 @@ codenames: [rhannah]
 aliases: [XT1924-1, XT1924-2, XT1924-4, XT1924-5]
 released: 2018
 soc: Qualcomm MSM8917 Snapdragon 425
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

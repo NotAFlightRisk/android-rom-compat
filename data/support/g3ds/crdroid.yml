@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 10
-verified: 2026-09-16
-source: https://crdroid.net/downloads#g3ds
-install: https://forum.xda-developers.com/lg-g3/development/official-romcrdroid-t4069373

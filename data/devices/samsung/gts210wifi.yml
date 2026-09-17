@@ -4,6 +4,7 @@ codenames: [gts210wifi]
 aliases: [SM-T810]
 released: 2015
 soc: Samsung Exynos 5433
+type: tablet
+hardware: [fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

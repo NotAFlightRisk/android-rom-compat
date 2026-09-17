@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 11S
+codenames: [fleur]
+aliases: [Poco M4 Pro 4G]
+bootloader:
+  unlock: unknown

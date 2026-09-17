@@ -1,0 +1,50 @@
+name: 🔄 Import
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    name: 🔄 Weekly import
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app
+        with:
+          client-id: ${{ secrets.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run import
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: npm run validate
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ steps.app.outputs.token }}
+          sign-commits: true
+          branch: import/weekly
+          add-paths: |
+            data/brands.yml
+            data/upstream/**
+            data/devices/**
+          commit-message: 'chore(data): weekly import'
+          title: 'chore(data): weekly import'
+          body-path: import-summary.md
+          labels: data

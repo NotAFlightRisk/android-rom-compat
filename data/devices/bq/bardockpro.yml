@@ -3,6 +3,6 @@ name: Aquaris X Pro
 codenames: [bardockpro]
 released: 2017
 soc: Qualcomm MSM8953 Pro Snapdragon 626
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

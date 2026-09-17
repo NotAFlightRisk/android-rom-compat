@@ -3,6 +3,7 @@ name: G Pad X (T-Mobile)
 codenames: [v521]
 released: 2016
 soc: Qualcomm MSM8952 Snapdragon 617
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

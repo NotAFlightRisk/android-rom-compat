@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: Zero 2 (S905D3, eMMC Only) [Tablet]
-codenames: [radxa02_tab]
-released: 2022
-soc: Amlogic S905D3
-bootloader:
-  unlock: unknown
-  relock: unknown

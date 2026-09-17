@@ -4,4 +4,3 @@ codenames: [chime]
 aliases: [Redmi 9T]
 bootloader:
   unlock: unknown
-  relock: unknown

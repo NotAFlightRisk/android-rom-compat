@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 10
+slug: redmi-note-10-sunny
+codenames: [sunny]
+bootloader:
+  unlock: unknown

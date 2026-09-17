@@ -6,7 +6,15 @@ focus: [privacy]
 google: none
 app_store: fdroid
 org: community
-security: { relockable_bootloader: false, verified_boot: true, monthly_patches: true }
+security: { relockable_bootloader: false, verified_boot: true, patches: monthly }
 install: [recovery]
 root: false
 links: { website: https://example.com }
+features:
+  push: { status: partial, note: Bring your own, source: https://example.com/push }
+  widevine: { status: none, inferred: true, source: https://example.com/drm }
+variants:
+  - key: plus
+    name: TidyOS Plus
+    features:
+      push: { status: working, source: https://example.com/plus }

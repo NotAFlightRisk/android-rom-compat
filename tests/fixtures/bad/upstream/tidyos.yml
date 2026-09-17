@@ -1,0 +1,9 @@
+imported: 2026-01-10
+devices:
+  comet:
+    status: active
+    latest: { date: 2999-01-01 }
+    source: https://example.com/comet
+  nobody:
+    status: active
+    source: https://example.com/nobody

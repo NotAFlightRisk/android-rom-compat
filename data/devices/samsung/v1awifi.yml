@@ -4,6 +4,6 @@ codenames: [v1awifi]
 aliases: [SM-P900]
 released: 2014
 soc: Samsung Exynos 5420
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

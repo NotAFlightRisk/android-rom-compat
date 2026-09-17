@@ -1,8 +1,2 @@
-official: true
-status: active
-verified: 2026-02-30
-source: example.com
 features:
-  nfc: partial
-  widevine: L2
-  jetpack: working
+  volte: working

@@ -1,0 +1,42 @@
+[
+  {
+    "codename": "PL2",
+    "branches": [
+      "udc"
+    ]
+  },
+  {
+    "codename": "Pong",
+    "branches": [
+      "bka",
+      "bka-vanilla",
+      "vic",
+      "udc",
+      "udc-vanilla"
+    ]
+  },
+  {
+    "codename": "Spacewar",
+    "branches": [
+      "bka",
+      "bka-vanilla"
+    ]
+  },
+  {
+    "codename": "gta4xlwifi",
+    "branches": [
+      "bka",
+      "bka-vanilla",
+      "vic"
+    ]
+  },
+  {
+    "codename": "marble",
+    "branches": [
+      "cnb",
+      "bka",
+      "vic",
+      "udc"
+    ]
+  }
+]

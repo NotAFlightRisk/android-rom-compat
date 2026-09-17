@@ -4,6 +4,6 @@ codenames: [zeroltexx]
 aliases: [SM-G925F]
 released: 2015
 soc: Samsung Exynos 7420
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

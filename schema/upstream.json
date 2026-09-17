@@ -1,0 +1,80 @@
+{
+  "$id": "upstream.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Upstream",
+  "type": "object",
+  "required": ["imported", "devices"],
+  "additionalProperties": false,
+  "properties": {
+    "imported": { "type": "string", "format": "date" },
+    "devices": {
+      "type": "object",
+      "propertyNames": { "$ref": "device.json#/$defs/codename" },
+      "additionalProperties": { "type": "object", "$ref": "#/$defs/row", "required": ["status", "source"] }
+    }
+  },
+  "$defs": {
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": { "enum": ["active", "discontinued"] },
+        "channel": { "enum": ["stable", "community", "beta"] },
+        "android": { "type": "number", "minimum": 1, "maximum": 99 },
+        "maintainer": { "type": "string", "minLength": 1 },
+        "relock": {
+          "anyOf": [
+            { "enum": ["yes", "no", "unknown"] },
+            {
+              "type": "object",
+              "required": ["status", "note"],
+              "additionalProperties": false,
+              "properties": {
+                "status": { "enum": ["yes", "no", "unknown"] },
+                "note": { "type": "string", "minLength": 1 }
+              }
+            }
+          ]
+        },
+        "firmware": { "type": "string", "minLength": 1 },
+        "latest": {
+          "type": "object",
+          "required": ["date"],
+          "additionalProperties": false,
+          "properties": {
+            "version": { "type": "string", "minLength": 1 },
+            "date": { "type": "string", "format": "date" },
+            "patch": { "type": "string", "format": "date" }
+          }
+        },
+        "source": { "$ref": "#/$defs/link" },
+        "install": { "$ref": "#/$defs/link" },
+        "features": { "$ref": "#/$defs/features" }
+      }
+    },
+    "features": { "type": "object", "additionalProperties": { "$ref": "#/$defs/cell" } },
+    "cell": {
+      "anyOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "required": ["status"],
+          "additionalProperties": false,
+          "properties": {
+            "status": { "type": "string", "minLength": 1 },
+            "note": { "type": "string", "minLength": 1 },
+            "inferred": { "type": "boolean" },
+            "variant": { "$ref": "brands.json#/$defs/key" },
+            "android": { "type": "number", "minimum": 1, "maximum": 99 },
+            "build": { "type": "string", "minLength": 1 },
+            "checked": { "type": "string", "format": "date" },
+            "source": {
+              "anyOf": [{ "$ref": "#/$defs/link" }, { "const": "tested" }]
+            }
+          }
+        }
+      ]
+    },
+    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+  }
+}

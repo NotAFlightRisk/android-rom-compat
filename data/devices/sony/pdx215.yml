@@ -4,6 +4,6 @@ codenames: [pdx215]
 aliases: [XQ-BC72, XQ-BC62, XQ-BC52, XQ-BC42]
 released: 2021
 soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: Xperia Z3+
 codenames: [ivy]
 released: 2015
 soc: Qualcomm MSM8994 Snapdragon 810
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

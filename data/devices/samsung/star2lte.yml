@@ -4,6 +4,6 @@ codenames: [star2lte]
 aliases: [SM-G965F, SM-G965F/DS, SM-G965N]
 released: 2018
 soc: Samsung Exynos 9810
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

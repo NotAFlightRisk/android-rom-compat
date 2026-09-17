@@ -4,6 +4,6 @@ codenames: [hotdog]
 aliases: [HD1910, HD1911, HD1913, HD1917]
 released: 2019
 soc: Qualcomm SM8150-AC Snapdragon 855+
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,7 @@ codenames: [gtesqltespr]
 aliases: [SM-T377P]
 released: 2016
 soc: Qualcomm MSM8916 Snapdragon 410
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

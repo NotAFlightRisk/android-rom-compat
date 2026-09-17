@@ -3,6 +3,6 @@ name: Galaxy Nexus GSM
 codenames: [maguro]
 released: 2011
 soc: TI OMAP4460
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

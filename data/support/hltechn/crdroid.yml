@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 11
-maintainer: Santiago García Mantiñán (manty)
-verified: 2026-09-16
-source: https://crdroid.net/downloads#hltechn
-install: https://forum.xda-developers.com/t/crdroid-7-hlte.4385323

@@ -4,6 +4,6 @@ codenames: [denver]
 aliases: [XT2131-1]
 released: 2021
 soc: Qualcomm SM4350 Snapdragon 480
+hardware: [5g, cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

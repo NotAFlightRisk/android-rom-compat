@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto G57 Power
+codenames: [mumba]
+aliases: [G100s CN]
+bootloader:
+  unlock: unknown

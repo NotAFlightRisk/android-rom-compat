@@ -1,6 +1,12 @@
 import { getModel } from '../../lib/data/model.js';
 
 const strip = ({ file, support, url, ...rest }) => rest;
+const known = (cells) =>
+  Object.fromEntries(
+    Object.entries(cells)
+      .filter(([, cell]) => cell.origin !== 'none')
+      .map(([key, { tone, ...cell }]) => [key, cell]),
+  );
 
 const dumps = {
   devices: ({ devices }) =>
@@ -10,10 +16,17 @@ const dumps = {
     })),
   roms: ({ roms }) => roms.map(strip),
   support: ({ support }) =>
-    support.map(({ file, device, rom, cells, active, ...row }) => ({
+    support.map(({ file, device, rom, cells, variants, active, ...row }) => ({
       device: device.key,
       rom: rom.key,
       ...row,
+      variants: variants.map(({ key, status, latest, source }) => ({
+        key,
+        status,
+        latest,
+        source,
+      })),
+      cells: known(cells),
     })),
   features: ({ features }) => features,
 };

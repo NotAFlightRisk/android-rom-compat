@@ -4,6 +4,6 @@ codenames: [monet]
 aliases: [M2002J9G]
 released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

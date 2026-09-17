@@ -1,0 +1,13 @@
+before_install: {instructions: 'needs_specific_android_fw', lineage_version: 22.2, ships_fw: true, version: '10'}
+codename: DRG
+current_branch: 22.2
+is_unlockable: false
+maintainers: []
+models: [TA-1083]
+name: '6.1 Plus'
+network: [2G GSM, 3G UMTS, 4G LTE]
+peripherals: [3.5mm jack, Accelerometer, Compass, Fingerprint reader, GPS, Gyroscope, Proximity sensor]
+release: 2018-08-30
+soc: Qualcomm SDM636 Snapdragon 636
+type: phone
+vendor: Nokia

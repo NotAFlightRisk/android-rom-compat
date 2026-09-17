@@ -3,4 +3,3 @@ name: Moto G51 5G
 codenames: [cypfq]
 bootloader:
   unlock: unknown
-  relock: unknown

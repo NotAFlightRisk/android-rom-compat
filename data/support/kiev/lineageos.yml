@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: basamaryan, SyberHexen, Vivekachooz
-verified: 2026-09-16
-source: https://wiki.lineageos.org/devices/kiev/
-install: https://wiki.lineageos.org/devices/kiev/install/variant1/

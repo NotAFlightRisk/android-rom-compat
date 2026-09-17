@@ -3,6 +3,6 @@ name: G5 (US Unlocked)
 codenames: [rs988]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

@@ -3,6 +3,7 @@ name: Nexus 7 2013 (LTE)
 codenames: [deb]
 released: 2013
 soc: Qualcomm MSM8960T Snapdragon S4 Pro
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

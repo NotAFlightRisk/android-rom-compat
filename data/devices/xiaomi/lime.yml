@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 9T
+codenames: [lime, pomelo, lemon]
+bootloader:
+  unlock: unknown

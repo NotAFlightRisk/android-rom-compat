@@ -4,6 +4,6 @@ codenames: [pdx223]
 aliases: [XQ-CT44, XQ-CT54, XQ-CT72]
 released: 2022
 soc: Qualcomm SM8450 Snapdragon 8 Gen1
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

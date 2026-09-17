@@ -4,6 +4,6 @@ codenames: [thyme]
 aliases: [M2102J2SC]
 released: 2021
 soc: Qualcomm SM8250-AC Snapdragon 870
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

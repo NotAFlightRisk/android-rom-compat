@@ -3,4 +3,3 @@ name: Note 12 5G/Poco X5
 codenames: [gemstone]
 bootloader:
   unlock: unknown
-  relock: unknown

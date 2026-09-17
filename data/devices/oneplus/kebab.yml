@@ -4,6 +4,6 @@ codenames: [kebab]
 aliases: [8T (T-Mobile), KB2000, KB2001, KB2003, KB2005, KB2007]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

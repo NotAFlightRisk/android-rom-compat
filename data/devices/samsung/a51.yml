@@ -3,4 +3,3 @@ name: Galaxy A51 4G
 codenames: [a51]
 bootloader:
   unlock: unknown
-  relock: unknown

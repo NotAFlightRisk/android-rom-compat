@@ -4,6 +4,6 @@ codenames: [onclite]
 aliases: [Redmi Y3]
 released: 2019
 soc: Qualcomm SDM632 Snapdragon 632
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

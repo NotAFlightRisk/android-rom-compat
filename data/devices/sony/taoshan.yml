@@ -3,6 +3,6 @@ name: Xperia L
 codenames: [taoshan]
 released: 2013
 soc: Qualcomm MSM8230 Snapdragon 400
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

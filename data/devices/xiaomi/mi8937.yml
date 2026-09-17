@@ -4,6 +4,6 @@ codenames: [mi8937]
 aliases: [Redmi 3X, Redmi 4 (India), Redmi 4X, Redmi Note 5A Prime, Redmi Y1 Prime, "2016031", "2016037", "2016032", "2016030", "2016036", "2016035", "2016033", MAI132, MAG138, MAE136, MAT136, MDE6S, MDG6S, MDT6S, MDI6S]
 released: 2016
 soc: Qualcomm MSM8937 Snapdragon 430
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

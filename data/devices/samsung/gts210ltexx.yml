@@ -4,6 +4,7 @@ codenames: [gts210ltexx]
 aliases: [SM-T815]
 released: 2015
 soc: Samsung Exynos 5433
+type: tablet
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

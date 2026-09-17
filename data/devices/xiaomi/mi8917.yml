@@ -4,6 +4,6 @@ codenames: [mi8917]
 aliases: [Redmi 5A, Redmi Note 5A Lite, Redmi Y1 Lite, "2016111", "2016112", "2016116", "2016117", MCE3B, MCG3B, MCI3B, MCT3B, MDE6, MDG6, MDT6, MDI6, 5A, Note 5A, Y1 - Lite]
 released: 2016
 soc: Qualcomm MSM8917 Snapdragon 425
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

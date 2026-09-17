@@ -3,6 +3,6 @@ name: G5 (T-Mobile)
 codenames: [h830]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

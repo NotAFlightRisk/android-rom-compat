@@ -3,7 +3,7 @@ name: Pixel 8 Pro
 codenames: [husky]
 released: 2023
 soc: Google Tensor G3
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

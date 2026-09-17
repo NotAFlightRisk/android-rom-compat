@@ -4,6 +4,6 @@ codenames: [kane]
 aliases: [p50, XT1970-1, XT1970-2, XT1970-3, XT1970-5]
 released: 2019
 soc: Samsung Exynos 9609
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

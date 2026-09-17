@@ -4,6 +4,6 @@ codenames: [luigi]
 aliases: [RMX3660, RMX3661]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

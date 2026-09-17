@@ -4,6 +4,7 @@ codenames: [nicole]
 aliases: [Edge WiFi, RZ80-0460, RZ80-0461]
 released: 2023
 soc: Qualcomm SM8350 Snapdragon G3x Gen 1
+type: tablet
+hardware: [5g, cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

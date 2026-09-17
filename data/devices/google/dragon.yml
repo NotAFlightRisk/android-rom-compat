@@ -3,6 +3,6 @@ name: Pixel C
 codenames: [dragon]
 released: 2015
 soc: NVIDIA Tegra X1 (T210)
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

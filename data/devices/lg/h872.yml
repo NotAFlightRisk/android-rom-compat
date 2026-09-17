@@ -3,6 +3,6 @@ name: G6 (T-Mobile)
 codenames: [h872]
 released: 2017
 soc: Qualcomm MSM8996 Pro Snapdragon 821
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

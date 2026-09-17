@@ -4,6 +4,6 @@ codenames: [herolte]
 aliases: [SM-G930F, SM-G930FD, SM-G930S, SM-G930K, SM-G930L, SM-G930W8]
 released: 2016
 soc: Samsung Exynos 8890
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

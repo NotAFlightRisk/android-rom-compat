@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: Pop / TV (Broadcom Wi-Fi/Bluetooth)
-codenames: [nicepool]
-released: 2020
-soc: Amlogic S905X2
-bootloader:
-  unlock: unknown
-  relock: unknown

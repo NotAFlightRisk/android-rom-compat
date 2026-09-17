@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 16
-verified: 2026-09-16
-source: https://wiki.lineageos.org/devices/odin2mini/
-install: https://wiki.lineageos.org/devices/odin2mini/install/

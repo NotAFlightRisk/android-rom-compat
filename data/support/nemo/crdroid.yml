@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: Debayan Kar
-verified: 2026-09-16
-source: https://crdroid.net/downloads#nemo
-install: https://xdaforums.com/t/rom-15-0-16-0-crdroid-11-12-official.4752187/

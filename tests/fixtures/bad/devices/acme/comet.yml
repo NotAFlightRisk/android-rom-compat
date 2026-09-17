@@ -2,4 +2,4 @@ name: Rocket 2
 codenames: [comet]
 aliases: [rk-2]
 hardware: [lasers]
-bootloader: { unlock: conditional, relock: yes }
+bootloader: { unlock: conditional }

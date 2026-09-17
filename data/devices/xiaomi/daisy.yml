@@ -3,4 +3,3 @@ name: Mi A2 Lite
 codenames: [daisy]
 bootloader:
   unlock: unknown
-  relock: unknown

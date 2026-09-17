@@ -16,7 +16,7 @@
 
 Covers GrapheneOS, LineageOS, CalyxOS, /e/OS, crDroid and iodéOS, official builds only. Every bit of data lives as YAML in [`data/`](../data), so fixing a mistake just means editing a file - no coding needed.
 
-It'd rather leave a gap than guess, so anything nobody has checked shows as unknown.
+It'd rather leave a gap than guess, so anything nobody has checked shows as unknown. A report goes stale once the ROM moves to a newer Android than it was checked on, or when it's over a year old.
 
 ---
 
@@ -28,11 +28,11 @@ Know a feature works (or doesn't) on your phone? Spotted something out of date? 
 
 ## API
 
-The whole dataset is published as static JSON, rebuilt everytime teh data changes. No key and no rate limit.
+The whole dataset is published as static JSON, rebuilt every time the data changes. No key and no rate limit.
 
-- [`/api/devices.json`](https://android-rom-compat.peng.ly/api/devices.json) - every device, with codenames, model numbers and bootloader info
-- [`/api/roms.json`](https://android-rom-compat.peng.ly/api/roms.json) - the ROMs and how they compare
-- [`/api/support.json`](https://android-rom-compat.peng.ly/api/support.json) - which ROM supports which device, and what works
+- [`/api/devices.json`](https://android-rom-compat.peng.ly/api/devices.json) - every device, with codenames, model numbers, bootloader and stock support
+- [`/api/roms.json`](https://android-rom-compat.peng.ly/api/roms.json) - the ROMs, how they compare, and what they say works on every device
+- [`/api/support.json`](https://android-rom-compat.peng.ly/api/support.json) - which ROM supports which device, its latest build, and what works, with where each answer came from
 - [`/api/features.json`](https://android-rom-compat.peng.ly/api/features.json) - the features we track
 
 ---

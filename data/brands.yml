@@ -7,30 +7,20 @@
   name: ASUS
 - key: ayn
   name: AYN
-- key: banana-pi
-  name: Banana Pi
 - key: bq
   name: BQ
 - key: braxtech
   name: Braxtech
-- key: droidlogic
-  name: DroidLogic
-- key: dynalink
-  name: Dynalink
 - key: essential
   name: Essential
 - key: fairphone
   name: Fairphone
-- key: freebox
-  name: Freebox
 - key: fxtec
   name: F(x)tec
 - key: gigaset
   name: Gigaset
 - key: google
   name: Google
-- key: hardkernel
-  name: HardKernel
 - key: htc
   name: HTC
 - key: huawei
@@ -43,6 +33,8 @@
   name: LG
 - key: meizu
   name: Meizu
+- key: micromax
+  name: Micromax
 - key: motorola
   name: Motorola
 - key: murena
@@ -65,8 +57,6 @@
   name: OPPO
 - key: osom
   name: OSOM
-- key: radxa
-  name: Radxa
 - key: razer
   name: Razer
 - key: realme
@@ -83,14 +73,14 @@
   name: Solana
 - key: sony
   name: Sony
+- key: tecno
+  name: TECNO
 - key: teracube
   name: Teracube
 - key: volla
   name: Volla
 - key: vsmart
   name: Vsmart
-- key: walmart
-  name: Walmart
 - key: wileyfox
   name: Wileyfox
 - key: wingtech

@@ -10,9 +10,11 @@ org: community
 security:
   relockable_bootloader: false
   verified_boot: false
-  monthly_patches: true
+  patches: best-effort
 install: [recovery]
 root: false
 links:
   website: https://crdroid.net
   source: https://github.com/crdroidandroid
+features:
+  push: { status: partial, inferred: true, note: 'Official builds ship without Google apps, add them yourself', source: https://github.com/crdroidandroid/rules-and-guidelines#software }

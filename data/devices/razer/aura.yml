@@ -3,6 +3,6 @@ name: Phone 2
 codenames: [aura]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

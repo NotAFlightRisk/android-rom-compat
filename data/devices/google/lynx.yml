@@ -3,7 +3,7 @@ name: Pixel 7a
 codenames: [lynx]
 released: 2023
 soc: Google Tensor GS201
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

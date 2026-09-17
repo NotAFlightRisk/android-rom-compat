@@ -3,6 +3,6 @@ name: The Fairphone (Gen. 6)
 codenames: [fp6]
 released: 2025
 soc: Qualcomm SM7635 Snapdragon 7s Gen 3
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

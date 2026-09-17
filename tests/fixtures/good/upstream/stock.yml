@@ -1,0 +1,3 @@
+imported: 2026-01-10
+devices:
+  rocket: { android: '13 - 15', updates_until: ended, security_until: 2027-01-01, source: https://endoflife.date/acme }

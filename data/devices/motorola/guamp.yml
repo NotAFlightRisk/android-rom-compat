@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: moto g9 play
 codenames: [guamp]
-aliases: [moto g9, K12 Note, XT2083-1, XT2083-3, XT2083-5, XT2083-6, XT2083-7, XT2083-4]
+aliases: [moto g9, K12 Note, XT2083-1, XT2083-3, XT2083-5, XT2083-6, XT2083-7, XT2083-4, G9 Play, Lenovo K12 Note]
 released: 2020
 soc: Qualcomm SM6115 Snapdragon 662
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

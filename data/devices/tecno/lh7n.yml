@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pova 5
+codenames: [lh7n]
+bootloader:
+  unlock: unknown

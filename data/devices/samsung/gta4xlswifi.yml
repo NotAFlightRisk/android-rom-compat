@@ -4,6 +4,6 @@ codenames: [gta4xlswifi]
 aliases: [SM-P620]
 released: 2024
 soc: Samsung Exynos 1280
+type: tablet
 bootloader:
   unlock: no
-  relock: unknown

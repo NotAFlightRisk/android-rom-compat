@@ -3,7 +3,7 @@ name: Pixel 4a
 codenames: [sunfish]
 released: 2020
 soc: Qualcomm SM7150-AB Snapdragon 730G
+hardware: [cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

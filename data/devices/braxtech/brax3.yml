@@ -3,4 +3,3 @@ name: Brax3
 codenames: [brax3]
 bootloader:
   unlock: unknown
-  relock: yes

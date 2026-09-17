@@ -4,6 +4,6 @@ codenames: [nx659j]
 aliases: [Red Magic 5G (China), Red Magic 5S (Global), Red Magic 5S (China), NX659J-EEA, NX659J-UN]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

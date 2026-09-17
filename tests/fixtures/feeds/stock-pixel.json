@@ -1,0 +1,68 @@
+{
+  "result": {
+    "name": "pixel",
+    "label": "Google Pixel",
+    "links": {
+      "html": "https://endoflife.date/pixel"
+    },
+    "releases": [
+      {
+        "name": "9a",
+        "codename": null,
+        "label": "Pixel 9a",
+        "releaseDate": "2025-04-10",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": false,
+        "eoasFrom": "2032-04-01",
+        "isEol": false,
+        "eolFrom": "2032-04-01",
+        "isDiscontinued": false,
+        "discontinuedFrom": null,
+        "isMaintained": true,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "15 - 17"
+        }
+      },
+      {
+        "name": "4a-5g",
+        "codename": null,
+        "label": "Pixel 4a (5G)",
+        "releaseDate": "2020-11-05",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": "2023-11-05",
+        "isEol": true,
+        "eolFrom": "2023-11-05",
+        "isDiscontinued": true,
+        "discontinuedFrom": "2021-08-20",
+        "isMaintained": false,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "11 - 14"
+        }
+      },
+      {
+        "name": "3",
+        "codename": null,
+        "label": "Pixel 3",
+        "releaseDate": "2018-10-18",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": "2021-10-05",
+        "isEol": true,
+        "eolFrom": "2021-10-05",
+        "isDiscontinued": true,
+        "discontinuedFrom": "2020-03-31",
+        "isMaintained": false,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "9 - 12"
+        }
+      }
+    ]
+  }
+}

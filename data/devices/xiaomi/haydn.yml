@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 11i
 codenames: [haydn]
-aliases: [Redmi K40 Pro, Redmi K40 Pro+, Mi 11X Pro, M2012K11G, M2012K11C, M2012K11I]
+aliases: [Redmi K40 Pro, Redmi K40 Pro+, Mi 11X Pro, M2012K11G, M2012K11C, M2012K11I, Mi 11i]
 released: 2021
 soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

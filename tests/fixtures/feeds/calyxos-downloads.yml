@@ -1,0 +1,72 @@
+---
+stable:
+- name: The Fairphone (Gen. 6) (beta)
+  brand: fairphone
+  codename: FP6
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/FP6/16/FP6-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/FP6/16/FP6-ota_update-260720520.zip
+  date: '2026-09-09'
+- name: Fairphone 4
+  brand: fairphone
+  codename: FP4
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/FP4/16/FP4-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/FP4/16/FP4-ota_update-260720520.zip
+  date: '2026-09-09'
+- name: moto g34 5G and g45 5G
+  brand: motorola
+  codename: fogos
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/fogos/16/fogos-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/fogos/16/fogos-ota_update-260720520.zip
+  date: '2026-09-09'
+- name: Pixel 9a
+  brand: pixel
+  codename: tegu
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/tegu/16/tegu-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/tegu/16/tegu-ota_update-260720520.zip
+  date: '2026-09-09'
+- name: SHIFTphone 8
+  brand: shift
+  codename: otter
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/otter/16/otter-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/otter/16/otter-ota_update-260720520.zip
+  date: '2026-09-09'
+- name: Pixel 5a (5G)
+  brand: pixel
+  codename: barbet
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/barbet/16/barbet-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/barbet/16/barbet-ota_update-260720520.zip
+  date: '2026-09-09'
+beta:
+- name: The Fairphone (Gen. 6) (beta)
+  brand: fairphone
+  codename: FP6
+  version: 7.2.5.20
+  android: '16'
+  web_install: false
+  factory_link: https://release.calyxos.org/factory/FP6/16/FP6-factory-260720520.zip
+  ota_link: https://release.calyxos.org/ota/FP6/16/FP6-ota_update-260720520.zip
+  date: '2026-09-09'
+releases:
+- stable
+- beta
+- security-express
+- factory
+antirollback_update_pending_link: /install/antirollback-update-pending

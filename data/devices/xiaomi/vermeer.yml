@@ -4,6 +4,6 @@ codenames: [vermeer]
 aliases: [Redmi K70, 23113RKC6G, 23113RKC6C]
 released: 2024
 soc: Qualcomm SM8550 Snapdragon 8 Gen2
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

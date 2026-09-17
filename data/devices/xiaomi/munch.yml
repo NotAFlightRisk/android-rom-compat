@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: POCO F4
 codenames: [munch]
-aliases: [Redmi K40S, 22021211RG, 22021211RI, 22021211RC]
+aliases: [Redmi K40S, 22021211RG, 22021211RI, 22021211RC, POCO F4]
 released: 2022
 soc: Qualcomm SM8250-AC Snapdragon 870
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

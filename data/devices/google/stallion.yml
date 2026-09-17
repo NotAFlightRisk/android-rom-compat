@@ -3,5 +3,4 @@ name: Pixel 10a
 codenames: [stallion]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

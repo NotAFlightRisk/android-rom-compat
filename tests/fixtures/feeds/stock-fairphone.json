@@ -1,0 +1,87 @@
+{
+  "result": {
+    "name": "fairphone",
+    "label": "Fairphone",
+    "links": {
+      "html": "https://endoflife.date/fairphone"
+    },
+    "releases": [
+      {
+        "name": "6",
+        "codename": null,
+        "label": "Fairphone 6",
+        "releaseDate": "2025-06-25",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": false,
+        "eoasFrom": null,
+        "isEol": false,
+        "eolFrom": "2033-06-25",
+        "isDiscontinued": false,
+        "discontinuedFrom": null,
+        "isMaintained": true,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "15 - 16"
+        }
+      },
+      {
+        "name": "4",
+        "codename": null,
+        "label": "Fairphone 4",
+        "releaseDate": "2021-09-30",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": null,
+        "isEol": false,
+        "eolFrom": "2028-09-01",
+        "isDiscontinued": true,
+        "discontinuedFrom": null,
+        "isMaintained": true,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "11 - 15"
+        }
+      },
+      {
+        "name": "3+",
+        "codename": null,
+        "label": "Fairphone 3+",
+        "releaseDate": "2020-09-30",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": "2024-09-30",
+        "isEol": false,
+        "eolFrom": "2026-09-30",
+        "isDiscontinued": true,
+        "discontinuedFrom": "2022-11-01",
+        "isMaintained": true,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "10 - 13"
+        }
+      },
+      {
+        "name": "3",
+        "codename": null,
+        "label": "Fairphone 3",
+        "releaseDate": "2019-09-30",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": "2024-09-30",
+        "isEol": false,
+        "eolFrom": "2026-09-30",
+        "isDiscontinued": true,
+        "discontinuedFrom": "2021-09-01",
+        "isMaintained": true,
+        "latest": null,
+        "custom": {
+          "supportedAndroidVersions": "10 - 13"
+        }
+      }
+    ]
+  }
+}

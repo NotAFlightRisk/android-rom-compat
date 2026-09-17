@@ -4,6 +4,7 @@ codenames: [gts4lvwifi]
 aliases: [SM-T720, SM-T720N]
 released: 2019
 soc: Qualcomm SDM670 Snapdragon 670
+type: tablet
+hardware: [fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

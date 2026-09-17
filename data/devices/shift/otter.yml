@@ -4,6 +4,6 @@ codenames: [otter]
 aliases: [SHIFTphone 8.1]
 released: 2026
 soc: Qualcomm Dragonwing™ QCM6490 (QCM6490)
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

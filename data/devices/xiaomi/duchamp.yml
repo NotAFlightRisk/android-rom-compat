@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO X6 Pro 5G
+codenames: [duchamp]
+aliases: [Redmi K70E]
+bootloader:
+  unlock: unknown

@@ -3,6 +3,6 @@ name: Z18
 codenames: [nx606j]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

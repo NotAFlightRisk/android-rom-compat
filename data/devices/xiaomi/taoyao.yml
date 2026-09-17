@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 12 Lite
+codenames: [taoyao]
+bootloader:
+  unlock: unknown

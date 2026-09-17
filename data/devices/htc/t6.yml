@@ -3,6 +3,6 @@ name: One Max (GSM)
 codenames: [t6]
 released: 2013
 soc: Qualcomm APQ8064T Snapdragon 600
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

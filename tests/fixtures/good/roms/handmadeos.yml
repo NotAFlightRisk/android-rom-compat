@@ -1,0 +1,12 @@
+name: HandmadeOS
+description: A ROM with no importer, so its rows are written by hand.
+status: active
+base: lineageos
+focus: [near-stock]
+google: bundled
+app_store: none
+org: community
+security: { relockable_bootloader: false, verified_boot: false, patches: best-effort }
+install: [recovery]
+root: false
+links: { website: https://example.org }

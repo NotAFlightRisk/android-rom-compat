@@ -4,6 +4,6 @@ codenames: [venus]
 aliases: [M2011K2C, M2011K2G]
 released: 2020
 soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

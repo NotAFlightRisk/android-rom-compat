@@ -10,10 +10,13 @@ org: company
 security:
   relockable_bootloader: false
   verified_boot: false
-  monthly_patches: true
+  patches: monthly
 install: [recovery]
 root: false
 links:
   website: https://iode.tech/iodeos/
   source: https://gitlab.iode.tech
   docs: https://iode.tech/installation/
+features:
+  push: { status: working, note: 'Through microG, on by default', source: https://iode.tech/documentation/faq/ }
+  android_auto: { status: partial, note: Wired only, source: https://iode.tech/documentation/android-auto/ }

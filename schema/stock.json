@@ -1,0 +1,31 @@
+{
+  "$id": "stock.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stock support",
+  "type": "object",
+  "required": ["imported", "devices"],
+  "additionalProperties": false,
+  "properties": {
+    "imported": { "type": "string", "format": "date" },
+    "devices": {
+      "type": "object",
+      "propertyNames": { "$ref": "device.json#/$defs/codename" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["source"],
+        "additionalProperties": false,
+        "properties": {
+          "android": { "type": "string", "minLength": 1 },
+          "updates_until": { "$ref": "#/$defs/until" },
+          "security_until": { "$ref": "#/$defs/until" },
+          "source": { "$ref": "upstream.json#/$defs/link" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "until": {
+      "anyOf": [{ "const": "ended" }, { "type": "string", "format": "date" }]
+    }
+  }
+}

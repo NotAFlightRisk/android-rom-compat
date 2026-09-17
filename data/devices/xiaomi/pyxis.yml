@@ -4,6 +4,6 @@ codenames: [pyxis]
 aliases: [Mi 9 Lite, M1904F3BC, M1904F3BG]
 released: 2019
 soc: Qualcomm SDM710 Snapdragon 710
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: G2 Mini
 codenames: [g2m]
 released: 2014
 soc: Qualcomm MSM8226 Snapdragon 400
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

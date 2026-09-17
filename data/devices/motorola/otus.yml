@@ -4,6 +4,6 @@ codenames: [otus]
 aliases: [XT1505, XT1506, XT1511]
 released: 2015
 soc: Qualcomm MSM8212 Snapdragon 200
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

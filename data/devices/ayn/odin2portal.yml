@@ -3,6 +3,6 @@ name: Odin2 Portal
 codenames: [odin2portal]
 released: 2025
 soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+type: handheld
 bootloader:
   unlock: unknown
-  relock: unknown

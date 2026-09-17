@@ -1,0 +1,118 @@
+{
+  "16.0/tegu": {
+    "response": [
+      {
+        "maintainer": "Pranav Vashi (neobuddy89)",
+        "oem": "Google",
+        "device": "Pixel 9a",
+        "filename": "crDroidAndroid-16.0-20260916-tegu-v12.12.zip",
+        "timestamp": 1789538249,
+        "version": "12.12",
+        "os_patch_level": "2026-09-01",
+        "buildtype": "Monthly",
+        "forum": "https://xdaforums.com/t/rom-16-pixel-9a-crdroid-v12-official.4755913/"
+      }
+    ]
+  },
+  "16.0/Pong": {
+    "response": [
+      {
+        "maintainer": "ediwq14",
+        "oem": "Nothing",
+        "device": "Nothing Phone (2)",
+        "filename": "crDroidAndroid-16.0-20260812-Pong-v12.11.zip",
+        "timestamp": 1786552745,
+        "version": "12.11",
+        "os_patch_level": "2026-08-01",
+        "buildtype": "Monthly",
+        "forum": "https://xdaforums.com/t/rom-16-0-official-pong-crdroid-v12-11.4796531/"
+      }
+    ]
+  },
+  "16.0/a21s": {
+    "response": [
+      {
+        "maintainer": "",
+        "oem": "Samsung",
+        "device": "Galaxy A21s",
+        "filename": "crDroidAndroid-16.0-20260419-a21s-v12.9.zip",
+        "timestamp": 1776607136,
+        "version": "12.9",
+        "buildtype": "Monthly",
+        "forum": "https://xdaforums.com/t/crdroid-v12-x-vanilla-stable-android-16-official.4763336/"
+      }
+    ]
+  },
+  "16.0/onyx": {
+    "response": [
+      {
+        "maintainer": "Vikas(Optimus)",
+        "oem": "Poco",
+        "device": "Poco F7",
+        "filename": "crDroidAndroid-16.0-20260913-onyx-v12.12.zip",
+        "timestamp": 1789319781,
+        "version": "12.12",
+        "os_patch_level": "2026-09-01",
+        "buildtype": "Weeklies",
+        "forum": "https://xdaforums.com/t/rom-poco-f7-onyx-16-0-crdroidandroid-v12-x-02-11-2025.4766256/"
+      }
+    ]
+  },
+  "16.0/vayu": {
+    "response": [
+      {
+        "maintainer": "Pranav Vashi (neobuddy89)",
+        "oem": "Poco",
+        "device": "Poco X3 Pro",
+        "filename": "crDroidAndroid-16.0-20260916-vayu-v12.12.zip",
+        "timestamp": 1789584376,
+        "version": "12.12",
+        "os_patch_level": "2026-09-01",
+        "buildtype": "",
+        "forum": "https://xdaforums.com/t/rom-poco-x3-pro-16-0-crdroid-12-official.4758367/"
+      }
+    ]
+  },
+  "15.0/PL2": {
+    "response": [
+      {
+        "maintainer": "",
+        "oem": "Nokia",
+        "device": "Nokia 6.1",
+        "filename": "crDroidAndroid-15.0-20250215-PL2-v11.2.zip",
+        "timestamp": 1739584847,
+        "version": "11.2",
+        "buildtype": "Monthly",
+        "forum": "https://xdaforums.com/t/4704853"
+      }
+    ]
+  },
+  "15.0/devon": {
+    "response": [
+      {
+        "maintainer": "",
+        "oem": "Motorola",
+        "device": "Motorola G32",
+        "filename": "crDroidAndroid-15.0-20241119-devon-v11.0-BETA.zip",
+        "timestamp": 1732033516,
+        "version": "11.0",
+        "buildtype": "BETA",
+        "forum": "https://xdaforums.com/t/rom-14-0-official-moto-g32-devon-crdroid-v10-0-08-01-2024.4649906/"
+      }
+    ]
+  },
+  "13.0/RM6785": {
+    "response": [
+      {
+        "maintainer": "",
+        "oem": "Realme",
+        "device": "Realme RM6785",
+        "filename": "crDroidAndroid-13.0-20230919-RM6785-v9.9.zip",
+        "timestamp": 1695143765,
+        "version": "9.9",
+        "buildtype": "EoL",
+        "forum": "https://forum.xda-developers.com/t/rom-13-crdroidandroid-official-thirteen-aosp.4533351/"
+      }
+    ]
+  }
+}

@@ -3,4 +3,3 @@ name: Galaxy A70
 codenames: [a70q]
 bootloader:
   unlock: unknown
-  relock: unknown

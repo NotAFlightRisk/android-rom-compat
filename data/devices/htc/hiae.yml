@@ -4,6 +4,6 @@ codenames: [hiae]
 aliases: [2PQ9120, 2PQ9100]
 released: 2015
 soc: Qualcomm MSM8952 Snapdragon 617
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

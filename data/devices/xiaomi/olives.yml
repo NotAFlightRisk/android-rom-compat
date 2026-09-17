@@ -3,4 +3,3 @@ name: Redmi 8A Series
 codenames: [olives]
 bootloader:
   unlock: unknown
-  relock: unknown

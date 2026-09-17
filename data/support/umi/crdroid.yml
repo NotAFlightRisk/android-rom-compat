@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 11
-verified: 2026-09-16
-source: https://crdroid.net/downloads#umi
-install: https://forum.xda-developers.com/t/rom-11-0-official-crdroid-v7-3-21-feb-2021.4236293

@@ -4,6 +4,6 @@ codenames: [serrano3gxx]
 aliases: [GT-I9190]
 released: 2013
 soc: Qualcomm MSM8930AB Snapdragon 400
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

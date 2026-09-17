@@ -2,6 +2,7 @@
 import Base from '../../components/layout/Base.astro';
 import Matrix from '../../components/table/Matrix.astro';
 import Facts from '../../components/ui/Facts.astro';
+import RomFeatures from '../../components/ui/RomFeatures.astro';
 import { getModel } from '../../lib/data/model.js';
 import {
   deviceSearchText,
@@ -9,6 +10,8 @@ import {
   splitByActive,
   supportCells,
   supportColumns,
+  sameOnEveryRow,
+  usedColumns,
 } from '../../lib/table.js';
 import { labelOf, yesNo } from '../../lib/labels.js';
 
@@ -16,9 +19,9 @@ export const getStaticPaths = () =>
   getModel().roms.map((rom) => ({ params: { rom: rom.key }, props: { rom } }));
 
 const { rom } = Astro.props;
-const features = reportedFeatures(getModel().features, rom.support);
+const { features } = getModel();
+const reported = reportedFeatures(features, rom.support);
 const [current, ended] = splitByActive(rom.support);
-const columns = [{ key: 'brand', label: 'Brand', hidden: true }, ...supportColumns(features)];
 const brands = [
   ...new Map(rom.support.map((row) => [row.device.brand.key, row.device.brand])).values(),
 ].sort((a, b) => a.name.localeCompare(b.name));
@@ -27,15 +30,22 @@ const rowsOf = (list) =>
     key: row.device.key,
     brand: row.device.brand.key,
     search: deviceSearchText(row.device),
-    stale: row.stale,
     head: {
       label: row.device.title,
       href: row.device.url,
       code: row.device.codenames.join(', '),
       links: row.install ? [{ label: 'Install guide', href: row.install }] : [],
     },
-    cells: { brand: { text: row.device.brand.name }, ...supportCells(row, features) },
+    cells: { brand: { text: row.device.brand.name }, ...supportCells(row, reported) },
   }));
+const currentRows = rowsOf(current);
+const endedRows = rowsOf(ended);
+const allRows = [...currentRows, ...endedRows];
+const columns = usedColumns(
+  [{ key: 'brand', label: 'Brand', group: 'device', hidden: true }, ...supportColumns(reported)],
+  allRows,
+).filter(({ key }) => key !== 'relock' || !sameOnEveryRow(allRows, key));
+const everywhere = [rom, ...(rom.variants ?? [])].filter((build) => build.features);
 const { links, security } = rom;
 ---
 
@@ -78,7 +88,7 @@ const { links, security } = rom;
           { label: 'Install with', value: rom.install.map(labelOf).join(', ') },
           { label: 'Relockable bootloader', value: yesNo(security.relockable_bootloader) },
           { label: 'Verified boot', value: yesNo(security.verified_boot) },
-          { label: 'Monthly patches', value: yesNo(security.monthly_patches) },
+          { label: 'Patches', value: labelOf(security.patches) },
           { label: 'Root', value: yesNo(rom.root) },
         ]}
       />
@@ -91,19 +101,32 @@ const { links, security } = rom;
       </ul>
     </section>
 
+    {everywhere.length > 0 && (
+      <section aria-labelledby="everywhere">
+        <h2 id="everywhere">What works everywhere</h2>
+        {everywhere.map((build) => (
+          <>
+            {build !== rom && <h3>{build.name}</h3>}
+            <RomFeatures features={features} facts={build.features} />
+          </>
+        ))}
+      </section>
+    )}
+
     <section aria-labelledby="devices">
       <h2 id="devices">Devices</h2>
       <p>
         <small>
-          Features show up once someone reports them. <a href="/contribute/">Know how one works?</a>
+          Features show once a ROM's docs or someone's report covers them.{' '}
+          <a href="/contribute/">Know how one works?</a>
         </small>
       </p>
       <Matrix
-        id="devices"
+        id="rom-devices"
         caption={`Devices ${rom.name} officially supports`}
         rowLabel="Device"
         columns={columns}
-        rows={rowsOf(current)}
+        rows={currentRows}
         brands={brands}
         urlState
       />
@@ -111,11 +134,11 @@ const { links, security } = rom;
         <details>
           <summary>{ended.length} devices where support has ended</summary>
           <Matrix
-            id="devices-ended"
+            id="rom-devices-ended"
             caption={`Devices ${rom.name} no longer supports`}
             rowLabel="Device"
             columns={columns}
-            rows={rowsOf(ended)}
+            rows={endedRows}
             controls={false}
           />
         </details>
@@ -128,6 +151,10 @@ const { links, security } = rom;
   article {
     display: grid;
     gap: var(--space-xl);
+  }
+
+  h3 {
+    margin-block-start: var(--space-sm);
   }
 
   .links {

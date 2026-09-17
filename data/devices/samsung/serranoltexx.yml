@@ -4,6 +4,6 @@ codenames: [serranoltexx]
 aliases: [GT-I9195, SGH-I257M, SHV-E370K]
 released: 2013
 soc: Qualcomm MSM8930AB Snapdragon 400
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

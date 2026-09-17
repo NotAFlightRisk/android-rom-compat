@@ -3,4 +3,3 @@ name: Redmi G80 Series
 codenames: [lava]
 bootloader:
   unlock: unknown
-  relock: unknown

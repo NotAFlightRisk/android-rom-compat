@@ -4,6 +4,6 @@ codenames: [harpia]
 aliases: [XT1600, XT1601, XT1602, XT1603, XT1604, XT1607]
 released: 2016
 soc: Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

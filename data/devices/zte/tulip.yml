@@ -3,6 +3,6 @@ name: Axon 7 Mini
 codenames: [tulip]
 released: 2016
 soc: Qualcomm MSM8952 Snapdragon 617
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

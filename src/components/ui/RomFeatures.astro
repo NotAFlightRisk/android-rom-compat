@@ -1,0 +1,58 @@
+---
+import { labelOf } from '../../lib/labels.js';
+
+const { features, facts } = Astro.props;
+const known = features.filter(({ key }) => facts[key]);
+---
+
+<dl>
+  {known.map(({ key, name }) => {
+    const { status, note, inferred, source } = facts[key];
+    return (
+      <div>
+        <dt>{name}</dt>
+        <dd>
+          <strong>{labelOf(status)}</strong>
+          {inferred && <small>inferred</small>}
+          {note && <p>{note}</p>}
+          <a href={source}>Source</a>
+        </dd>
+      </div>
+    );
+  })}
+</dl>
+
+<style>
+  dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-md) var(--space-lg);
+    margin: 0;
+  }
+
+  div {
+    padding-block-start: var(--space-xs);
+    border-block-start: 1px solid var(--border);
+  }
+
+  dt {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  dd {
+    margin: 0;
+
+    strong {
+      font-weight: 500;
+    }
+
+    small {
+      margin-inline-start: var(--space-xs);
+    }
+
+    a {
+      font-size: var(--text-sm);
+    }
+  }
+</style>

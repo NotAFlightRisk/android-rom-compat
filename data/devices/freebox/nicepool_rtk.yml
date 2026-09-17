@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: Pop / TV (Realtek Wi-Fi/Bluetooth)
-codenames: [nicepool_rtk]
-released: 2020
-soc: Amlogic S905X2
-bootloader:
-  unlock: unknown
-  relock: unknown

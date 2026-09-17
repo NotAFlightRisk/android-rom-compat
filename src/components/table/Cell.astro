@@ -1,11 +1,9 @@
 ---
-import Icon from '../ui/Icon.astro';
-
 const { id, column, cell } = Astro.props;
 const noteId = `${id}-note`;
 ---
 
-<td data-sort={cell.sort} data-tone={cell.tone} hidden={column.hidden}>
+<td data-tone={cell.tone} hidden={column.hidden}>
   {cell.date ? (
     <time datetime={cell.date}>{cell.date}</time>
   ) : cell.code ? (
@@ -13,6 +11,8 @@ const noteId = `${id}-note`;
   ) : (
     cell.text
   )}
+  {cell.chips?.map((chip) => <span class="chip">{chip}</span>)}
+  {cell.suffix && <small>{cell.suffix}</small>}
   {cell.stale && <span class="stale">stale</span>}
   {cell.note && (
     <>
@@ -22,11 +22,10 @@ const noteId = `${id}-note`;
         popovertarget={noteId}
         aria-label={`Note on ${column.label}`}
         aria-describedby={noteId}
-      >
-        <Icon name="note" />
-      </button>
+      ></button>
       <span popover id={noteId}>
         <strong>{column.label}:</strong> {cell.note}
+        {cell.source && <a href={cell.source}>Source</a>}
       </span>
     </>
   )}
@@ -35,7 +34,8 @@ const noteId = `${id}-note`;
 <style is:global>
   .matrix {
     td[data-tone]::before,
-    .stale::before {
+    .stale::before,
+    .note::before {
       content: '';
       display: inline-block;
       inline-size: 1em;
@@ -90,7 +90,27 @@ const noteId = `${id}-note`;
       font-size: 0.75rem;
     }
 
+    .chip {
+      display: inline-block;
+      padding-inline: var(--space-2xs);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 0.75rem;
+
+      & + & {
+        margin-inline-start: var(--space-2xs);
+      }
+    }
+
+    td small {
+      margin-inline-start: var(--space-2xs);
+      color: inherit;
+      font-size: 0.75rem;
+    }
+
     .note {
+      --icon: url('/icons/note.svg');
       display: inline-grid;
       place-items: center;
       margin-inline-start: var(--space-2xs);
@@ -100,6 +120,10 @@ const noteId = `${id}-note`;
       background: none;
       vertical-align: middle;
       cursor: pointer;
+
+      &::before {
+        margin: 0;
+      }
 
       &:hover {
         background: color-mix(in srgb, currentColor 15%, transparent);
@@ -115,6 +139,10 @@ const noteId = `${id}-note`;
       color: var(--text);
       box-shadow: var(--shadow);
       white-space: normal;
+
+      a {
+        margin-inline-start: var(--space-2xs);
+      }
     }
   }
 </style>

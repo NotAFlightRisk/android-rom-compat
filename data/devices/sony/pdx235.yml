@@ -4,6 +4,6 @@ codenames: [pdx235]
 aliases: [XQ-DC54, XQ-DC72]
 released: 2023
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

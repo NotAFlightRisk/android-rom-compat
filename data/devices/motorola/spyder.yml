@@ -4,6 +4,6 @@ codenames: [spyder]
 aliases: [DROID RAZR MAXX (CDMA), XT912]
 released: 2011
 soc: TI OMAP4430
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -1,0 +1,101 @@
+{
+  "result": {
+    "name": "samsung-mobile",
+    "label": "Samsung Mobile",
+    "links": {
+      "html": "https://endoflife.date/samsung-mobile"
+    },
+    "releases": [
+      {
+        "name": "galaxy-note20-ultra",
+        "codename": null,
+        "label": "Galaxy Note20 Ultra",
+        "releaseDate": "2020-08-21",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": "2023-08-21",
+        "isEol": true,
+        "eolFrom": "2025-09-02",
+        "isMaintained": false,
+        "latest": null,
+        "custom": null
+      },
+      {
+        "name": "galaxy-s20-ultra-5g",
+        "codename": null,
+        "label": "Galaxy S20 Ultra 5G",
+        "releaseDate": "2020-03-06",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": null,
+        "isEol": true,
+        "eolFrom": "2025-03-05",
+        "isMaintained": false,
+        "latest": null,
+        "custom": null
+      },
+      {
+        "name": "galaxy-a5-2016",
+        "codename": null,
+        "label": "Galaxy A5 (2016)",
+        "releaseDate": "2015-12-01",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": null,
+        "isEol": true,
+        "eolFrom": "2019-06-01",
+        "isMaintained": false,
+        "latest": null,
+        "custom": null
+      },
+      {
+        "name": "galaxy-s6-usa",
+        "codename": null,
+        "label": "Galaxy S6 (USA)",
+        "releaseDate": "2015-04-01",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": null,
+        "isEol": true,
+        "eolFrom": "2018-03-01",
+        "isMaintained": false,
+        "latest": null,
+        "custom": null
+      },
+      {
+        "name": "galaxy-s6",
+        "codename": null,
+        "label": "Galaxy S6",
+        "releaseDate": "2015-04-01",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": null,
+        "isEol": true,
+        "eolFrom": "2018-06-01",
+        "isMaintained": false,
+        "latest": null,
+        "custom": null
+      },
+      {
+        "name": "galaxy-a5",
+        "codename": null,
+        "label": "Galaxy A5",
+        "releaseDate": "2014-12-01",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEoas": true,
+        "eoasFrom": null,
+        "isEol": true,
+        "eolFrom": null,
+        "isMaintained": false,
+        "latest": null,
+        "custom": null
+      }
+    ]
+  }
+}

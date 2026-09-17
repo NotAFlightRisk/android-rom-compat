@@ -4,6 +4,6 @@ codenames: [pioneer]
 aliases: [H3113, H4113, H3133, H4133, H3123]
 released: 2018
 soc: Qualcomm SDM630 Snapdragon 630
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

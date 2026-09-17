@@ -4,6 +4,6 @@ codenames: [obiwan]
 aliases: [ZS661KS]
 released: 2020
 soc: Qualcomm SM8250-AB Snapdragon 865+
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

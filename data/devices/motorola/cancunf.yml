@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g54 5G
+codenames: [cancunf]
+bootloader:
+  unlock: unknown

@@ -4,7 +4,7 @@ codenames: [bonito]
 aliases: [G020B, G020C, G020D]
 released: 2019
 soc: Qualcomm SDM670 Snapdragon 670
+hardware: [cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

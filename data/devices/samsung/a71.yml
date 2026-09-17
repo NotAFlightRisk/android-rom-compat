@@ -4,6 +4,6 @@ codenames: [a71]
 aliases: [SM-A715F, SM-A715F/DS, SM-A715F/DSN, SM-A715F/DSM]
 released: 2020
 soc: Qualcomm SM7150-AA Snapdragon 730
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

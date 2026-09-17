@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 12
-verified: 2026-09-16
-source: https://crdroid.net/downloads#daisy
-install: https://forum.xda-developers.com/t/official-monthly-a12-crdroid-v8-2-xiaomi-mi-a2-lite-daisy.4401933/

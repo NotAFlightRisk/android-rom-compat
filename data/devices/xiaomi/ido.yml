@@ -4,6 +4,6 @@ codenames: [ido]
 aliases: [Redmi 3 Prime]
 released: 2016
 soc: Qualcomm MSM8939v2 Snapdragon 616
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

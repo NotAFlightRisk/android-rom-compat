@@ -10,7 +10,7 @@ org: non-profit
 security:
   relockable_bootloader: true
   verified_boot: true
-  monthly_patches: true
+  patches: monthly
 install: [web-installer, cli]
 root: false
 links:
@@ -18,3 +18,9 @@ links:
   source: https://github.com/GrapheneOS
   docs: https://grapheneos.org/usage
   community: https://discuss.grapheneos.org
+features:
+  wallet: { status: broken, inferred: true, note: "Tap-to-pay needs a Play Integrity verdict GrapheneOS doesn't get", source: https://grapheneos.org/articles/attestation-compatibility-guide }
+  push: { status: working, note: Through sandboxed Google Play, source: https://grapheneos.org/usage#sandboxed-google-play-installation }
+  android_auto: { status: working, note: 'Wired and wireless, through sandboxed Google Play', source: https://grapheneos.org/usage#android-auto }
+  rcs: { status: working, note: 'With sandboxed Google Play, only known to work in the owner profile', source: https://grapheneos.org/usage#rcs }
+  integrity: { status: basic, inferred: true, note: 'The docs don''t name a verdict, only that some apps use it to block GrapheneOS', source: https://grapheneos.org/articles/attestation-compatibility-guide }

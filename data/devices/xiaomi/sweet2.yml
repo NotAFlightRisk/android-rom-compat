@@ -3,4 +3,3 @@ name: Redmi Note 12 Pro 4G
 codenames: [sweet2]
 bootloader:
   unlock: unknown
-  relock: unknown

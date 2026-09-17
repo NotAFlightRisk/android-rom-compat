@@ -4,6 +4,6 @@ codenames: [klte]
 aliases: [SM-G900F, SM-G900M, SM-G900R4, SM-G900R7, SM-G900T, SM-G900T3, SM-G900V, SM-G900W8]
 released: 2014
 soc: Qualcomm MSM8974AC Snapdragon 801
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

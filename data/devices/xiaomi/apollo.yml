@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: MI 10T
+slug: mi-10t-apollo
+codenames: [apollo, apollopro]
+bootloader:
+  unlock: unknown

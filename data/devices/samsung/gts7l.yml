@@ -4,6 +4,7 @@ codenames: [gts7l]
 aliases: [SM-T875]
 released: 2020
 soc: Qualcomm SM8250-AB Snapdragon 865+
+type: tablet
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

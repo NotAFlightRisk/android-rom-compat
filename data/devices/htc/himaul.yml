@@ -3,6 +3,6 @@ name: One M9 (GSM)
 codenames: [himaul]
 released: 2015
 soc: Qualcomm MSM8994 Snapdragon 810
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

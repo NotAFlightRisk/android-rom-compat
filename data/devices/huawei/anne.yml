@@ -4,6 +4,6 @@ codenames: [anne]
 aliases: [ANE-LX1, ANE-LX2, ANE-LX3, ANE-LX2J, ANE-AL00, ANE-L23, ANE-L22, ANE-L21]
 released: 2018
 soc: HiSilicon Kirin 659
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

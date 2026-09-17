@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 9T Pro
 codenames: [raphael]
+aliases: [Redmi K20 Pro]
 bootloader:
   unlock: unknown
-  relock: unknown

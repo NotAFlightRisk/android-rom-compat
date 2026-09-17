@@ -3,6 +3,6 @@ name: F1 (International)
 codenames: [f1f]
 released: 2016
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

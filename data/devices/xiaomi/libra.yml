@@ -3,6 +3,6 @@ name: Mi 4c
 codenames: [libra]
 released: 2015
 soc: Qualcomm MSM8992 Snapdragon 808
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [kltedv]
 aliases: [SM-G900I, SM-G900P]
 released: 2014
 soc: Qualcomm MSM8974AC Snapdragon 801
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

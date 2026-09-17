@@ -14,6 +14,7 @@ const {
   crumbs = [],
   jsonLd = [],
   edit = [],
+  sources = [],
   ogType = 'website',
   noindex = false,
   headerSearch = true,
@@ -90,7 +91,7 @@ const image = new URL('/og.png', Astro.site).href;
       {crumbs.length > 0 && <Breadcrumbs trail={trail} />}
       <slot />
     </main>
-    <Footer edit={edit} />
+    <Footer edit={edit} sources={sources} />
   </body>
 </html>
 

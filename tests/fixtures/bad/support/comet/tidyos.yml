@@ -1,0 +1,6 @@
+status: active
+features:
+  nfc: partial
+  widevine: L2
+  jetpack: working
+  volte: { status: working, variant: turbo }

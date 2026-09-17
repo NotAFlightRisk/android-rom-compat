@@ -4,6 +4,6 @@ codenames: [xpeng]
 aliases: [Edge S30, XT2175-1, XT2175-2]
 released: 2021
 soc: Qualcomm SM8350-AC Snapdragon 888+
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

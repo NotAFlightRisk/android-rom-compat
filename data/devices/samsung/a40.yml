@@ -3,4 +3,3 @@ name: Galaxy A40
 codenames: [a40]
 bootloader:
   unlock: unknown
-  relock: unknown

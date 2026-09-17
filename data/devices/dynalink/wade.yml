@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: TV Box 4K (2021)
-codenames: [wade]
-released: 2021
-soc: Amlogic S905Y2
-bootloader:
-  unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: Nexus 4
 codenames: [mako]
 released: 2012
 soc: Qualcomm APQ8064 Snapdragon S4 Pro
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

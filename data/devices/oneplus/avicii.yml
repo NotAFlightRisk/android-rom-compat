@@ -4,6 +4,6 @@ codenames: [avicii]
 aliases: [AC2001, AC2003, AC2001(India), AC2003(EU)]
 released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

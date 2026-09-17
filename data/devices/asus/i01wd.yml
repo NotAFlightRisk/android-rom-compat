@@ -3,6 +3,6 @@ name: Zenfone 6 (ZS630KL)
 codenames: [i01wd]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

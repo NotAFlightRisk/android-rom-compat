@@ -3,6 +3,6 @@ name: Robin
 codenames: [ether]
 released: 2016
 soc: Qualcomm MSM8992 Snapdragon 808
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -1,0 +1,111 @@
+name: 📝 Report
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions: {}
+
+concurrency:
+  group: report-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  report:
+    name: 📝 Turn a report into a PR
+    runs-on: ubuntu-latest
+    if: >-
+      contains(github.event.issue.labels.*.name, 'feature-status')
+      && github.event.issue.state == 'open'
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app
+        with:
+          client-id: ${{ secrets.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Read the report
+        id: report
+        continue-on-error: true
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: node scripts/report.js
+
+      - name: Check it still validates
+        id: validate
+        if: steps.report.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          log="$RUNNER_TEMP/validate.log"
+          if ! npm run --silent validate | tee "$log"; then
+            delimiter="EOF_$(uuidgen)"
+            { echo "error<<$delimiter"; grep -v '^::' "$log"; echo "$delimiter"; } >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+      - name: Ask for more details
+        if: steps.report.outcome == 'failure' || steps.validate.outcome == 'failure'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          ERROR: ${{ steps.report.outputs.error || steps.validate.outputs.error }}
+        with:
+          github-token: ${{ steps.app.outputs.token }}
+          script: |
+            const { ERROR } = process.env;
+            const issue = { ...context.repo, issue_number: context.issue.number };
+            const body = ERROR
+              ? `Thanks! A couple of things need sorting before this can go in:\n\n${ERROR}\n\nJust edit the issue and I'll have another go.`
+              : "Thanks! Something fell over on our end, so we'll take a look.";
+            await github.rest.issues.createComment({ ...issue, body });
+            await github.rest.issues.addLabels({ ...issue, labels: ['needs-info'] });
+            if (!ERROR) core.setFailed('The report step failed without saying why');
+
+      - name: Open the pull request
+        id: pr
+        if: steps.validate.outcome == 'success'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ steps.app.outputs.token }}
+          sign-commits: true
+          branch: report/${{ github.event.issue.number }}
+          add-paths: data/support/**
+          commit-message: |
+            feat(data): ${{ steps.report.outputs.summary }}
+
+            Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.id }}+${{ github.event.issue.user.login }}@users.noreply.github.com>
+          title: 'feat(data): ${{ steps.report.outputs.summary }}'
+          body: |
+            ${{ steps.report.outputs.summary }}, reported in #${{ github.event.issue.number }}.
+
+            Closes #${{ github.event.issue.number }}
+          labels: data
+
+      - name: Point the issue at it
+        if: steps.pr.outputs.pull-request-number
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          OPERATION: ${{ steps.pr.outputs.pull-request-operation }}
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+        with:
+          github-token: ${{ steps.app.outputs.token }}
+          script: |
+            const { OPERATION, PR_URL } = process.env;
+            const issue = { ...context.repo, issue_number: context.issue.number };
+            await github.rest.issues.removeLabel({ ...issue, name: 'needs-info' }).catch((error) => {
+              if (error.status !== 404) throw error;
+            });
+            if (OPERATION === 'none') return;
+            const done = OPERATION === 'created' ? 'Opened' : 'Updated';
+            await github.rest.issues.createComment({ ...issue, body: `Cheers! ${done} ${PR_URL} with this` });

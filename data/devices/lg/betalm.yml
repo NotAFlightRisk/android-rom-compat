@@ -4,6 +4,6 @@ codenames: [betalm]
 aliases: [LM-G810EA, LM-G810EAW, LM-G810RA]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

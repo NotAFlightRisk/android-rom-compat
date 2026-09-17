@@ -3,6 +3,6 @@ name: Swift
 codenames: [crackling]
 released: 2015
 soc: Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

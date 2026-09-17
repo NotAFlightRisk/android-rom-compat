@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 12 Pro
 codenames: [rubyx]
-aliases: [Pro Plus 5G]
+aliases: [Pro Plus 5G, Pro+ 5G]
 bootloader:
   unlock: unknown
-  relock: unknown

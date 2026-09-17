@@ -1,19 +1,24 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { getModel } from './src/lib/data/model.js';
+import { buildModel } from './src/lib/data/model.js';
+import { loadData } from './src/lib/data/load.js';
 import { site } from './src/lib/site.js';
 
-const { devices, roms, brands } = getModel();
-const latest = (rows) =>
-  rows
-    .map((row) => row.verified)
-    .sort()
-    .at(-1);
+const data = loadData();
+const { devices, roms, brands } = buildModel(data);
+const imported = new Map(data.upstream.map((file) => [file.name, file.data.imported]));
+const newest = (dates) => dates.filter(Boolean).sort().at(-1);
+const lastmodOf = (rows) =>
+  newest(rows.map((row) => row.latest?.date)) ??
+  newest(rows.map((row) => imported.get(row.rom.key)));
 
-const lastChecked = new Map([
-  ...devices.map((device) => [device.url, latest(device.support)]),
-  ...roms.map((rom) => [rom.url, latest(rom.support)]),
-  ...brands.map((brand) => [brand.url, latest(brand.devices.flatMap((device) => device.support))]),
+const lastChanged = new Map([
+  ...devices.map((device) => [device.url, lastmodOf(device.support)]),
+  ...roms.map((rom) => [rom.url, lastmodOf(rom.support)]),
+  ...brands.map((brand) => [
+    brand.url,
+    lastmodOf(brand.devices.flatMap((device) => device.support)),
+  ]),
 ]);
 
 const codenameRedirects = Object.fromEntries(
@@ -30,7 +35,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       serialize: (item) => {
-        const lastmod = lastChecked.get(new URL(item.url).pathname);
+        const lastmod = lastChanged.get(new URL(item.url).pathname);
         return lastmod ? { ...item, lastmod } : item;
       },
     }),

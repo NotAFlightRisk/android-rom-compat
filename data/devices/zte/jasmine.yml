@@ -3,6 +3,7 @@ name: AT&T Trek 2 HD
 codenames: [jasmine]
 released: 2016
 soc: Qualcomm MSM8952 Snapdragon 617
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

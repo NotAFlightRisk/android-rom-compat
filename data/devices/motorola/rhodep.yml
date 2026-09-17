@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: moto g82 5G
 codenames: [rhodep]
-aliases: [XT2225-1]
+aliases: [XT2225-1, G71s]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

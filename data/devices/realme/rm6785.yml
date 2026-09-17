@@ -3,4 +3,3 @@ name: RM6785
 codenames: [rm6785]
 bootloader:
   unlock: unknown
-  relock: unknown

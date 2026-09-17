@@ -4,6 +4,6 @@ codenames: [fogo]
 aliases: [XT2417-1]
 released: 2024
 soc: Qualcomm SM4375 Snapdragon 4 Gen 1
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

@@ -3,7 +3,7 @@ name: Pixel 8a
 codenames: [akita]
 released: 2024
 soc: Google Tensor G3
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

@@ -11,16 +11,9 @@ const popular = devices
   .filter((device) => device.activeCount > 0)
   .toSorted((a, b) => b.activeCount - a.activeCount || (b.released ?? 0) - (a.released ?? 0))
   .slice(0, 10);
-const lastChecked = (device) =>
-  device.support
-    .map((row) => row.verified)
-    .sort()
-    .at(-1);
 const recent = devices
-  .filter((device) => device.activeCount > 0)
-  .toSorted(
-    (a, b) => lastChecked(b).localeCompare(lastChecked(a)) || a.title.localeCompare(b.title),
-  )
+  .filter((device) => device.latestBuild)
+  .toSorted((a, b) => b.latestBuild.localeCompare(a.latestBuild) || a.title.localeCompare(b.title))
   .slice(0, 8);
 ---
 
@@ -55,23 +48,25 @@ const recent = devices
       </ol>
     </section>
 
-    <section aria-labelledby="recent">
-      <h2 id="recent">Recently checked</h2>
-      <ol class="rows">
-        {recent.map((device) => (
-          <li>
-            <a href={device.url}>{device.title}</a>
-            <span>
-              {device.support
-                .filter((row) => row.active)
-                .map((row) => row.rom.name)
-                .join(', ')}
-            </span>
-            <time datetime={lastChecked(device)}>{lastChecked(device)}</time>
-          </li>
-        ))}
-      </ol>
-    </section>
+    {recent.length > 0 && (
+      <section aria-labelledby="recent">
+        <h2 id="recent">Recently built</h2>
+        <ol class="rows">
+          {recent.map((device) => (
+            <li>
+              <a href={device.url}>{device.title}</a>
+              <span>
+                {device.support
+                  .filter((row) => row.latest?.date === device.latestBuild)
+                  .map((row) => row.rom.name)
+                  .join(', ')}
+              </span>
+              <time datetime={device.latestBuild}>{device.latestBuild}</time>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
   </div>
 
   <section aria-labelledby="roms">

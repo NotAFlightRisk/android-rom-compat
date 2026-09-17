@@ -4,6 +4,6 @@ codenames: [gunnar]
 aliases: [CPH2459]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

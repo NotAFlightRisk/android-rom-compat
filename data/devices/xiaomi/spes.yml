@@ -3,4 +3,3 @@ name: Redmi Note 11
 codenames: [spes]
 bootloader:
   unlock: unknown
-  relock: unknown

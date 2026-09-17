@@ -4,6 +4,7 @@ codenames: [castor]
 aliases: [SGP521, SGP541, SGP551]
 released: 2014
 soc: Qualcomm MSM8974AC Snapdragon 801
+type: tablet
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

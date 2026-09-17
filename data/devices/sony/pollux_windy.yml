@@ -3,6 +3,7 @@ name: Xperia Tablet Z Wi-Fi
 codenames: [pollux_windy]
 released: 2013
 soc: Qualcomm APQ8064 Snapdragon S4 Pro
+type: tablet
+hardware: [nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

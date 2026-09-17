@@ -1,0 +1,11 @@
+imported: 2026-01-10
+devices:
+  rocket:
+    status: active
+    channel: stable
+    android: 15
+    relock: { status: yes, note: Check first }
+    latest: { version: '1.2', date: 2026-01-09, patch: 2026-01-01 }
+    source: https://example.com/devices/rocket
+    features:
+      nfc: { status: partial, note: Payments don't work }

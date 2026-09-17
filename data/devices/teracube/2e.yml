@@ -3,4 +3,3 @@ name: 2E
 codenames: [2e]
 bootloader:
   unlock: unknown
-  relock: unknown

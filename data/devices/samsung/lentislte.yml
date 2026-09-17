@@ -4,6 +4,6 @@ codenames: [lentislte]
 aliases: [SM-G906S, SM-G906K, SM-G906L]
 released: 2014
 soc: Qualcomm APQ8084 Snapdragon 805
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

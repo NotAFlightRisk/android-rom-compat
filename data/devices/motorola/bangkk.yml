@@ -4,6 +4,6 @@ codenames: [bangkk]
 aliases: [XT2347-1, XT2347-2]
 released: 2023
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

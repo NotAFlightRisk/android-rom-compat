@@ -2,6 +2,6 @@
 name: Pad 5
 codenames: [nabu]
 released: 2021
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

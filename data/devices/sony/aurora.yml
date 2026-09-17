@@ -4,6 +4,6 @@ codenames: [aurora]
 aliases: [H8116, H8166]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

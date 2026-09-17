@@ -3,6 +3,6 @@ name: Xperia M
 codenames: [nicki]
 released: 2013
 soc: Qualcomm MSM8227 Snapdragon S4 Plus
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

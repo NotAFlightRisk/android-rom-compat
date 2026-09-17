@@ -4,6 +4,6 @@ codenames: [judyp]
 aliases: [LM-V350AWM, LM-V350N]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

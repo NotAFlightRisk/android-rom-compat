@@ -3,6 +3,6 @@ name: V20 (GSM Unlocked - DirtySanta)
 codenames: [us996d]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

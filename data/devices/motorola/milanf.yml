@@ -4,6 +4,6 @@ codenames: [milanf]
 aliases: [XT2215-1, XT2215-3, XT2215-4]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

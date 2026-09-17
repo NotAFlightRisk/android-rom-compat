@@ -3,4 +3,3 @@ name: ZenFone 5
 codenames: [x00qd]
 bootloader:
   unlock: unknown
-  relock: unknown

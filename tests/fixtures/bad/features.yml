@@ -1,8 +1,19 @@
 - key: nfc
+  group: hardware
   name: NFC
-  description: Tap to pay
+  description: Tags and readers
   requires: nfc
+- key: volte
+  group: calls
+  name: VoLTE
+  description: Calls over 4G
+  requires: cellular
+- key: push
+  group: google
+  name: Notifications
+  description: Push notifications for apps
 - key: widevine
+  group: media
   name: Widevine
   description: DRM level
   values: [L1, L3, none]

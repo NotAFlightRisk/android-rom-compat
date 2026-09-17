@@ -3,4 +3,4 @@ codenames: [rocket_eea, Rocket]
 aliases: [RK-2]
 released: 2024
 hardware: [nfc, lasers]
-bootloader: { unlock: maybe, relock: unknown }
+bootloader: { unlock: maybe }

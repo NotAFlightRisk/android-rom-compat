@@ -3,5 +3,4 @@ name: Pixel 10 Pro Fold
 codenames: [rango]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

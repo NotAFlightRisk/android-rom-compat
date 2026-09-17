@@ -4,6 +4,6 @@ codenames: [odin2mini]
 aliases: [Odin2 Mini]
 released: 2024
 soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+type: handheld
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [kugo]
 aliases: [SO-02J, F5321]
 released: 2016
 soc: Qualcomm MSM8956 Snapdragon 650
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: "4"
 codenames: [fp4]
 released: 2021
 soc: Qualcomm SM7225 Snapdragon 750G
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

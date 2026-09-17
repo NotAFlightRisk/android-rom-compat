@@ -4,6 +4,6 @@ codenames: [clark]
 aliases: [moto x style (2015), XT1570, XT1572, XT1575]
 released: 2015
 soc: Qualcomm MSM8992 Snapdragon 808
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

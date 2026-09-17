@@ -4,6 +4,6 @@ codenames: [osprey]
 aliases: [XT1540, XT1541, XT1542, XT1543, XT1544, XT1548, XT1550]
 released: 2015
 soc: Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -25,7 +25,13 @@ const {
             {rowLabel}
           </th>
           {columns.map((column) => (
-            <th scope="col" data-col={column.key} hidden={column.hidden} title={column.description}>
+            <th
+              scope="col"
+              data-col={column.key}
+              data-group={column.group}
+              hidden={column.hidden}
+              title={column.description}
+            >
               {column.label}
             </th>
           ))}
@@ -39,6 +45,11 @@ const {
               {row.head.code && <code>{row.head.code}</code>}
               {row.head.links?.map((link) => (
                 <a class="minor" href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+              {row.head.builds?.map((link) => (
+                <a class="build" href={link.href}>
                   {link.label}
                 </a>
               ))}
@@ -141,18 +152,24 @@ const {
       font-weight: 500;
       white-space: normal;
 
-      a,
-      code {
-        display: block;
-      }
-
       a {
+        display: block;
         min-block-size: 1.5rem;
         line-height: 1.5rem;
       }
 
-      code,
+      code {
+        display: block;
+      }
+
       .minor {
+        display: inline-block;
+        margin-inline-end: var(--space-sm);
+      }
+
+      code,
+      .minor,
+      .build {
         font-size: 0.8rem;
         font-weight: 400;
       }

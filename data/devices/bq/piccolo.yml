@@ -3,6 +3,6 @@ name: Aquaris M5
 codenames: [piccolo]
 released: 2015
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

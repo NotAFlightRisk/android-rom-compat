@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 12
-maintainer: Nick van Bokhorst (GtrCraft)
-verified: 2026-09-16
-source: https://crdroid.net/downloads#juice
-install: https://forum.xda-developers.com/t/rom-android-11-juice-poco-m3-redmi-9t-redmi-9-power-redmi-note-9-4g-crdroid-v7-5-official-17-04-2021.4263541/

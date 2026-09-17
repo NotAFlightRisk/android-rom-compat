@@ -3,6 +3,6 @@ name: "2"
 codenames: [fp2]
 released: 2015
 soc: Qualcomm MSM8974AB-AB Snapdragon 801
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

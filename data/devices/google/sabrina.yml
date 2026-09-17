@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: Chromecast with Google TV (4K)
-codenames: [sabrina]
-released: 2020
-soc: Amlogic S905D3G
-bootloader:
-  unlock: no
-  relock: unknown

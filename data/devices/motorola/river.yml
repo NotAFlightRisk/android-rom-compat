@@ -4,6 +4,6 @@ codenames: [river]
 aliases: [XT1962-01, XT1962-04, XT1962-05, XT1962-06]
 released: 2019
 soc: Qualcomm SDM632 Snapdragon 632
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

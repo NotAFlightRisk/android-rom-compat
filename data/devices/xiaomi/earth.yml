@@ -4,6 +4,6 @@ codenames: [earth]
 aliases: [Redmi 12C NFC, POCO C55]
 released: 2023
 soc: Mediatek Helio G85
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

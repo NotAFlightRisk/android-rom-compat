@@ -4,6 +4,6 @@ codenames: [c2s]
 aliases: [SM-N985F, SM-N985F/DS, SM-N986B, SM-N986B/DS]
 released: 2020
 soc: Samsung Exynos 990
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,7 +3,7 @@ name: Pixel 2 XL
 codenames: [taimen]
 released: 2017
 soc: Qualcomm SDM835 Snapdragon 835
+hardware: [cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

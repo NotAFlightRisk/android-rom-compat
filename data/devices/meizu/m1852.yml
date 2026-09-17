@@ -3,4 +3,3 @@ name: X8
 codenames: [m1852]
 bootloader:
   unlock: unknown
-  relock: unknown

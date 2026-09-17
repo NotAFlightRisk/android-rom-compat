@@ -4,6 +4,6 @@ codenames: [lux]
 aliases: [XT1562, XT1563]
 released: 2015
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

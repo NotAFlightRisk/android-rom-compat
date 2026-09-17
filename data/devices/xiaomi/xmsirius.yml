@@ -4,6 +4,6 @@ codenames: [xmsirius]
 aliases: [M1805E2A]
 released: 2018
 soc: Qualcomm SDM710 Snapdragon 710
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

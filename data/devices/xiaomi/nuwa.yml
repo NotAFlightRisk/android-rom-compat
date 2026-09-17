@@ -4,6 +4,6 @@ codenames: [nuwa]
 aliases: [2210132G, 2210132C]
 released: 2022
 soc: Qualcomm SM8550 Snapdragon 8 Gen2
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

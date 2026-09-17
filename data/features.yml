@@ -1,48 +1,69 @@
 # yaml-language-server: $schema=../schema/features.json
-# Each feature is a column in the tables. Custom values go best first
+# Each feature is a column in the tables, in this order. Custom values go best first
 
-- key: camera
-  name: Camera
-  description: Photos and video, including the extra lenses
-- key: fingerprint
-  name: Fingerprint
-  description: Unlocking with the fingerprint reader
-  requires: fingerprint
-- key: face_unlock
-  name: Face unlock
-  description: Unlocking with your face
-  requires: face_unlock
-- key: nfc
-  name: NFC
-  description: Contactless payments and tags
-  requires: nfc
 - key: volte
+  group: calls
   name: VoLTE
   description: Calls over 4G
-  requires: volte
+  requires: cellular
 - key: vowifi
+  group: calls
   name: VoWiFi
   description: Calls over Wi-Fi
-  requires: vowifi
+  requires: cellular
 - key: 5g
+  group: calls
   name: 5G
   description: 5G mobile data
   requires: 5g
+- key: wallet
+  group: google
+  name: Google Wallet
+  description: Tap-to-pay
+  requires: nfc
+- key: push
+  group: google
+  name: Notifications
+  description: Push notifications for apps
+- key: android_auto
+  group: google
+  name: Android Auto
+  description: Connecting to a car
+- key: rcs
+  group: google
+  name: RCS
+  description: RCS chat in Google Messages
+  requires: cellular
+- key: integrity
+  group: google
+  name: Play Integrity
+  description: Highest Play Integrity verdict passed
+  values: [strong, device, basic, none]
+- key: camera
+  group: hardware
+  name: Camera
+  description: Compared with the stock camera
+- key: fingerprint
+  group: hardware
+  name: Fingerprint
+  description: Unlocking with the fingerprint reader
+  requires: fingerprint
+- key: nfc
+  group: hardware
+  name: NFC
+  description: Tags and readers
+  requires: nfc
 - key: esim
+  group: hardware
   name: eSIM
   description: Adding and switching eSIMs
   requires: esim
 - key: bluetooth_audio
+  group: hardware
   name: Bluetooth audio
   description: Headphones, speakers and codecs
-- key: android_auto
-  name: Android Auto
-  description: Connecting to a car
 - key: widevine
+  group: media
   name: Widevine
   description: DRM level, which decides streaming quality
   values: [L1, L3, none]
-- key: integrity
-  name: Play Integrity
-  description: Highest Play Integrity verdict passed
-  values: [strong, device, basic, none]

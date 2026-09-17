@@ -3,6 +3,6 @@ name: Mi MIX 2S
 codenames: [polaris]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,4 +3,3 @@ name: Galaxy M31s
 codenames: [m31s]
 bootloader:
   unlock: unknown
-  relock: unknown

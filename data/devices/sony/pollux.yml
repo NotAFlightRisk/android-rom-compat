@@ -3,6 +3,7 @@ name: Xperia Tablet Z LTE
 codenames: [pollux]
 released: 2013
 soc: Qualcomm APQ8064 Snapdragon S4 Pro
+type: tablet
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

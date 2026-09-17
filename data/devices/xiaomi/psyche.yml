@@ -3,4 +3,3 @@ name: 12X
 codenames: [psyche]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [timelm]
 aliases: [L-51A, LM-V600EA, LM-V600VM, LM-V600TM, LM-V600N]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown
