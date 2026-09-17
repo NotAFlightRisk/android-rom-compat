@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../schema/support.json
+features:
+  camera: { status: partial, note: no 48MP mode, android: 16, checked: 2026-09-17, source: https://github.com/NotAFlightRisk/android-rom-compat/issues/2 }
+  nfc: { status: working, android: 16, checked: 2026-09-17, source: https://github.com/NotAFlightRisk/android-rom-compat/issues/2 }
