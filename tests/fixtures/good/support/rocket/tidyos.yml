@@ -1,8 +1,3 @@
-official: true
-status: active
-android: 15
-verified: 2026-01-10
-source: https://example.com/devices
 features:
-  nfc: { status: partial, note: Payments don't work }
   widevine: L3
+  push: { status: working, variant: plus, android: 15, checked: 2026-01-10, source: tested }

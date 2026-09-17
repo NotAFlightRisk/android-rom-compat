@@ -1,4 +1,5 @@
 {
+  "$id": "device.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Device",
   "type": "object",
@@ -19,6 +20,7 @@
     },
     "released": { "type": "integer", "minimum": 2008, "maximum": 2100 },
     "soc": { "type": "string", "minLength": 1 },
+    "type": { "enum": ["phone", "tablet", "handheld"] },
     "hardware": {
       "type": "array",
       "uniqueItems": true,
@@ -30,14 +32,15 @@
     },
     "bootloader": {
       "type": "object",
-      "required": ["unlock", "relock"],
+      "required": ["unlock"],
       "additionalProperties": false,
       "properties": {
         "unlock": { "enum": ["yes", "no", "conditional", "unknown"] },
-        "relock": { "enum": ["yes", "no", "unknown"] },
         "notes": { "type": "string", "minLength": 1 }
       },
-      "if": { "properties": { "unlock": { "const": "conditional" } } },
+      "if": {
+        "properties": { "unlock": { "const": "conditional" } }
+      },
       "then": { "required": ["notes"] }
     },
     "slug": {

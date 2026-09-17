@@ -5,13 +5,21 @@ import { slugify, listOf } from '../text.js';
 import { explain, pathOf } from './explain.js';
 import { NEEDS_NOTE, allowedValues, cellValue } from './status.js';
 
+const SCHEMAS = ['brands', 'features', 'rom', 'device', 'upstream', 'stock', 'support'];
 const ajv = addFormats(new Ajv({ allErrors: true, verbose: true }));
-const schemas = Object.fromEntries(
-  ['brands', 'features', 'rom', 'device', 'support'].map((name) => {
-    const url = new URL(`../../../schema/${name}.json`, import.meta.url);
-    return [name, ajv.compile(JSON.parse(readFileSync(url, 'utf8')))];
-  }),
-);
+for (const name of SCHEMAS) {
+  ajv.addSchema(
+    JSON.parse(readFileSync(new URL(`../../../schema/${name}.json`, import.meta.url), 'utf8')),
+  );
+}
+const schemas = Object.fromEntries(SCHEMAS.map((name) => [name, ajv.getSchema(`${name}.json`)]));
+
+/** The first schema problem in a value, or undefined when it's fine */
+export function schemaProblem(schema, value) {
+  if (schemas[schema](value)) return undefined;
+  const [error] = schemas[schema].errors;
+  return `${pathOf(error.instancePath) || 'file'} ${explain(error)}`;
+}
 
 const strings = (value) =>
   Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [];
@@ -55,7 +63,11 @@ export function check(data) {
     if (rom.misplaced) report(rom.file, '', 'ROMs live at data/roms/<rom>.yml');
     else validate('rom', rom);
   }
-  const roms = new Set(data.roms.filter((rom) => !rom.misplaced).map((rom) => rom.key));
+  const roms = new Map(
+    data.roms
+      .filter((rom) => !rom.misplaced && isObject(rom.data))
+      .map((rom) => [rom.key, rom.data]),
+  );
 
   const names = new Map();
   const slugs = new Map();
@@ -99,8 +111,64 @@ export function check(data) {
   const primaries = new Set(data.devices.map((device) => device.key));
   const today = new Date().toISOString().slice(0, 10);
 
+  const checkCells = (file, prefix, cells, rom) => {
+    for (const [key, raw] of Object.entries(isObject(cells) ? cells : {})) {
+      const feature = features.get(key);
+      const path = `${prefix}.${key}`;
+      if (!feature) {
+        report(file, path, `"${key}" isn't a feature in data/features.yml`);
+        continue;
+      }
+      const { value, note, variant } = cellValue(raw);
+      if (variant && !rom?.variants?.some((known) => known.key === variant)) {
+        report(file, `${path}.variant`, `there's no "${variant}" build listed for this ROM`);
+      }
+      if (typeof value !== 'string') continue;
+      const allowed = allowedValues(feature);
+      if (!allowed.includes(value)) {
+        report(file, path, `"${value}" isn't allowed. Use ${listOf(allowed)}`);
+      } else if (NEEDS_NOTE.includes(value) && !note) {
+        report(file, path, `"${value}" needs a note, e.g. { status: ${value}, note: ... }`);
+      }
+    }
+  };
+
+  for (const [key, rom] of roms) {
+    const file = data.roms.find((entry) => entry.key === key).file;
+    checkCells(file, 'features', rom.features, rom);
+    (rom.variants ?? []).forEach((variant, i) =>
+      checkCells(file, `variants[${i}].features`, variant.features, rom),
+    );
+  }
+
+  const documented = new Set();
+  for (const entry of data.upstream) {
+    const { file, name } = entry;
+    const [romKey, variant] = name.split(/-(.*)/);
+    if (entry.misplaced) {
+      report(file, '', 'imports live at data/upstream/<rom>.yml');
+      continue;
+    }
+    const rom = roms.get(romKey);
+    if (name !== 'stock' && !rom)
+      report(file, '', `there's no ROM called "${romKey}" in data/roms/`);
+    if (variant && rom && !rom.variants?.some((known) => known.key === variant)) {
+      report(file, '', `${romKey} has no "${variant}" build in data/roms/${romKey}.yml`);
+    }
+    if (!validate(name === 'stock' ? 'stock' : 'upstream', entry)) continue;
+
+    for (const [codename, row] of Object.entries(entry.data.devices)) {
+      if (!variant) documented.add(`${codename}/${name}`);
+      if (!primaries.has(codename))
+        report(file, `devices.${codename}`, `there's no device with that codename`);
+      if (row.latest?.date > today)
+        report(file, `devices.${codename}.latest.date`, "can't be in the future");
+      checkCells(file, `devices.${codename}.features`, row.features, rom);
+    }
+  }
+
   for (const entry of data.support) {
-    const { file, codename, rom } = entry;
+    const { file, codename, rom: romKey } = entry;
     if (entry.misplaced) {
       report(file, '', 'support lives at data/support/<codename>/<rom>.yml');
       continue;
@@ -115,30 +183,25 @@ export function check(data) {
           : `there's no device with the codename "${codename}"`,
       );
     }
-    if (!roms.has(rom)) report(file, '', `there's no ROM called "${rom}" in data/roms/`);
+    const rom = roms.get(romKey);
+    if (!rom) report(file, '', `there's no ROM called "${romKey}" in data/roms/`);
     if (!validate('support', entry) && !isObject(entry.data)) continue;
 
-    if (entry.data.verified > today) report(file, 'verified', "can't be in the future");
-    const cells = isObject(entry.data.features) ? entry.data.features : {};
-    for (const [key, raw] of Object.entries(cells)) {
-      const feature = features.get(key);
-      const path = `features.${key}`;
-      if (!feature) {
-        report(file, path, `"${key}" isn't a feature in data/features.yml`);
-        continue;
+    const { features: cells, ...facts } = entry.data;
+    if (documented.has(`${codename}/${romKey}`)) {
+      for (const field of Object.keys(facts)) {
+        report(file, field, `comes from data/upstream/${romKey}.yml, so only features go here`);
       }
-      const { value, note } = cellValue(raw);
-      if (typeof value !== 'string') continue;
-      const allowed = allowedValues(feature);
-      if (!allowed.includes(value)) {
-        report(file, path, `"${value}" isn't allowed. Use ${listOf(allowed)}`);
-      } else if (NEEDS_NOTE.includes(value) && !note) {
-        report(file, path, `"${value}" needs a note, e.g. { status: ${value}, note: ... }`);
+    } else {
+      for (const field of ['status', 'source']) {
+        if (!(field in facts)) report(file, field, 'is missing');
       }
     }
+    checkCells(file, 'features', cells, rom);
   }
 
   return problems;
 }
 
-export const fileCount = (data) => 2 + data.roms.length + data.devices.length + data.support.length;
+export const fileCount = (data) =>
+  2 + data.roms.length + data.devices.length + data.upstream.length + data.support.length;

@@ -6,7 +6,9 @@ focus: [privacy]
 google: none
 app_store: fdroid
 org: community
-security: { relockable_bootloader: false, verified_boot: true, monthly_patches: true }
+security: { relockable_bootloader: false, verified_boot: true, patches: monthly }
 install: [recovery]
 root: false
 links: { website: https://example.com }
+features:
+  push: { status: working }

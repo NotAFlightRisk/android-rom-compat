@@ -1,0 +1,58 @@
+{
+  "id": null,
+  "response": [
+    {
+      "incremental": "1786791981",
+      "api_level": "36",
+      "timestamp": 1786791981,
+      "channel": "community",
+      "filename": "e-4.2-a16-20260815662915-community-Mi439.zip",
+      "romtype": "dev",
+      "datetime": 1786791981,
+      "version": "4.2",
+      "display_version": "4.2-a16-20260815662915-community-Mi439",
+      "android_version": "16",
+      "is_upgrade_supported": false
+    },
+    {
+      "incremental": "1786906010",
+      "api_level": "35",
+      "timestamp": 1786906010,
+      "channel": "community",
+      "filename": "e-4.2-a15-20260816663281-community-Mi439.zip",
+      "romtype": "dev",
+      "datetime": 1786906010,
+      "version": "4.2",
+      "display_version": "4.2-a15-20260816663281-community-Mi439",
+      "android_version": "15",
+      "is_upgrade_supported": false
+    },
+    {
+      "incremental": "eng.root.20260818.111409",
+      "api_level": "34",
+      "timestamp": 1787051648,
+      "channel": "community",
+      "filename": "e-4.2-a14-20260818663777-community-Mi439.zip",
+      "romtype": "dev",
+      "datetime": 1787051648,
+      "version": "4.2",
+      "display_version": "4.2-a14-20260818663777-community-Mi439",
+      "android_version": "14",
+      "is_upgrade_supported": false
+    },
+    {
+      "incremental": "eng.root.20250710.184811",
+      "api_level": "33",
+      "timestamp": 1752173214,
+      "channel": "community",
+      "filename": "e-3.0.4-t-20250710507810-community-Mi439.zip",
+      "romtype": "dev",
+      "datetime": 1752173214,
+      "version": "3.0.4",
+      "display_version": "3.0.4-t-20250710507810-community-Mi439",
+      "android_version": "13",
+      "is_upgrade_supported": false
+    }
+  ],
+  "error": "build unknown in OTA server"
+}

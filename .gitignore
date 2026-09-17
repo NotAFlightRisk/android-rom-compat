@@ -55,3 +55,6 @@ iains-notes/
 
 # Astro
 .astro/
+
+# Importer output, it becomes the PR body
+import-summary.md

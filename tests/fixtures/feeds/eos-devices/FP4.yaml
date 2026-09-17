@@ -1,0 +1,24 @@
+codename: FP4
+maintainers: []
+models:
+  - FP4
+name: Fairphone 4
+network:
+  - tech: 2G
+  - tech: 3G
+  - tech: 4G
+  - tech: 5G
+  - tech: VoLTE + VoWiFi (depending on local network)
+peripherals:
+  - Fingerprint Scanner (Side Mounted
+  - Dual SIM (1 Physical + 1 e-SIM)
+release: 2021
+soc: Qualcomm Snapdragon 750G (SM7225)
+type: phone
+vendor: Fairphone
+build_version_stable: A14
+compatibility:
+  bootloader: lockable
+  build_variant: user
+  play_integrity: basic
+  release_type: official

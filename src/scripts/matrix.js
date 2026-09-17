@@ -7,6 +7,7 @@ const compare = (a, b) => {
 
 const toneRank = { working: 0, partial: 1, ended: 2, broken: 3, unknown: 4, 'n/a': 5 };
 const sortValue = (cell) =>
+  cell.querySelector('time')?.dateTime ??
   String(toneRank[cell.dataset.tone] ?? (cell.querySelector('a') ?? cell).textContent.trim());
 
 /** Fades the right edge while there's more table to scroll to */

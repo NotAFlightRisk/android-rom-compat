@@ -10,7 +10,7 @@ org: non-profit
 security:
   relockable_bootloader: true
   verified_boot: true
-  monthly_patches: true
+  patches: monthly
 install: [web-installer, cli]
 root: false
 links:
@@ -18,3 +18,6 @@ links:
   source: https://gitlab.com/CalyxOS
   docs: https://calyxos.org/docs/
   community: https://calyxos.org/community/
+features:
+  wallet: { status: broken, note: "Google Wallet and most other payment apps don't work", source: https://calyxos.org/docs/guide/getting-started/#calyxos-limitations---calyxos-versus-stock-android }
+  push: { status: working, note: 'Through microG, on by default', source: https://calyxos.org/docs/guide/microg/ }

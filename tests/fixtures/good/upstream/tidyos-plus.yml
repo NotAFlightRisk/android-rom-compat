@@ -1,0 +1,6 @@
+imported: 2026-01-10
+devices:
+  rocket:
+    status: active
+    latest: { version: '1.2', date: 2026-01-08 }
+    source: https://example.com/plus/rocket

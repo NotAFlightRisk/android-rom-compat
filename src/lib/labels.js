@@ -6,10 +6,12 @@ const named = {
   fdroid: 'F-Droid',
   'app-lounge': 'App Lounge',
   aurora: 'Aurora Store',
+  'play-store': 'Play Store',
   grapheneos: 'GrapheneOS App Store',
   'web-installer': 'Web installer',
   cli: 'Command line',
   'n/a': 'N/A',
+  rom: 'ROM',
 };
 
 export const labelOf = (value) =>

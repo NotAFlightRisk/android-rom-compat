@@ -1,0 +1,38 @@
+[
+  {
+    "datetime": 1780981141,
+    "files": [
+      {
+        "filename": "lineage-23.2-20260609-microG-FP4.zip",
+        "os_patch_level": "2026-06-01",
+        "url": "https://download.lineage.microg.org/builds/full/FP4/lineage-23.2-20260609-microG-FP4.zip"
+      }
+    ],
+    "type": "microg",
+    "version": "23.2"
+  },
+  {
+    "datetime": 1785793548,
+    "files": [
+      {
+        "filename": "lineage-23.2-20260803-microG-FP4.zip",
+        "os_patch_level": "2026-08-01",
+        "url": "https://download.lineage.microg.org/builds/full/FP4/lineage-23.2-20260803-microG-FP4.zip"
+      }
+    ],
+    "type": "microg",
+    "version": "23.2"
+  },
+  {
+    "datetime": 1788974902,
+    "files": [
+      {
+        "filename": "lineage-23.2-20260909-microG-FP4.zip",
+        "os_patch_level": "2026-08-01",
+        "url": "https://download.lineage.microg.org/builds/full/FP4/lineage-23.2-20260909-microG-FP4.zip"
+      }
+    ],
+    "type": "microg",
+    "version": "23.2"
+  }
+]

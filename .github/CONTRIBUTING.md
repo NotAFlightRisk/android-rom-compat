@@ -3,79 +3,44 @@
 Thanks for helping out 🎉<br />
 You don't need to know how to code, or have used YAML before. By joining in, you agree to our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-Rather not touch any files? Fill in a form instead and we'll add it for you:
-[add a device](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=add-device.yml),
-[report what works](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) or
+Rather not touch any files? Fill in a form instead:
+[report what works](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml),
+[add a device](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=add-device.yml) or
 [fix a mistake](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=correction.yml).
 
 ---
 
 ## How the data is laid out
 
-Everything lives in [`data/`](../data), in three folders:
+Everything lives in [`data/`](../data):
 
-- `roms/` - one file per ROM, like `grapheneos.yml`
-- `devices/<brand>/` - one file per device, named after its codename, like `devices/google/panther.yml`
-- `support/<codename>/` - one file per ROM that supports that device, like `support/panther/lineageos.yml`
+- `roms/` - one file per ROM, like `grapheneos.yml`, plus anything that's true on every device it runs on
+- `devices/<brand>/` - one file per device, named after its codename, like `devices/google/tegu.yml`
+- `upstream/` - generated from each ROM's own device list every week. Don't edit these
+- `support/<codename>/` - one file per ROM, for what people have reported, like `support/tegu/lineageos.yml`
 
-If there's no support file, that ROM doesn't support the device. `brands.yml` lists the brands and `features.yml` lists the features we track.
+`brands.yml` lists the brands and `features.yml` lists the features we track.
 
----
-
-## Adding a device
-
-Make `data/devices/<brand>/<codename>.yml`. The codename is the internal name the ROM's own device page uses (lowercase).
-
-```yaml
-# yaml-language-server: $schema=../../../schema/device.json
-name: Pixel 7
-codenames: [panther]
-aliases: [GVU6C, GQML3, GO3Z5]
-released: 2022
-soc: Google Tensor G2
-bootloader:
-  unlock: conditional
-  relock: yes
-  notes: Carrier models, like Verizon's, can't be unlocked.
-```
-
-`aliases` are model numbers and other names people search for. `bootloader.unlock` is `yes`, `no`, `conditional` (add `notes` saying when) or `unknown`. `relock` is whether it can be locked again with a custom ROM installed: `yes`, `no` or `unknown`.
-
-If the brand's new, add it to `data/brands.yml` too.
-
----
-
-## Adding support for a ROM
-
-Make `data/support/<codename>/<rom>.yml`:
-
-```yaml
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: GrapheneOS
-verified: 2026-09-16
-source: https://grapheneos.org/faq#supported-devices
-install: https://grapheneos.org/install/web
-```
-
-`status` is `active`, or `discontinued` once the ROM stops building for it. `verified` is the date you checked, and anything older than a year shows as stale on the site.
+The files in `upstream/` get rewritten by a bot every Monday, so any change you make there is gone within a week. If one's wrong (a missing device, the wrong Android version), it's wrong on the ROM's own site too - fix it there, or [tell us](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=correction.yml) and we'll chase it.
 
 ---
 
 ## Reporting what works
 
-Add a `features` section to the support file. Anything you leave out shows as unknown, which is fine.
+The [form](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) is the easy way. Pick a device and ROM, set whatever you've tried, and a bot opens a pull request for you with your name on the commit. If something's missing or doesn't add up, it comments on the issue saying what - just edit the issue and it'll try again. The "Report" link on each ROM row of a device page fills in the first two fields for you.
+
+Rather do it by hand? Add a `features` section to `data/support/<codename>/<rom>.yml`, making the file if it's not there yet. Anything you leave out shows as unknown, which is fine.
 
 ```yaml
+# yaml-language-server: $schema=../../../schema/support.json
 features:
-  nfc: working
-  volte: broken
-  esim: { status: partial, note: Activation needs sandboxed Google Play }
+  nfc: { status: working, android: 16, build: '2026091000', checked: 2026-09-17, source: tested }
+  camera: { status: partial, note: No 48MP mode, android: 16, checked: 2026-09-17, source: tested }
+  esim: { status: broken, note: Activation hangs, variant: microg, android: 16, checked: 2026-09-17, source: https://example.com/thread }
   widevine: L3
-  integrity: basic
 ```
+
+`android` and `build` are what you tested on, `checked` is the date, and `variant` is for a ROM's other builds (like LineageOS for microG). A report shows as stale once the ROM moves to a newer Android than yours, or `checked` is over a year old.
 
 The keys come from [`features.yml`](../data/features.yml). Most features use these:
 
@@ -91,9 +56,60 @@ Widevine uses `L1`, `L3` or `none`, and Play Integrity (`integrity`) uses `stron
 
 ---
 
+## Adding a device
+
+The weekly import adds any device a ROM we track supports, so you'll mostly only need this for fixing up details. Make `data/devices/<brand>/<codename>.yml`. The codename is the internal name the ROM's own device page uses (lowercase).
+
+```yaml
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 9a
+codenames: [tegu]
+released: 2025
+soc: Google Tensor G4
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: conditional
+  notes: Carrier models, like Verizon's, can't be unlocked.
+```
+
+Add `aliases` for model numbers and other names people search for. `type` is `tablet` or `handheld`, and left out for phones. `hardware` lists the bits that some features need, so a phone without NFC shows NFC as n/a. `bootloader.unlock` is `yes`, `no`, `conditional` (add `notes` saying when) or `unknown`.
+
+The import only ever fills gaps in a device file, so your edits stay put. If the brand's new, add it to `data/brands.yml` too.
+
+---
+
+## Adding support for a ROM
+
+If the ROM has a file in `data/upstream/`, its device list comes from there and you can't add rows by hand - the ROM's own site is the place to fix it. For a ROM without an importer, make `data/support/<codename>/<rom>.yml` with the whole row:
+
+```yaml
+# yaml-language-server: $schema=../../../schema/support.json
+status: active
+android: 16
+maintainer: someone
+latest: { version: '3.1', date: 2026-09-10 }
+source: https://example.com/devices/tegu
+install: https://example.com/devices/tegu/install
+```
+
+`status` is `active`, or `discontinued` once the ROM stops building for it. `status` and `source` are the only must-haves.
+
+---
+
 ## Sources
 
-Every support file needs a `source` link. The ROM's own device page, wiki or release notes are best. A forum post or your own testing is ok for features, just say so in a note, like `{ status: working, note: Tested on build 2026091000 }`. If you can't back something up, leave it as unknown - a gap is better than a wrong answer.
+Everything needs a `source`. The ROM's own device page, wiki or release notes are best. For features, a forum post or your own testing is fine too (`source: tested` by hand, or "tested it myself" in the form). If you can't back something up, leave it as unknown - a gap is better than a wrong answer.
+
+---
+
+## Bot pull requests
+
+`android-rom-compat-bot` opens two kinds of PR:
+
+- `chore(data): weekly import` - every Monday, refreshing `data/upstream/` and filling gaps in `data/devices/`. The description lists how each source got on
+- `feat(data): ...` - one per report form, touching one file in `data/support/`, and closing the issue once merged
+
+They run the same checks as everyone else's, and get squash merged once they pass.
 
 ---
 
@@ -104,15 +120,16 @@ On GitHub, just open the pull request - the checks run automatically, and any pr
 Working locally? Run `npm i` once, then `npm run validate`. It lists every problem it finds, like this:
 
 ```
-✗ data/support/panther/lineageos.yml
+✗ data/support/tegu/lineageos.yml
+  android: comes from data/upstream/lineageos.yml, so only features go here
   features.esim: "partial" needs a note, e.g. { status: partial, note: ... }
-✗ data/devices/google/cheetah.yml
+✗ data/devices/google/tegu.yml
   bootloader.unlock: "maybe" isn't allowed. Use yes, no, conditional or unknown
 
-2 problems in 2 files
+3 problems in 2 files
 ```
 
-Add `--file data/devices/google/panther.yml` to check just one file.
+Add `--file data/devices/google/tegu.yml` to check just one file.
 
 ---
 

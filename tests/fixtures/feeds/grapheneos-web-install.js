@@ -1,0 +1,1 @@
+const supportedDevices = ["stallion", "rango", "mustang", "blazer", "frankel", "tegu", "comet", "komodo", "caiman", "tokay", "akita", "husky", "shiba", "felix", "tangorpro", "lynx", "cheetah", "panther", "bluejay", "raven", "oriole"];

@@ -1,0 +1,130 @@
+---
+android_versions:
+  - 17
+  - 16
+  - 15
+  - 14
+  - 13
+  - 11
+upcoming_codenames:
+  - stallion
+upcoming_brands:
+  - pixel
+modern_codenames:
+  - FP6
+  - fogos
+  - tegu
+  - otter
+modern_brands:
+  - fairphone
+  - motorola
+  - pixel
+  - shift
+extended_codenames:
+  - FP4
+  - barbet
+extended_brands:
+  - fairphone
+  - motorola
+  - pixel
+previous_codenames:
+  - lemonadep
+  - sunfish
+  - jasmine_sprout
+previous_brands:
+  - oneplus
+  - pixel
+  - shift
+  - xiaomi
+FP6:
+  brand: fairphone
+  model: The Fairphone (Gen. 6) (beta)
+  manufacturer_support_ends: 2033-06
+  calyxos_support_ends: tbd
+  sim: "dual"
+  esim: "yes"
+  android: 16
+  web_install: false
+FP4:
+  brand: fairphone
+  model: Fairphone 4
+  manufacturer_support_ends: 2026-12
+  calyxos_support_ends: tbd
+  sim: "dual"
+  esim: "yes"
+  android: 16
+  web_install: false
+fogos:
+  brand: motorola
+  model: moto g34 5G and g45 5G
+  manufacturer_support_ends: 2027-01
+  calyxos_support_ends: tbd
+  sim: "dual"
+  esim: "yes"
+  android: 16
+  web_install: true
+stallion:
+  brand: pixel
+  model: Pixel 10a
+  manufacturer_support_ends: 2033-03
+  calyxos_support_ends: tbd
+  sim: "dual"
+  esim: "dual"
+  android: 16
+  web_install: true
+tegu:
+  brand: pixel
+  model: Pixel 9a
+  manufacturer_support_ends: 2032-04
+  calyxos_support_ends: 2032-04
+  sim: "dual"
+  esim: "dual"
+  android: 16
+  web_install: true
+otter:
+  brand: shift
+  model: SHIFTphone 8
+  manufacturer_support_ends: tbc
+  calyxos_support_ends: tbd
+  sim: "dual"
+  esim: "yes"
+  android: 16
+  web_install: false
+barbet:
+  brand: pixel
+  model: Pixel 5a (5G)
+  manufacturer_support_ends: 2024-08
+  calyxos_support_ends: 2025-08
+  sim: "dual"
+  esim: "yes"
+  android: 16
+  web_install: true
+sunfish:
+  brand: pixel
+  model: Pixel 4a
+  manufacturer_support_ends: 2023-08
+  calyxos_support_ends: 2024-08
+  sim: "dual"
+  esim: "yes"
+  android: 14
+  web_install: true
+  link: news/2025/03/31/pixel-3-4a-shift6mq-eol/
+lemonadep:
+  brand: oneplus
+  model: OnePlus 9 Pro (Beta)
+  calyxos_support_ends: 2022-05
+  sim: "dual"
+  esim: "no"
+  android: 12
+  web_install: false
+  link: news/2022/07/06/oneplus-android-12-relock-issue/
+jasmine_sprout:
+  brand: xiaomi
+  model: Xiaomi Mi A2
+  manufacturer_support_ends: 2021-08
+  calyxos_support_ends: 2022-02
+  sim: "dual"
+  esim: "no"
+  android: 11
+  web_install: false
+  link: news/2022/02/11/android-11-feb-security-update/

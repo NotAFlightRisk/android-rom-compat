@@ -1,0 +1,24 @@
+before_install_args:
+  version: 16
+codename: tegu
+maintainers: []
+name: Pixel 9a
+network:
+  - tech: 2G
+  - tech: 3G
+  - tech: 4G
+  - tech: 5G
+peripherals:
+  - eSIM
+  - Fingerprint reader
+  - NFC
+release: 2025
+soc: Google Tensor G4
+type: phone
+vendor: Google
+build_version_dev: A16
+compatibility:
+  bootloader: not lockable
+  build_variant: userdebug
+  play_integrity: basic (to be confirmed)
+  release_type: community

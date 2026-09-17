@@ -1,0 +1,11 @@
+before_install: {instructions: 'needs_specific_android_fw', ships_fw: True, version: '9.0'}
+codename: beast
+current_branch: 22.2
+maintainers: [npjohnson]
+name: ADT-2
+network: None
+peripherals: [HDMI]
+release: 2018-08-05
+soc: Amlogic S905X
+type: Set top box
+vendor: Google

@@ -10,7 +10,7 @@ org: community
 security:
   relockable_bootloader: false
   verified_boot: false
-  monthly_patches: true
+  patches: best-effort
 install: [recovery]
 root: false
 links:
@@ -18,3 +18,13 @@ links:
   source: https://github.com/LineageOS
   docs: https://wiki.lineageos.org
   community: https://lineageos.org/community/
+features:
+  wallet: { status: broken, inferred: true, note: "Tap-to-pay needs a Play Integrity verdict LineageOS doesn't promise", source: https://wiki.lineageos.org/faq#my-device-doesnt-pass-play-integrity }
+  push: { status: partial, note: Needs Google apps or microG added yourself, source: https://wiki.lineageos.org/faq#my-notifications-do-not-work }
+variants:
+  - key: microg
+    name: LineageOS for microG
+    google: microg
+    links: { website: https://lineage.microg.org }
+    features:
+      push: { status: working, note: 'Through microG, switch it on in microG settings', source: https://github.com/lineageos4microg/l4m-wiki/wiki/Installation }

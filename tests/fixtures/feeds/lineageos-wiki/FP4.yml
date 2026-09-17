@@ -1,0 +1,12 @@
+before_install: {instructions: 'needs_specific_android_fw', ships_fw: true, version: '13/15'}
+codename: FP4
+current_branch: 23.2
+maintainers: [mikeioannina]
+models: [FP4]
+name: '4'
+network: [2G GSM, 3G UMTS, 4G LTE, 5G NR]
+peripherals: [Accelerometer, Compass, DP over USB-C, Dual SIM, eSIM, Fingerprint reader, BeiDou, Galileo, GLONASS, GPS, Gyroscope, Light sensor, NFC, Proximity sensor, RGB ambient light, USB OTG]
+release: 2021-10
+soc: Qualcomm SM7225 Snapdragon 750G
+type: phone
+vendor: Fairphone

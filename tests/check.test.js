@@ -30,7 +30,7 @@ test('schema errors read like English', () => {
     /rocket\.yml bootloader\.unlock: "maybe" isn't allowed\. Use yes, no, conditional or unknown/,
   );
   expectProblem(/comet\.yml bootloader\.notes: is missing/);
-  expectProblem(/verified: "2026-02-30" isn't a real date/);
+  expectProblem(/imported: "2026-02-30" isn't a real date/);
 });
 
 test('codenames, aliases and web addresses must be unique', () => {
@@ -44,6 +44,7 @@ test('files must point at a real brand, device and ROM', () => {
   expectProblem(/ghost\/tidyos\.yml there's no device with the codename "ghost"/);
   expectProblem(/rocket\/missingos\.yml there's no ROM called "missingos"/);
   expectProblem(/^roms\/nested\/deep\.yml ROMs live at data\/roms/);
+  expectProblem(/^upstream\/tidyos\.yml devices\.nobody: there's no device/);
 });
 
 test('feature values are checked against features.yml', () => {
@@ -51,4 +52,19 @@ test('feature values are checked against features.yml', () => {
   expectProblem(/features\.widevine: "L2" isn't allowed/);
   expectProblem(/features\.jetpack: "jetpack" isn't a feature/);
   expectProblem(/hardware\[1\]: "lasers" isn't used by any feature/);
+});
+
+test('support files only hold features when an importer covers the device', () => {
+  expectProblem(/^support\/comet\/tidyos\.yml status: comes from data\/upstream\/tidyos\.yml/);
+  expectProblem(/^support\/rocket\/tidyos\.yml status: is missing/);
+});
+
+test('ROM features need a source, and variants must exist', () => {
+  expectProblem(/^roms\/tidyos\.yml features\.push\.source: is missing/);
+  expectProblem(/^upstream\/tidyos-nope\.yml tidyos has no "nope" build/);
+  expectProblem(/features\.volte\.variant: there's no "turbo" build/);
+});
+
+test('builds from the future are caught', () => {
+  expectProblem(/devices\.comet\.latest\.date: can't be in the future/);
 });

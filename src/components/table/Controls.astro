@@ -1,7 +1,9 @@
 ---
 import Icon from '../ui/Icon.astro';
+import { labelOf } from '../../lib/labels.js';
 
 const { id, columns, brands, total } = Astro.props;
+const groups = Map.groupBy(columns, (column) => column.group ?? '');
 ---
 
 <div class="controls" data-controls>
@@ -24,21 +26,27 @@ const { id, columns, brands, total } = Astro.props;
     <summary>
       <Icon name="columns" /> Columns
     </summary>
-    <fieldset>
-      <legend class="visually-hidden">Show columns</legend>
-      {columns.map((column) => (
-        <label>
-          <input
-            type="checkbox"
-            name="col"
-            value={column.key}
-            checked={!column.hidden}
-            aria-controls={id}
-          />
-          {column.label}
-        </label>
+    <div class="picker">
+      {[...groups].map(([group, list]) => (
+        <fieldset>
+          <legend class:list={{ 'visually-hidden': !group }}>
+            {group ? labelOf(group) : 'Show columns'}
+          </legend>
+          {list.map((column) => (
+            <label>
+              <input
+                type="checkbox"
+                name="col"
+                value={column.key}
+                checked={!column.hidden}
+                aria-controls={id}
+              />
+              {column.label}
+            </label>
+          ))}
+        </fieldset>
       ))}
-    </fieldset>
+    </div>
   </details>
   <p role="status" data-count>
     {total} shown
@@ -47,6 +55,7 @@ const { id, columns, brands, total } = Astro.props;
 
 <style>
   .controls {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -59,7 +68,9 @@ const { id, columns, brands, total } = Astro.props;
   }
 
   details {
-    position: relative;
+    @media (width >= 48rem) {
+      position: relative;
+    }
   }
 
   summary {
@@ -82,19 +93,40 @@ const { id, columns, brands, total } = Astro.props;
     }
   }
 
-  fieldset {
+  .picker {
     position: absolute;
     inset-block-start: calc(100% + var(--space-2xs));
     z-index: 3;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: var(--space-sm);
     inline-size: min(36rem, 90vw);
-    margin: 0;
+    max-block-size: 70dvh;
+    overflow-y: auto;
     padding: var(--space-sm);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--surface);
     box-shadow: var(--shadow);
+
+    @media (width < 48rem) {
+      inset-inline: 0;
+      inline-size: auto;
+    }
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    legend {
+      padding: 0 var(--space-2xs) var(--space-2xs);
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
 
     label {
       display: flex;

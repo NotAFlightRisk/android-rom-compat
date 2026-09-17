@@ -1,0 +1,81 @@
+{
+  "devices": [
+    {
+      "codename": "RMX2001L1",
+      "codename_alt": "nemo",
+      "vendor": "Realme",
+      "model": "realme 6/6i(Indian)/6s/Narzo",
+      "maintainer_name": "Debayan Kar",
+      "frame": null,
+      "active": false,
+      "last_updated": 1744408586,
+      "version": 15
+    },
+    {
+      "codename": "RMX2020",
+      "codename_alt": "RMX2020",
+      "vendor": "Realme",
+      "model": "Realme C3/Realme Narzo 10A",
+      "maintainer_name": "Sarthak Roy && Koushik Dey",
+      "frame": null,
+      "active": true,
+      "last_updated": 1781814660,
+      "version": 16
+    },
+    {
+      "codename": "Spacewar",
+      "codename_alt": "A063",
+      "vendor": "Nothing",
+      "model": "Nothing Phone (1)",
+      "maintainer_name": "Abdulaziz",
+      "frame": null,
+      "active": true,
+      "last_updated": null,
+      "version": null
+    },
+    {
+      "codename": "cheetah",
+      "codename_alt": "cheetah",
+      "vendor": "Google",
+      "model": "Google Pixel 7 Pro",
+      "maintainer_name": "Kitsunejasutin",
+      "frame": null,
+      "active": false,
+      "last_updated": 1696322939,
+      "version": 13
+    },
+    {
+      "codename": "garnet",
+      "codename_alt": "garnet",
+      "vendor": "Xiaomi",
+      "model": "Redmi Note 13 Pro 5G / POCO X6 5G",
+      "maintainer_name": "AdarshGrewal",
+      "frame": null,
+      "active": true,
+      "last_updated": 1787351178,
+      "version": 17
+    },
+    {
+      "codename": "nemo",
+      "codename_alt": "RMX2001/RMX2002/RMX2003",
+      "vendor": "Realme",
+      "model": "realme 6/6i(Indian)/6s/Narzo",
+      "maintainer_name": "Debayan Kar",
+      "frame": null,
+      "active": true,
+      "last_updated": 1781894127,
+      "version": 16
+    },
+    {
+      "codename": "pipa",
+      "codename_alt": "pipa",
+      "vendor": "Xiaomi",
+      "model": "Xiaomi Pad 6",
+      "maintainer_name": "Sugakesshaa",
+      "frame": null,
+      "active": true,
+      "last_updated": 1773777218,
+      "version": 16
+    }
+  ]
+}

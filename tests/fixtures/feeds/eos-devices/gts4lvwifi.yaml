@@ -1,0 +1,19 @@
+before_install_args:
+  version: 11
+codename: gts4lvwifi
+maintainers: []
+models:
+  - SM-T720
+name: Galaxy Tab S5e (Wi-Fi)
+peripherals:
+  - Fingerprint reader
+release: 2019
+soc: Qualcomm SDM670 Snapdragon 670
+type: tablet
+vendor: Samsung
+build_version_dev: A15
+compatibility:
+  bootloader: not lockable
+  build_variant: userdebug
+  play_integrity: basic (to be confirmed)
+  release_type: community

@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-09-15",
+    "datetime": 1789440064,
+    "files": [
+      {
+        "date": "2026-09-15",
+        "datetime": 1789440064,
+        "filename": "lineage-23.2-20260915-nightly-tegu-signed.zip",
+        "os_patch_level": "2026-09-01",
+        "type": "nightly",
+        "url": "https://mirrorbits.lineageos.org/full/tegu/20260915/lineage-23.2-20260915-nightly-tegu-signed.zip"
+      },
+      {
+        "filename": "boot.img",
+        "url": "https://mirrorbits.lineageos.org/full/tegu/20260915/boot.img"
+      }
+    ],
+    "type": "nightly",
+    "version": "23.2"
+  },
+  {
+    "date": "2026-09-08",
+    "datetime": 1788834688,
+    "files": [
+      {
+        "date": "2026-09-08",
+        "datetime": 1788834688,
+        "filename": "lineage-23.2-20260908-nightly-tegu-signed.zip",
+        "os_patch_level": "2026-08-01",
+        "type": "nightly",
+        "url": "https://mirrorbits.lineageos.org/full/tegu/20260908/lineage-23.2-20260908-nightly-tegu-signed.zip"
+      },
+      {
+        "filename": "boot.img",
+        "url": "https://mirrorbits.lineageos.org/full/tegu/20260908/boot.img"
+      }
+    ],
+    "type": "nightly",
+    "version": "23.2"
+  }
+]

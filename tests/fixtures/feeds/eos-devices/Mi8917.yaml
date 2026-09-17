@@ -1,0 +1,33 @@
+codename: Mi8917
+maintainers: []
+models:
+  - "2016111"
+  - "2016112"
+  - "2016116"
+  - "2016117"
+  - MCE3B
+  - MCG3B
+  - MCI3B
+  - MCT3B
+  - MDE6
+  - MDG6
+  - MDI6
+  - MDT6
+name: Redmi 4A / 5A / [Note 5A / Y1 - Lite]
+network:
+  - tech: 2G
+  - tech: 3G
+  - tech: 4G
+peripherals:
+  - Dual SIM
+release:
+  - Redmi 4A: 2016
+soc: Qualcomm MSM8917 Snapdragon 425
+type: phone
+vendor: Xiaomi
+build_version_dev: A16
+compatibility:
+  bootloader: not lockable
+  build_variant: userdebug
+  play_integrity: basic (to be confirmed)
+  release_type: community

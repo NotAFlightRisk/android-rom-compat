@@ -1,20 +1,9 @@
 import { loadData } from './load.js';
-import { cellValue, toneOf } from './status.js';
+import { resolveCell } from './status.js';
 import { slugify } from '../text.js';
 
 const STALE_AFTER_DAYS = 365;
 const byName = (key) => (a, b) => a[key].localeCompare(b[key], 'en', { sensitivity: 'base' });
-
-function resolveCell(feature, raw, device) {
-  if (raw === undefined) {
-    const lacksIt =
-      feature.requires && device.hardware && !device.hardware.includes(feature.requires);
-    const value = lacksIt ? 'n/a' : 'unknown';
-    return { value, tone: value };
-  }
-  const { value, note } = cellValue(raw);
-  return { value, note, tone: toneOf(feature, value) };
-}
 
 /** Joins the raw files into brands, ROMs and devices that point at each other */
 export function buildModel(data = loadData(), now = new Date()) {
@@ -54,31 +43,68 @@ export function buildModel(data = loadData(), now = new Date()) {
     }),
   );
 
-  const support = data.support.map(({ file, codename, rom: romKey, data: entry }) => {
+  const upstream = new Map();
+  for (const { name, data: file } of data.upstream) {
+    for (const [codename, row] of Object.entries(file.devices ?? {})) {
+      if (name === 'stock') {
+        if (devices.has(codename)) devices.get(codename).stock = row;
+      } else upstream.set(`${codename}/${name}`, row);
+    }
+  }
+  const reports = new Map(data.support.map((entry) => [`${entry.codename}/${entry.rom}`, entry]));
+
+  const pairs = [...upstream.keys(), ...reports.keys()].filter((pair) => {
+    const [codename, name] = pair.split('/');
+    return devices.has(codename) && roms.has(name);
+  });
+
+  const support = [...new Set(pairs)].map((pair) => {
+    const [codename, romKey] = pair.split('/');
     const device = devices.get(codename);
     const rom = roms.get(romKey);
-    const row = {
-      ...entry,
-      file,
+    const docs = upstream.get(pair);
+    const report = reports.get(pair);
+    const { features: reported, ...facts } = report?.data ?? {};
+    const { features: documented, ...row } = docs ?? facts;
+    const variants = (rom.variants ?? []).flatMap((variant) => {
+      const build = upstream.get(`${codename}/${romKey}-${variant.key}`);
+      return build ? [{ ...variant, ...build }] : [];
+    });
+    const entry = {
+      ...row,
+      file: report?.file,
+      generated: Boolean(docs),
       device,
       rom,
-      stale: entry.verified < staleBefore,
-      active: entry.status === 'active' && rom.status === 'active',
+      variants,
+      active: row.status === 'active' && rom.status === 'active',
       cells: Object.fromEntries(
         features.map((feature) => [
           feature.key,
-          resolveCell(feature, entry.features?.[feature.key], device),
+          resolveCell(feature, {
+            report: reported,
+            upstream: documented,
+            device,
+            rom,
+            android: row.android,
+            staleBefore,
+          }),
         ]),
       ),
     };
-    device.support.push(row);
-    rom.support.push(row);
-    return row;
+    device.support.push(entry);
+    rom.support.push(entry);
+    return entry;
   });
 
   for (const device of devices.values()) {
     device.support.sort((a, b) => a.rom.name.localeCompare(b.rom.name));
     device.activeCount = device.support.filter((row) => row.active).length;
+    device.latestBuild = device.support
+      .map((row) => row.latest?.date)
+      .filter(Boolean)
+      .sort()
+      .at(-1);
   }
   for (const rom of roms.values())
     rom.support.sort((a, b) => a.device.title.localeCompare(b.device.title));

@@ -1,4 +1,5 @@
 {
+  "$id": "rom.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ROM",
   "type": "object",
@@ -30,12 +31,12 @@
     "org": { "enum": ["company", "non-profit", "community"] },
     "security": {
       "type": "object",
-      "required": ["relockable_bootloader", "verified_boot", "monthly_patches"],
+      "required": ["relockable_bootloader", "verified_boot", "patches"],
       "additionalProperties": false,
       "properties": {
         "relockable_bootloader": { "type": "boolean" },
         "verified_boot": { "type": "boolean" },
-        "monthly_patches": { "type": "boolean" }
+        "patches": { "enum": ["monthly", "best-effort", "none"] }
       }
     },
     "install": {
@@ -54,6 +55,44 @@
         "source": { "$ref": "#/$defs/link" },
         "docs": { "$ref": "#/$defs/link" },
         "community": { "$ref": "#/$defs/link" }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "source"],
+        "additionalProperties": false,
+        "properties": {
+          "status": { "type": "string", "minLength": 1 },
+          "note": { "type": "string", "minLength": 1 },
+          "inferred": { "type": "boolean" },
+          "source": { "$ref": "#/$defs/link" }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "key": { "$ref": "brands.json#/$defs/key" },
+          "name": { "type": "string", "minLength": 1 },
+          "google": { "enum": ["none", "microg", "sandboxed", "optional", "bundled"] },
+          "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "website": { "$ref": "#/$defs/link" },
+              "source": { "$ref": "#/$defs/link" },
+              "docs": { "$ref": "#/$defs/link" },
+              "community": { "$ref": "#/$defs/link" }
+            }
+          },
+          "features": { "$ref": "#/properties/features" }
+        }
       }
     }
   },

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: PixelOS
+description: AOSP-based ROM that aims to feel like a Pixel, with Google apps built in and a few performance tweaks.
+status: active
+base: aosp
+focus: [near-stock, performance]
+google: bundled
+app_store: play-store
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  patches: best-effort
+install: [recovery]
+root: false
+links:
+  website: https://pixelos.net
+  source: https://github.com/PixelOS-AOSP
+  docs: https://blog.pixelos.net
+  community: https://t.me/pixeloschat
+features:
+  push: { status: working, inferred: true, note: Google apps come built in, source: https://pixelos.net }
+  integrity: { status: basic, inferred: true, note: "Spoofs certified props, but the docs only promise the retired SafetyNet check", source: https://github.com/PixelOS-AOSP/blog/blob/main/docs/guides/HowToRoot.md }

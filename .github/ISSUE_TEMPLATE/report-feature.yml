@@ -1,49 +1,133 @@
 name: ✅ Report what works
-description: Whether a feature works on a ROM and device
-title: "[Feature]: "
+description: What works on one device with one ROM
+title: "[Report]: "
 labels: ["data", "feature-status"]
 body:
+  - type: markdown
+    attributes:
+      value: Leave anything you haven't tried blank. A bot turns this into a pull request for you.
   - type: input
     id: device
     attributes:
       label: Device
-      description: Name or codename
-      placeholder: Pixel 7 (panther)
+      description: Name, codename or model number
+      placeholder: Pixel 9a
     validations:
       required: true
   - type: input
     id: rom
     attributes:
       label: ROM
-      placeholder: GrapheneOS
+      description: Add the build if it's not the main one, like LineageOS for microG
+      placeholder: LineageOS
     validations:
       required: true
   - type: input
-    id: feature
+    id: android
     attributes:
-      label: Feature
-      description: Any of the keys in data/features.yml
-      placeholder: volte
+      label: Android version
+      placeholder: "16"
     validations:
       required: true
+  - type: input
+    id: build
+    attributes:
+      label: Build
+      description: From Settings --> About phone
+      placeholder: "2026091000"
   - type: dropdown
-    id: status
+    id: volte
     attributes:
-      label: status
-      description: Widevine and Play Integrity use their own values, put those in the note
-      options: [working, partial, broken, n/a, other]
-    validations:
-      required: true
-  - type: input
-    id: note
+      label: VoLTE
+      description: Calls over 4G
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: vowifi
     attributes:
-      label: note
-      description: Needed for partial and broken
-      placeholder: Works on EE, not on Three
+      label: VoWiFi
+      description: Calls over Wi-Fi
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: 5g
+    attributes:
+      label: 5G
+      description: 5G mobile data
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: wallet
+    attributes:
+      label: Google Wallet
+      description: Tap-to-pay
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: push
+    attributes:
+      label: Notifications
+      description: Push notifications for apps
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: android_auto
+    attributes:
+      label: Android Auto
+      description: Connecting to a car
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: rcs
+    attributes:
+      label: RCS
+      description: RCS chat in Google Messages
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: integrity
+    attributes:
+      label: Play Integrity
+      description: Highest Play Integrity verdict passed
+      options: [strong, device, basic, "none", n/a]
+  - type: dropdown
+    id: camera
+    attributes:
+      label: Camera
+      description: Compared with the stock camera
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: fingerprint
+    attributes:
+      label: Fingerprint
+      description: Unlocking with the fingerprint reader
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: nfc
+    attributes:
+      label: NFC
+      description: Tags and readers
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: esim
+    attributes:
+      label: eSIM
+      description: Adding and switching eSIMs
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: bluetooth_audio
+    attributes:
+      label: Bluetooth audio
+      description: Headphones, speakers and codecs
+      options: [working, partial, broken, n/a]
+  - type: dropdown
+    id: widevine
+    attributes:
+      label: Widevine
+      description: DRM level, which decides streaming quality
+      options: [L1, L3, "none", n/a]
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: "Anything partial or broken, one line each, like `Camera: no 48MP mode`"
   - type: input
     id: source
     attributes:
-      label: source
-      description: A link, or "tested it myself" plus the ROM build you're on
+      label: Source
+      description: A link, or "tested it myself"
     validations:
       required: true

@@ -1,36 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "support.json",
   "title": "Support",
-  "type": "object",
-  "required": ["official", "status", "verified", "source"],
-  "additionalProperties": false,
-  "properties": {
-    "official": { "type": "boolean" },
-    "status": { "enum": ["active", "discontinued"] },
-    "android": { "type": "number", "minimum": 1, "maximum": 99 },
-    "maintainer": { "type": "string", "minLength": 1 },
-    "verified": { "type": "string", "format": "date" },
-    "source": { "$ref": "#/$defs/link" },
-    "install": { "$ref": "#/$defs/link" },
-    "features": {
-      "type": "object",
-      "additionalProperties": {
-        "anyOf": [
-          { "type": "string", "minLength": 1 },
-          {
-            "type": "object",
-            "required": ["status"],
-            "additionalProperties": false,
-            "properties": {
-              "status": { "type": "string", "minLength": 1 },
-              "note": { "type": "string", "minLength": 1 }
-            }
-          }
-        ]
-      }
-    }
-  },
-  "$defs": {
-    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
-  }
+  "$ref": "upstream.json#/$defs/row"
 }

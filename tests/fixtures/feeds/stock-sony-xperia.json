@@ -1,0 +1,41 @@
+{
+  "result": {
+    "name": "sony-xperia",
+    "label": "Sony Xperia",
+    "links": {
+      "html": "https://endoflife.date/sony-xperia"
+    },
+    "releases": [
+      {
+        "name": "10-vi",
+        "codename": null,
+        "label": "Xperia 10 VI",
+        "releaseDate": "2024-06-13",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEol": false,
+        "eolFrom": "2028-05-01",
+        "isMaintained": true,
+        "latest": null,
+        "custom": {
+          "androidVersions": "14 > 15 > 16"
+        }
+      },
+      {
+        "name": "5-v",
+        "codename": null,
+        "label": "Xperia 5 V",
+        "releaseDate": "2023-09-25",
+        "isLts": false,
+        "ltsFrom": null,
+        "isEol": true,
+        "eolFrom": "2026-08-01",
+        "isMaintained": false,
+        "latest": null,
+        "custom": {
+          "androidVersions": "13 > 14 > 15"
+        }
+      }
+    ]
+  }
+}

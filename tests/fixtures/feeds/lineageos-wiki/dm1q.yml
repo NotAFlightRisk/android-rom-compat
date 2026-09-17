@@ -1,0 +1,14 @@
+before_install: {instructions: 'needs_specific_android_fw', version: '15'}
+codename: dm1q
+current_branch: 23.2
+is_unlockable: false
+maintainers: [DaemonMCR, josip-k, krazey]
+models: [SM-S911B, SM-S911B/DS]
+name: Galaxy S23
+network: [2G GSM, 2G CDMA, 3G UMTS, 4G LTE, 5G NR]
+peripherals: [Accelerometer, Barometer, Compass, eSIM, Fingerprint reader, BeiDou, Galileo, GLONASS, GPS, Gyroscope, Hall effect sensor, Light sensor, NFC, Proximity sensor, Qi wireless charging, Qi reverse wireless charging, USB OTG]
+quirks: [esim, ims]
+release: 2023-02-17
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+type: phone
+vendor: Samsung

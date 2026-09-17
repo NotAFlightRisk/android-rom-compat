@@ -48,6 +48,10 @@ export function loadData(root = 'data') {
       key,
       misplaced: !key || rest.length > 0,
     })),
+    upstream: records('upstream', ([name, ...rest]) => ({
+      name,
+      misplaced: rest.length > 0,
+    })),
     support: records('support', ([codename, rom, ...rest]) => ({
       codename,
       rom,

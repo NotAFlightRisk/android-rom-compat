@@ -39,14 +39,6 @@ body:
       options: [unknown, "yes", "no", conditional]
     validations:
       required: true
-  - type: dropdown
-    id: relock
-    attributes:
-      label: bootloader.relock
-      description: Can it be locked again with a custom ROM installed?
-      options: [unknown, "yes", "no"]
-    validations:
-      required: true
   - type: input
     id: notes
     attributes:
