@@ -4,6 +4,6 @@ codenames: [griffin]
 aliases: [XT1650-03, XT1650-05]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

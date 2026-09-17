@@ -3,6 +3,6 @@ name: OV1
 codenames: [pyrite]
 released: 2022
 soc: Qualcomm SM8350-AC Snapdragon 888+
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: G3 Beat
 codenames: [jagnm]
 released: 2014
 soc: Qualcomm MSM8926 Snapdragon 400
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,4 +3,3 @@ name: Mi Max 2
 codenames: [oxygen]
 bootloader:
   unlock: unknown
-  relock: unknown

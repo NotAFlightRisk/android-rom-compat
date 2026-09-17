@@ -4,6 +4,6 @@ codenames: [suzuran]
 aliases: [E5803, E5823]
 released: 2015
 soc: Qualcomm MSM8994 Snapdragon 810
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

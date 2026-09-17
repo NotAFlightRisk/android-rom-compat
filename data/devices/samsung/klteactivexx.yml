@@ -4,6 +4,6 @@ codenames: [klteactivexx]
 aliases: [SM-G870F]
 released: 2014
 soc: Qualcomm MSM8974PRO Snapdragon 801
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

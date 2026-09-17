@@ -3,6 +3,7 @@ name: Shield Tablet
 codenames: [shieldtablet]
 released: 2014
 soc: NVIDIA Tegra K1 (T124)
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

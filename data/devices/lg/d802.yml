@@ -3,6 +3,6 @@ name: G2 (International)
 codenames: [d802]
 released: 2013
 soc: Qualcomm MSM8974 Snapdragon 800
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

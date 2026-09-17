@@ -4,6 +4,7 @@ codenames: [gts7lwifi]
 aliases: [SM-T870]
 released: 2020
 soc: Qualcomm SM8250-AB Snapdragon 865+
+type: tablet
+hardware: [fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

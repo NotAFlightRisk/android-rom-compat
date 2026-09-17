@@ -3,4 +3,3 @@ name: Moto G6
 codenames: [ali]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,7 @@ name: Xperia Z4 Tablet LTE
 codenames: [karin]
 released: 2015
 soc: Qualcomm MSM8994 Snapdragon 810
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [peregrine]
 aliases: [XT1039, XT1040, XT1042, XT1045]
 released: 2014
 soc: Qualcomm MSM8926 Snapdragon 400
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

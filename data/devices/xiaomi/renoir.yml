@@ -4,6 +4,6 @@ codenames: [renoir]
 aliases: [M2101K9G, M2101K9C, M2101K9R]
 released: 2021
 soc: Qualcomm SM7350-AB Snapdragon 780G 5G
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

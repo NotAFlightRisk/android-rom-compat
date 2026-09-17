@@ -4,6 +4,6 @@ codenames: [devon]
 aliases: [XT2235-1, XT2235-2, XT2235-3]
 released: 2022
 soc: Qualcomm SM6225 Snapdragon 680 4G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

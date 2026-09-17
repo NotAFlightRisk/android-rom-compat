@@ -4,6 +4,6 @@ codenames: [gtelwifiue]
 aliases: [SM-T560NU]
 released: 2015
 soc: Qualcomm MSM8916 Snapdragon 410
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

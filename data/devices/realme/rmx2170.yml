@@ -3,4 +3,3 @@ name: 7 Pro
 codenames: [rmx2170]
 bootloader:
   unlock: unknown
-  relock: unknown

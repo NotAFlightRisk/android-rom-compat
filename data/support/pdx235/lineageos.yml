@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: jmpfbmx, LuK1337
-verified: 2026-09-16
-source: https://wiki.lineageos.org/devices/pdx235/
-install: https://wiki.lineageos.org/devices/pdx235/install/

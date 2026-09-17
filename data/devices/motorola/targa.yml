@@ -4,6 +4,6 @@ codenames: [targa]
 aliases: [XT875]
 released: 2011
 soc: TI OMAP4430
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

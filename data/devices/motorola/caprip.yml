@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: moto g30
 codenames: [caprip]
-aliases: [K13 Pro, XT2129-1, XT2129-2, XT2129-3]
+aliases: [K13 Pro, XT2129-1, XT2129-2, XT2129-3, Lenovo K13 Pro]
 released: 2021
 soc: Qualcomm SM6115 Snapdragon 662
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

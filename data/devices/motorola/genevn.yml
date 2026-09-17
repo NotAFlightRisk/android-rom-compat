@@ -4,6 +4,6 @@ codenames: [genevn]
 aliases: [XT2315-1, XT2315-4, XT2315-5]
 released: 2023
 soc: Qualcomm SM6450 Snapdragon 6 Gen 1
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

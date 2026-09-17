@@ -3,4 +3,3 @@ name: Galaxy F41
 codenames: [f41]
 bootloader:
   unlock: unknown
-  relock: unknown

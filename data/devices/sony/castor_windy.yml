@@ -4,6 +4,7 @@ codenames: [castor_windy]
 aliases: [SGP511, SGP512]
 released: 2014
 soc: Qualcomm MSM8974AC Snapdragon 801
+type: tablet
+hardware: [nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

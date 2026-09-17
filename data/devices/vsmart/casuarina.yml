@@ -4,6 +4,6 @@ codenames: [casuarina]
 aliases: [Joy 3+, V430A, V430E]
 released: 2020
 soc: Qualcomm SDM632 Snapdragon 632
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

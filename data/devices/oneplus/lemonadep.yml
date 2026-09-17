@@ -4,6 +4,6 @@ codenames: [lemonadep]
 aliases: [9 Pro (T-Mobile), LE2120, LE2121, LE2123, LE2125, LE2127]
 released: 2021
 soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

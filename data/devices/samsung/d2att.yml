@@ -4,6 +4,6 @@ codenames: [d2att]
 aliases: [SGH-I747, SGH-I747M]
 released: 2012
 soc: Qualcomm MSM8960 Snapdragon S4 Plus
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

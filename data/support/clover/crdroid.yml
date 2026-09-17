@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: Peter Meiser (meiser79)
-verified: 2026-09-16
-source: https://crdroid.net/downloads#clover
-install: https://xdaforums.com/t/rom-16-0-official-clover-kernelsu-next-crdroid-12-x-for-xiaomi-mi-pad-4-plus.4759312/

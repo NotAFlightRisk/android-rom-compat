@@ -3,6 +3,6 @@ name: Redmi Note 6 Pro
 codenames: [twolip]
 released: 2018
 soc: Qualcomm SDM636 Snapdragon 636
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

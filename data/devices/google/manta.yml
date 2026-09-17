@@ -3,6 +3,7 @@ name: Nexus 10
 codenames: [manta]
 released: 2012
 soc: Samsung Exynos 5250
+type: tablet
+hardware: [nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

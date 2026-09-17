@@ -4,6 +4,6 @@ codenames: [lmi]
 aliases: [Redmi K30 Pro, Redmi K30 Pro Zoom Edition, M2004J11G, M2001J11C, M2001J11E]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

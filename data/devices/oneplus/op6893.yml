@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord 2 5G
+codenames: [op6893]
+aliases: [X7 Max 5G]
+bootloader:
+  unlock: unknown

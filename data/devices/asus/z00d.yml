@@ -3,6 +3,6 @@ name: Zenfone 2 (ZE500CL)
 codenames: [z00d]
 released: 2015
 soc: Intel Atom Z2560
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

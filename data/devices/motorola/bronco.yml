@@ -4,6 +4,6 @@ codenames: [bronco]
 aliases: [XT2309-2, XT2309-3]
 released: 2023
 soc: Qualcomm SM8475 Snapdragon 8+ Gen1
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

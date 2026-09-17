@@ -4,6 +4,6 @@ codenames: [fajita]
 aliases: [6T (T-Mobile)]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

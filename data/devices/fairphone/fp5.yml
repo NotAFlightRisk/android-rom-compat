@@ -3,6 +3,6 @@ name: "5"
 codenames: [fp5]
 released: 2023
 soc: Qualcomm Dragonwing™ QCM6490 (QCM6490)
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

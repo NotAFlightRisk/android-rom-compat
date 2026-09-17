@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-verified: 2026-09-16
-source: https://calyxos.org/docs/guide/device-support/
-install: https://calyxos.org/install/devices/husky/

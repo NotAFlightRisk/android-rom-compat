@@ -3,4 +3,3 @@ name: One M9
 codenames: [hima]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [pl2]
 aliases: [TA-1043, TA-1089]
 released: 2018
 soc: Qualcomm SDM630 Snapdragon 630
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

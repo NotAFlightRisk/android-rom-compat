@@ -4,6 +4,6 @@ codenames: [umi]
 aliases: [M2001J2G, M2001J2I]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

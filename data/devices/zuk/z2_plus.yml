@@ -3,6 +3,6 @@ name: Z2 Plus
 codenames: [z2_plus]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

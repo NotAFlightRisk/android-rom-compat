@@ -4,6 +4,6 @@ codenames: [i9300]
 aliases: [GT-I9300, GT-I9300T]
 released: 2012
 soc: Samsung Exynos 4412
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

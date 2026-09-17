@@ -3,6 +3,6 @@ name: Mi MIX
 codenames: [lithium]
 released: 2016
 soc: Qualcomm MSM8996 Pro Snapdragon 821
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

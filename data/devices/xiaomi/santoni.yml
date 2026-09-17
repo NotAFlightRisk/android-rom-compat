@@ -3,4 +3,3 @@ name: Redmi 4X
 codenames: [santoni]
 bootloader:
   unlock: unknown
-  relock: unknown

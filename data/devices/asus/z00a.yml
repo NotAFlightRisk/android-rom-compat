@@ -3,6 +3,6 @@ name: Zenfone 2 (1080p)
 codenames: [z00a]
 released: 2015
 soc: Intel Atom Z3560 / Intel Atom Z3580
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

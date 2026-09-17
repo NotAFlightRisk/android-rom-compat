@@ -4,6 +4,6 @@ codenames: [avatrn]
 aliases: [XT2405-1, XT2405V]
 released: 2024
 soc: Qualcomm SM7435-AB Snapdragon 7s Gen 2
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

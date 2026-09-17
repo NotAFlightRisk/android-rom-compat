@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: IN Note 1
+codenames: [yogurt]
+aliases: [IN1]
+bootloader:
+  unlock: unknown

@@ -3,6 +3,6 @@ name: Mi A2
 codenames: [jasmine_sprout]
 released: 2018
 soc: Qualcomm SDM660 Snapdragon 660
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

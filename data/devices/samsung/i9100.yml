@@ -4,6 +4,6 @@ codenames: [i9100]
 aliases: [GT-I9100, GT-I9100T, GT-I9100M, GT-I9100P, SC-02C]
 released: 2011
 soc: Samsung Exynos 4210
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

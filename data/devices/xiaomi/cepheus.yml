@@ -3,4 +3,3 @@ name: MI9
 codenames: [cepheus]
 bootloader:
   unlock: unknown
-  relock: unknown

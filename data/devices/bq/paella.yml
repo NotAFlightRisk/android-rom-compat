@@ -3,6 +3,6 @@ name: Aquaris X5
 codenames: [paella]
 released: 2015
 soc: Qualcomm MSM8916T Snapdragon 412
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

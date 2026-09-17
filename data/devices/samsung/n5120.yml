@@ -3,6 +3,7 @@ name: Galaxy Note 8.0 (LTE)
 codenames: [n5120]
 released: 2013
 soc: Samsung Exynos 4412
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

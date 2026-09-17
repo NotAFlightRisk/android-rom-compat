@@ -4,6 +4,6 @@ codenames: [payton]
 aliases: [XT1900-1, XT1900-2, XT1900-3, XT1900-4, XT1900-5, XT1900-6, XT1900-7]
 released: 2017
 soc: Qualcomm SDM630 Snapdragon 630
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

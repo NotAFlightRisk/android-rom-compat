@@ -4,6 +4,6 @@ codenames: [d2s]
 aliases: [SM-N975F, SM-N975F/DS]
 released: 2019
 soc: Samsung Exynos 9825
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

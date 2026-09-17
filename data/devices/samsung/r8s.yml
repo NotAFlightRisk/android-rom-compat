@@ -4,6 +4,6 @@ codenames: [r8s]
 aliases: [SM-G780F, SM-G780F/DS, SM-G780F/DSM]
 released: 2020
 soc: Samsung Exynos 990
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

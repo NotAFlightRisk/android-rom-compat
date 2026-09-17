@@ -4,6 +4,6 @@ codenames: [dreamlte]
 aliases: [SM-G950F, SM-G950FD]
 released: 2017
 soc: Samsung Exynos 8895
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

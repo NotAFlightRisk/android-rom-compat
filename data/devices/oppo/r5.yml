@@ -4,6 +4,6 @@ codenames: [r5]
 aliases: [R5s (International), R8106, R8106s]
 released: 2014
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

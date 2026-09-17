@@ -4,6 +4,6 @@ codenames: [gtowifi]
 aliases: [SM-T290]
 released: 2019
 soc: Qualcomm SDM429 Snapdragon 429
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

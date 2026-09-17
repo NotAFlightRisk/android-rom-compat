@@ -4,6 +4,6 @@ codenames: [dream2lte]
 aliases: [G955F]
 released: 2017
 soc: Samsung Exynos 8895
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

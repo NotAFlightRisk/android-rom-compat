@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 11 Pro/Poco X4 Pro
 codenames: [veux]
+aliases: [Poco X4 Pro 5G]
 bootloader:
   unlock: unknown
-  relock: unknown

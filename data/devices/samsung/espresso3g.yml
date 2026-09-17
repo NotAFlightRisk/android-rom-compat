@@ -4,6 +4,7 @@ codenames: [espresso3g]
 aliases: [Galaxy Tab 2 10.1 (GSM), P3100, P5100]
 released: 2012
 soc: TI OMAP4430
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

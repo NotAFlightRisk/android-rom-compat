@@ -3,6 +3,6 @@ name: One
 codenames: [one]
 aliases: [Murena One]
 released: 2022
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: yes

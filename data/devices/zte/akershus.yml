@@ -4,6 +4,6 @@ codenames: [akershus]
 aliases: [P845A01, P845A02]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

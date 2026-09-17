@@ -4,6 +4,6 @@ codenames: [zippo]
 aliases: [L78051]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

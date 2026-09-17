@@ -4,6 +4,6 @@ codenames: [kiev]
 aliases: [moto one 5G ace, XT2113-3, XT2113-2, One 5G Ace, XT2113-5]
 released: 2020
 soc: Qualcomm SM7225 Snapdragon 750G
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

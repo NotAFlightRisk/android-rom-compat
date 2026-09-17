@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: Pedro Araujo
-verified: 2026-09-16
-source: https://crdroid.net/downloads#rodin
-install: https://xdaforums.com/t/rom-16-crdroid-12-8-for-poco-x7-pro-rodin-aosp-encryption.4784669/

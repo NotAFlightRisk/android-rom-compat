@@ -4,6 +4,6 @@ codenames: [alioth]
 aliases: [Redmi K40, Mi 11X, M2012K11AG, M2012K11AC, M2012K11AI]
 released: 2021
 soc: Qualcomm SM8250-AC Snapdragon 870
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

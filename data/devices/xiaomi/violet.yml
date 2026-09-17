@@ -4,6 +4,6 @@ codenames: [violet]
 aliases: [M1901F7S, M1901F7BE]
 released: 2019
 soc: Qualcomm SM6150 Snapdragon 675
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 10
-verified: 2026-09-16
-source: https://crdroid.net/downloads#angler
-install: https://forum.xda-developers.com/nexus-6p/development/rom-crdroid-android-6-2-t4040695

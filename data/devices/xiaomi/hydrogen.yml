@@ -3,6 +3,6 @@ name: Mi Max
 codenames: [hydrogen]
 released: 2016
 soc: Qualcomm MSM8956 Snapdragon 650
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

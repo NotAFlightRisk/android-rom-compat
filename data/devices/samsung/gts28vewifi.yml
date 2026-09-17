@@ -4,6 +4,7 @@ codenames: [gts28vewifi]
 aliases: [SM-T713]
 released: 2016
 soc: Qualcomm MSM8976 Snapdragon 652
+type: tablet
+hardware: [fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

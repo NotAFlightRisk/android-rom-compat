@@ -3,6 +3,6 @@ name: Storm
 codenames: [kipper]
 released: 2015
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

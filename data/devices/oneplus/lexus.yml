@@ -4,6 +4,6 @@ codenames: [lexus]
 aliases: [CPH2707, CPH2709]
 released: 2025
 soc: Qualcomm SM8635 Snapdragon 8s Gen3
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

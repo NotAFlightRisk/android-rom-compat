@@ -4,6 +4,6 @@ codenames: [starlte]
 aliases: [SM-G960F, SM-G960F/DS, SM-G960N]
 released: 2018
 soc: Samsung Exynos 9810
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

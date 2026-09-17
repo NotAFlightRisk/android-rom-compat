@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 12
-verified: 2026-09-16
-source: https://crdroid.net/downloads#tissot
-install: https://forum.xda-developers.com/t/rom-12-tissot-crdroid-v8-1-20-01-2022.4391085/

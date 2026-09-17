@@ -4,6 +4,6 @@ codenames: [d2x]
 aliases: [SM-N976B, SM-N976N]
 released: 2019
 soc: Samsung Exynos 9825
+hardware: [5g, cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

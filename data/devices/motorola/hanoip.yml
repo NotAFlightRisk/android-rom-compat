@@ -3,4 +3,3 @@ name: Moto G60/G40F
 codenames: [hanoip]
 bootloader:
   unlock: unknown
-  relock: unknown

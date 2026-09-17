@@ -3,4 +3,3 @@ name: Redmi K30 5G
 codenames: [picasso]
 bootloader:
   unlock: unknown
-  relock: unknown

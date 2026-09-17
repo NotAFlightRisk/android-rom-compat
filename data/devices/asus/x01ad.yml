@@ -3,6 +3,6 @@ name: Zenfone Max M2
 codenames: [x01ad]
 released: 2018
 soc: Qualcomm SDM632 Snapdragon 632
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

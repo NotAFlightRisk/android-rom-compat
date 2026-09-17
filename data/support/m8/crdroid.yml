@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 10
-verified: 2026-09-16
-source: https://crdroid.net/downloads#m8
-install: https://forum.xda-developers.com/htc-one-m8/development/official-romcrdroid-t4068145/post82035239#post82035239

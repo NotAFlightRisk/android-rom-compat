@@ -4,6 +4,6 @@ codenames: [z3s]
 aliases: [SM-G988B, SM-G988B/DS]
 released: 2020
 soc: Samsung Exynos 990
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

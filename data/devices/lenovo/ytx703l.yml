@@ -4,6 +4,7 @@ codenames: [ytx703l]
 aliases: [YTX703X]
 released: 2016
 soc: Qualcomm MSM8976 Snapdragon 652
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [lake]
 aliases: [XT1965-2, XT1965-3, XT1965-6, XT1965-T]
 released: 2019
 soc: Qualcomm SDM636 Snapdragon 636
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

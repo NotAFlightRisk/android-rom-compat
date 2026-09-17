@@ -4,6 +4,6 @@ codenames: [discovery]
 aliases: [H3213, H4213, H4233, H3223]
 released: 2018
 soc: Qualcomm SDM630 Snapdragon 630
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

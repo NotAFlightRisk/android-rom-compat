@@ -3,4 +3,3 @@ name: Redmi 6 Pro
 codenames: [sakura]
 bootloader:
   unlock: unknown
-  relock: unknown

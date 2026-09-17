@@ -4,6 +4,6 @@ codenames: [pstar]
 aliases: [XT2153-1]
 released: 2021
 soc: Qualcomm SM8250-AC Snapdragon 870
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

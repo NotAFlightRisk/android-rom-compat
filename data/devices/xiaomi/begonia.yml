@@ -3,4 +3,3 @@ name: Redmi Note 8 Pro
 codenames: [begonia]
 bootloader:
   unlock: unknown
-  relock: unknown

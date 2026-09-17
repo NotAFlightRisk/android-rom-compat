@@ -4,6 +4,6 @@ codenames: [gs6_venus]
 aliases: [GS6 PRO]
 released: 2025
 soc: MediaTek Dimensity 7300
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: yes

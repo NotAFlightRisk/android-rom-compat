@@ -3,4 +3,3 @@ name: RN10 5G/10T/11SE/M3 Pro
 codenames: [camellia]
 bootloader:
   unlock: unknown
-  relock: unknown

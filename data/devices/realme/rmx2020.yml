@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: C3/Narzo 10A
 codenames: [rmx2020]
+aliases: [Narzo 10A]
 bootloader:
   unlock: unknown
-  relock: unknown

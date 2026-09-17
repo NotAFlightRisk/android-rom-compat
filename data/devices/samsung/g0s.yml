@@ -4,6 +4,6 @@ codenames: [g0s]
 aliases: [SM-S906B, SM-S906B/DS]
 released: 2022
 soc: Samsung Exynos 2200
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [audi]
 aliases: [PJF110]
 released: 2024
 soc: Qualcomm SM7675-AB Snapdragon 7+ Gen 3
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: Yoga Tab 3 Plus Wi-Fi
 codenames: [ytx703f]
 released: 2016
 soc: Qualcomm APQ8076 Snapdragon 652
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

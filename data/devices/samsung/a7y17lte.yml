@@ -4,6 +4,6 @@ codenames: [a7y17lte]
 aliases: [SM-A720F, SM-A720F/DS, SM-A720S]
 released: 2017
 soc: Samsung Exynos 7880
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

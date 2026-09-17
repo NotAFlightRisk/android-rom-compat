@@ -4,6 +4,6 @@ codenames: [tucana]
 aliases: [Mi Note 10 Pro, Mi CC9 Pro, M1910F4G, M1910F4S, M1910F4E]
 released: 2019
 soc: Qualcomm SM7150-AB Snapdragon 730G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

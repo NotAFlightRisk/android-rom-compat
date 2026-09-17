@@ -3,6 +3,6 @@ name: Ascend Mate 2 4G
 codenames: [mt2]
 released: 2014
 soc: Qualcomm MSM8928 Snapdragon 400
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

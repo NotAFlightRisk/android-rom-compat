@@ -4,6 +4,6 @@ codenames: [titan]
 aliases: [XT1063, XT1064, XT1068, XT1069]
 released: 2014
 soc: Qualcomm MSM8226 Snapdragon 400
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

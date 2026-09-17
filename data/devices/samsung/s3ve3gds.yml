@@ -4,6 +4,6 @@ codenames: [s3ve3gds]
 aliases: [GT-I9300I]
 released: 2014
 soc: Qualcomm MSM8226 Snapdragon 400
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 12 5G
 codenames: [sky]
+aliases: [Poco M6 Pro 5G]
 bootloader:
   unlock: unknown
-  relock: unknown

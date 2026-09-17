@@ -3,6 +3,6 @@ name: Pro¹ X
 codenames: [pro1x]
 released: 2022
 soc: Qualcomm SM6115 Snapdragon 662
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

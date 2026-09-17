@@ -3,6 +3,6 @@ name: 2 Pro
 codenames: [rmx1801]
 released: 2018
 soc: Qualcomm SDM660 Snapdragon 660
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 16
-maintainer: Pranav Vashi (neobuddy89)
-verified: 2026-09-16
-source: https://crdroid.net/downloads#vayu
-install: https://xdaforums.com/t/rom-poco-x3-pro-16-0-crdroid-12-official.4758367/

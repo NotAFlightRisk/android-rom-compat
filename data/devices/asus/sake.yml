@@ -4,6 +4,6 @@ codenames: [sake]
 aliases: [I006D, ZS590KS]
 released: 2021
 soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

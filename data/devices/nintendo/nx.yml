@@ -4,6 +4,6 @@ codenames: [nx]
 aliases: ["Switch v2 [Android TV]", "Switch Lite [Android TV]", "Switch OLED [Android TV]"]
 released: 2017
 soc: NVIDIA Tegra X1 (T210)
+type: handheld
 bootloader:
   unlock: no
-  relock: unknown

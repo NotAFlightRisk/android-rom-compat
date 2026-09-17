@@ -4,6 +4,6 @@ codenames: [waffle]
 aliases: [CPH2573, CPH2581, CPH2583, PJD110]
 released: 2023
 soc: Qualcomm SM8650 Snapdragon 8 Gen3
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

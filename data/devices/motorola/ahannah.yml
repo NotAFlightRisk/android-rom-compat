@@ -4,6 +4,6 @@ codenames: [ahannah]
 aliases: [XT1924-3, XT1924-9]
 released: 2018
 soc: Qualcomm MSM8937 Snapdragon 430
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

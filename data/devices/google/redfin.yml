@@ -3,7 +3,7 @@ name: Pixel 5
 codenames: [redfin]
 released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

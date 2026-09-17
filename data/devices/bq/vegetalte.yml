@@ -4,6 +4,6 @@ codenames: [vegetalte]
 aliases: [Aquaris E5s]
 released: 2014
 soc: Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

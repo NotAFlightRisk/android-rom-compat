@@ -4,6 +4,7 @@ codenames: [n5100]
 aliases: [GT-N5100]
 released: 2013
 soc: Samsung Exynos 4412
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

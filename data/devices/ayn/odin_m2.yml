@@ -3,6 +3,6 @@ name: Odin (M2)
 codenames: [odin_m2]
 released: 2022
 soc: Qualcomm SDM845 Snapdragon 845
+type: handheld
 bootloader:
   unlock: unknown
-  relock: unknown

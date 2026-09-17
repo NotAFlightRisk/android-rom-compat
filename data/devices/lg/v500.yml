@@ -3,6 +3,6 @@ name: G Pad 8.3
 codenames: [v500]
 released: 2013
 soc: Qualcomm APQ8064T Snapdragon 600
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

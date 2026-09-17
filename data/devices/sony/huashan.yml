@@ -3,6 +3,6 @@ name: Xperia SP
 codenames: [huashan]
 released: 2013
 soc: Qualcomm MSM8960T Snapdragon S4 Pro
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

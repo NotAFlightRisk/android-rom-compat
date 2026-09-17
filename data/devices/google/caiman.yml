@@ -3,7 +3,7 @@ name: Pixel 9 Pro
 codenames: [caiman]
 released: 2024
 soc: Google Tensor G4
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

@@ -4,6 +4,6 @@ codenames: [n1awifi]
 aliases: [SM-P600]
 released: 2013
 soc: Samsung Exynos 5420
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

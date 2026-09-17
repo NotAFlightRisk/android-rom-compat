@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: GT Neo 3T
+codenames: [spartan]
+bootloader:
+  unlock: unknown

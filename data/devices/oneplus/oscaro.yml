@@ -4,6 +4,6 @@ codenames: [oscaro]
 aliases: [CPH2381, CPH2409]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

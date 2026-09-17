@@ -4,4 +4,3 @@ codenames: [phoenix]
 aliases: [Redmi K30]
 bootloader:
   unlock: unknown
-  relock: unknown

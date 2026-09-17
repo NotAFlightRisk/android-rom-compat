@@ -4,6 +4,6 @@ codenames: [borneo]
 aliases: [XT2117-1, XT2117-2, XT2117-3, XT2117-4]
 released: 2021
 soc: Qualcomm SM6115 Snapdragon 662
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

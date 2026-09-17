@@ -4,6 +4,6 @@ codenames: [guacamoleb]
 aliases: [GM1900, GM1901, GM1903, GM1905]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [marble]
 aliases: [POCO F5 (India), Redmi Note 12 Turbo, 23049PCD8G, 23049PCD8I, 23049RAD8C]
 released: 2023
 soc: Qualcomm SM7475-AB Snapdragon 7+ Gen 2
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: G5 (International)
 codenames: [h850]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

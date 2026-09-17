@@ -1,9 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: Shield TV (2015 / 2015 Pro / 2017 / 2019 Pro) [Tablet]
-codenames: [foster_tab]
-aliases: ["Jetson TX1 [Tablet]", darcy, foster_e, foster_e_hdd, mdarcy, jetson_cv]
-released: 2015
-soc: NVIDIA Tegra X1 (T210)
-bootloader:
-  unlock: unknown
-  relock: unknown

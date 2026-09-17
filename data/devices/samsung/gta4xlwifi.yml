@@ -4,6 +4,6 @@ codenames: [gta4xlwifi]
 aliases: [SM-P610]
 released: 2020
 soc: Samsung Exynos 9611
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

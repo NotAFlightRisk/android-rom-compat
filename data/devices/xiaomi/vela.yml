@@ -4,6 +4,6 @@ codenames: [vela]
 aliases: [M1904F3BT]
 released: 2019
 soc: Qualcomm SDM710 Snapdragon 710
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

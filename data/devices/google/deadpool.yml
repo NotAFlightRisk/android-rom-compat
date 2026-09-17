@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: ADT-3
-codenames: [deadpool]
-released: 2020
-soc: Amlogic S905Y2
-bootloader:
-  unlock: unknown
-  relock: unknown

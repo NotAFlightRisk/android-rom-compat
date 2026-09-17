@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: moto g9 power
 codenames: [cebu]
-aliases: [K12 Pro, XT2091-3, XT2091-4, XT2091-7, XT2091-8]
+aliases: [K12 Pro, XT2091-3, XT2091-4, XT2091-7, XT2091-8, Lenovo K12 Pro]
 released: 2020
 soc: Qualcomm SM6115 Snapdragon 662
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

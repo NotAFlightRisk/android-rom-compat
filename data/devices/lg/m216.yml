@@ -4,6 +4,6 @@ codenames: [m216]
 aliases: [K420N, K420DS]
 released: 2016
 soc: Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

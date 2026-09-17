@@ -3,6 +3,6 @@ name: Galaxy Note 8.0 (Wi-Fi)
 codenames: [n5110]
 released: 2013
 soc: Samsung Exynos 4412
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

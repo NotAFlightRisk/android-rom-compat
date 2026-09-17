@@ -4,6 +4,6 @@ codenames: [ha3g]
 aliases: [SM-N9000]
 released: 2013
 soc: Samsung Exynos 5420
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

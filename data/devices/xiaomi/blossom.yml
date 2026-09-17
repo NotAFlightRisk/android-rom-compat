@@ -3,4 +3,3 @@ name: Redmi 9A
 codenames: [blossom]
 bootloader:
   unlock: unknown
-  relock: unknown

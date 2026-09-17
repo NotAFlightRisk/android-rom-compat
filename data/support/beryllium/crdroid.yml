@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 15
-maintainer: Lup Gabriel (gwolfu)
-verified: 2026-09-16
-source: https://crdroid.net/downloads#beryllium
-install: https://xdaforums.com/t/4704307

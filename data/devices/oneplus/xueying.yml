@@ -3,4 +3,3 @@ name: Open
 codenames: [xueying]
 bootloader:
   unlock: unknown
-  relock: unknown

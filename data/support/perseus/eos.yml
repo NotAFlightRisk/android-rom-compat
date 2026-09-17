@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: active
-android: 15
-verified: 2026-09-16
-source: https://doc.e.foundation/devices/perseus/
-install: https://doc.e.foundation/devices/perseus/install/

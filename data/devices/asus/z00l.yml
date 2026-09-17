@@ -4,6 +4,6 @@ codenames: [z00l]
 aliases: [ZE500KL, ZE550KL]
 released: 2015
 soc: Qualcomm MSM8939 Snapdragon 615 / Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

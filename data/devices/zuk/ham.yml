@@ -3,6 +3,6 @@ name: Z1
 codenames: [ham]
 released: 2015
 soc: Qualcomm MSM8974AC Snapdragon 801
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

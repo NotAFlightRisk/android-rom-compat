@@ -4,6 +4,6 @@ codenames: [laurel_sprout]
 aliases: [M1906F9SH, M1906F9SI]
 released: 2019
 soc: Qualcomm SM6125 Snapdragon 665
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

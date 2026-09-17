@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Moto G53 5G
+codenames: [penang]
+aliases: [G53j 5G, G53s 5G, G53y 5G]
+bootloader:
+  unlock: unknown

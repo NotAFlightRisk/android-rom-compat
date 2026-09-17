@@ -4,6 +4,6 @@ codenames: [mi439]
 aliases: [Redmi 8, Redmi 8A, Redmi 8A Dual, M1903C3EC, M1903C3EE, M1903C3EG, M1903C3EH, M1903C3EI, M1903C3ET, M1908C3IC, M1908C3IE, M1908C3IG, M1908C3IH, M1908C3II, M1908C3KE, M1908C3KG, M1908C3KH, M1908C3KI, M2001C3K3I, "8", 8A, 8A Dual]
 released: 2019
 soc: Qualcomm SDM439 Snapdragon 439
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: Mi Note 3
 codenames: [jason]
 released: 2017
 soc: Qualcomm SDM660 Snapdragon 660
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

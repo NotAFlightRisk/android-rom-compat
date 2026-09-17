@@ -4,6 +4,6 @@ codenames: [a5y17lte]
 aliases: [SM-A520F, SM-A520F/DS, SM-A520K, SM-A520L, SM-A520S, SM-A520W]
 released: 2017
 soc: Samsung Exynos 7880
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

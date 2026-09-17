@@ -3,6 +3,7 @@ name: Galaxy Note 10.1 2014 (LTE)
 codenames: [lt03lte]
 released: 2013
 soc: Qualcomm MSM8974 Snapdragon 800
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [instantnoodle]
 aliases: [8 (T-Mobile), IN2010, IN2011, IN2013, IN2015, IN2017]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

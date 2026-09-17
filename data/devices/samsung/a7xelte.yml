@@ -4,6 +4,6 @@ codenames: [a7xelte]
 aliases: [SM-A710F, SM-A710F/DS, SM-A710M, SM-A710Y, SM-A710K, SM-A710L, SM-A710S]
 released: 2015
 soc: Samsung Exynos 7580
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

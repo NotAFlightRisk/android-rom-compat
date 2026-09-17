@@ -4,6 +4,6 @@ codenames: [x2]
 aliases: [LEX820, LEX821, LEX822, LEX829]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

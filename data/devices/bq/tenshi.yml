@@ -3,6 +3,6 @@ name: Aquaris U Plus
 codenames: [tenshi]
 released: 2016
 soc: Qualcomm MSM8937 Snapdragon 430
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

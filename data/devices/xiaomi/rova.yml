@@ -3,4 +3,3 @@ name: Redmi 4A/5A
 codenames: [rova]
 bootloader:
   unlock: unknown
-  relock: unknown

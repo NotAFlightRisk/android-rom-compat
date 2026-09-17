@@ -3,6 +3,6 @@ name: G4 (International)
 codenames: [h815]
 released: 2015
 soc: Qualcomm MSM8992 Snapdragon 808
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

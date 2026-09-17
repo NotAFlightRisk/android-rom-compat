@@ -4,6 +4,6 @@ codenames: [nb1]
 aliases: [TA-1004, TA-1012, TA-1052]
 released: 2017
 soc: Qualcomm MSM8998 Snapdragon 835
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

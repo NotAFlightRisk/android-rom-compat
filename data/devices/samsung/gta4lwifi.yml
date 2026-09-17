@@ -4,6 +4,6 @@ codenames: [gta4lwifi]
 aliases: [SM-T500]
 released: 2020
 soc: Qualcomm SM6115 Snapdragon 662
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

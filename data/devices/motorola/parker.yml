@@ -4,6 +4,6 @@ codenames: [parker]
 aliases: [XT2010-1]
 released: 2019
 soc: Qualcomm SM6150 Snapdragon 675
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

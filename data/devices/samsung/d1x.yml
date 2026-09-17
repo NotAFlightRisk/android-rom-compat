@@ -4,6 +4,6 @@ codenames: [d1x]
 aliases: [SM-N971N]
 released: 2019
 soc: Samsung Exynos 9825
+hardware: [5g, cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

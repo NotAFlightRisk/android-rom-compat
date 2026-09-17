@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pad 6
 codenames: [pipa]
+type: tablet
 bootloader:
   unlock: unknown
-  relock: unknown

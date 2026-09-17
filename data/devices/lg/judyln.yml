@@ -4,6 +4,6 @@ codenames: [judyln]
 aliases: [G7+ ThinQ, LM-G710AWM, LM-G710EM, LM-G710EMW, LM-G710EAW]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

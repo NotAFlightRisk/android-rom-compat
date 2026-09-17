@@ -3,4 +3,3 @@ name: Redmi 5
 codenames: [rosy]
 bootloader:
   unlock: unknown
-  relock: unknown

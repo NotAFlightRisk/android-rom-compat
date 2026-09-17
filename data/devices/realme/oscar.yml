@@ -4,6 +4,6 @@ codenames: [oscar]
 aliases: [9 5G, Q5, RMX3471, RMX3472, RMX3474, RMX3478]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

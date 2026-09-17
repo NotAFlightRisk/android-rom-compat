@@ -4,6 +4,6 @@ codenames: [dm1q]
 aliases: [SM-S911B, SM-S911B/DS]
 released: 2023
 soc: Qualcomm SM8550 Snapdragon 8 Gen2
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

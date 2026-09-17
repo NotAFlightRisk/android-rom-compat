@@ -4,6 +4,6 @@ codenames: [b2n]
 aliases: [TA-1041, TA-1062, TA-1046]
 released: 2018
 soc: Qualcomm SDM660 Snapdragon 660
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
-  relock: unknown

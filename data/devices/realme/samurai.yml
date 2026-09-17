@@ -3,4 +3,3 @@ name: X2 Pro
 codenames: [samurai]
 bootloader:
   unlock: unknown
-  relock: unknown

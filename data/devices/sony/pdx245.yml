@@ -4,6 +4,6 @@ codenames: [pdx245]
 aliases: [XQ-EC54, XQ-EC72]
 released: 2024
 soc: Qualcomm SM8650 Snapdragon 8 Gen3
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

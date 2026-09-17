@@ -4,6 +4,6 @@ codenames: [maserati]
 aliases: [XT894]
 released: 2012
 soc: TI OMAP4430
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

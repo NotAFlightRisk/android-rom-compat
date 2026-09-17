@@ -3,6 +3,6 @@ name: "2"
 codenames: [oneplus2]
 released: 2015
 soc: Qualcomm MSM8994 Snapdragon 810
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,6 +3,6 @@ name: Honor 4x (China Telecom)
 codenames: [che10]
 released: 2014
 soc: Qualcomm MSM8916 Snapdragon 410
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

@@ -3,4 +3,3 @@ name: Xperia Z3 Dual
 codenames: [z3dual]
 bootloader:
   unlock: unknown
-  relock: unknown

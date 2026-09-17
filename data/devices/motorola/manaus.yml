@@ -4,6 +4,6 @@ codenames: [manaus]
 aliases: [XT2307-1, XT2307-2, XT2307-3]
 released: 2023
 soc: Mediatek Dimensity 7030
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -3,4 +3,3 @@ name: Mi Note 10 Lite
 codenames: [toco]
 bootloader:
   unlock: unknown
-  relock: unknown

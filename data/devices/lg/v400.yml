@@ -3,6 +3,6 @@ name: G Pad 7.0 WiFi
 codenames: [v400]
 released: 2014
 soc: Qualcomm MSM8226 Snapdragon 400
+type: tablet
 bootloader:
   unlock: no
-  relock: unknown

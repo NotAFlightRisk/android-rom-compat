@@ -4,6 +4,6 @@ codenames: [bale]
 aliases: [RMX3852]
 released: 2024
 soc: Qualcomm SM8635 Snapdragon 8s Gen3
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

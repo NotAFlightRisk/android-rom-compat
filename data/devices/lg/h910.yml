@@ -3,6 +3,6 @@ name: V20 (AT&T)
 codenames: [h910]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

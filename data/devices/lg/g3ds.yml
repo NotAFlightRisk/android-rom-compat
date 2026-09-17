@@ -3,4 +3,3 @@ name: G3 (dualsim)
 codenames: [g3ds]
 bootloader:
   unlock: unknown
-  relock: unknown

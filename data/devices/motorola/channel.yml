@@ -4,6 +4,6 @@ codenames: [channel]
 aliases: [XT1952-1, XT1952-2, XT1952-3]
 released: 2019
 soc: Qualcomm SDM632 Snapdragon 632
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

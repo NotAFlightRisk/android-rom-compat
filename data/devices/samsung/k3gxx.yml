@@ -4,6 +4,6 @@ codenames: [k3gxx]
 aliases: [SM-G900H]
 released: 2014
 soc: Samsung Exynos 5422
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

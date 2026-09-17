@@ -4,6 +4,6 @@ codenames: [cancro]
 aliases: [Mi 4]
 released: 2013
 soc: Qualcomm MSM8974 Snapdragon 800
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

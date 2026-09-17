@@ -4,6 +4,7 @@ codenames: [gts4lv]
 aliases: [SM-T725, SM-T725C, SM-T725N, SM-T727]
 released: 2019
 soc: Qualcomm SDM670 Snapdragon 670
+type: tablet
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

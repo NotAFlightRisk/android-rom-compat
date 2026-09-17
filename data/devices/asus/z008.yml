@@ -3,6 +3,6 @@ name: Zenfone 2 (720p)
 codenames: [z008]
 released: 2015
 soc: Intel Atom Z3560
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

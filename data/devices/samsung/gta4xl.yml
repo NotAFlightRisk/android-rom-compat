@@ -4,6 +4,7 @@ codenames: [gta4xl]
 aliases: [SM-P615]
 released: 2020
 soc: Samsung Exynos 9611
+type: tablet
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

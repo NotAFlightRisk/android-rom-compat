@@ -1,7 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-official: true
-status: discontinued
-android: 12
-verified: 2026-09-16
-source: https://crdroid.net/downloads#a40
-install: https://forum.xda-developers.com/t/a12-s-a40-crdroidandroid-8-x-official.4387011/

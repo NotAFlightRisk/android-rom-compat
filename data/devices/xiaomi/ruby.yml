@@ -3,4 +3,3 @@ name: Redmi Note 12 Pro 5G
 codenames: [ruby]
 bootloader:
   unlock: unknown
-  relock: unknown

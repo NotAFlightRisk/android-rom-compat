@@ -3,4 +3,3 @@ name: Redmi 8
 codenames: [olive]
 bootloader:
   unlock: unknown
-  relock: unknown

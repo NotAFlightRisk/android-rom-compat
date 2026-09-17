@@ -4,6 +4,6 @@ codenames: [z00t]
 aliases: [Zenfone 2 Selfie (1080p)]
 released: 2015
 soc: Qualcomm MSM8939 Snapdragon 615
+hardware: [cellular]
 bootloader:
   unlock: no
-  relock: unknown

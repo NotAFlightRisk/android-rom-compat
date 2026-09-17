@@ -4,6 +4,6 @@ codenames: [cedric]
 aliases: [XT1670, XT1671, XT1672, XT1675, XT1676, XT1677]
 released: 2017
 soc: Qualcomm MSM8937 Snapdragon 430
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

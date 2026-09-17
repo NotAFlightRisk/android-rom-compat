@@ -4,4 +4,3 @@ slug: poco-m3-juice
 codenames: [juice]
 bootloader:
   unlock: unknown
-  relock: unknown

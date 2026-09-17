@@ -4,6 +4,6 @@ codenames: [pdx257]
 aliases: [XQ-FE54, XQ-FE72]
 released: 2025
 soc: Qualcomm SM6475-AB Snapdragon 6 Gen 3
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

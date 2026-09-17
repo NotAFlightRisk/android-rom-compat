@@ -4,6 +4,6 @@ codenames: [m20lte]
 aliases: [SM-M205F, SM-M205FN, SM-M205G, SM-M205M, SM-M205N]
 released: 2019
 soc: Samsung Exynos 7904
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

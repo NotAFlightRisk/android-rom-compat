@@ -3,6 +3,6 @@ name: "10"
 codenames: [pme]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

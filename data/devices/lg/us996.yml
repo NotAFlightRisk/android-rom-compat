@@ -3,6 +3,6 @@ name: V20 (GSM Unlocked)
 codenames: [us996]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: no
-  relock: unknown

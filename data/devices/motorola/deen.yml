@@ -3,4 +3,3 @@ name: One
 codenames: [deen]
 bootloader:
   unlock: unknown
-  relock: unknown

@@ -4,6 +4,6 @@ codenames: [giuliac]
 aliases: [PKG110]
 released: 2024
 soc: Qualcomm SM8650 Snapdragon 8 Gen3
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

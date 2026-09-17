@@ -3,7 +3,7 @@ name: Pixel 6
 codenames: [oriole]
 released: 2021
 soc: Google Tensor GS101
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

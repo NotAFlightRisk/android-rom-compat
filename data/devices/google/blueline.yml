@@ -3,7 +3,7 @@ name: Pixel 3
 codenames: [blueline]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
+hardware: [cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
-  relock: yes
   notes: Carrier models, like Verizon's, can't be unlocked.

@@ -4,6 +4,6 @@ codenames: [hltekor]
 aliases: [SM-N900K, SM-N900L, SM-N900S]
 released: 2013
 soc: Qualcomm MSM8974 Snapdragon 800
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown

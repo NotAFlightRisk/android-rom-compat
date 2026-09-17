@@ -4,6 +4,6 @@ codenames: [ms013g]
 aliases: [SM-G7102]
 released: 2013
 soc: Qualcomm MSM8226 Snapdragon 400
+hardware: [cellular]
 bootloader:
   unlock: unknown
-  relock: unknown

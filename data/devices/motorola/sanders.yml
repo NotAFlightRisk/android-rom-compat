@@ -3,4 +3,3 @@ name: Moto G5s Plus
 codenames: [sanders]
 bootloader:
   unlock: unknown
-  relock: unknown

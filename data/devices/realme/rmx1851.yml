@@ -3,6 +3,6 @@ name: 3 Pro
 codenames: [rmx1851]
 released: 2019
 soc: Qualcomm SDM710 Snapdragon 710
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

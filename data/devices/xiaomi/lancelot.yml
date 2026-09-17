@@ -3,6 +3,6 @@ name: Redmi 9
 codenames: [lancelot]
 released: 2020
 soc: Mediatek Helio G80
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
-  relock: unknown

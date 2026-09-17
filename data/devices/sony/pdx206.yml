@@ -4,6 +4,6 @@ codenames: [pdx206]
 aliases: [XQ-AS72, XQ-AS62, XQ-AS52, XQ-AS42]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
-  relock: unknown
