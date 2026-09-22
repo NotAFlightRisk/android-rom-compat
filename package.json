@@ -13,7 +13,7 @@
     "dev": "astro dev",
     "validate": "node scripts/validate.js",
     "import": "node scripts/import/run.js",
-    "build": "npm run validate && astro build && pagefind --site dist",
+    "build": "npm run validate && astro build && pagefind --site dist --glob \"{devices/*/*,roms/*}/index.html\"",
     "preview": "astro preview",
     "test": "node --test"
   },
