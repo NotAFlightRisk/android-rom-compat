@@ -172,6 +172,7 @@ export const deviceRows = (devices, roms) =>
   devices.map((device) => ({
     key: device.key,
     brand: device.brand.key,
+    ended: device.activeCount === 0,
     search: deviceSearchText(device),
     head: { label: device.title, href: device.url, code: device.codenames.join(', ') },
     cells: {

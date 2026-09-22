@@ -2,42 +2,20 @@
 import Matrix from '../table/Matrix.astro';
 import { deviceColumns, deviceRows } from '../../lib/table.js';
 
-const { id, devices, roms, brands = [], label, ended = true } = Astro.props;
+const { id, devices, roms, brands = [], label } = Astro.props;
 const liveRoms = roms.filter((rom) => rom.status === 'active');
 const columns = deviceColumns(liveRoms).map((column) => ({
   ...column,
   hidden: column.key === 'brand' && !brands.length,
 }));
-const current = devices.filter((device) => device.activeCount > 0);
-const retired = devices.filter((device) => device.activeCount === 0);
 ---
 
 <Matrix
   id={id}
-  caption={`${label} with official ROM support`}
+  caption={`${label}, and which ROMs officially support them`}
   rowLabel="Device"
   columns={columns}
-  rows={deviceRows(current, liveRoms)}
+  rows={deviceRows(devices, liveRoms)}
   brands={brands}
   urlState
 />
-{retired.length > 0 && !ended && (
-  <p>
-    <small>
-      {retired.length} more have support that has ended. They're listed on each brand's page.
-    </small>
-  </p>
-)}
-{retired.length > 0 && ended && (
-  <details>
-    <summary>{retired.length} more with support that has ended</summary>
-    <Matrix
-      id={`${id}-ended`}
-      caption={`${label} where official support has ended`}
-      rowLabel="Device"
-      columns={columns}
-      rows={deviceRows(retired, liveRoms)}
-      controls={false}
-    />
-  </details>
-)}
