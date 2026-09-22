@@ -1,5 +1,5 @@
 name: Rocket 2
-codenames: [rocket_eea, Rocket]
+codenames: [rocket_eea, Rocket, tidy]
 aliases: [RK-2]
 released: 2024
 hardware: [nfc, lasers]

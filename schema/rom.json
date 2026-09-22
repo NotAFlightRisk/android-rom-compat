@@ -4,70 +4,164 @@
   "title": "ROM",
   "type": "object",
   "required": [
-    "name", "description", "status", "base", "focus", "google", "app_store",
-    "org", "security", "install", "root", "links"
+    "name",
+    "description",
+    "status",
+    "base",
+    "focus",
+    "google",
+    "app_store",
+    "org",
+    "security",
+    "install",
+    "root",
+    "links"
   ],
   "additionalProperties": false,
   "properties": {
-    "name": { "type": "string", "minLength": 1 },
-    "description": { "type": "string", "minLength": 1, "maxLength": 160 },
-    "status": { "enum": ["active", "discontinued"] },
-    "base": { "enum": ["aosp", "lineageos", "other"] },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "status": {
+      "enum": [
+        "active",
+        "discontinued"
+      ]
+    },
+    "base": {
+      "enum": [
+        "aosp",
+        "lineageos",
+        "other"
+      ]
+    },
     "focus": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
       "items": {
-        "enum": ["security", "privacy", "degoogled", "customisation", "performance", "near-stock"]
+        "enum": [
+          "security",
+          "privacy",
+          "degoogled",
+          "customisation",
+          "performance",
+          "near-stock"
+        ]
       }
     },
-    "google": { "enum": ["none", "microg", "sandboxed", "optional", "bundled"] },
+    "google": {
+      "enum": [
+        "none",
+        "microg",
+        "sandboxed",
+        "optional",
+        "bundled"
+      ]
+    },
     "app_store": {
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "maxLength": 24,
       "description": "a short key, like none, fdroid or app-lounge"
     },
-    "org": { "enum": ["company", "non-profit", "community"] },
+    "org": {
+      "enum": [
+        "company",
+        "non-profit",
+        "community"
+      ]
+    },
     "security": {
       "type": "object",
-      "required": ["relockable_bootloader", "verified_boot", "patches"],
+      "required": [
+        "relockable_bootloader",
+        "verified_boot",
+        "patches"
+      ],
       "additionalProperties": false,
       "properties": {
-        "relockable_bootloader": { "type": "boolean" },
-        "verified_boot": { "type": "boolean" },
-        "patches": { "enum": ["monthly", "best-effort", "none"] }
+        "relockable_bootloader": {
+          "type": "boolean"
+        },
+        "verified_boot": {
+          "type": "boolean"
+        },
+        "patches": {
+          "enum": [
+            "monthly",
+            "best-effort",
+            "none"
+          ]
+        }
       }
     },
     "install": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "enum": ["web-installer", "cli", "recovery"] }
+      "items": {
+        "enum": [
+          "web-installer",
+          "cli",
+          "recovery"
+        ]
+      }
     },
-    "root": { "type": "boolean" },
+    "root": {
+      "type": "boolean"
+    },
     "links": {
       "type": "object",
-      "required": ["website"],
+      "required": [
+        "website"
+      ],
       "additionalProperties": false,
       "properties": {
-        "website": { "$ref": "#/$defs/link" },
-        "source": { "$ref": "#/$defs/link" },
-        "docs": { "$ref": "#/$defs/link" },
-        "community": { "$ref": "#/$defs/link" }
+        "website": {
+          "$ref": "#/$defs/link"
+        },
+        "source": {
+          "$ref": "#/$defs/link"
+        },
+        "docs": {
+          "$ref": "#/$defs/link"
+        },
+        "community": {
+          "$ref": "#/$defs/link"
+        }
       }
     },
     "features": {
       "type": "object",
       "additionalProperties": {
         "type": "object",
-        "required": ["status", "source"],
+        "required": [
+          "status",
+          "source"
+        ],
         "additionalProperties": false,
         "properties": {
-          "status": { "type": "string", "minLength": 1 },
-          "note": { "type": "string", "minLength": 1 },
-          "inferred": { "type": "boolean" },
-          "source": { "$ref": "#/$defs/link" }
+          "status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "inferred": {
+            "type": "boolean"
+          },
+          "source": {
+            "$ref": "#/$defs/link"
+          }
         }
       }
     },
@@ -75,28 +169,63 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["key", "name"],
+        "required": [
+          "key",
+          "name"
+        ],
         "additionalProperties": false,
         "properties": {
-          "key": { "$ref": "brands.json#/$defs/key" },
-          "name": { "type": "string", "minLength": 1 },
-          "google": { "enum": ["none", "microg", "sandboxed", "optional", "bundled"] },
+          "key": {
+            "$ref": "#/$defs/key"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "google": {
+            "enum": [
+              "none",
+              "microg",
+              "sandboxed",
+              "optional",
+              "bundled"
+            ]
+          },
           "links": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "website": { "$ref": "#/$defs/link" },
-              "source": { "$ref": "#/$defs/link" },
-              "docs": { "$ref": "#/$defs/link" },
-              "community": { "$ref": "#/$defs/link" }
+              "website": {
+                "$ref": "#/$defs/link"
+              },
+              "source": {
+                "$ref": "#/$defs/link"
+              },
+              "docs": {
+                "$ref": "#/$defs/link"
+              },
+              "community": {
+                "$ref": "#/$defs/link"
+              }
             }
           },
-          "features": { "$ref": "#/properties/features" }
+          "features": {
+            "$ref": "#/properties/features"
+          }
         }
       }
     }
   },
   "$defs": {
-    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+$",
+      "description": "lowercase letters and numbers, no hyphens"
+    }
   }
 }
