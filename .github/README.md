@@ -14,7 +14,7 @@
 
 ## About
 
-Covers GrapheneOS, LineageOS, CalyxOS, /e/OS, crDroid and iodéOS, official builds only. Every bit of data lives as YAML in [`data/`](../data), so fixing a mistake just means editing a file - no coding needed.
+Covers GrapheneOS, LineageOS, CalyxOS, /e/OS, crDroid, iodéOS, Evolution X and PixelOS, official builds only. Every bit of data lives as YAML in [`data/`](../data), so fixing a mistake just means editing a file - no coding needed.
 
 It'd rather leave a gap than guess, so anything nobody has checked shows as unknown. A report goes stale once the ROM moves to a newer Android than it was checked on, or when it's over a year old.
 
@@ -34,6 +34,8 @@ The whole dataset is published as static JSON, rebuilt every time the data chang
 - [`/api/roms.json`](https://android-rom-compat.peng.ly/api/roms.json) - the ROMs, how they compare, and what they say works on every device
 - [`/api/support.json`](https://android-rom-compat.peng.ly/api/support.json) - which ROM supports which device, its latest build, and what works, with where each answer came from
 - [`/api/features.json`](https://android-rom-compat.peng.ly/api/features.json) - the features we track
+
+Device and ROM entries carry a `url` you can stick on the end of the site address to get the page.
 
 ---
 

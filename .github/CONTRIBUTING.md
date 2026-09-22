@@ -94,6 +94,8 @@ install: https://example.com/devices/tegu/install
 
 `status` is `active`, or `discontinued` once the ROM stops building for it. `status` and `source` are the only must-haves.
 
+A new ROM lives at `data/roms/<rom>.yml`. Keep that name, and any variant key, to lowercase letters and numbers - imports are named `<rom>-<variant>.yml`, so a hyphen in either splits in the wrong place.
+
 ---
 
 ## Sources
@@ -136,7 +138,7 @@ Add `--file data/devices/google/tegu.yml` to check just one file.
 ## Editing on GitHub, no setup needed
 
 1. Find the file on GitHub, or click "Edit on GitHub" at the bottom of any page on the site
-2. Hit the pencil icon. GitHub will make you a copy (a fork) automaticaly
+2. Hit the pencil icon. GitHub will make you a copy (a fork) automatically
 3. Make your change, then "Propose changes" and "Create pull request"
 4. Say where the info came from in the description
 

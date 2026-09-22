@@ -13,6 +13,7 @@ Have a look at the [README](./README.md) and the [contributing guide](./CONTRIBU
 | I want to... | Go here |
 | ------------ | ------- |
 | Ask a question or share an idea | [Discussions](https://github.com/NotAFlightRisk/android-rom-compat/discussions) |
+| Report what works on your phone | [Report what works](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) |
 | Fix wrong data | [Correction](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=correction.yml) |
 | Add a device | [Add a device](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=add-device.yml) |
 | Report a vulnerability | [Security policy](./SECURITY.md) - **not** a public issue |
