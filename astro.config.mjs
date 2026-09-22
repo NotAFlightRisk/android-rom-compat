@@ -1,3 +1,4 @@
+import { writeFile } from 'node:fs/promises';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { getModel } from './src/lib/data/model.js';
@@ -27,6 +28,19 @@ const codenameRedirects = Object.fromEntries(
   ),
 );
 
+const redirectsFile = {
+  name: 'codename-redirects-file',
+  hooks: {
+    'astro:build:done': ({ dir }) =>
+      writeFile(
+        new URL('_redirects', dir),
+        Object.entries(codenameRedirects)
+          .map(([from, to]) => `${from} ${to} 301\n`)
+          .join(''),
+      ),
+  },
+};
+
 export default defineConfig({
   site: site.url,
   trailingSlash: 'always',
@@ -39,5 +53,6 @@ export default defineConfig({
         return lastmod ? { ...item, lastmod } : item;
       },
     }),
+    redirectsFile,
   ],
 });
