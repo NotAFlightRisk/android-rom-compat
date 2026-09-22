@@ -1,0 +1,12 @@
+name: Proton AOSP
+description: A ROM whose file name would split into the wrong ROM and variant.
+status: active
+base: aosp
+focus: [near-stock]
+google: none
+app_store: none
+org: community
+security: { relockable_bootloader: false, verified_boot: false, patches: best-effort }
+install: [recovery]
+root: false
+links: { website: https://example.net }

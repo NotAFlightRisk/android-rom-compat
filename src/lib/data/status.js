@@ -25,16 +25,12 @@ const lacks = (feature, device) =>
  * Picks a cell from a report, the ROM's own docs for the device, missing hardware, then
  * ROM-wide facts. Anything stated outright beats anything inferred
  */
-export function resolveCell(
-  feature,
-  { report, upstream, device, rom, variant, android, staleBefore },
-) {
+export function resolveCell(feature, { report, upstream, device, rom, android, staleBefore }) {
   const { key } = feature;
   const layers = [
     ['report', report?.[key]],
     ['upstream', upstream?.[key]],
     ['hardware', lacks(feature, device) ? 'n/a' : undefined],
-    ['rom', variant?.features?.[key]],
     ['rom', rom.features?.[key]],
   ];
   const candidates = layers

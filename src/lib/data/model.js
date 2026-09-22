@@ -1,4 +1,4 @@
-import { loadData } from './load.js';
+import { getData } from './load.js';
 import { resolveCell } from './status.js';
 import { slugify } from '../text.js';
 
@@ -6,7 +6,7 @@ const STALE_AFTER_DAYS = 365;
 const byName = (key) => (a, b) => a[key].localeCompare(b[key], 'en', { sensitivity: 'base' });
 
 /** Joins the raw files into brands, ROMs and devices that point at each other */
-export function buildModel(data = loadData(), now = new Date()) {
+export function buildModel(data = getData(), now = new Date()) {
   const staleBefore = new Date(now - STALE_AFTER_DAYS * 864e5).toISOString().slice(0, 10);
   const features = data.features.data;
   const brands = new Map(

@@ -65,6 +65,15 @@ test('ROM features need a source, and variants must exist', () => {
   expectProblem(/features\.volte\.variant: there's no "turbo" build/);
 });
 
+test('ROM and variant keys stay hyphen-free, so imports split on the right one', () => {
+  expectProblem(/^roms\/proton-aosp\.yml "proton-aosp" can only use lowercase letters/);
+  expectProblem(/^roms\/tidyos\.yml variants\[0\]\.key: "turbo-x" can only use lowercase letters/);
+});
+
+test('a codename can never be a brand name, wherever it is in the list', () => {
+  expectProblem(/rocket\.yml codenames\[2\]: "tidy" is a brand name/);
+});
+
 test('builds from the future are caught', () => {
   expectProblem(/devices\.comet\.latest\.date: can't be in the future/);
 });

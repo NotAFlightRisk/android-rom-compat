@@ -1,3 +1,5 @@
+import { strings } from '../../src/lib/text.js';
+
 const peripheralKeys = {
   'fingerprint reader': 'fingerprint',
   nfc: 'nfc',
@@ -15,9 +17,6 @@ const types = {
   tv: 'skip',
   devkit: 'skip',
 };
-
-const strings = (value) =>
-  Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [];
 
 /** Hardware keys from a LineageOS or /e/ wiki device file */
 export function hardwareOf({ peripherals, network }) {

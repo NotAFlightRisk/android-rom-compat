@@ -34,9 +34,11 @@ export function enhanceMatrix(root) {
   const keys = headers.map((header) => header.dataset.col);
   const filter = controls.querySelector('[name="q"]');
   const brand = controls.querySelector('[name="brand"]');
+  const ended = controls.querySelector('[name="ended"]');
   const toggles = [...controls.querySelectorAll('[name="col"]')];
   const count = controls.querySelector('[data-count]');
   const empty = root.querySelector('[data-empty]');
+  const emptyEnded = root.querySelector('[data-empty-ended]');
   const useUrl = root.hasAttribute('data-url-state');
   const params = new URLSearchParams(useUrl ? location.search : '');
   let hiddenColumns;
@@ -44,6 +46,7 @@ export function enhanceMatrix(root) {
   let sort = keys.includes((params.get('sort') ?? '').replace(/^-/, '')) ? params.get('sort') : '';
   filter.value = params.get('q') ?? '';
   if (brand) brand.value = params.get('brand') ?? '';
+  if (ended) ended.checked = params.get('ended') === '1';
   if (params.has('cols')) {
     const shown = params.get('cols').split(',');
     toggles.forEach((toggle) => (toggle.checked = shown.includes(toggle.value)));
@@ -63,15 +66,19 @@ export function enhanceMatrix(root) {
     const query = filter.value.trim().toLowerCase();
     const picked = brand?.value ?? '';
     let shown = 0;
+    let onlyEnded = 0;
     for (const row of rows) {
-      const hide =
-        !row.dataset.search.includes(query) || (picked !== '' && row.dataset.brand !== picked);
+      const matches =
+        row.dataset.search.includes(query) && (picked === '' || row.dataset.brand === picked);
+      const hide = !matches || (row.dataset.ended !== undefined && !ended?.checked);
       if (row.hidden !== hide) row.hidden = hide;
       if (!hide) shown++;
+      else if (matches) onlyEnded++;
     }
     count.textContent =
       shown === rows.length ? `${rows.length} shown` : `${shown} of ${rows.length} shown`;
-    empty.hidden = shown > 0;
+    empty.hidden = shown > 0 || onlyEnded > 0;
+    if (emptyEnded) emptyEnded.hidden = shown > 0 || onlyEnded === 0;
   }
 
   function sortRows() {
@@ -96,6 +103,7 @@ export function enhanceMatrix(root) {
     const state = {
       q: filter.value.trim(),
       brand: brand?.value,
+      ended: ended?.checked ? '1' : '',
       sort,
       cols: custom
         ? toggles
@@ -128,6 +136,7 @@ export function enhanceMatrix(root) {
   };
   filter.addEventListener('input', onFilter);
   brand?.addEventListener('change', onFilter);
+  ended?.addEventListener('change', onFilter);
   for (const toggle of toggles) {
     toggle.addEventListener('change', () => {
       showColumns();
@@ -139,6 +148,6 @@ export function enhanceMatrix(root) {
     showColumns();
     table.querySelectorAll('th[hidden], td[hidden]').forEach((cell) => (cell.hidden = false));
   }
-  if (filter.value || brand?.value) filterRows();
+  if (filter.value || brand?.value || ended) filterRows();
   if (sort) sortRows();
 }

@@ -15,6 +15,7 @@ import {
 } from '../../../lib/table.js';
 import { labelOf } from '../../../lib/labels.js';
 import { listOf } from '../../../lib/text.js';
+import { today } from '../../../lib/dates.js';
 
 export const getStaticPaths = () =>
   getModel().devices.map((device) => ({
@@ -62,7 +63,6 @@ const columns = usedColumns(
   [...currentRows, ...endedRows],
 );
 
-const today = new Date().toISOString().slice(0, 10);
 const monthOf = (date) =>
   new Date(date).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 const stockLine = ({ android, security_until, updates_until }) => {

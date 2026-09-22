@@ -15,6 +15,9 @@ const segments = (root, file) =>
     .replace(/\.yml$/, '')
     .split(sep);
 
+let cached;
+export const getData = () => (cached ??= loadData());
+
 /** Reads every data file, keeping YAML that won't parse as an error rather than a crash */
 export function loadData(root = 'data') {
   const errors = [];

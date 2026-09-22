@@ -12,10 +12,19 @@ const {
   controls = true,
   urlState = false,
 } = Astro.props;
+const endedCount = rows.filter((row) => row.ended).length;
 ---
 
 <div class="matrix" data-matrix data-url-state={urlState ? '' : undefined}>
-  {controls && <Controls id={id} columns={columns} brands={brands} total={rows.length} />}
+  {controls && (
+    <Controls
+      id={id}
+      columns={columns}
+      brands={brands}
+      total={rows.length}
+      endedCount={endedCount}
+    />
+  )}
   <div class="scroller" tabindex="0" role="region" aria-labelledby={`${id}-caption`}>
     <table id={id}>
       <caption id={`${id}-caption`}>{caption}</caption>
@@ -39,7 +48,7 @@ const {
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr data-search={row.search} data-brand={row.brand}>
+          <tr data-search={row.search} data-brand={row.brand} data-ended={row.ended ? '' : undefined}>
             <th scope="row">
               <a href={row.head.href}>{row.head.label}</a>
               {row.head.code && <code>{row.head.code}</code>}
@@ -69,6 +78,11 @@ const {
   {controls && (
     <p class="empty" data-empty hidden>
       Nothing matches that. Try a codename or model number.
+    </p>
+  )}
+  {controls && endedCount > 0 && (
+    <p class="empty" data-empty-ended hidden>
+      Only phones whose support has ended match that. Tick “Include ended” to see them.
     </p>
   )}
 </div>
@@ -170,7 +184,7 @@ const {
       code,
       .minor,
       .build {
-        font-size: 0.8rem;
+        font-size: var(--text-xs);
         font-weight: 400;
       }
 

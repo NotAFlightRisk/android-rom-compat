@@ -2,14 +2,14 @@
 import Icon from '../ui/Icon.astro';
 import { labelOf } from '../../lib/labels.js';
 
-const { id, columns, brands, total } = Astro.props;
+const { id, columns, brands, total, endedCount = 0 } = Astro.props;
 const groups = Map.groupBy(columns, (column) => column.group ?? '');
 ---
 
 <div class="controls" data-controls>
   <label>
     <span class="visually-hidden">Filter rows</span>
-    <input type="search" name="q" placeholder="Filter" autocomplete="off" />
+    <input type="search" name="q" placeholder="Filter" autocomplete="off" aria-controls={id} />
   </label>
   {brands.length > 1 && (
     <label>
@@ -20,6 +20,12 @@ const groups = Map.groupBy(columns, (column) => column.group ?? '');
           <option value={brand.key}>{brand.name}</option>
         ))}
       </select>
+    </label>
+  )}
+  {endedCount > 0 && (
+    <label class="ended">
+      <input type="checkbox" name="ended" aria-controls={id} />
+      Include ended
     </label>
   )}
   <details>
@@ -135,6 +141,13 @@ const groups = Map.groupBy(columns, (column) => column.group ?? '');
       padding: var(--space-2xs);
       cursor: pointer;
     }
+  }
+
+  .ended {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    cursor: pointer;
   }
 
   [data-count] {

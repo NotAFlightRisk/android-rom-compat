@@ -1,2 +1,4 @@
 - key: acme
   name: Acme
+- key: tidy
+  name: Tidy

@@ -10,5 +10,8 @@ security: { relockable_bootloader: false, verified_boot: true, patches: monthly 
 install: [recovery]
 root: false
 links: { website: https://example.com }
+variants:
+  - key: turbo-x
+    name: TidyOS Turbo X
 features:
   push: { status: working }

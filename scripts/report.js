@@ -7,14 +7,14 @@ import { Document, parse, parseDocument } from 'yaml';
 import { loadData } from '../src/lib/data/load.js';
 import { buildModel } from '../src/lib/data/model.js';
 import { NEEDS_NOTE, allowedValues } from '../src/lib/data/status.js';
-import { listOf } from '../src/lib/text.js';
+import { isLink, listOf } from '../src/lib/text.js';
+import { today } from '../src/lib/dates.js';
 
 const { values: args } = parseArgs({ options: { data: { type: 'string' } } });
 const root = args.data ?? fileURLToPath(new URL('../data', import.meta.url));
 const form = new URL('../.github/ISSUE_TEMPLATE/report-feature.yml', import.meta.url);
 const fields = parse(readFileSync(form, 'utf8')).body.filter((field) => field.id);
 const model = buildModel(loadData(root));
-const today = new Date().toISOString().slice(0, 10);
 
 const tidy = (text) => String(text).toLowerCase().replace(/\s+/g, ' ').trim();
 const sameAs = (query) => (name) => tidy(name) === tidy(query);
@@ -99,7 +99,7 @@ function report(answers) {
 
   const android = Number(answers.android?.match(/\d+/)?.[0]);
   if (!android) errors.push('Android version should be a number, like 16');
-  const linked = /^https?:\/\//.test(answers.source);
+  const linked = isLink(answers.source);
   const source = linked ? answers.source : (process.env.ISSUE_URL ?? 'tested');
   const notes = readNotes(answers.notes);
   const reported = model.features.filter((feature) => answers[feature.key]);

@@ -1,7 +1,8 @@
 import { readFileSync } from 'node:fs';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
-import { slugify, listOf } from '../text.js';
+import { slugify, listOf, strings } from '../text.js';
+import { today } from '../dates.js';
 import { explain, pathOf } from './explain.js';
 import { NEEDS_NOTE, allowedValues, cellValue } from './status.js';
 
@@ -21,8 +22,6 @@ export function schemaProblem(schema, value) {
   return `${pathOf(error.instancePath) || 'file'} ${explain(error)}`;
 }
 
-const strings = (value) =>
-  Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [];
 const isObject = (value) => typeof value === 'object' && value !== null && !Array.isArray(value);
 
 /** Runs every rule over the loaded data and returns a flat list of problems */
@@ -59,9 +58,14 @@ export function check(data) {
   const features = keyed('features', data.features, 'feature');
   const hardware = new Set([...features.values()].map((feature) => feature.requires));
 
+  // Imports are named <rom>-<variant>.yml, so a hyphen in either key splits in the wrong place
   for (const rom of data.roms) {
     if (rom.misplaced) report(rom.file, '', 'ROMs live at data/roms/<rom>.yml');
-    else validate('rom', rom);
+    else {
+      if (!/^[a-z0-9]+$/.test(rom.key))
+        report(rom.file, '', `"${rom.key}" can only use lowercase letters and numbers, no hyphens`);
+      validate('rom', rom);
+    }
   }
   const roms = new Map(
     data.roms
@@ -92,7 +96,11 @@ export function check(data) {
     if (codenames.length && codenames[0] !== key) {
       report(file, 'codenames[0]', `"${codenames[0]}" should match the file name "${key}"`);
     }
-    codenames.forEach((codename, i) => claim(codename, file, `codenames[${i}]`));
+    codenames.forEach((codename, i) => {
+      if (codename !== key && brands.has(codename))
+        report(file, `codenames[${i}]`, `"${codename}" is a brand name, so it can't be a codename`);
+      claim(codename, file, `codenames[${i}]`);
+    });
     strings(fields.aliases).forEach((alias, i) =>
       claim(alias.toLowerCase(), file, `aliases[${i}]`),
     );
@@ -109,7 +117,6 @@ export function check(data) {
   }
 
   const primaries = new Set(data.devices.map((device) => device.key));
-  const today = new Date().toISOString().slice(0, 10);
 
   const checkCells = (file, prefix, cells, rom) => {
     for (const [key, raw] of Object.entries(isObject(cells) ? cells : {})) {

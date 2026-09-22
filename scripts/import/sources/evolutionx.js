@@ -1,5 +1,6 @@
 import { fetchJson, mapLimit } from '../fetch.js';
 import { brandKey, upsertDevice, withoutBrand } from '../store.js';
+import { isoDate } from '../../../src/lib/dates.js';
 
 const INDEX = 'https://raw.githubusercontent.com/Evolution-X/www_gitres/HEAD/devices/devices.json';
 const OTA = 'https://raw.githubusercontent.com/Evolution-X/OTA';
@@ -21,7 +22,7 @@ export function namesOf(model, brand) {
 
 export const typeOfName = (name) => (/\b(pad|tab|tablet)\b/i.test(name) ? 'tablet' : undefined);
 
-export const dateOf = (seconds) => new Date(seconds * 1000).toISOString().slice(0, 10);
+export const dateOf = (seconds) => isoDate(seconds * 1000);
 
 /** Brand, device and row from one builds/<codename>.json, or undefined when it has no builds */
 export function parse(json, { codename, branch }) {

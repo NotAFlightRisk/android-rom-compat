@@ -4,6 +4,7 @@ import { parse } from 'yaml';
 import { clone, fetchJson, mapLimit } from '../fetch.js';
 import { hardwareOf, typeOf } from '../hardware.js';
 import { upsertDevice, withoutBrand } from '../store.js';
+import { isoDate } from '../../../src/lib/dates.js';
 
 const DOCS = 'https://doc.e.foundation/devices';
 const OTA = 'https://ota.ecloud.global/api/v1';
@@ -103,7 +104,7 @@ export function latestBuild({ response = [] }, patches) {
     android: androidOf(build.android_version),
     latest: {
       version,
-      date: new Date(build.datetime * 1000).toISOString().slice(0, 10),
+      date: isoDate(build.datetime * 1000),
       ...(patch && { patch }),
     },
   };

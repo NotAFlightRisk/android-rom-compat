@@ -1,5 +1,6 @@
 import { fetchJson, mapLimit } from '../fetch.js';
 import { brandKey, upsertDevice, withoutBrand } from '../store.js';
+import { isoDate } from '../../../src/lib/dates.js';
 
 const REPO = 'crdroidandroid/android_vendor_crDroidOTA';
 const API = `https://api.github.com/repos/${REPO}`;
@@ -41,7 +42,7 @@ export function parse(json, { codename, branch }, now = Date.now()) {
     ...(build.maintainer && { maintainer: build.maintainer }),
     latest: {
       ...(build.version && { version: String(build.version) }),
-      date: new Date(released).toISOString().slice(0, 10),
+      date: isoDate(released),
       ...(patch && { patch }),
     },
     source: `https://github.com/${REPO}/blob/${branch}/${codename}.json`,
