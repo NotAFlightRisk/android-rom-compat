@@ -1,12 +1,13 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { Document, isMap, isScalar, isSeq, parse, visit } from 'yaml';
 import { schemaProblem } from '../../src/lib/data/check.js';
 import { slugify } from '../../src/lib/text.js';
+import { today } from '../../src/lib/dates.js';
 
-export const DATA = process.env.DATA_DIR ?? new URL('../../data/', import.meta.url).pathname;
-export const today = new Date().toISOString().slice(0, 10);
+export const DATA = process.env.DATA_DIR ?? fileURLToPath(new URL('../../data/', import.meta.url));
 export const stats = { devices: 0, skipped: [] };
 
 /** Codenames that are TVs, set-top boxes or devkits, which we don't list */

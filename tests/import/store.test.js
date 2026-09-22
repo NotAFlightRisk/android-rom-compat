@@ -6,7 +6,8 @@ import { join } from 'node:path';
 
 process.env.DATA_DIR = mkdtempSync(join(tmpdir(), 'store-test-'));
 after(() => rmSync(process.env.DATA_DIR, { recursive: true }));
-const { writeUpstream, readUpstream, today } = await import('../../scripts/import/store.js');
+const { writeUpstream, readUpstream } = await import('../../scripts/import/store.js');
+const { today } = await import('../../src/lib/dates.js');
 
 const row = (status = 'active') => ({ status, source: 'https://example.com' });
 const rows = (count, prefix = 'dev') =>

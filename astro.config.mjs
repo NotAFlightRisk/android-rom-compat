@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { buildModel } from './src/lib/data/model.js';
-import { loadData } from './src/lib/data/load.js';
+import { getModel } from './src/lib/data/model.js';
+import { getData } from './src/lib/data/load.js';
 import { site } from './src/lib/site.js';
 
-const data = loadData();
-const { devices, roms, brands } = buildModel(data);
+const data = getData();
+const { devices, roms, brands } = getModel();
 const imported = new Map(data.upstream.map((file) => [file.name, file.data.imported]));
 const newest = (dates) => dates.filter(Boolean).sort().at(-1);
 const lastmodOf = (rows) =>

@@ -1,5 +1,6 @@
 import { fetchText, mapLimit } from '../fetch.js';
 import { upsertDevice } from '../store.js';
+import { isoDate } from '../../../src/lib/dates.js';
 
 const SITE = 'https://raw.githubusercontent.com/GrapheneOS/grapheneos.org/main/static';
 
@@ -22,7 +23,7 @@ export const parseNamed = (faq) =>
 /** `2026091000 1789042775 tegu stable` from releases.grapheneos.org */
 export function parseBuild(text) {
   const [version, time] = text.trim().split(/\s+/);
-  return { version, date: new Date(Number(time) * 1000).toISOString().slice(0, 10) };
+  return { version, date: isoDate(Number(time) * 1000) };
 }
 
 /** Brand, device and row for each device the FAQ names, latest being codename -> build */

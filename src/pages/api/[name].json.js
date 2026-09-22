@@ -1,6 +1,6 @@
 import { getModel } from '../../lib/data/model.js';
 
-const strip = ({ file, support, url, ...rest }) => rest;
+const strip = ({ file, support, ...rest }) => rest;
 const known = (cells) =>
   Object.fromEntries(
     Object.entries(cells)

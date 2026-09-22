@@ -9,7 +9,7 @@ const groups = Map.groupBy(columns, (column) => column.group ?? '');
 <div class="controls" data-controls>
   <label>
     <span class="visually-hidden">Filter rows</span>
-    <input type="search" name="q" placeholder="Filter" autocomplete="off" />
+    <input type="search" name="q" placeholder="Filter" autocomplete="off" aria-controls={id} />
   </label>
   {brands.length > 1 && (
     <label>

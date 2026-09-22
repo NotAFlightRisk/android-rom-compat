@@ -1,3 +1,8 @@
+export const strings = (value) =>
+  Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [];
+
+export const isLink = (value) => /^https?:\/\//.test(value ?? '');
+
 export const slugify = (text) =>
   text
     .normalize('NFKD')

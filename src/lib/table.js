@@ -1,8 +1,8 @@
 import { labelOf, yesNo } from './labels.js';
 import { issueUrl } from './site.js';
+import { isLink } from './text.js';
 
 const text = (value) => ({ text: value });
-const isLink = (value) => /^https?:\/\//.test(value ?? '');
 
 export const featureColumns = (features) =>
   features.map(({ key, group, name, description }) => ({ key, group, label: name, description }));

@@ -1,5 +1,6 @@
 import { fetchJson, mapLimit } from '../fetch.js';
 import { wikiCodename } from './lineageos.js';
+import { isoDate } from '../../../src/lib/dates.js';
 
 const SITE = 'https://download.lineage.microg.org';
 
@@ -11,7 +12,7 @@ export function parseBuilds(builds, codename) {
   const version = build.version ?? file.filename.match(/^lineage-([\d.]+)-/)?.[1];
   const latest = {
     ...(version && { version }),
-    date: new Date(build.datetime * 1000).toISOString().slice(0, 10),
+    date: isoDate(build.datetime * 1000),
     ...(file.os_patch_level && { patch: file.os_patch_level }),
   };
   return { status: 'active', latest, source: `${SITE}/${codename}/` };

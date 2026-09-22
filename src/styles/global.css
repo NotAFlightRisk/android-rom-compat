@@ -23,6 +23,7 @@
 
   --font-sans: 'Roboto Variable', Roboto, system-ui, sans-serif;
   --font-mono: 'Roboto Mono Variable', 'Roboto Mono', ui-monospace, monospace;
+  --text-xs: 0.8rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
