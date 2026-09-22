@@ -34,10 +34,23 @@ jobs:
       - run: npm run import
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - run: npm run validate
+      - id: validate
+        run: |
+          if npm run validate > validate.log 2>&1; then
+            echo 'draft=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'draft=always-true' >> "$GITHUB_OUTPUT"
+            {
+              printf '\n## Validator problems\n\n```\n'
+              head -c 20000 validate.log
+              printf '\n```\n'
+            } >> import-summary.md
+          fi
+          cat validate.log
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           token: ${{ steps.app.outputs.token }}
+          draft: ${{ steps.validate.outputs.draft }}
           sign-commits: true
           branch: import/weekly
           add-paths: |
@@ -48,3 +61,7 @@ jobs:
           title: 'chore(data): weekly import'
           body-path: import-summary.md
           labels: data
+      - if: steps.validate.outputs.draft != 'false'
+        run: |
+          echo "The imported data did not validate - the weekly pull request is a draft" >&2
+          exit 1
