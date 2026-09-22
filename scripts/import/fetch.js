@@ -8,16 +8,29 @@ export const BROWSER_UA =
 
 const token = process.env.GITHUB_TOKEN;
 const githubHosts = ['https://api.github.com/', 'https://raw.githubusercontent.com/'];
+const BACKOFF = 500;
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function fetchText(url, { headers = {}, tries = 5 } = {}) {
   const sent = { 'user-agent': 'android-rom-compat importer', ...headers };
   if (token && githubHosts.some((host) => url.startsWith(host)))
     sent.authorization = `Bearer ${token}`;
-  const response = await fetch(url, { headers: sent });
-  if (response.status === 429 && tries > 1) {
-    const wait = (Number(response.headers.get('retry-after')) || 10) * 1000;
-    await new Promise((resolve) => setTimeout(resolve, wait));
+  const again = async (wait) => {
+    await sleep(wait);
     return fetchText(url, { headers, tries: tries - 1 });
+  };
+
+  let response;
+  try {
+    response = await fetch(url, { headers: sent });
+  } catch (error) {
+    if (tries <= 1) throw error;
+    return again(BACKOFF);
+  }
+  if (tries > 1) {
+    if (response.status === 429)
+      return again((Number(response.headers.get('retry-after')) || 10) * 1000);
+    if (response.status >= 500) return again(BACKOFF);
   }
   if (!response.ok) {
     throw Object.assign(new Error(`${response.status} from ${url}`), { status: response.status });
