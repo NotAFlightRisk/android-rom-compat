@@ -28,6 +28,6 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "description": "lowercase letters, numbers and hyphens"
     },
-    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+    "link": { "type": "string", "format": "link", "pattern": "^https?://" }
   }
 }

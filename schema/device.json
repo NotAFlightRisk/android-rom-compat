@@ -56,6 +56,6 @@
       "pattern": "^[a-z0-9]+([_-][a-z0-9]+)*$",
       "description": "lowercase letters, numbers, hyphens and underscores"
     },
-    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+    "link": { "type": "string", "format": "link", "pattern": "^https?://" }
   }
 }
