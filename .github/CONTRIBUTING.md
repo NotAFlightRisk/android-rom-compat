@@ -72,9 +72,24 @@ bootloader:
   notes: Carrier models, like Verizon's, can't be unlocked.
 ```
 
-Add `aliases` for model numbers and other names people search for. `type` is `tablet` or `handheld`, and left out for phones. `hardware` lists the bits that some features need, so a phone without NFC shows NFC as n/a. `bootloader.unlock` is `yes`, `no`, `conditional` (add `notes` saying when) or `unknown`.
+Add `aliases` for model numbers and other names people search for. `type` is `tablet` or `handheld`, and left out for phones. `hardware` lists the bits that some features need, so a phone without NFC shows NFC as n/a. `bootloader.unlock` is `yes`, `no`, `conditional` (add `notes` saying when) or `unknown`, and `bootloader.source` links where you read it.
 
 The import only ever fills gaps in a device file, so your edits stay put. If the brand's new, add it to `data/brands.yml` too.
+
+A brand can carry its own `bootloader` block, for the policy that applies across its phones:
+
+```yaml
+- key: google
+  name: Google
+  bootloader:
+    notes: Pixel and Nexus phones from 2015 on unlock with fastboot, unless they were sold carrier locked.
+    source: https://source.android.com/docs/setup/build/running
+```
+
+It shows on the brand page and under Bootloader on every device page, and it never changes what a
+device's own `unlock` says. Both fields are needed together, and only add one where the policy
+really does hold brand-wide - most brands split it by chipset, region or Android version, so they
+stay unknown.
 
 ---
 

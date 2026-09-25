@@ -26,6 +26,7 @@ export const getStaticPaths = () =>
 const { device } = Astro.props;
 const { features } = getModel();
 const { bootloader, stock, support } = device;
+const policy = device.brand.bootloader;
 const [current, ended] = splitByActive(support);
 const unreported = featuresFrom(features, support, 'none');
 const quiet = new Set(
@@ -139,6 +140,15 @@ const codename = device.codenames[0];
       <h2 id="bootloader">Bootloader</h2>
       <Facts items={[{ label: 'Unlock', value: labelOf(bootloader.unlock) }]} />
       {bootloader.notes && <p>{bootloader.notes}</p>}
+      {bootloader.source && (
+        <p>Going by <a href={bootloader.source}>{new URL(bootloader.source).hostname}</a>.</p>
+      )}
+      {policy && (
+        <p>
+          {device.brand.name}'s policy: {policy.notes} Going by{' '}
+          <a href={policy.source}>{new URL(policy.source).hostname}</a>.
+        </p>
+      )}
     </section>
 
     <section aria-labelledby="roms">

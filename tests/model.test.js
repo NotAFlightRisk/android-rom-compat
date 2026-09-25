@@ -21,6 +21,15 @@ test('cells resolve report, then docs, then hardware, then ROM-wide', () => {
   });
 });
 
+test('a brand policy reaches the device without touching its own unlock', () => {
+  const [device] = model('2026-02-01').devices;
+  assert.equal(device.brand.bootloader.source, 'https://acme.test/unlock');
+  assert.deepEqual(device.bootloader, {
+    unlock: 'conditional',
+    notes: 'Carrier models are locked.',
+  });
+});
+
 test('explicit values beat inferred ones, whatever layer they sit in', () => {
   const feature = { key: 'wallet' };
   const cell = resolveCell(feature, {

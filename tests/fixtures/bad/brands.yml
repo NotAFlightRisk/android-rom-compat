@@ -1,4 +1,6 @@
 - key: acme
   name: Acme
+  bootloader:
+    notes: Acme phones unlock with fastboot.
 - key: tidy
   name: Tidy

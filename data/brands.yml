@@ -15,12 +15,18 @@
   name: Essential
 - key: fairphone
   name: Fairphone
+  bootloader:
+    notes: Fairphone publishes an unlock procedure for its phones, the Fairphone 2 aside.
+    source: https://support.fairphone.com/hc/en-us/articles/10492476238865-How-to-unlock-or-lock-your-Fairphone-s-bootloader
 - key: fxtec
   name: F(x)tec
 - key: gigaset
   name: Gigaset
 - key: google
   name: Google
+  bootloader:
+    notes: Pixel and Nexus phones from 2015 on unlock with fastboot, unless they were sold carrier locked.
+    source: https://source.android.com/docs/setup/build/running
 - key: htc
   name: HTC
 - key: huawei

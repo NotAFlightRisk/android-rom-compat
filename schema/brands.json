@@ -10,7 +10,16 @@
     "properties": {
       "key": { "$ref": "#/$defs/key" },
       "name": { "type": "string", "minLength": 1 },
-      "website": { "$ref": "#/$defs/link" }
+      "website": { "$ref": "#/$defs/link" },
+      "bootloader": {
+        "type": "object",
+        "required": ["notes", "source"],
+        "additionalProperties": false,
+        "properties": {
+          "notes": { "type": "string", "minLength": 1 },
+          "source": { "$ref": "#/$defs/link" }
+        }
+      }
     }
   },
   "$defs": {
