@@ -33,6 +33,11 @@ test('schema errors read like English', () => {
   expectProblem(/imported: "2026-02-30" isn't a real date/);
 });
 
+test('a brand policy has to say where it came from, and link somewhere real', () => {
+  expectProblem(/^brands\.yml \[0\]\.bootloader\.source: is missing/);
+  expectProblem(/^brands\.yml \[1\]\.bootloader\.source: .* isn't a full link/);
+});
+
 test('codenames, aliases and web addresses must be unique', () => {
   expectProblem(/rocket\.yml codenames\[0\]: "rocket_eea" should match the file name/);
   expectProblem(/rocket\.yml aliases\[0\]: "rk-2" is already used/);

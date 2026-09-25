@@ -1,4 +1,9 @@
 - key: acme
   name: Acme
+  bootloader:
+    notes: Acme phones unlock with fastboot.
 - key: tidy
   name: Tidy
+  bootloader:
+    notes: Tidy phones don't unlock.
+    source: https://example.com:99999

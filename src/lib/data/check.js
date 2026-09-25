@@ -8,6 +8,8 @@ import { NEEDS_NOTE, allowedValues, cellValue } from './status.js';
 
 const SCHEMAS = ['brands', 'features', 'rom', 'device', 'upstream', 'stock', 'support'];
 const ajv = addFormats(new Ajv({ allErrors: true, verbose: true }));
+// the pages read a hostname off these, and ajv's uri format is looser than URL is
+ajv.addFormat('link', (value) => URL.canParse(value));
 for (const name of SCHEMAS) {
   ajv.addSchema(
     JSON.parse(readFileSync(new URL(`../../../schema/${name}.json`, import.meta.url), 'utf8')),

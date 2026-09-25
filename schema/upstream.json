@@ -75,6 +75,6 @@
         }
       ]
     },
-    "link": { "type": "string", "format": "uri", "pattern": "^https?://" }
+    "link": { "type": "string", "format": "link", "pattern": "^https?://" }
   }
 }

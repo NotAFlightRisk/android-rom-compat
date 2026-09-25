@@ -219,7 +219,7 @@
   "$defs": {
     "link": {
       "type": "string",
-      "format": "uri",
+      "format": "link",
       "pattern": "^https?://"
     },
     "key": {

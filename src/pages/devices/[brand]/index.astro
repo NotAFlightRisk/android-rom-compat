@@ -29,6 +29,12 @@ const romNames = [
         <a href={brand.website}>{new URL(brand.website).hostname}</a>
       </p>
     )}
+    {brand.bootloader && (
+      <p>
+        {brand.bootloader.notes} Going by{' '}
+        <a href={brand.bootloader.source}>{new URL(brand.bootloader.source).hostname}</a>.
+      </p>
+    )}
   </section>
   <DeviceTables
     id="brand-devices"
