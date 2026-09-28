@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Note20 (4G/5G)
+codenames: [c1s]
+aliases: [SM-N980F, SM-N980F/DS, SM-N981B, SM-N981B/DS]
+released: 2020
+soc: Samsung Exynos 990
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
