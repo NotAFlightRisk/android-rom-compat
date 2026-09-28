@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Ace 5 Pro
+codenames: [hummer]
+aliases: [PKR110]
+released: 2024
+soc: Qualcomm SM8750 Snapdragon 8 Elite
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

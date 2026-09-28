@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Velvet 5G
+codenames: [caymanlm]
+aliases: [LM-G900EM, LM-G900UM, LM-G900N, LM-G910N]
+released: 2020
+soc: Qualcomm SM7250 Snapdragon 765G
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: no
