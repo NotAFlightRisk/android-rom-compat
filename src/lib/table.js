@@ -141,8 +141,10 @@ export const reportedFeatures = (features, rows) =>
 export const featuresFrom = (features, rows, origin) =>
   features.filter(({ key }) => rows.every((row) => row.cells[key].origin === origin));
 
-export const reportUrl = (device, rom) =>
-  `${issueUrl('report-feature')}&device=${device.key}${rom ? `&rom=${rom.key}` : ''}`;
+export const reportUrl = (device, rom) => {
+  const title = `[Report]: ${device.title} (${device.key})${rom ? ` on ${rom.name}` : ''}`;
+  return `${issueUrl('report-feature')}&title=${encodeURIComponent(title)}`;
+};
 
 export const deviceSearchText = (device) =>
   [device.title, ...device.codenames, ...(device.aliases ?? [])].join(' ').toLowerCase();
