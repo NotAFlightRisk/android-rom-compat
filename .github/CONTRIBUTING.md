@@ -83,7 +83,7 @@ A brand can carry its own `bootloader` block, for the policy that applies across
   name: Google
   bootloader:
     unlock: conditional
-    notes: Pixel and Nexus phones unlock with fastboot, unless a carrier has SIM locked them.
+    notes: Pixel and Nexus devices unlock with fastboot, unless a carrier has SIM locked them.
     source: https://source.android.com/docs/setup/build/running
 ```
 
