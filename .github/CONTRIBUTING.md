@@ -27,7 +27,7 @@ The files in `upstream/` get rewritten by a bot every Monday, so any change you 
 
 ## Reporting what works
 
-The [form](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) is the easy way. Pick a device and ROM, set whatever you've tried, and a bot opens a pull request for you with your name on the commit. If something's missing or doesn't add up, it comments on the issue saying what - just edit the issue and it'll try again. The "Report" link on each ROM row of a device page fills in the first two fields for you.
+The [form](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) is the easy way. Pick a device and ROM, set whatever you've tried, and a bot opens a pull request for you with your name on the commit. If something's missing or doesn't add up, it comments on the issue saying what - just edit the issue and it'll try again. The "Report" link on each ROM row of a device page puts the device, its codename and the ROM in the title, so you can copy them across.
 
 Rather do it by hand? Add a `features` section to `data/support/<codename>/<rom>.yml`, making the file if it's not there yet. Anything you leave out shows as unknown, which is fine.
 
