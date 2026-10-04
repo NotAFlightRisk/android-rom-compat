@@ -28,8 +28,12 @@ export function buildModel(data = getData(), now = new Date()) {
       const brand = brands.get(brandKey);
       const prefixed = device.name.toLowerCase().startsWith(brand.name.toLowerCase());
       const slug = device.slug ?? slugify(device.name);
+      const policy = device.bootloader.unlock === 'unknown' && brand.bootloader?.unlock;
       const entry = {
         ...device,
+        bootloader: policy
+          ? { ...device.bootloader, unlock: policy, origin: 'brand' }
+          : device.bootloader,
         key,
         file,
         brand,

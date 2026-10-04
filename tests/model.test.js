@@ -7,6 +7,12 @@ import { resolveCell } from '../src/lib/data/status.js';
 const model = (now) => buildModel(loadData('tests/fixtures/good'), new Date(now));
 const rowOf = (now, rom) =>
   model(now).support.find((row) => row.device.key === 'rocket' && row.rom.key === rom);
+const unlockOf = (deviceUnlock, brandUnlock) => {
+  const data = loadData('tests/fixtures/good');
+  data.devices[0].data.bootloader = { unlock: deviceUnlock };
+  data.brands.data[0].bootloader.unlock = brandUnlock;
+  return buildModel(data).devices[0].bootloader;
+};
 const cellsOf = (row) =>
   Object.fromEntries(
     Object.entries(row.cells).map(([key, cell]) => [key, [cell.value, cell.origin]]),
@@ -21,13 +27,21 @@ test('cells resolve report, then docs, then hardware, then ROM-wide', () => {
   });
 });
 
-test('a brand policy reaches the device without touching its own unlock', () => {
+test("a device's own unlock beats the brand policy", () => {
   const [device] = model('2026-02-01').devices;
   assert.equal(device.brand.bootloader.source, 'https://acme.test/unlock');
   assert.deepEqual(device.bootloader, {
     unlock: 'conditional',
     notes: 'Carrier models are locked.',
   });
+});
+
+test('an unknown unlock takes the brand policy, marked as such', () => {
+  assert.deepEqual(unlockOf('unknown', 'yes'), { unlock: 'yes', origin: 'brand' });
+});
+
+test('a brand without an unlock leaves the device unknown', () => {
+  assert.deepEqual(unlockOf('unknown', undefined), { unlock: 'unknown' });
 });
 
 test('explicit values beat inferred ones, whatever layer they sit in', () => {

@@ -82,12 +82,14 @@ A brand can carry its own `bootloader` block, for the policy that applies across
 - key: google
   name: Google
   bootloader:
-    notes: Pixel and Nexus phones from 2015 on unlock with fastboot, unless they were sold carrier locked.
+    unlock: conditional
+    notes: Pixel and Nexus devices unlock with fastboot, unless a carrier has SIM locked them.
     source: https://source.android.com/docs/setup/build/running
 ```
 
-It shows on the brand page and under Bootloader on every device page, and it never changes what a
-device's own `unlock` says. Both fields are needed together, and only add one where the policy
+It shows on the brand page and under Bootloader on every device page. A device whose own `unlock`
+is `unknown` takes the brand's, marked as brand policy, and anything the device file says wins.
+`notes` and `source` are needed together, `unlock` is optional, and only add one where the policy
 really does hold brand-wide - most brands split it by chipset, region or Android version, so they
 stay unknown.
 
