@@ -65,7 +65,7 @@ export const needsCell = ({ firmware, channel }) => {
   return chips.length ? { chips } : {};
 };
 
-const suffixes = { upstream: 'docs', rom: 'ROM' };
+const suffixes = { upstream: 'docs', rom: 'ROM', brand: 'brand' };
 
 export const originSuffix = ({ origin, inferred }) =>
   [suffixes[origin], inferred && 'inferred'].filter(Boolean).join(', ') || undefined;
@@ -181,6 +181,7 @@ export const deviceRows = (devices, roms) =>
       unlock: {
         tone: lockTone[device.bootloader.unlock],
         text: labelOf(device.bootloader.unlock),
+        suffix: originSuffix(device.bootloader),
       },
       ...Object.fromEntries(roms.map((rom) => [rom.key, romStatus(device, rom)])),
     },

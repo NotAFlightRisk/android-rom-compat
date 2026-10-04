@@ -5,4 +5,6 @@ released: 2015
 soc: Qualcomm MSM8974AB-AB Snapdragon 801
 hardware: [cellular]
 bootloader:
-  unlock: unknown
+  unlock: "yes"
+  notes: Ships unlocked, so LineageOS goes straight on over fastboot with no unlock step.
+  source: https://wiki.lineageos.org/devices/FP2/install/

@@ -1,5 +1,6 @@
 - key: acme
   name: Acme
   bootloader:
+    unlock: "yes"
     notes: Acme phones unlock with fastboot.
     source: https://acme.test/unlock

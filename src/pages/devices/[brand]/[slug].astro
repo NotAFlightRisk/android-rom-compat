@@ -27,6 +27,7 @@ const { device } = Astro.props;
 const { features } = getModel();
 const { bootloader, stock, support } = device;
 const policy = device.brand.bootloader;
+const unlock = `${labelOf(bootloader.unlock)}${bootloader.origin ? ', brand policy' : ''}`;
 const [current, ended] = splitByActive(support);
 const unreported = featuresFrom(features, support, 'none');
 const quiet = new Set(
@@ -138,7 +139,7 @@ const codename = device.codenames[0];
 
     <section aria-labelledby="bootloader">
       <h2 id="bootloader">Bootloader</h2>
-      <Facts items={[{ label: 'Unlock', value: labelOf(bootloader.unlock) }]} />
+      <Facts items={[{ label: 'Unlock', value: unlock }]} />
       {bootloader.notes && <p>{bootloader.notes}</p>}
       {bootloader.source && (
         <p>Going by <a href={bootloader.source}>{new URL(bootloader.source).hostname}</a>.</p>
