@@ -33,6 +33,11 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_PLAUSIBLE_SCRIPT: ${{ vars.PUBLIC_PLAUSIBLE_SCRIPT }}
+          PUBLIC_SENTRY_DSN: ${{ vars.PUBLIC_SENTRY_DSN }}
+          SENTRY_URL: ${{ vars.SENTRY_URL }}
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Describe the Worker
         run: |

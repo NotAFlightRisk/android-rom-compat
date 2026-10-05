@@ -40,6 +40,7 @@ const graph = [
 ];
 const image = new URL('/og.png', Astro.site).href;
 const plausible = import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT;
+const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
 ---
 
 <html lang="en-GB">
@@ -87,6 +88,21 @@ const plausible = import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT;
         const script = Object.assign(document.createElement('script'), { src, async: true });
         script.onload = () => window.plausible.init({ endpoint: new URL('/api/event', src).href });
         document.head.append(script);
+      </script>
+    )}
+    {sentry && (
+      <script>
+        // The SDK only downloads once something's actually broken, so pages that work never pay
+        // for it, and if it can't load the report's dropped rather than thrown again
+        let sentry;
+        const report = (error) => {
+          sentry ??= import('../../scripts/sentry.js').catch(() => ({ captureException() {} }));
+          sentry.then(({ captureException }) => captureException(error));
+        };
+        if (import.meta.env.PUBLIC_SENTRY_DSN) {
+          addEventListener('error', (event) => event.error && report(event.error));
+          addEventListener('unhandledrejection', (event) => report(event.reason));
+        }
       </script>
     )}
   </head>
