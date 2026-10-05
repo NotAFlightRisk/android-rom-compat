@@ -31,6 +31,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+        env:
+          PUBLIC_PLAUSIBLE_SCRIPT: ${{ vars.PUBLIC_PLAUSIBLE_SCRIPT }}
 
       - name: Describe the Worker
         run: |
