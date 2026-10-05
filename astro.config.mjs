@@ -1,10 +1,12 @@
 import { writeFile } from 'node:fs/promises';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { getModel } from './src/lib/data/model.js';
 import { getData } from './src/lib/data/load.js';
 import { site } from './src/lib/site.js';
 
+const uploadMaps = Boolean(process.env.SENTRY_AUTH_TOKEN);
 const data = getData();
 const { devices, roms, brands } = getModel();
 const imported = new Map(data.upstream.map((file) => [file.name, file.data.imported]));
@@ -45,7 +47,18 @@ export default defineConfig({
   site: site.url,
   trailingSlash: 'always',
   redirects: codenameRedirects,
-  vite: { build: { assetsInlineLimit: 0 } },
+  vite: {
+    build: { assetsInlineLimit: 0, sourcemap: uploadMaps && 'hidden' },
+    plugins: [
+      uploadMaps &&
+        sentryVitePlugin({
+          telemetry: false,
+          release: { create: false, finalize: false },
+          bundleSizeOptimizations: { excludeDebugStatements: true, excludeTracing: true },
+          sourcemaps: { assets: './dist/**', filesToDeleteAfterUpload: './dist/**/*.map' },
+        }),
+    ],
+  },
   integrations: [
     sitemap({
       serialize: (item) => {

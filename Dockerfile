@@ -4,6 +4,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 ARG PUBLIC_PLAUSIBLE_SCRIPT
+ARG PUBLIC_SENTRY_DSN
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.31-alpine

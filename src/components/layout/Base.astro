@@ -40,6 +40,7 @@ const graph = [
 ];
 const image = new URL('/og.png', Astro.site).href;
 const plausible = import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT;
+const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
 ---
 
 <html lang="en-GB">
@@ -87,6 +88,11 @@ const plausible = import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT;
         const script = Object.assign(document.createElement('script'), { src, async: true });
         script.onload = () => window.plausible.init({ endpoint: new URL('/api/event', src).href });
         document.head.append(script);
+      </script>
+    )}
+    {sentry && (
+      <script>
+        import '../../scripts/sentry.js';
       </script>
     )}
   </head>
