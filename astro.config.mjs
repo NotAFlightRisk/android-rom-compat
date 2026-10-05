@@ -6,7 +6,7 @@ import { getModel } from './src/lib/data/model.js';
 import { getData } from './src/lib/data/load.js';
 import { site } from './src/lib/site.js';
 
-const uploadMaps = Boolean(process.env.SENTRY_AUTH_TOKEN);
+const uploadMaps = Boolean(process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_URL);
 const data = getData();
 const { devices, roms, brands } = getModel();
 const imported = new Map(data.upstream.map((file) => [file.name, file.data.imported]));
@@ -53,7 +53,7 @@ export default defineConfig({
       uploadMaps &&
         sentryVitePlugin({
           telemetry: false,
-          release: { create: false, finalize: false },
+          release: { create: false, finalize: false, setCommits: false, deploy: false },
           bundleSizeOptimizations: { excludeDebugStatements: true, excludeTracing: true },
           sourcemaps: { assets: './dist/**', filesToDeleteAfterUpload: './dist/**/*.map' },
         }),

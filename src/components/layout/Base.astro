@@ -92,7 +92,17 @@ const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
     )}
     {sentry && (
       <script>
-        import '../../scripts/sentry.js';
+        // The SDK only downloads once something's actually broken, so pages that work never pay
+        // for it, and if it can't load the report's dropped rather than thrown again
+        let sentry;
+        const report = (error) => {
+          sentry ??= import('../../scripts/sentry.js').catch(() => ({ captureException() {} }));
+          sentry.then(({ captureException }) => captureException(error));
+        };
+        if (import.meta.env.PUBLIC_SENTRY_DSN) {
+          addEventListener('error', (event) => event.error && report(event.error));
+          addEventListener('unhandledrejection', (event) => report(event.reason));
+        }
       </script>
     )}
   </head>
