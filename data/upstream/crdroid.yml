@@ -17,7 +17,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/a20.json
     install: https://xdaforums.com/t/rom-official-15-0-crdroid-11-for-samsung-galaxy-a20.4724580/
   a21s:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-19 }
@@ -31,7 +31,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/12.1/a40.json
     install: https://forum.xda-developers.com/t/a12-s-a40-crdroidandroid-8-x-official.4387011/
   a51:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-22, patch: 2026-08-01 }
@@ -46,7 +46,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/a52q.json
     install: https://xdaforums.com/t/crdroid-12-0-stable-android-16-qpr0-for-a52-4g-a52q-official.4672356/
   a52sxq:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-20 }
@@ -190,7 +190,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/14.0/avicii.json
     install: https://xdaforums.com/t/rom-official-14-oneplus-nord-avicii-crdroid-v10-x.4650600/
   barbet:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-29 }
@@ -234,28 +234,28 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/beryllium.json
     install: https://xdaforums.com/t/4704307
   beyond0lte:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/beyond0lte.json
     install: https://xdaforums.com/t/rom-official-16-update-crdroid-12-s10-series-aosp-encryption.4714989/
   beyond1lte:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/beyond1lte.json
     install: https://xdaforums.com/t/rom-official-16-update-crdroid-12-s10-series-aosp-encryption.4714989/
   beyond2lte:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/beyond2lte.json
     install: https://xdaforums.com/t/rom-official-16-update-crdroid-12-s10-series-aosp-encryption.4714989/
   beyondx:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
@@ -269,7 +269,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/14.0/bladerunner.json
     install: https://xdaforums.com/t/rom-14-0-official-bladerunner-crdroid-v10-7-23-08-2024.4666992/
   blazer:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
@@ -300,7 +300,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/bonito.json
     install: https://xdaforums.com/t/rom-official-15-0-crdroid-11-for-google-pixel-3a-xl-bonito.4755363/
   bramble:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-29 }
@@ -443,28 +443,28 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/14.0/cypfq.json
     install: https://xdaforums.com/t/rom-14-unofficial-cypfq-stable-crdroid-android-for-moto-g51-5g.4670682/
   d1:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/d1.json
     install: https://xdaforums.com/t/rom-official-16-update-crdroid-12-n10-series-aosp-encryption.4714988/
   d1x:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/d1x.json
     install: https://xdaforums.com/t/rom-official-16-update-crdroid-12-n10-series-aosp-encryption.4714988/
   d2s:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/d2s.json
     install: https://xdaforums.com/t/rom-official-16-update-crdroid-12-n10-series-aosp-encryption.4714988/
   d2x:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
@@ -506,7 +506,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/12.1/daisy.json
     install: https://forum.xda-developers.com/t/official-monthly-a12-crdroid-v8-2-xiaomi-mi-a2-lite-daisy.4401933/
   davinci:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-14, patch: 2026-08-01 }
@@ -611,7 +611,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/erhai.json
     install: https://xdaforums.com/t/rom-16-oneplus-pad-3-crdroid-v12-official.4766169/
   everpal:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-25, patch: 2026-08-01 }
@@ -632,14 +632,14 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/10.0/f400.json
     install: https://forum.xda-developers.com/lg-g3/development/official-romcrdroid-t4069373
   f41:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-22, patch: 2026-08-01 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/f41.json
     install: https://xdaforums.com/t/samsung-galaxy-f41-crdroidandroid-12-0.4757811
   f62:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-26 }
@@ -676,7 +676,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/fogo.json
     install: https://xdaforums.com/t/rom-official-16-fogo-crdroid-12-for-motorola-moto-g-2024.4766311/
   frankel:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
@@ -814,7 +814,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/hawao.json
     install: https://xdaforums.com/t/rom-14-0-official-moto-g42-hawao-crdroid-v10-0-08-01-2024.4649906/
   haydn:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-17 }
@@ -889,7 +889,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/17.0/hotdog.json
     install: https://xdaforums.com/t/4803615/
   hotdogb:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-07-25, patch: 2026-07-01 }
@@ -918,7 +918,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/14.0/ice.json
     install: https://xdaforums.com/t/unofficial-14-crdroid-for-realme-9-se-rmx3461-rom.4687473/
   instantnoodle:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-24 }
@@ -1021,7 +1021,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/lancelot.json
     install: https://xdaforums.com/t/rom-15-official-crdroid-v11-aosp-stable.4625907/
   larry:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-10 }
@@ -1139,21 +1139,21 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/11.0/m1882.json
     install: https://4pda.ru/forum/index.php?s=&showtopic=961552&view=findpost&p=102285283
   m21:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-22, patch: 2026-08-01 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/m21.json
     install: https://xdaforums.com/t/samsung-galaxy-m21-crdroidandroid-12-0.4757814
   m31:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-22, patch: 2026-08-01 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/m31.json
     install: https://xdaforums.com/t/samsung-galaxy-m31-crdroidandroid-12-0.4757818
   m31s:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-22, patch: 2026-08-01 }
@@ -1267,14 +1267,14 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/mondrian.json
     install: https://xdaforums.com/t/rom-16-official-crdroid-12-for-poco-f5-pro-redmi-k60.4796561/
   munch:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-07-13, patch: 2026-07-01 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/munch.json
     install: https://xdaforums.com/t/rom-android16-crdroid-official-poco-f4-redmi-k40s-munch-always-latest-build.4765095/
   mustang:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
@@ -1289,7 +1289,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/nabu.json
     install: https://xdaforums.com/t/rom-16-xiaomi-pad-5-crdroid-12-x-unofficial.4764075/
   nemo:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-23 }
@@ -1354,7 +1354,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/11.0/oneplus3.json
     install: https://bit.ly/3stPF15
   oriole:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
@@ -1499,7 +1499,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/pstar.json
     install: https://xdaforums.com/t/rom-official-15-0-moto-edge-20-pro-crdroid-11-beta-monthly-2024-12-15.4708062/
   psyche:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.9", date: 2026-04-24 }
@@ -1535,28 +1535,28 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/r8s.json
     install: https://xdaforums.com/t/official-a15-exynos-crdroid-for-the-galaxy-s20-fe-r8s.4749183
   rango:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/rango.json
     install: https://xdaforums.com/t/rom-official-16-0-crdroid-12-x-for-pixel-10-pro-fold-rango.4785632/
   raphael:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-31, patch: 2026-08-01 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/raphael.json
     install: https://xdaforums.com/t/rom-16-raphael-crdroid-v12-7-official.4700716/
   raven:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/raven.json
     install: https://xdaforums.com/t/rom-official-16-qpr2-raven-crdroid-12-for-google-pixel-6-pro.4790923/
   redfin:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-29 }
@@ -1700,7 +1700,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/rova.json
     install: https://xdaforums.com/t/4762708
   rtwo:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-07 }
@@ -1809,7 +1809,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/sky.json
     install: https://xdaforums.com/t/rom-15-redmi-12-5g-poco-m6-pro-5g-crdroid-v11.4702481
   spaced:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-07-03 }
@@ -1861,7 +1861,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/stone.json
     install: https://xdaforums.com/t/rom-15-0-stone-crdroid-11-official.4704640/
   surya:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-08-09, patch: 2026-08-01 }
@@ -1891,7 +1891,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/sweet2.json
     install: https://xdaforums.com/t/rom-android-16-redmi-note-12-pro-4g-crdroid-v12-x-official-monthly-stable.4778842/
   taimen:
-    status: active
+    status: discontinued
     channel: stable
     android: 15
     latest: { version: "11.15", date: 2026-05-18 }
@@ -1949,7 +1949,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/topaz.json
     install: https://xdaforums.com/t/rom-15-official-vanilla-crdroid-for-redmi-note-12-4g.4702155/
   troika:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.10", date: 2026-06-01 }
@@ -2036,7 +2036,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/waffle.json
     install: https://xdaforums.com/t/rom-16-oneplus-12-crdroid-v12-official.4767553/
   walleye:
-    status: active
+    status: discontinued
     channel: stable
     android: 15
     latest: { version: "11.15", date: 2026-05-18 }
@@ -2085,7 +2085,7 @@ devices:
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/12.1/X01BD.json
     install: https://forum.xda-developers.com/t/rom-12-1-unofficial-x01bd-crdroid-v8-4.4432437/#post-86756591
   x1s:
-    status: active
+    status: discontinued
     channel: stable
     android: 16
     latest: { version: "12.11", date: 2026-06-08 }

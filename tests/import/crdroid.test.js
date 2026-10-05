@@ -8,9 +8,9 @@ const fixture = (name) =>
 const trees = fixture('crdroid-trees.json');
 const builds = fixture('crdroid-builds.json');
 const now = Date.parse('2026-09-17');
-const parsed = (key) => {
+const parsed = (key, at = now) => {
   const [branch, codename] = key.split('/');
-  return parse(builds[key], { branch, codename }, now);
+  return parse(builds[key], { branch, codename }, at);
 };
 
 test('each codename comes from the newest branch that has it', () => {
@@ -50,8 +50,12 @@ test('empty maintainer and missing patch level are left out', () => {
 });
 
 test('builds over 180 days old are discontinued', () => {
-  assert.equal(parsed('16.0/a21s').row.status, 'active');
-  assert.equal(parsed('15.0/PL2').row.status, 'discontinued');
+  assert.equal(parsed('16.0/tegu').row.status, 'active');
+  assert.equal(parsed('16.0/tegu', Date.parse('2027-04-01')).row.status, 'discontinued');
+});
+
+test('a device crDroid has dropped is discontinued, however fresh its last build', () => {
+  assert.equal(parsed('16.0/a21s').row.status, 'discontinued');
 });
 
 test('only alpha, beta and nightly builds count as beta', () => {
