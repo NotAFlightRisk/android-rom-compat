@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
+ARG PUBLIC_PLAUSIBLE_SCRIPT
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.31-alpine
