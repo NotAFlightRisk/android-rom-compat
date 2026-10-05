@@ -58,8 +58,6 @@ Or run the pre-built image from [DockerHub](https://hub.docker.com/r/notaflightr
 docker run -p 8080:8080 notaflightrisk/android-rom-compat
 ```
 
-There's no analytics, unless you build with `PUBLIC_PLAUSIBLE_SCRIPT` set to your [Plausible](https://plausible.io/) site's script URL (for Docker, pass it as a `--build-arg`). Our copy reports to our Plausible, your fork won't.
-
 ---
 
 ## Licence
