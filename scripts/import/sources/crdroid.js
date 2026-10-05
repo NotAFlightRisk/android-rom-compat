@@ -36,7 +36,7 @@ export function parse(json, { codename, branch }, now = Date.now()) {
   const released = build.timestamp * 1000;
   const patch = patchOf(build.os_patch_level);
   const row = {
-    status: now - released < 180 * DAY ? 'active' : 'discontinued',
+    status: build.maintainer && now - released < 180 * DAY ? 'active' : 'discontinued',
     channel: /alpha|beta|nightly/i.test(build.buildtype) ? 'beta' : 'stable',
     android: parseInt(branch),
     ...(build.maintainer && { maintainer: build.maintainer }),
