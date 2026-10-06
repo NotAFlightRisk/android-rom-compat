@@ -82,7 +82,7 @@ body:
     attributes:
       label: Play Integrity
       description: Highest Play Integrity verdict passed
-      options: [strong, device, basic, "none", n/a]
+      options: [strong, device, basic, fails, n/a]
   - type: dropdown
     id: camera
     attributes:
@@ -118,7 +118,7 @@ body:
     attributes:
       label: Widevine
       description: DRM level, which decides streaming quality
-      options: [L1, L3, "none", n/a]
+      options: [L1, L3, unsupported, n/a]
   - type: textarea
     id: notes
     attributes:

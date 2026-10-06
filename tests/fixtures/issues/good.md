@@ -68,7 +68,7 @@ None
 
 ### Widevine
 
-none
+unsupported
 
 ### Notes
 

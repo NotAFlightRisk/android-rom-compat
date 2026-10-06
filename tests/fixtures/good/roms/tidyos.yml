@@ -12,7 +12,7 @@ root: false
 links: { website: https://example.com }
 features:
   push: { status: partial, note: Bring your own, source: https://example.com/push }
-  widevine: { status: none, inferred: true, source: https://example.com/drm }
+  widevine: { status: unsupported, inferred: true, source: https://example.com/drm }
 variants:
   - key: plus
     name: TidyOS Plus

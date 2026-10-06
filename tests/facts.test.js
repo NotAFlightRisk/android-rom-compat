@@ -51,7 +51,7 @@ test('what a ROM says holds everywhere reads the same way', () => {
   const tidy = roms.find((rom) => rom.key === 'tidyos');
   assert.deepEqual(wording(knownFeatures(features, everywhereCells(features, tidy))), [
     ['Notifications', 'Partly works', 'Bring your own', undefined],
-    ['Widevine', 'Likely none', undefined, undefined],
+    ['Widevine', 'Likely unsupported', undefined, undefined],
   ]);
 });
 

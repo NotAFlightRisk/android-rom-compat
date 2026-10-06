@@ -7,6 +7,7 @@ import { join } from 'node:path';
 import { parse } from 'yaml';
 import { loadData } from '../src/lib/data/load.js';
 import { check } from '../src/lib/data/check.js';
+import { allowedValues } from '../src/lib/data/status.js';
 import { reportUrl } from '../src/lib/table.js';
 
 const ISSUE_URL = 'https://github.com/NotAFlightRisk/android-rom-compat/issues/7';
@@ -40,14 +41,14 @@ test('a good report merges into the support file and still validates', (t) => {
   assert.equal(status, 0);
   assert.equal(
     output.summary,
-    'NFC partial and Widevine none on the Acme Rocket 2 with TidyOS Plus',
+    'NFC partial and Widevine unsupported on the Acme Rocket 2 with TidyOS Plus',
   );
 
   const tested = { variant: 'plus', android: 15, checked: today, source: ISSUE_URL };
   const reported = { ...tested, build: '2026091000' };
   assert.deepEqual(supportFile('tidyos'), {
     features: {
-      widevine: { status: 'none', ...reported },
+      widevine: { status: 'unsupported', ...reported },
       push: { ...tested, status: 'working', checked: '2026-01-10', source: 'tested' },
       nfc: { status: 'partial', note: "Tags work, payments don't", ...reported },
     },
@@ -84,4 +85,19 @@ test("report links fill in the form's own fields", () => {
     [...new URL(reportUrl(device)).searchParams.keys()],
     ['template', 'title', 'device'],
   );
+});
+
+test("the form offers each feature's own values, never the None GitHub keeps for blanks", () => {
+  const form = parse(readFileSync('.github/ISSUE_TEMPLATE/report-feature.yml', 'utf8'));
+  const features = parse(readFileSync('data/features.yml', 'utf8'));
+  const dropdowns = form.body.filter((field) => field.type === 'dropdown');
+  assert.deepEqual(
+    dropdowns.map((field) => field.id),
+    features.map((feature) => feature.key),
+  );
+  for (const [i, { id, attributes }] of dropdowns.entries()) {
+    const options = allowedValues(features[i]).filter((value) => value !== 'unknown');
+    assert.deepEqual(attributes.options, options, id);
+    assert.ok(!options.some((option) => /^none$/i.test(option)), id);
+  }
 });

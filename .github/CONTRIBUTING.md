@@ -52,7 +52,7 @@ The keys come from [`features.yml`](../data/features.yml). Most features use the
 | `unknown` | Nobody's checked. Same as leaving it out |
 | `n/a` | The phone doesn't have the hardware |
 
-Widevine uses `L1`, `L3` or `none`, and Play Integrity (`integrity`) uses `strong`, `device`, `basic` or `none`.
+Widevine uses `L1`, `L3` or `unsupported`, and Play Integrity (`integrity`) uses `strong`, `device`, `basic` or `fails`.
 
 ---
 

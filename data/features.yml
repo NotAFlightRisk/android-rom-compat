@@ -38,7 +38,7 @@
   group: google
   name: Play Integrity
   description: Highest Play Integrity verdict passed
-  values: [strong, device, basic, none]
+  values: [strong, device, basic, fails]
 - key: camera
   group: hardware
   name: Camera
@@ -66,4 +66,4 @@
   group: media
   name: Widevine
   description: DRM level, which decides streaming quality
-  values: [L1, L3, none]
+  values: [L1, L3, unsupported]
