@@ -1,0 +1,97 @@
+---
+import Icon from '../ui/Icon.astro';
+import { labelOf } from '../../lib/labels.js';
+
+const { id, columns } = Astro.props;
+const groups = Map.groupBy(columns, (column) => column.group ?? '');
+---
+
+<details class="picker" data-controls>
+  <summary class="button small">
+    <Icon name="columns" /> Columns
+  </summary>
+  <div class="panel">
+    {[...groups].map(([group, list]) => (
+      <fieldset>
+        <legend class:list={{ 'visually-hidden': !group }}>
+          {group ? labelOf(group) : 'Show columns'}
+        </legend>
+        {list.map((column) => (
+          <label>
+            <input
+              type="checkbox"
+              name="col"
+              value={column.key}
+              checked={!column.hidden}
+              aria-controls={id}
+            />
+            {column.label}
+          </label>
+        ))}
+      </fieldset>
+    ))}
+  </div>
+</details>
+
+<style>
+  .picker {
+    justify-self: end;
+
+    @media (width >= 48rem) {
+      position: relative;
+    }
+  }
+
+  summary {
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  .panel {
+    position: absolute;
+    inset-block-start: calc(100% + var(--space-2xs));
+    inset-inline-end: 0;
+    z-index: 3;
+    display: grid;
+    gap: var(--space-sm);
+    inline-size: min(36rem, 90vw);
+    max-block-size: 70dvh;
+    overflow-y: auto;
+    padding: var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+
+    @media (width < 48rem) {
+      inset-inline: 0;
+      inline-size: auto;
+    }
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    legend {
+      padding: 0 var(--space-2xs) var(--space-2xs);
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-2xs);
+      cursor: pointer;
+    }
+  }
+</style>

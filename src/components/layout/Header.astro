@@ -36,10 +36,7 @@ const current = (url) => Astro.url.pathname.startsWith(url);
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: var(--space-sm) var(--space-lg);
-    inline-size: 100%;
-    max-inline-size: var(--page);
-    margin-inline: auto;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-sm) var(--gutter);
     border-block-end: 1px solid var(--border);
 
     @media (width < 48rem) {

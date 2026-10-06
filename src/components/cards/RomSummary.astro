@@ -1,0 +1,74 @@
+---
+// A ROM in brief: what it is, its take on Google apps and security, and how many devices it runs on
+import Logo from '../ui/Logo.astro';
+import { googleApps, romRelock } from '../../lib/facts.js';
+import { labelOf } from '../../lib/labels.js';
+import { plural } from '../../lib/text.js';
+
+const { rom, level = 3 } = Astro.props;
+const Heading = `h${level}`;
+const relock = romRelock(rom);
+const badges = [
+  googleApps(rom),
+  relock !== 'No' && (relock === 'Yes' ? 'Relockable bootloader' : 'Relocks on some devices'),
+  ...rom.focus.map(labelOf),
+].filter(Boolean);
+---
+
+<article class="card summary">
+  <div class="head">
+    <Logo kind="roms" item={rom} />
+    <Heading>
+      <a class="stretch" href={rom.url}>
+        {rom.name}
+      </a>
+    </Heading>
+    <span>{plural(rom.activeCount, 'device')}</span>
+  </div>
+  <p>{rom.description}</p>
+  <ul class="badges" aria-label={`${rom.name} at a glance`}>
+    {badges.map((badge) => (
+      <li class="badge">{badge}</li>
+    ))}
+  </ul>
+</article>
+
+<style>
+  .summary {
+    gap: var(--space-sm);
+  }
+
+  .head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-sm);
+
+    :is(h2, h3) {
+      font-size: var(--text-lg);
+    }
+
+    span {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+
+  .stretch {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  p {
+    color: var(--text-muted);
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

@@ -14,7 +14,7 @@ const dumps = {
       ...strip(device),
       brand: brand.key,
     })),
-  roms: ({ roms }) => roms.map(strip),
+  roms: ({ roms }) => roms.map(({ activeCount, ...rom }) => strip(rom)),
   support: ({ support }) =>
     support.map(({ file, device, rom, cells, variants, active, ...row }) => ({
       device: device.key,
