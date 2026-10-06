@@ -1,0 +1,140 @@
+---
+// Search and filters for the cards and the table together, and a sort for the cards. Needs JS
+import Icon from './Icon.astro';
+
+const { controls, label, total, filters = [], endedCount = 0 } = Astro.props;
+const orders = [
+  ['', 'A to Z'],
+  ['newest', 'Newest first'],
+  ['roms', 'Most ROMs first'],
+];
+---
+
+<form
+  class="filters"
+  data-filter
+  data-controls
+  aria-label={label}
+  aria-controls={controls.join(' ')}
+>
+  <label class="search">
+    <span class="visually-hidden">Name, codename or model</span>
+    <Icon name="search" />
+    <input
+      type="search"
+      name="q"
+      placeholder="Name, codename or model"
+      autocomplete="off"
+      spellcheck="false"
+    />
+  </label>
+  {filters.map(({ name, label, any, options }) => (
+    <label>
+      <span class="visually-hidden">{label}</span>
+      <select name={name}>
+        <option value="">{any}</option>
+        {options.map(([value, text]) => (
+          <option value={value}>{text}</option>
+        ))}
+      </select>
+    </label>
+  ))}
+  <label data-view="cards">
+    <span class="visually-hidden">Sort</span>
+    <select name="order">
+      {orders.map(([value, text]) => (
+        <option value={value}>{text}</option>
+      ))}
+    </select>
+  </label>
+  {endedCount > 0 && (
+    <label class="check">
+      <input type="checkbox" name="ended" />
+      Include ended support
+    </label>
+  )}
+  <p class="count" role="status" data-count>
+    {total} shown
+  </p>
+  <p class="empty" data-empty hidden>
+    Nothing matches. Try fewer filters, or search by codename or model number.
+  </p>
+  {endedCount > 0 && (
+    <p class="empty" data-empty-ended hidden>
+      Only devices whose support has ended match that. Tick “Include ended support” to see them.
+    </p>
+  )}
+</form>
+
+<script>
+  import { enhanceFilter } from '../../scripts/filter.js';
+  document.querySelectorAll('[data-filter]').forEach(enhanceFilter);
+</script>
+
+<style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 16rem;
+    max-inline-size: 22rem;
+
+    :global(svg) {
+      position: absolute;
+      inset-inline-start: var(--space-sm);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    input {
+      inline-size: 100%;
+      padding-inline-start: 2.25rem;
+    }
+  }
+
+  select {
+    max-inline-size: 100%;
+  }
+
+  @media (width < 40rem) {
+    label:has(select) {
+      flex: 1 1 40%;
+    }
+
+    select {
+      inline-size: 100%;
+    }
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-block-size: var(--control);
+    padding-inline: var(--space-xs);
+    cursor: pointer;
+  }
+
+  .count {
+    margin-inline-start: auto;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .empty {
+    flex-basis: 100%;
+    max-inline-size: none;
+    padding: var(--space-lg);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+    text-align: center;
+  }
+</style>

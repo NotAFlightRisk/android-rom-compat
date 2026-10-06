@@ -27,7 +27,7 @@ The files in `upstream/` get rewritten by a bot every Monday, so any change you 
 
 ## Reporting what works
 
-The [form](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) is the easy way. Pick a device and ROM, set whatever you've tried, and a bot opens a pull request for you with your name on the commit. If something's missing or doesn't add up, it comments on the issue saying what - just edit the issue and it'll try again. The "Report" link on each ROM row of a device page puts the device, its codename and the ROM in the title, so you can copy them across.
+The [form](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) is the easy way. Pick a device and ROM, set whatever you've tried, and a bot opens a pull request for you with your name on the commit. If something's missing or doesn't add up, it comments on the issue saying what - just edit the issue and it'll try again. The "Report what works" button on each ROM on a device page fills in the device, the ROM and its Android version for you.
 
 Rather do it by hand? Add a `features` section to `data/support/<codename>/<rom>.yml`, making the file if it's not there yet. Anything you leave out shows as unknown, which is fine.
 
@@ -40,7 +40,7 @@ features:
   widevine: L3
 ```
 
-`android` and `build` are what you tested on, `checked` is the date, and `variant` is for a ROM's other builds (like LineageOS for microG). A report shows as stale once the ROM moves to a newer Android than yours, or `checked` is over a year old.
+`android` and `build` are what you tested on, `checked` is the date, and `variant` is for a ROM's other builds (like LineageOS for microG). Once the ROM moves to a newer Android than yours, or `checked` is over a year old, the site says when it was last checked.
 
 The keys come from [`features.yml`](../data/features.yml). Most features use these:
 
@@ -109,7 +109,7 @@ source: https://example.com/devices/tegu
 install: https://example.com/devices/tegu/install
 ```
 
-`status` is `active`, or `discontinued` once the ROM stops building for it. `status` and `source` are the only must-haves.
+`status` is `active`, or `discontinued` once the ROM stops building for it. `status` and `source` are the only must-haves. `maintainer` can also be `{ name: someone, link: https://github.com/someone }`, to link to them.
 
 A new ROM lives at `data/roms/<rom>.yml`. Keep that name, and any variant key, to lowercase letters and numbers - imports are named `<rom>-<variant>.yml`, so a hyphen in either splits in the wrong place.
 

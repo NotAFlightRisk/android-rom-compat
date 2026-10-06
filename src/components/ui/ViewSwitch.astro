@@ -1,0 +1,107 @@
+---
+// Cards or Table, as two radios so it works without JS. The script runs before the views are
+// parsed, so a saved choice never flashes the other one first
+import Icon from './Icon.astro';
+---
+
+<fieldset class="view-switch">
+  <legend class="visually-hidden">View as</legend>
+  <label>
+    <input type="radio" name="view" value="cards" autocomplete="off" checked />
+    <Icon name="cards" /> Cards
+  </label>
+  <label>
+    <input type="radio" name="view" value="table" autocomplete="off" />
+    <Icon name="table" /> Table
+  </label>
+</fieldset>
+
+<script is:inline>
+  {
+    const radios = document.querySelectorAll('[name="view"]');
+    const saved = () => {
+      try {
+        return localStorage.getItem('view');
+      } catch {}
+    };
+    const show = () => {
+      const asked = new URLSearchParams(location.search).get('view') ?? saved();
+      const view = asked === 'table' ? 'table' : 'cards';
+      radios.forEach((radio) => (radio.checked = radio.value === view));
+    };
+    show();
+    addEventListener('pageshow', (event) => event.persisted && show());
+    radios.forEach((radio) =>
+      radio.addEventListener('change', () => {
+        try {
+          localStorage.setItem('view', radio.value);
+        } catch {}
+        const url = new URL(location.href);
+        if (radio.value === 'table') url.searchParams.set('view', 'table');
+        else url.searchParams.delete('view');
+        history.replaceState(history.state, '', url);
+      }),
+    );
+  }
+</script>
+
+<style>
+  .view-switch {
+    display: inline-flex;
+    margin: 0;
+    padding: 0.1875rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-raised);
+  }
+
+  label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-block-size: 2.125rem;
+    padding-inline: var(--space-sm);
+    border: 1px solid transparent;
+    border-radius: calc(var(--radius) - 0.1875rem);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      color 150ms ease-out,
+      background-color 150ms ease-out;
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &:has(:checked) {
+      border-color: var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    &:has(:focus-visible) {
+      outline: 2px solid var(--focus);
+      outline-offset: 1px;
+    }
+
+    @media (forced-colors: active) {
+      &:has(:checked) {
+        forced-color-adjust: none;
+        background: SelectedItem;
+        color: SelectedItemText;
+      }
+    }
+  }
+
+  input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+</style>

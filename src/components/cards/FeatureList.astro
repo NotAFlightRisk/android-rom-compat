@@ -1,0 +1,70 @@
+---
+// What works, one line each, from relockFact() and knownFeatures() in src/lib/facts.js
+import Icon from '../ui/Icon.astro';
+
+const { items } = Astro.props;
+---
+
+<ul class="features">
+  {items.map((item) => (
+    <li class="masked" data-tone={item.tone}>
+      <span class="name">{item.name}</span>
+      <span class="value">{item.text}</span>
+      {(item.note || item.stale || item.source) && (
+        <p>
+          {item.stale && <span class="stale">{item.stale}.</span>} {item.note}
+          {item.source && (
+            <a href={item.source}>
+              <Icon name="external" label={`Source for ${item.name}`} />
+            </a>
+          )}
+        </p>
+      )}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .features {
+    display: grid;
+    gap: var(--space-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: baseline;
+    column-gap: var(--space-xs);
+
+    &::before {
+      align-self: center;
+      color: var(--tone-text);
+    }
+  }
+
+  .name {
+    font-weight: 500;
+  }
+
+  .value {
+    color: var(--tone-text);
+  }
+
+  p {
+    grid-column: 2 / -1;
+    color: var(--text-muted);
+
+    a {
+      display: inline-block;
+      margin-inline-start: var(--space-2xs);
+    }
+  }
+
+  .stale {
+    color: var(--partial-text);
+  }
+</style>

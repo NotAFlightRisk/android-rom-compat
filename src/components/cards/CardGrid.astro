@@ -1,0 +1,149 @@
+---
+// Device cards in optional brand groups, from plain items built in src/lib/cards.js
+import Logo from '../ui/Logo.astro';
+
+const { id, groups, level = 2 } = Astro.props;
+const Heading = `h${level}`;
+---
+
+<div id={id} class="card-grid">
+  {groups.map(({ brand, items }) => (
+    <section class="group" aria-labelledby={brand && `${id}-${brand.key}`}>
+      {brand && (
+        <Heading id={`${id}-${brand.key}`} class="group-head">
+          <Logo kind="brands" item={brand} size="sm" />
+          <a href={brand.url}>{brand.name}</a>
+        </Heading>
+      )}
+      <ul>
+        {items.map((item) => (
+          <li class="card" {...item.data}>
+            <a class="stretch" href={item.href}>
+              {brand && item.prefix && <span class="prefix">{item.prefix} </span>}
+              {item.title}
+            </a>
+            <code>{item.code}</code>
+            {item.meta && <p class="meta">{item.meta}</p>}
+            {item.status && (
+              <span class="status" data-tone={item.status.tone}>
+                {item.status.text}
+              </span>
+            )}
+            {item.chips.length > 0 && (
+              <ul class="chips" aria-label="ROMs">
+                {item.chips.map((chip) => (
+                  <li class="badge" data-tone={chip.tone}>
+                    {chip.note ? `${chip.text}, ${chip.note}` : chip.text}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {item.empty && (
+              <span class="status" data-tone="ended">
+                {item.empty}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>
+
+<style is:global>
+  /* Global under .card-grid, like .matrix, so hundreds of cards each skip a scoping attribute */
+  .card-grid {
+    display: grid;
+    gap: var(--space-xl);
+
+    .group {
+      gap: var(--space-sm);
+    }
+
+    .group-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--text-lg);
+
+      a {
+        color: var(--text);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .group > ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+      gap: var(--space-sm);
+    }
+
+    .card {
+      gap: var(--space-xs);
+      align-content: start;
+      padding: var(--space-sm) var(--space-md);
+    }
+
+    .stretch {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Only a sorted list, which has no brand headings, needs the brand in each name */
+    .group:not(.sorted) .prefix {
+      display: none;
+    }
+
+    .card > code,
+    .meta {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .card > code {
+      margin-block-start: calc(-1 * var(--space-2xs));
+    }
+
+    .status {
+      font-size: var(--text-sm);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2xs);
+    }
+
+    /* On phones a group reads as one list rather than a stack of separate cards */
+    @media (width < 40rem) {
+      /* Each card draws the divider above it, and the list clips the first, whichever is hidden */
+      .group > ul {
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+      }
+
+      .card {
+        margin-block-start: -1px;
+        border-width: 1px 0 0;
+        border-radius: 0;
+
+        &:has(.stretch:focus-visible) {
+          outline-offset: -2px;
+        }
+      }
+    }
+  }
+</style>

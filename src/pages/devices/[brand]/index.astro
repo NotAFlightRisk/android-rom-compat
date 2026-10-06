@@ -1,7 +1,11 @@
 ---
 import Base from '../../../components/layout/Base.astro';
-import DeviceTables from '../../../components/ui/DeviceTables.astro';
+import PageHead from '../../../components/layout/PageHead.astro';
+import DeviceList from '../../../components/ui/DeviceList.astro';
+import Facts from '../../../components/ui/Facts.astro';
 import { getModel } from '../../../lib/data/model.js';
+import { unlockFact } from '../../../lib/facts.js';
+import { plural } from '../../../lib/text.js';
 
 export const getStaticPaths = () =>
   getModel().brands.map((brand) => ({ params: { brand: brand.key }, props: { brand } }));
@@ -11,6 +15,7 @@ const { roms } = getModel();
 const romNames = [
   ...new Set(brand.devices.flatMap((device) => device.support.map((row) => row.rom.name))),
 ];
+const policy = brand.bootloader && unlockFact({ bootloader: brand.bootloader, brand: {} });
 ---
 
 <Base
@@ -22,21 +27,30 @@ const romNames = [
   ]}
   edit={['data/brands.yml']}
 >
-  <section>
-    <h1>{brand.name}</h1>
-    {brand.website && (
-      <p>
-        <a href={brand.website}>{new URL(brand.website).hostname}</a>
-      </p>
-    )}
-    {brand.bootloader && (
-      <p>
-        {brand.bootloader.notes} Going by{' '}
-        <a href={brand.bootloader.source}>{new URL(brand.bootloader.source).hostname}</a>.
-      </p>
-    )}
-  </section>
-  <DeviceTables
+  <PageHead
+    title={brand.name}
+    logo={{ kind: 'brands', item: brand }}
+    meta={[
+      plural(brand.devices.length, 'device'),
+      brand.website && { text: new URL(brand.website).hostname, href: brand.website },
+    ]}
+    views
+  />
+  {policy && (
+    <Facts
+      panel
+      items={[
+        {
+          label: 'Bootloader policy',
+          value: policy.text ?? policy.note,
+          tone: policy.tone,
+          note: policy.text && policy.note,
+          source: policy.source,
+        },
+      ]}
+    />
+  )}
+  <DeviceList
     id="brand-devices"
     label={`${brand.name} devices`}
     devices={brand.devices}

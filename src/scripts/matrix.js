@@ -21,32 +21,22 @@ function showScrollCue(scroller) {
   new ResizeObserver(update).observe(scroller);
 }
 
-/** Adds sorting, filtering and column toggles to a matrix, mirrored into the URL when asked */
+/** Adds sorting and column toggles to a matrix, mirrored into the URL when asked */
 export function enhanceMatrix(root) {
   showScrollCue(root.querySelector('.scroller'));
-  const controls = root.querySelector('[data-controls]');
-  if (!controls) return;
+  const picker = root.querySelector('.picker');
+  if (!picker) return;
 
   const table = root.querySelector('table');
   const body = table.tBodies[0];
-  const rows = [...body.rows];
   const headers = [...table.tHead.rows[0].cells];
   const keys = headers.map((header) => header.dataset.col);
-  const filter = controls.querySelector('[name="q"]');
-  const brand = controls.querySelector('[name="brand"]');
-  const ended = controls.querySelector('[name="ended"]');
-  const toggles = [...controls.querySelectorAll('[name="col"]')];
-  const count = controls.querySelector('[data-count]');
-  const empty = root.querySelector('[data-empty]');
-  const emptyEnded = root.querySelector('[data-empty-ended]');
+  const toggles = [...picker.querySelectorAll('[name="col"]')];
   const useUrl = root.hasAttribute('data-url-state');
   const params = new URLSearchParams(useUrl ? location.search : '');
   let hiddenColumns;
 
   let sort = keys.includes((params.get('sort') ?? '').replace(/^-/, '')) ? params.get('sort') : '';
-  filter.value = params.get('q') ?? '';
-  if (brand) brand.value = params.get('brand') ?? '';
-  if (ended) ended.checked = params.get('ended') === '1';
   if (params.has('cols')) {
     const shown = params.get('cols').split(',');
     toggles.forEach((toggle) => (toggle.checked = shown.includes(toggle.value)));
@@ -62,25 +52,6 @@ export function enhanceMatrix(root) {
     hiddenColumns.textContent = selectors.length ? `${selectors.join(',')} { display: none }` : '';
   }
 
-  function filterRows() {
-    const query = filter.value.trim().toLowerCase();
-    const picked = brand?.value ?? '';
-    let shown = 0;
-    let onlyEnded = 0;
-    for (const row of rows) {
-      const matches =
-        row.dataset.search.includes(query) && (picked === '' || row.dataset.brand === picked);
-      const hide = !matches || (row.dataset.ended !== undefined && !ended?.checked);
-      if (row.hidden !== hide) row.hidden = hide;
-      if (!hide) shown++;
-      else if (matches) onlyEnded++;
-    }
-    count.textContent =
-      shown === rows.length ? `${rows.length} shown` : `${shown} of ${rows.length} shown`;
-    empty.hidden = shown > 0 || onlyEnded > 0;
-    if (emptyEnded) emptyEnded.hidden = shown > 0 || onlyEnded === 0;
-  }
-
   function sortRows() {
     const index = keys.indexOf(sort.replace(/^-/, ''));
     const direction = sort.startsWith('-') ? -1 : 1;
@@ -90,7 +61,7 @@ export function enhanceMatrix(root) {
     });
     if (index < 0) return;
     body.append(
-      ...rows.toSorted(
+      ...[...body.rows].toSorted(
         (a, b) => direction * compare(sortValue(a.cells[index]), sortValue(b.cells[index])),
       ),
     );
@@ -101,9 +72,6 @@ export function enhanceMatrix(root) {
     const url = new URL(location.href);
     const custom = toggles.some((toggle) => toggle.checked !== toggle.defaultChecked);
     const state = {
-      q: filter.value.trim(),
-      brand: brand?.value,
-      ended: ended?.checked ? '1' : '',
       sort,
       cols: custom
         ? toggles
@@ -116,7 +84,7 @@ export function enhanceMatrix(root) {
       if (value) url.searchParams.set(name, value);
       else url.searchParams.delete(name);
     }
-    history.replaceState(null, '', url);
+    history.replaceState(history.state, '', url);
   }
 
   for (const header of headers) {
@@ -130,13 +98,6 @@ export function enhanceMatrix(root) {
     header.append(button);
   }
 
-  const onFilter = () => {
-    filterRows();
-    saveToUrl();
-  };
-  filter.addEventListener('input', onFilter);
-  brand?.addEventListener('change', onFilter);
-  ended?.addEventListener('change', onFilter);
   for (const toggle of toggles) {
     toggle.addEventListener('change', () => {
       showColumns();
@@ -148,6 +109,5 @@ export function enhanceMatrix(root) {
     showColumns();
     table.querySelectorAll('th[hidden], td[hidden]').forEach((cell) => (cell.hidden = false));
   }
-  if (filter.value || brand?.value || ended) filterRows();
   if (sort) sortRows();
 }

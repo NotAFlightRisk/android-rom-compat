@@ -1,0 +1,243 @@
+/* Shared building blocks. Components lay these out, and keep their own styles scoped */
+
+/* One colour pair and icon per answer, for status words, badges and table cells alike */
+[data-tone='working'] {
+  --icon: url('/icons/working.svg');
+  --tone-text: var(--working-text);
+  --tone-bg: var(--working-bg);
+}
+
+[data-tone='partial'] {
+  --icon: url('/icons/partial.svg');
+  --tone-text: var(--partial-text);
+  --tone-bg: var(--partial-bg);
+}
+
+[data-tone='broken'] {
+  --icon: url('/icons/broken.svg');
+  --tone-text: var(--broken-text);
+  --tone-bg: var(--broken-bg);
+}
+
+[data-tone='unknown'] {
+  --icon: url('/icons/unknown.svg');
+  --tone-text: var(--unknown-text);
+  --tone-bg: transparent;
+}
+
+[data-tone='ended'] {
+  --icon: url('/icons/ended.svg');
+  --tone-text: var(--unknown-text);
+  --tone-bg: var(--unknown-bg);
+}
+
+[data-tone='n/a'] {
+  --icon: url('/icons/na.svg');
+  --tone-text: var(--text-muted);
+  --tone-bg: transparent;
+}
+
+/* An icon painted from --icon in the text colour, so one file serves every theme */
+.status::before,
+.masked::before {
+  content: '';
+  display: inline-block;
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+  mask: var(--icon) center / contain no-repeat;
+  print-color-adjust: exact;
+}
+
+@media (forced-colors: active) {
+  .status::before,
+  .masked::before {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}
+
+/* Lucide icons from Icon.astro sit in the line of text, unlike other SVGs */
+.lucide {
+  display: inline-block;
+  flex: none;
+  vertical-align: -0.125em;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--tone-text, inherit);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: 0.0625rem var(--space-xs);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+
+  &[data-tone] {
+    border-color: transparent;
+    background: var(--tone-bg);
+    color: var(--tone-text);
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-block-size: var(--control);
+  padding-inline: var(--space-md);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease-out,
+    border-color 150ms ease-out;
+
+  &:hover {
+    border-color: var(--text-muted);
+    background: var(--surface-raised);
+  }
+
+  &:active {
+    translate: 0 1px;
+  }
+
+  &.primary {
+    border-color: transparent;
+    background: var(--accent-strong);
+    color: var(--on-accent);
+
+    &:hover {
+      background: color-mix(in srgb, var(--accent-strong) 85%, var(--text));
+    }
+  }
+
+  &.ghost {
+    border-color: transparent;
+    background: none;
+    color: var(--accent-text);
+
+    &:hover {
+      background: var(--accent-soft);
+    }
+  }
+
+  &.small {
+    min-block-size: 2rem;
+    padding-inline: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+}
+
+.card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+}
+
+/* A card whose title link covers the whole card, so the card is one big target */
+.card:has(.stretch) {
+  transition:
+    border-color 150ms ease-out,
+    box-shadow 150ms ease-out;
+
+  &:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &:has(.stretch:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+.stretch {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.filtered {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Controls need JS, and ended items wait for "Include ended support" before they show */
+:root:not(.js) [data-controls] {
+  display: none;
+}
+
+.js .filtered:not(:has([name='ended']:checked)) [data-ended] {
+  display: none;
+}
+
+/* A group hides once filtering leaves it nothing to show */
+.filtered .group:not(:has([data-search]:not([hidden]))) {
+  display: none;
+}
+
+.js
+  .filtered:not(:has([name='ended']:checked))
+  .group:not(:has([data-search]:not([hidden], [data-ended]))) {
+  display: none;
+}
+
+/* Cards | Table. Cards are the default, so a browser without :has() always gets those */
+[data-view] {
+  display: grid;
+  gap: var(--space-md);
+  min-inline-size: 0;
+}
+
+[data-view='table'] {
+  display: none;
+}
+
+:root:has([name='view'][value='table']:checked) {
+  [data-view='cards'] {
+    display: none;
+  }
+
+  [data-view='table'] {
+    display: grid;
+  }
+}
+
+@supports not selector(:has(*)) {
+  .view-switch {
+    display: none;
+  }
+}

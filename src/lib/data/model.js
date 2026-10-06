@@ -112,8 +112,10 @@ export function buildModel(data = getData(), now = new Date()) {
       .sort()
       .at(-1);
   }
-  for (const rom of roms.values())
+  for (const rom of roms.values()) {
     rom.support.sort((a, b) => a.device.title.localeCompare(b.device.title));
+    rom.activeCount = rom.support.filter((row) => row.active).length;
+  }
   for (const brand of brands.values()) brand.devices.sort(byName('title'));
 
   return {

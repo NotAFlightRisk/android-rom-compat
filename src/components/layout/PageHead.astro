@@ -1,0 +1,63 @@
+---
+// A page's title with its logo and a short meta line, plus the Cards | Table switch on data pages
+import Logo from '../ui/Logo.astro';
+import ViewSwitch from '../ui/ViewSwitch.astro';
+
+const { title, logo, meta = [], views = false } = Astro.props;
+const parts = meta
+  .filter(Boolean)
+  .map((part) => (typeof part === 'string' ? { text: part } : part));
+---
+
+<div class="page-head">
+  {logo && <Logo {...logo} size="lg" />}
+  <div class="titles">
+    <h1 data-pagefind-meta="title">{title}</h1>
+    {parts.length > 0 && (
+      <p class="meta">
+        {parts.map((part, i) => (
+          <>
+            {i > 0 && ' · '}
+            {part.code ? (
+              <code>{part.text}</code>
+            ) : part.href ? (
+              <a href={part.href}>{part.text}</a>
+            ) : (
+              part.text
+            )}
+          </>
+        ))}
+      </p>
+    )}
+    <slot />
+  </div>
+  {views && <ViewSwitch />}
+</div>
+
+<style>
+  .page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-sm) var(--space-md);
+
+    > :global(.view-switch) {
+      margin-inline-start: auto;
+    }
+  }
+
+  .titles {
+    flex: 1 1 14rem;
+    display: grid;
+    gap: var(--space-xs);
+    min-inline-size: 0;
+  }
+
+  .meta {
+    color: var(--text-muted);
+
+    code {
+      color: var(--text);
+    }
+  }
+</style>

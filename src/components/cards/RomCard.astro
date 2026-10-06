@@ -1,0 +1,198 @@
+---
+// One ROM on one device: its build, what works, and what installing it takes
+import FeatureList from './FeatureList.astro';
+import Icon from '../ui/Icon.astro';
+import Logo from '../ui/Logo.astro';
+import {
+  buildFact,
+  channelText,
+  firmwareNeed,
+  googleApps,
+  knownFeatures,
+  maintainerOf,
+  relockFact,
+} from '../../lib/facts.js';
+import { formatDate } from '../../lib/dates.js';
+import { reportUrl } from '../../lib/table.js';
+
+const { row, features } = Astro.props;
+const { rom, device } = row;
+const build = buildFact(row.latest);
+const channel = channelText(row);
+const checks = [relockFact(row), ...knownFeatures(features, row.cells)].filter(Boolean);
+const firmware = firmwareNeed(row);
+const maintainer = maintainerOf(row);
+const builds = row.variants.filter((variant) => variant.status === 'active');
+const id = `rom-${rom.key}`;
+---
+
+<article class="card rom" aria-labelledby={id}>
+  <div class="head">
+    <Logo kind="roms" item={rom} />
+    <div>
+      <h3 id={id}>
+        <a href={rom.url}>{rom.name}</a>
+      </h3>
+      <p>{googleApps(rom)}</p>
+    </div>
+    {row.android && <span class="badge">Android {row.android}</span>}
+  </div>
+
+  {(build || channel) && (
+    <div class="build" data-tone={build?.tone}>
+      <ul>
+        {build && (
+          <li>
+            Built <time datetime={build.date}>{build.text}</time>
+          </li>
+        )}
+        {build?.old && (
+          <li>
+            <strong>{build.old}</strong>
+          </li>
+        )}
+        {build?.patch && <li>{build.patch} security patch</li>}
+        {channel && <li>{channel}</li>}
+      </ul>
+    </div>
+  )}
+
+  {checks.length > 0 && <FeatureList items={checks} />}
+
+  <footer>
+    {firmware && (
+      <p class="footnote needs">
+        <Icon name="needs" />
+        <span>{firmware}</span>
+      </p>
+    )}
+    {builds.map((variant) => (
+      <p class="footnote">
+        <Icon name="variant" />
+        <span>
+          Also as <a href={variant.source}>{variant.name}</a>
+          {variant.latest && <>, built {formatDate(variant.latest.date)}</>}
+        </span>
+      </p>
+    ))}
+    {maintainer && (
+      <p class="footnote">
+        <Icon name="maintainer" />
+        <span>
+          Maintained by{' '}
+          {maintainer.link ? <a href={maintainer.link}>{maintainer.name}</a> : maintainer.name}
+        </span>
+      </p>
+    )}
+    <div class="actions">
+      {row.install ? (
+        <a class="button primary small" href={row.install}>
+          <Icon name="install" /> Install guide
+        </a>
+      ) : (
+        <a class="button small" href={row.source}>
+          {rom.name} device page <Icon name="external" />
+        </a>
+      )}
+      <a class="button ghost small" href={reportUrl(device, row)}>
+        <Icon name="report" /> Report what works
+      </a>
+    </div>
+  </footer>
+</article>
+
+<style>
+  .rom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-sm);
+
+    h3 a {
+      color: var(--text);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+
+  /* Freshness shows as a dot, in a 1em column so the text lines up with the checklist's */
+  .build {
+    display: grid;
+    grid-template-columns: 1em 1fr;
+    column-gap: var(--space-xs);
+    font-size: var(--text-sm);
+
+    &[data-tone]::before {
+      content: '';
+      justify-self: center;
+      inline-size: 0.5rem;
+      block-size: 0.5rem;
+      margin-block-start: calc((1lh - 0.5rem) / 2);
+      border-radius: 50%;
+      background: var(--tone-text);
+    }
+
+    ul {
+      grid-column: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 var(--space-xs);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li:not(:last-child)::after {
+      content: '·' / '';
+      margin-inline-start: var(--space-xs);
+      color: var(--text-muted);
+    }
+
+    strong {
+      color: var(--broken-text);
+      font-weight: 500;
+    }
+  }
+
+  footer {
+    display: grid;
+    gap: var(--space-sm);
+    margin-block-start: auto;
+  }
+
+  .footnote {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .needs {
+    color: var(--text);
+
+    :global(.lucide) {
+      color: var(--accent-text);
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+</style>

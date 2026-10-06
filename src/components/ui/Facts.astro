@@ -1,16 +1,34 @@
 ---
-const { items } = Astro.props;
+// Labelled facts. A tone shows the answer as a status, and a panel boxes them up as a summary
+import Icon from './Icon.astro';
+
+const { items, panel = false } = Astro.props;
+const shown = items.filter((item) => item.value !== undefined && item.value !== '');
 ---
 
-<dl>
-  {items
-    .filter((item) => item.value !== undefined && item.value !== '')
-    .map((item) => (
-      <div>
-        <dt>{item.label}</dt>
-        <dd>{item.code ? <code>{item.value}</code> : item.value}</dd>
-      </div>
-    ))}
+<dl class:list={{ panel }}>
+  {shown.map((item) => (
+    <div>
+      <dt>{item.label}</dt>
+      <dd>
+        {item.tone ? (
+          <span class="status" data-tone={item.tone}>
+            {item.value}
+          </span>
+        ) : item.code ? (
+          <code>{item.value}</code>
+        ) : (
+          item.value
+        )}
+        {item.note && <p>{item.note}</p>}
+        {item.source && (
+          <a href={item.source}>
+            {new URL(item.source).hostname} <Icon name="external" />
+          </a>
+        )}
+      </dd>
+    </div>
+  ))}
 </dl>
 
 <style>
@@ -27,7 +45,43 @@ const { items } = Astro.props;
   }
 
   dd {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-2xs);
     margin: 0;
     font-weight: 500;
+
+    p {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      font-weight: 400;
+    }
+
+    a {
+      font-size: var(--text-sm);
+      font-weight: 400;
+    }
+  }
+
+  .panel {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface-card);
+
+    > div {
+      display: grid;
+      align-content: start;
+      gap: var(--space-xs);
+      padding: var(--space-md);
+      /* Dividers between panels, whichever way they wrap */
+      box-shadow: -1px -1px 0 var(--border);
+    }
+
+    dd {
+      font-size: var(--text-lg);
+    }
   }
 </style>
