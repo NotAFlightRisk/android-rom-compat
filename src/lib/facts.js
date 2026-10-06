@@ -1,6 +1,6 @@
 import { labelOf, yesNo } from './labels.js';
 import { formatDate, formatMonth, today } from './dates.js';
-import { isLink } from './text.js';
+import { isLink, listOf } from './text.js';
 import { resolveCell } from './data/status.js';
 
 /** Builds read as fresh under two months old, ageing up to six, and old after that */
@@ -17,7 +17,7 @@ export const lockTone = {
   unknown: 'unknown',
 };
 
-const unlockWords = {
+export const unlockWords = {
   yes: 'Unlocks',
   conditional: 'Unlocks, with conditions',
   no: "Doesn't unlock",
@@ -78,20 +78,36 @@ export const romRelock = (rom) => {
   return differs ? 'On some devices' : yesNo(relockable);
 };
 
-const relockWords = { yes: 'Bootloader relocks', no: "Can't relock the bootloader" };
+const relockWords = { yes: 'Supported', no: 'Not supported' };
 
-/** Only says something when the ROM's device page does */
+/** Relocking as a line in a card's checklist, when the ROM gives an answer */
 export function relockFact(row) {
   const { status, note } = relockOf(row);
-  return relockWords[status] && { tone: lockTone[status], text: relockWords[status], note };
+  return (
+    relockWords[status] && {
+      name: 'Bootloader relock',
+      tone: lockTone[status],
+      text: relockWords[status],
+      note,
+    }
+  );
 }
 
-/** What has to happen before installing, e.g. "Stock Android 16 first" or "Beta build" */
-export const needsOf = ({ firmware, channel }) =>
-  [
-    firmware && (/^\d/.test(firmware) ? `Stock Android ${firmware} first` : firmware),
-    channel && channel !== 'stable' && `${labelOf(channel)} build`,
-  ].filter(Boolean);
+export const maintainerOf = ({ maintainer }) =>
+  typeof maintainer === 'string' ? { name: maintainer } : maintainer;
+
+/** What to put on the device before the ROM, e.g. "Install stock Android 13 or 14 first" */
+export const firmwareNeed = ({ firmware }) =>
+  firmware && /^\d/.test(firmware)
+    ? `Install stock Android ${listOf(firmware.split('/'))} first`
+    : firmware;
+
+/** A build that isn't a stable release, e.g. "Community build" or "Beta build" */
+export const channelText = ({ channel }) =>
+  channel && channel !== 'stable' ? `${labelOf(channel)} build` : undefined;
+
+/** Everything that comes with installing, for the table's Needs column */
+export const needsOf = (row) => [firmwareNeed(row), channelText(row)].filter(Boolean);
 
 const googleWords = {
   none: 'No Google apps',

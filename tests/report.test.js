@@ -7,6 +7,7 @@ import { join } from 'node:path';
 import { parse } from 'yaml';
 import { loadData } from '../src/lib/data/load.js';
 import { check } from '../src/lib/data/check.js';
+import { reportUrl } from '../src/lib/table.js';
 
 const ISSUE_URL = 'https://github.com/NotAFlightRisk/android-rom-compat/issues/7';
 const today = new Date().toISOString().slice(0, 10);
@@ -67,4 +68,20 @@ test('partial or broken without a note fails, naming only the feature missing on
   assert.equal(status, 1);
   assert.match(output.error, /VoLTE is partial, so add a line to Notes/);
   assert.doesNotMatch(output.error, /NFC/);
+});
+
+test("report links fill in the form's own fields", () => {
+  const form = parse(readFileSync('.github/ISSUE_TEMPLATE/report-feature.yml', 'utf8'));
+  const ids = new Set(form.body.map((field) => field.id));
+  const device = { key: 'rocket', title: 'Acme Rocket' };
+  const link = new URL(reportUrl(device, { rom: { name: 'TidyOS' }, android: 16 }));
+  const { template, title, ...fields } = Object.fromEntries(link.searchParams);
+  assert.equal(template, 'report-feature.yml');
+  assert.equal(title, '[Report]: Acme Rocket (rocket) on TidyOS');
+  assert.deepEqual(fields, { device: 'rocket', rom: 'TidyOS', android: '16' });
+  assert.ok(Object.keys(fields).every((id) => ids.has(id)));
+  assert.deepEqual(
+    [...new URL(reportUrl(device)).searchParams.keys()],
+    ['template', 'title', 'device'],
+  );
 });

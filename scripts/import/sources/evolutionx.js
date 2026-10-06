@@ -24,6 +24,11 @@ export const typeOfName = (name) => (/\b(pad|tab|tablet)\b/i.test(name) ? 'table
 
 export const dateOf = (seconds) => isoDate(seconds * 1000);
 
+const maintainerOf = ({ maintainer, github }) =>
+  /^[a-z\d-]+$/i.test(github ?? '')
+    ? { name: maintainer, link: `https://github.com/${github}` }
+    : maintainer;
+
 /** Brand, device and row from one builds/<codename>.json, or undefined when it has no builds */
 export function parse(json, { codename, branch }) {
   const build = json.response?.[0];
@@ -34,7 +39,7 @@ export function parse(json, { codename, branch }) {
   const row = {
     status: build.currently_maintained ? 'active' : 'discontinued',
     android: androidOf[branch],
-    ...(build.maintainer && { maintainer: build.maintainer }),
+    ...(build.maintainer && { maintainer: maintainerOf(build) }),
     ...(build.timestamp > 0 && {
       latest: {
         ...(build.version && { version: String(build.version) }),

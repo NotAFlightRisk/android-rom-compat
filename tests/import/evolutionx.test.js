@@ -30,7 +30,7 @@ test('a maintained device gets android from its branch, latest and the forum lin
   assert.deepEqual(row, {
     status: 'active',
     android: 17,
-    maintainer: 'Joey',
+    maintainer: { name: 'Joey', link: 'https://github.com/joeyhuab' },
     latest: { version: '12.2', date: '2026-09-09' },
     source: 'https://evolution-x.org/device/marble',
     install: 'https://xdaforums.com/t/rom-17-marble-official-evolution-x-07-20-26.4709959/',

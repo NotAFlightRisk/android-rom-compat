@@ -1,11 +1,15 @@
 import { buildFact, lockTone, unlockFact } from './facts.js';
-import { filterData, romStatus } from './table.js';
+import { filterData } from './filters.js';
+import { romStatus } from './table.js';
 
 /** Splits items into one group per brand, in brand order, for a CardGrid */
 export const byBrand = (list, brandOf, toItem) =>
   [...Map.groupBy(list, brandOf)]
     .sort(([a], [b]) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }))
     .map(([brand, items]) => ({ brand, items: items.map(toItem) }));
+
+/** Cards leave out the brand their group's heading shows, so a sorted list puts it back */
+const prefixOf = (device) => (device.title === device.name ? undefined : device.brand.name);
 
 /** A card's meta line, e.g. "Android 16 · Built 2 Oct 2026", skipping what's missing */
 const metaLine = (...parts) => parts.filter(Boolean).join(' · ');
@@ -21,6 +25,7 @@ const unlockStatus = (device) => {
 export const deviceCard = (device, roms, showUnlock = true) => ({
   key: device.key,
   href: device.url,
+  prefix: prefixOf(device),
   title: device.name,
   code: device.codenames[0],
   meta: metaLine(device.released),
@@ -40,6 +45,7 @@ export const romDeviceCard = (row) => {
   return {
     key: row.device.key,
     href: row.device.url,
+    prefix: prefixOf(row.device),
     title: row.device.name,
     code: row.device.codenames[0],
     meta: metaLine(row.android && `Android ${row.android}`, build && `Built ${build.text}`),

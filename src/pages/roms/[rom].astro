@@ -9,9 +9,9 @@ import FilterBar from '../../components/ui/FilterBar.astro';
 import Icon from '../../components/ui/Icon.astro';
 import { getModel } from '../../lib/data/model.js';
 import { byBrand, romDeviceCard } from '../../lib/cards.js';
+import { deviceFilters, filterData } from '../../lib/filters.js';
 import { everywhereCells, googleApps, knownFeatures, romRelock } from '../../lib/facts.js';
 import {
-  filterData,
   reportedFeatures,
   splitByActive,
   supportCells,
@@ -29,9 +29,6 @@ const { rom } = Astro.props;
 const { features } = getModel();
 const reported = reportedFeatures(features, rom.support);
 const [current, ended] = splitByActive(rom.support);
-const brands = [
-  ...new Map(current.map((row) => [row.device.brand.key, row.device.brand])).values(),
-].sort((a, b) => a.name.localeCompare(b.name));
 const groupsOf = (list) => byBrand(list, (row) => row.device.brand, romDeviceCard);
 const rowsOf = (list) =>
   list.map((row) => ({
@@ -138,7 +135,7 @@ const count = plural(current.length, 'device');
             controls={['rom-devices-cards', 'rom-devices']}
             label="Filter devices"
             total={current.length}
-            brands={brands}
+            filters={deviceFilters(current.map((row) => row.device))}
           />
           <div data-view="cards">
             <CardGrid id="rom-devices-cards" groups={groupsOf(current)} level={3} />

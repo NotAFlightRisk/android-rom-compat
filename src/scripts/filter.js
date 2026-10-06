@@ -1,7 +1,25 @@
+const ranks = {
+  newest: (item) => Number(item.dataset.released ?? 0),
+  roms: (item) => (item.dataset.rom ?? '').split(' ').filter(Boolean).length,
+};
+
+/** Gathers the cards into one list, best first, or puts them back in their groups as they were */
+function cardSorter(grid, items) {
+  const homes = items.map((item) => [item, item.parentElement]);
+  const group = Object.assign(document.createElement('section'), { className: 'group sorted' });
+  const list = group.appendChild(document.createElement('ul'));
+  grid.prepend(group);
+  return (rank) => {
+    if (rank) list.append(...items.toSorted((a, b) => rank(b) - rank(a)));
+    else for (const [item, home] of homes) home.append(item);
+  };
+}
+
 /**
  * Filters the [data-search] items in every list a FilterBar controls (cards and table rows),
  * mirrored into the URL. Each select matches the item's space-separated data attribute of the
- * same name, and ended items are hidden by CSS until "Include ended support" is ticked
+ * same name, and ended items are hidden by CSS until "Include ended support" is ticked. The
+ * order select sorts the cards; the table sorts by its headers
  */
 export function enhanceFilter(form) {
   const [first, ...others] = form
@@ -12,6 +30,8 @@ export function enhanceFilter(form) {
   const lists = [first, ...others].map(itemsOf);
   const query = form.elements.q;
   const selects = [...form.querySelectorAll('select')];
+  const order = form.elements.order;
+  const filters = selects.filter((select) => select !== order);
   const ended = form.elements.ended;
   const count = form.querySelector('[data-count]');
   const empty = form.querySelector('[data-empty]');
@@ -27,7 +47,7 @@ export function enhanceFilter(form) {
 
   const matches = (item, text) =>
     item.dataset.search.includes(text) &&
-    selects.every(
+    filters.every(
       ({ name, value }) => !value || (item.dataset[name] ?? '').split(' ').includes(value),
     );
 
@@ -42,6 +62,14 @@ export function enhanceFilter(form) {
     count.textContent = shown === items.length ? `${shown} shown` : `${shown} of ${items.length}`;
     empty.hidden = showable.length > 0;
     if (emptyEnded) emptyEnded.hidden = shown > 0 || showable.length === 0;
+  }
+
+  const sortCards = cardSorter(first, lists[0]);
+  let sortedBy = '';
+  function sort() {
+    if (order.value === sortedBy) return;
+    sortedBy = order.value;
+    sortCards(ranks[sortedBy]);
   }
 
   function save() {
@@ -61,7 +89,9 @@ export function enhanceFilter(form) {
   form.addEventListener('submit', (event) => event.preventDefault());
   form.addEventListener('input', () => {
     apply();
+    sort();
     save();
   });
   apply();
+  sort();
 }

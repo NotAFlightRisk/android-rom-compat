@@ -8,6 +8,8 @@ const noteId = `${id}-note`;
     <time datetime={cell.date}>{cell.text ?? cell.date}</time>
   ) : cell.code ? (
     <code>{cell.text}</code>
+  ) : cell.href ? (
+    <a href={cell.href}>{cell.text}</a>
   ) : (
     cell.text
   )}

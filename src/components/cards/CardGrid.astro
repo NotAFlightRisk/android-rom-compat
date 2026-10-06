@@ -19,6 +19,7 @@ const Heading = `h${level}`;
         {items.map((item) => (
           <li class="card" {...item.data}>
             <a class="stretch" href={item.href}>
+              {brand && item.prefix && <span class="prefix">{item.prefix} </span>}
               {item.title}
             </a>
             <code>{item.code}</code>
@@ -97,6 +98,11 @@ const Heading = `h${level}`;
       color: var(--text);
       font-weight: 600;
       text-decoration: none;
+    }
+
+    /* Only a sorted list, which has no brand headings, needs the brand in each name */
+    .group:not(.sorted) .prefix {
+      display: none;
     }
 
     .card > code,
