@@ -16,4 +16,4 @@
   group: media
   name: Widevine
   description: DRM level
-  values: [L1, L3, none]
+  values: [L1, L3, unsupported]
