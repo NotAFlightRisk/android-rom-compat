@@ -4,6 +4,7 @@ import CardGrid from '../cards/CardGrid.astro';
 import Matrix from '../table/Matrix.astro';
 import FilterBar from './FilterBar.astro';
 import { byBrand, deviceCard } from '../../lib/cards.js';
+import { deviceFilters } from '../../lib/filters.js';
 import { deviceColumns, deviceRows } from '../../lib/table.js';
 
 const { id, label, devices, roms, brands = [] } = Astro.props;
@@ -22,13 +23,10 @@ const toCard = (device) => keepEnded(deviceCard(device, live, !stated));
 const groups = brands.length
   ? byBrand(devices, (device) => device.brand, toCard)
   : [{ items: devices.map(toCard) }];
-const columns = deviceColumns(live).map((column) => ({
+const columns = deviceColumns(live, devices).map((column) => ({
   ...column,
-  hidden: column.key === 'brand' && !brands.length,
+  hidden: column.hidden || (column.key === 'brand' && !brands.length),
 }));
-const supported = live.filter((rom) =>
-  devices.some((device) => device.support.some((row) => row.rom === rom && row.active)),
-);
 ---
 
 <div class="filtered">
@@ -36,9 +34,7 @@ const supported = live.filter((rom) =>
     controls={[`${id}-cards`, id]}
     label={`Filter ${label.toLowerCase()}`}
     total={devices.length}
-    brands={brands}
-    roms={supported}
-    unlock
+    filters={deviceFilters(devices, live)}
     endedCount={hideEnded ? devices.filter((device) => device.activeCount === 0).length : 0}
   />
   <div data-view="cards">

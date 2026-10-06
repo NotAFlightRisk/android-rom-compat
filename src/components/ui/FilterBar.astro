@@ -1,21 +1,12 @@
 ---
-// Search and dropdowns that filter the cards and the table together. Hidden without JS
+// Search and filters for the cards and the table together, and a sort for the cards. Needs JS
 import Icon from './Icon.astro';
 
-const {
-  controls,
-  label,
-  total,
-  brands = [],
-  roms = [],
-  unlock = false,
-  endedCount = 0,
-} = Astro.props;
-const unlocks = [
-  ['yes', 'Unlocks'],
-  ['conditional', 'Unlocks, with conditions'],
-  ['no', "Doesn't unlock"],
-  ['unknown', 'Unknown'],
+const { controls, label, total, filters = [], endedCount = 0 } = Astro.props;
+const orders = [
+  ['', 'A to Z'],
+  ['newest', 'Newest first'],
+  ['roms', 'Most ROMs first'],
 ];
 ---
 
@@ -37,39 +28,25 @@ const unlocks = [
       spellcheck="false"
     />
   </label>
-  {brands.length > 1 && (
+  {filters.map(({ name, label, any, options }) => (
     <label>
-      <span class="visually-hidden">Brand</span>
-      <select name="brand">
-        <option value="">All brands</option>
-        {brands.map((brand) => (
-          <option value={brand.key}>{brand.name}</option>
-        ))}
-      </select>
-    </label>
-  )}
-  {roms.length > 1 && (
-    <label>
-      <span class="visually-hidden">ROM</span>
-      <select name="rom">
-        <option value="">Any ROM</option>
-        {roms.map((rom) => (
-          <option value={rom.key}>{rom.name}</option>
-        ))}
-      </select>
-    </label>
-  )}
-  {unlock && (
-    <label>
-      <span class="visually-hidden">Bootloader</span>
-      <select name="unlock">
-        <option value="">Any bootloader</option>
-        {unlocks.map(([value, text]) => (
+      <span class="visually-hidden">{label}</span>
+      <select name={name}>
+        <option value="">{any}</option>
+        {options.map(([value, text]) => (
           <option value={value}>{text}</option>
         ))}
       </select>
     </label>
-  )}
+  ))}
+  <label data-view="cards">
+    <span class="visually-hidden">Sort</span>
+    <select name="order">
+      {orders.map(([value, text]) => (
+        <option value={value}>{text}</option>
+      ))}
+    </select>
+  </label>
   {endedCount > 0 && (
     <label class="check">
       <input type="checkbox" name="ended" />
@@ -124,6 +101,16 @@ const unlocks = [
 
   select {
     max-inline-size: 100%;
+  }
+
+  @media (width < 40rem) {
+    label:has(select) {
+      flex: 1 1 40%;
+    }
+
+    select {
+      inline-size: 100%;
+    }
   }
 
   .check {

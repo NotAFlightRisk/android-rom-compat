@@ -80,7 +80,7 @@
   padding: 0.0625rem var(--space-xs);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  background: var(--surface);
+  background: transparent;
   color: var(--text);
   font-size: var(--text-xs);
   font-weight: 500;
@@ -103,7 +103,7 @@
   padding-inline: var(--space-md);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius);
-  background: var(--surface);
+  background: transparent;
   color: var(--text);
   font-weight: 500;
   line-height: 1.2;
@@ -157,7 +157,7 @@
   padding: var(--space-md);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background: var(--surface);
+  background: var(--surface-card);
 }
 
 /* A card whose title link covers the whole card, so the card is one big target */

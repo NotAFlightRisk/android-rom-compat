@@ -47,7 +47,7 @@ const rowsOf = (list) =>
       href: row.rom.url,
       links: [
         ...(row.install ? [{ label: 'Install guide', href: row.install }] : []),
-        { label: 'Report', href: reportUrl(device, row.rom) },
+        { label: 'Report', href: reportUrl(device, row) },
       ],
       builds: row.variants
         .filter((variant) => variant.status === 'active')

@@ -4,8 +4,11 @@ import { loadData } from '../src/lib/data/load.js';
 import { buildModel } from '../src/lib/data/model.js';
 import {
   buildFact,
+  channelText,
   everywhereCells,
+  firmwareNeed,
   knownFeatures,
+  maintainerOf,
   needsOf,
   relockFact,
   romRelock,
@@ -99,13 +102,17 @@ test('builds carry a readable date, their patch month, and say so once they are 
 });
 
 test('relock and install needs only say what the ROM says', () => {
-  assert.equal(relockFact(tidyRow('2026-02-01')).text, 'Bootloader relocks');
+  const { name, text } = relockFact(tidyRow('2026-02-01'));
+  assert.deepEqual([name, text], ['Bootloader relock', 'Supported']);
+  assert.equal(relockFact({ relock: 'no' }).text, 'Not supported');
   assert.equal(relockFact({ relock: 'unknown' }), undefined);
   assert.equal(relockFact({}), undefined);
   assert.deepEqual(needsOf({ firmware: '16', channel: 'beta' }), [
-    'Stock Android 16 first',
+    'Install stock Android 16 first',
     'Beta build',
   ]);
+  assert.equal(firmwareNeed({ firmware: '14/15/16' }), 'Install stock Android 14, 15 or 16 first');
+  assert.equal(channelText({ channel: 'community' }), 'Community build');
   assert.deepEqual(needsOf({ channel: 'stable' }), []);
 });
 
@@ -115,4 +122,11 @@ test("a ROM's relock answer gives way when its own device pages say otherwise", 
   rom.support.push({ active: true, relock: { status: 'yes', note: 'Check first' } });
   assert.equal(romRelock(rom), 'On some devices');
   assert.equal(romRelock({ security: { relockable_bootloader: true }, support: [] }), 'Yes');
+});
+
+test('a maintainer is a name, with a link when the ROM gives one', () => {
+  assert.deepEqual(maintainerOf({ maintainer: 'Joey' }), { name: 'Joey' });
+  const linked = { name: 'Joey', link: 'https://github.com/joeyhuab' };
+  assert.deepEqual(maintainerOf({ maintainer: linked }), linked);
+  assert.equal(maintainerOf({}), undefined);
 });

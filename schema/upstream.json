@@ -21,7 +21,20 @@
         "status": { "enum": ["active", "discontinued"] },
         "channel": { "enum": ["stable", "community", "beta"] },
         "android": { "type": "number", "minimum": 1, "maximum": 99 },
-        "maintainer": { "type": "string", "minLength": 1 },
+        "maintainer": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            {
+              "type": "object",
+              "required": ["name", "link"],
+              "additionalProperties": false,
+              "properties": {
+                "name": { "type": "string", "minLength": 1 },
+                "link": { "$ref": "#/$defs/link" }
+              }
+            }
+          ]
+        },
         "relock": {
           "anyOf": [
             { "enum": ["yes", "no", "unknown"] },

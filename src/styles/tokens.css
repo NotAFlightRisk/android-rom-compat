@@ -4,6 +4,8 @@
   color-scheme: light dark;
 
   --surface: #ffffff;
+  /* Cards and panels. White on white in light mode, a step up from the page in dark */
+  --surface-card: #ffffff;
   --surface-raised: #f2f6f7;
   --border: #d5dfe2;
   --border-strong: #b3c2c6;
@@ -58,6 +60,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --surface: #0e1416;
+    --surface-card: #11191c;
     --surface-raised: #151e21;
     --border: #28353a;
     --border-strong: #3c4d53;

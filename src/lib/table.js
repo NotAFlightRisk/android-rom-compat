@@ -2,10 +2,12 @@ import { labelOf, yesNo } from './labels.js';
 import { issueUrl } from './site.js';
 import { isLink } from './text.js';
 import { formatMonth } from './dates.js';
+import { filterData } from './filters.js';
 import {
   ageTone,
   buildFact,
   lockTone,
+  maintainerOf,
   needsOf,
   relockOf,
   romRelock,
@@ -70,6 +72,11 @@ export const needsCell = (row) => {
   return chips.length ? { chips } : {};
 };
 
+const maintainerCell = (row) => {
+  const { name, link } = maintainerOf(row) ?? {};
+  return { text: name, href: link };
+};
+
 const featureCell = (cell, detailed) => ({
   tone: cell.tone,
   text: statusText(cell),
@@ -86,6 +93,7 @@ export const supportCells = (row, features, detailed = false) => ({
   patch: row.latest?.patch ? { date: row.latest.patch, text: formatMonth(row.latest.patch) } : {},
   relock: relockCell(row),
   needs: needsCell(row),
+  maintainer: maintainerCell(row),
   ...Object.fromEntries(features.map(({ key }) => [key, featureCell(row.cells[key], detailed)])),
 });
 
@@ -100,6 +108,7 @@ export const supportColumns = (features, detailed = false) => [
     : [buildColumn('version', 'Version', true), buildColumn('patch', 'Patch', true)]),
   buildColumn('relock', 'Relock'),
   buildColumn('needs', 'Needs'),
+  buildColumn('maintainer', 'Maintainer', true),
   ...featureColumns(features),
 ];
 
@@ -121,36 +130,33 @@ export const reportedFeatures = (features, rows) =>
 export const featuresFrom = (features, rows, origin) =>
   features.filter(({ key }) => rows.every((row) => row.cells[key].origin === origin));
 
-export const reportUrl = (device, rom) => {
-  const title = `[Report]: ${device.title} (${device.key})${rom ? ` on ${rom.name}` : ''}`;
-  return `${issueUrl('report-feature')}&title=${encodeURIComponent(title)}`;
+/** The report form, with the device, and the ROM and its Android version when there is one */
+export const reportUrl = (device, row) => {
+  const rom = row?.rom;
+  const fields = new URLSearchParams({
+    title: `[Report]: ${device.title} (${device.key})${rom ? ` on ${rom.name}` : ''}`,
+    device: device.key,
+    ...(rom && { rom: rom.name }),
+    ...(row?.android && { android: row.android }),
+  });
+  return `${issueUrl('report-feature')}&${fields}`;
 };
-
-export const deviceSearchText = (device) =>
-  [device.title, ...device.codenames, ...(device.aliases ?? [])].join(' ').toLowerCase();
-
-/** What FilterBar matches on, spread onto a device's card and its table row alike */
-export const filterData = (device, ended = device.activeCount === 0) => ({
-  'data-search': deviceSearchText(device),
-  'data-brand': device.brand.key,
-  'data-rom': device.support
-    .filter((row) => row.active)
-    .map((row) => row.rom.key)
-    .join(' '),
-  'data-unlock': device.bootloader.unlock,
-  'data-ended': ended ? '' : undefined,
-});
 
 export const splitByActive = (rows) => [
   rows.filter((row) => row.active),
   rows.filter((row) => !row.active),
 ];
 
-export const deviceColumns = (roms) => [
+/** A ROM that has never supported any of these devices starts with its column hidden */
+export const deviceColumns = (roms, devices) => [
   { key: 'brand', label: 'Brand' },
   { key: 'released', label: 'Released' },
   { key: 'unlock', label: 'Bootloader unlock' },
-  ...roms.map((rom) => ({ key: rom.key, label: rom.name })),
+  ...roms.map((rom) => ({
+    key: rom.key,
+    label: rom.name,
+    hidden: !devices.some((device) => device.support.some((row) => row.rom === rom)),
+  })),
 ];
 
 /** Whether a ROM supports a device, for its column on device lists and its chip on cards */
