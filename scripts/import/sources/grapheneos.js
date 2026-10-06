@@ -15,6 +15,17 @@ export const parseSupported = (installer) =>
 export const parseAndroid = (releases) =>
   Number(releases.match(/initial release of GrapheneOS based on Android (\d+)/)[1]);
 
+const level = /<li>(?:full (\d{4}-\d\d-\d\d)|(?:raise|set)[^<]*?patch level to (\d{4}-\d\d-\d\d))/g;
+/** Releases only mention a patch level when it changes, and the page runs newest first */
+export const parsePatch = (releases, version) => {
+  const from = releases.indexOf(`<article id=${version}>`);
+  if (from < 0) return undefined;
+  for (const article of releases.slice(from).split('<article ')) {
+    const levels = [...article.matchAll(level)].map(([, full, raised]) => full ?? raised);
+    if (levels.length) return levels.sort().at(-1);
+  }
+};
+
 const named = /((?:Pixel|Nexus|Samsung Galaxy)[\w ]*?(?: \(5G\))?) \((?:<code>)?([a-z0-9]+)(?:<\/code>)?\)/g;
 /** Codename -> name for every device the FAQ has ever mentioned */
 export const parseNamed = (faq) =>
@@ -32,6 +43,8 @@ export function parse({ installer, faq, releases, latest = {} }) {
   const android = parseAndroid(releases);
   return [...parseNamed(faq)].map(([codename, fullName]) => {
     const active = supported.includes(codename);
+    const build = latest[codename];
+    const patch = build && parsePatch(releases, build.version);
     const [brand, name] = fullName.startsWith('Samsung ')
       ? ['Samsung', fullName.slice(8)]
       : ['Google', fullName.replace(' (5G)', ' 5G')];
@@ -43,7 +56,7 @@ export function parse({ installer, faq, releases, latest = {} }) {
       ...(active && { android }),
       maintainer: 'GrapheneOS',
       ...(brand === 'Google' && { relock: 'yes' }),
-      ...(latest[codename] && { latest: latest[codename] }),
+      ...(build && { latest: { ...build, ...(patch && { patch }) } }),
       source: 'https://grapheneos.org/faq#supported-devices',
       ...(active && { install: 'https://grapheneos.org/install/web' }),
     };
