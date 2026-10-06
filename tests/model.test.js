@@ -13,6 +13,11 @@ const unlockOf = (deviceUnlock, brandUnlock) => {
   data.brands.data[0].bootloader.unlock = brandUnlock;
   return buildModel(data).devices[0].bootloader;
 };
+const relockOf = (relockable) => {
+  const data = loadData('tests/fixtures/good');
+  data.roms.find(({ key }) => key === 'handmadeos').data.security.relockable_bootloader = relockable;
+  return buildModel(data).support.find((row) => row.rom.key === 'handmadeos').relock;
+};
 const cellsOf = (row) =>
   Object.fromEntries(
     Object.entries(row.cells).map(([key, cell]) => [key, [cell.value, cell.origin]]),
@@ -42,6 +47,18 @@ test('an unknown unlock takes the brand policy, marked as such', () => {
 
 test('a brand without an unlock leaves the device unknown', () => {
   assert.deepEqual(unlockOf('unknown', undefined), { unlock: 'unknown' });
+});
+
+test("a card's own relock beats the ROM's", () => {
+  assert.deepEqual(rowOf('2026-02-01', 'tidyos').relock, { status: 'yes', note: 'Check first' });
+});
+
+test("a card without a relock takes the ROM's no, marked as such", () => {
+  assert.deepEqual(relockOf(false), { status: 'no', origin: 'rom' });
+});
+
+test('a relockable ROM leaves a card without a relock blank', () => {
+  assert.equal(relockOf(true), undefined);
 });
 
 test('explicit values beat inferred ones, whatever layer they sit in', () => {

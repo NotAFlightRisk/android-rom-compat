@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { parse, parseBuild } from '../../scripts/import/sources/grapheneos.js';
+import { parse, parseBuild, parsePatch } from '../../scripts/import/sources/grapheneos.js';
 
 const fixture = (name) =>
   readFileSync(new URL(`../fixtures/feeds/${name}`, import.meta.url), 'utf8');
@@ -38,10 +38,20 @@ test('supported Pixels are active on the newest Android and relock', () => {
     android: 17,
     maintainer: 'GrapheneOS',
     relock: 'yes',
-    latest: latest.tegu,
+    latest: { ...latest.tegu, patch: '2026-09-01' },
     source: 'https://grapheneos.org/faq#supported-devices',
     install: 'https://grapheneos.org/install/web',
   });
+});
+
+test('a quiet release keeps the last patch level, and an unlisted build has none', () => {
+  assert.equal(parsePatch(feed.releases, '2026100200'), '2026-09-05');
+  assert.equal(parsePatch(feed.releases, '2026092500'), '2026-09-01');
+  assert.equal(parsePatch(feed.releases, '2025021000'), undefined);
+});
+
+test('a partial patch level is skipped, and two in one release take the newer', () => {
+  assert.equal(parsePatch(feed.releases, '2025061600'), '2024-02-05');
 });
 
 test('legacy devices are discontinued, with no Android or install link', () => {

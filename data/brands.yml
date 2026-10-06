@@ -45,6 +45,10 @@
   name: Micromax
 - key: motorola
   name: Motorola
+  bootloader:
+    unlock: conditional
+    notes: Most recent models are in Motorola's unlock programme, but carrier exclusives (Verizon, AT&T, Tracfone and the like) are restricted. Its site checks yours by device ID.
+    source: https://en-us.support.motorola.com/app/answers/detail/a_id/87215
 - key: murena
   name: Murena
 - key: nextbit
@@ -61,6 +65,10 @@
   name: NVIDIA
 - key: oneplus
   name: OnePlus
+  bootloader:
+    unlock: conditional
+    notes: OnePlus supports unlocking for custom ROMs, but T-Mobile editions need a SIM unlock and a token from OnePlus first, which takes a week or two.
+    source: https://www.oneplus.com/us/unlock_token
 - key: oppo
   name: OPPO
 - key: osom
@@ -73,6 +81,10 @@
   name: Retroid Pocket
 - key: samsung
   name: Samsung
+  bootloader:
+    unlock: conditional
+    notes: Galaxy phones outside the US unlock until One UI 8, which reportedly removes the option in every region. US models lost it years ago.
+    source: https://www.sammobile.com/news/say-goodbye-to-your-custom-roms-as-one-ui-8-kills-bootloader-unlock/
 - key: shift
   name: SHIFT
 - key: smartisan
@@ -81,6 +93,10 @@
   name: Solana
 - key: sony
   name: Sony
+  bootloader:
+    unlock: conditional
+    notes: Only some Xperia releases can be unlocked, partly down to the operator, with a code from Sony. The service menu (*#*#7378423#*#*) says whether yours can.
+    source: https://opendevices.sony.net/aosp-on-xperia-open-devices/get-started/unlock-bootloader/how-to-unlock-bootloader
 - key: tecno
   name: TECNO
 - key: teracube
@@ -95,6 +111,10 @@
   name: Wingtech
 - key: xiaomi
   name: Xiaomi
+  bootloader:
+    unlock: conditional
+    notes: Unlocks with Xiaomi's tool once it's bound to your account and a wait has passed (how long varies). HyperOS also needs an approved application, closed to mainland China models.
+    source: https://www.mi.com/global/support/faq/details/KA-07238/
 - key: yandex
   name: Yandex
 - key: yu
