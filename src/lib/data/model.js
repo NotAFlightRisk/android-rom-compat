@@ -3,6 +3,7 @@ import { resolveCell } from './status.js';
 import { slugify } from '../text.js';
 
 const STALE_AFTER_DAYS = 365;
+const cantRelock = { status: 'no', origin: 'rom' };
 const byName = (key) => (a, b) => a[key].localeCompare(b[key], 'en', { sensitivity: 'base' });
 
 /** Joins the raw files into brands, ROMs and devices that point at each other */
@@ -76,6 +77,7 @@ export function buildModel(data = getData(), now = new Date()) {
     });
     const entry = {
       ...row,
+      relock: row.relock ?? (rom.security.relockable_bootloader ? undefined : cantRelock),
       file: report?.file,
       generated: Boolean(docs),
       device,

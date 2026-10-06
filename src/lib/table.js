@@ -53,8 +53,8 @@ const lockTone = { yes: 'working', conditional: 'partial', no: 'broken', unknown
 
 export const relockCell = ({ relock }) => {
   if (!relock) return {};
-  const { status, note } = typeof relock === 'string' ? { status: relock } : relock;
-  return { tone: lockTone[status], text: labelOf(status), note };
+  const { status, note, origin } = typeof relock === 'string' ? { status: relock } : relock;
+  return { tone: lockTone[status], text: labelOf(status), suffix: originSuffix({ origin }), note };
 };
 
 export const needsCell = ({ firmware, channel }) => {
