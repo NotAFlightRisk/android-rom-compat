@@ -1,6 +1,18 @@
 import { labelOf, yesNo } from './labels.js';
 import { issueUrl } from './site.js';
 import { isLink } from './text.js';
+import { formatMonth } from './dates.js';
+import {
+  ageTone,
+  buildFact,
+  lockTone,
+  needsOf,
+  relockOf,
+  romRelock,
+  reportContext,
+  staleText,
+  statusText,
+} from './facts.js';
 
 const text = (value) => ({ text: value });
 
@@ -26,87 +38,55 @@ export const romCells = (rom) => ({
   app_store: text(labelOf(rom.app_store)),
   focus: text(rom.focus.map(labelOf).join(', ')),
   org: text(labelOf(rom.org)),
-  relockable: text(yesNo(rom.security.relockable_bootloader)),
+  relockable: text(romRelock(rom)),
   verified_boot: text(yesNo(rom.security.verified_boot)),
   patches: text(labelOf(rom.security.patches)),
   install: text(rom.install.map(labelOf).join(', ')),
   root: text(yesNo(rom.root)),
 });
 
-/** Fresh builds read as working, anything past six months as broken */
-export const ageTone = (date) => {
-  const days = (Date.now() - Date.parse(date)) / 864e5;
-  if (days < 60) return 'working';
-  return days < 180 ? 'partial' : 'broken';
-};
-
 export const latestCell = ({ latest }, detailed = false) => {
-  if (!latest) return {};
-  const { version, date, patch } = latest;
-  const note = [version && `Version ${version}`, patch && `security patch ${patch}`]
+  const build = buildFact(latest);
+  if (!build) return {};
+  const note = [build.version && `Version ${build.version}`, build.patch && `${build.patch} patch`]
     .filter(Boolean)
     .join(', ');
-  return { date, tone: ageTone(date), note: (detailed && note) || undefined };
+  return {
+    date: build.date,
+    text: build.text,
+    tone: build.tone,
+    note: (detailed && note) || undefined,
+  };
 };
 
-const lockTone = { yes: 'working', conditional: 'partial', no: 'broken', unknown: 'unknown' };
-
-export const relockCell = ({ relock }) => {
-  if (!relock) return {};
-  const { status, note, origin } = typeof relock === 'string' ? { status: relock } : relock;
-  return { tone: lockTone[status], text: labelOf(status), suffix: originSuffix({ origin }), note };
+export const relockCell = (row) => {
+  if (!row.relock) return {};
+  const { status, note } = relockOf(row);
+  return { tone: lockTone[status], text: labelOf(status), note };
 };
 
-export const needsCell = ({ firmware, channel }) => {
-  const chips = [
-    firmware && (/^\d/.test(firmware) ? `Stock Android ${firmware} first` : firmware),
-    channel && channel !== 'stable' && labelOf(channel),
-  ].filter(Boolean);
+export const needsCell = (row) => {
+  const chips = needsOf(row);
   return chips.length ? { chips } : {};
 };
 
-const suffixes = { upstream: 'docs', rom: 'ROM', brand: 'brand' };
-
-export const originSuffix = ({ origin, inferred }) =>
-  [suffixes[origin], inferred && 'inferred'].filter(Boolean).join(', ') || undefined;
-
-/** Where a cell's answer came from, in words, e.g. "Reported 2026-09-17 on Android 16" */
-const originLead = (rom, { origin, inferred, checked, android, build, variant }) => {
-  const leads = {
-    report: [
-      ['Reported', checked, android && `on Android ${android}`].filter(Boolean).join(' '),
-      build && `build ${build}`,
-      variant && `on the ${labelOf(variant)} build`,
-    ],
-    upstream: [`${rom.name} docs`],
-    rom: [`${rom.name}, every device`],
-  };
-  return leads[origin] && [...leads[origin], inferred && 'inferred'].filter(Boolean).join(', ');
-};
-
-const featureCell = (row, cell, detailed) => {
-  const lead = detailed && originLead(row.rom, cell);
-  return {
-    tone: cell.tone,
-    text: labelOf(cell.value),
-    suffix: originSuffix(cell),
-    stale: cell.stale,
-    note: [lead, cell.note].filter(Boolean).join(': ') || undefined,
-    source: lead && isLink(cell.source) ? cell.source : undefined,
-  };
-};
+const featureCell = (cell, detailed) => ({
+  tone: cell.tone,
+  text: statusText(cell),
+  stale: staleText(cell),
+  note: [reportContext(cell), cell.note].filter(Boolean).join(': ') || undefined,
+  source: detailed && isLink(cell.source) ? cell.source : undefined,
+});
 
 /** Build facts and one status cell per feature, for a device and ROM pair */
 export const supportCells = (row, features, detailed = false) => ({
   android: { text: row.android ?? '?', code: true },
   latest: latestCell(row, detailed),
   version: text(row.latest?.version),
-  patch: text(row.latest?.patch),
+  patch: row.latest?.patch ? { date: row.latest.patch, text: formatMonth(row.latest.patch) } : {},
   relock: relockCell(row),
   needs: needsCell(row),
-  ...Object.fromEntries(
-    features.map(({ key }) => [key, featureCell(row, row.cells[key], detailed)]),
-  ),
+  ...Object.fromEntries(features.map(({ key }) => [key, featureCell(row.cells[key], detailed)])),
 });
 
 const buildColumn = (key, label, hidden = false) => ({ key, label, group: 'build', hidden });
@@ -149,6 +129,18 @@ export const reportUrl = (device, rom) => {
 export const deviceSearchText = (device) =>
   [device.title, ...device.codenames, ...(device.aliases ?? [])].join(' ').toLowerCase();
 
+/** What FilterBar matches on, spread onto a device's card and its table row alike */
+export const filterData = (device, ended = device.activeCount === 0) => ({
+  'data-search': deviceSearchText(device),
+  'data-brand': device.brand.key,
+  'data-rom': device.support
+    .filter((row) => row.active)
+    .map((row) => row.rom.key)
+    .join(' '),
+  'data-unlock': device.bootloader.unlock,
+  'data-ended': ended ? '' : undefined,
+});
+
 export const splitByActive = (rows) => [
   rows.filter((row) => row.active),
   rows.filter((row) => !row.active),
@@ -161,7 +153,8 @@ export const deviceColumns = (roms) => [
   ...roms.map((rom) => ({ key: rom.key, label: rom.name })),
 ];
 
-const romStatus = (device, rom) => {
+/** Whether a ROM supports a device, for its column on device lists and its chip on cards */
+export const romStatus = (device, rom) => {
   const row = device.support.find((entry) => entry.rom === rom);
   if (!row) return { tone: 'n/a', text: 'No' };
   if (!row.active) return { tone: 'ended', text: 'Ended' };
@@ -173,18 +166,12 @@ const romStatus = (device, rom) => {
 export const deviceRows = (devices, roms) =>
   devices.map((device) => ({
     key: device.key,
-    brand: device.brand.key,
-    ended: device.activeCount === 0,
-    search: deviceSearchText(device),
+    data: filterData(device),
     head: { label: device.title, href: device.url, code: device.codenames.join(', ') },
     cells: {
       brand: text(device.brand.name),
       released: { text: device.released ?? '?' },
-      unlock: {
-        tone: lockTone[device.bootloader.unlock],
-        text: labelOf(device.bootloader.unlock),
-        suffix: originSuffix(device.bootloader),
-      },
+      unlock: { tone: lockTone[device.bootloader.unlock], text: labelOf(device.bootloader.unlock) },
       ...Object.fromEntries(roms.map((rom) => [rom.key, romStatus(device, rom)])),
     },
   }));

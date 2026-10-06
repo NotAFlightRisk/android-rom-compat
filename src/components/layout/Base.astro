@@ -1,7 +1,9 @@
 ---
 import '@fontsource-variable/roboto';
 import '@fontsource-variable/roboto-mono';
-import '../../styles/global.css';
+import '../../styles/tokens.css';
+import '../../styles/base.css';
+import '../../styles/ui.css';
 import roboto from '@fontsource-variable/roboto/files/roboto-latin-wght-normal.woff2?url';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
@@ -70,13 +72,9 @@ const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
-    <noscript>
-      <style>
-        [data-controls] {
-          display: none;
-        }
-      </style>
-    </noscript>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     {graph.length > 0 && (
       <script
         type="application/ld+json"

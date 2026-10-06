@@ -1,6 +1,8 @@
 ---
 import Base from '../../components/layout/Base.astro';
-import DeviceTables from '../../components/ui/DeviceTables.astro';
+import PageHead from '../../components/layout/PageHead.astro';
+import DeviceList from '../../components/ui/DeviceList.astro';
+import Logo from '../../components/ui/Logo.astro';
 import { getModel } from '../../lib/data/model.js';
 
 const { devices, roms, brands } = getModel();
@@ -11,34 +13,67 @@ const { devices, roms, brands } = getModel();
   description={`${devices.length} Android phones and tablets, the custom ROMs that officially support each one, and whether the bootloader unlocks.`}
   crumbs={[{ label: 'Devices', url: '/devices/' }]}
 >
-  <section>
-    <h1>Devices</h1>
-    <details>
-      <summary>Browse by brand</summary>
-      <ul class="brands">
-        {brands.map((brand) => (
-          <li>
-            <a href={brand.url}>{brand.name}</a> <span>{brand.devices.length}</span>
-          </li>
-        ))}
-      </ul>
-    </details>
-  </section>
-  <DeviceTables id="devices" label="Devices" devices={devices} roms={roms} brands={brands} />
+  <PageHead
+    title="Devices"
+    meta={[`${devices.length} phones, tablets and handhelds`, `${brands.length} brands`]}
+    views
+  />
+  <details>
+    <summary>Browse all {brands.length} brands</summary>
+    <ul class="brands">
+      {brands.map((brand) => (
+        <li>
+          <a href={brand.url}>
+            <Logo kind="brands" item={brand} size="sm" />
+            {brand.name}
+            <span>{brand.devices.length}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </details>
+  <DeviceList id="devices" label="Devices" devices={devices} roms={roms} brands={brands} />
 </Base>
 
 <style>
+  details[open] > summary {
+    margin-block-end: var(--space-sm);
+  }
+
   .brands {
     display: flex;
-    margin-block-start: var(--space-sm);
     flex-wrap: wrap;
-    gap: var(--space-xs) var(--space-lg);
+    gap: var(--space-xs);
+    margin: 0;
     padding: 0;
     list-style: none;
 
+    a {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-2xs) var(--space-sm) var(--space-2xs) var(--space-2xs);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      color: var(--text);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 150ms ease-out;
+
+      &:hover {
+        border-color: var(--border-strong);
+        background: var(--surface-raised);
+      }
+    }
+
     span {
       color: var(--text-muted);
-      font-size: var(--text-sm);
+      font-weight: 400;
+    }
+
+    :global(.logo) {
+      border-radius: var(--radius-pill);
     }
   }
 </style>

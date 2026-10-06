@@ -1,11 +1,17 @@
 ---
 import Base from '../../components/layout/Base.astro';
+import PageHead from '../../components/layout/PageHead.astro';
+import CardGrid from '../../components/cards/CardGrid.astro';
+import FeatureList from '../../components/cards/FeatureList.astro';
 import Matrix from '../../components/table/Matrix.astro';
 import Facts from '../../components/ui/Facts.astro';
-import RomFeatures from '../../components/ui/RomFeatures.astro';
+import FilterBar from '../../components/ui/FilterBar.astro';
+import Icon from '../../components/ui/Icon.astro';
 import { getModel } from '../../lib/data/model.js';
+import { byBrand, romDeviceCard } from '../../lib/cards.js';
+import { everywhereCells, googleApps, knownFeatures, romRelock } from '../../lib/facts.js';
 import {
-  deviceSearchText,
+  filterData,
   reportedFeatures,
   splitByActive,
   supportCells,
@@ -14,6 +20,7 @@ import {
   usedColumns,
 } from '../../lib/table.js';
 import { labelOf, yesNo } from '../../lib/labels.js';
+import { plural } from '../../lib/text.js';
 
 export const getStaticPaths = () =>
   getModel().roms.map((rom) => ({ params: { rom: rom.key }, props: { rom } }));
@@ -23,13 +30,13 @@ const { features } = getModel();
 const reported = reportedFeatures(features, rom.support);
 const [current, ended] = splitByActive(rom.support);
 const brands = [
-  ...new Map(rom.support.map((row) => [row.device.brand.key, row.device.brand])).values(),
+  ...new Map(current.map((row) => [row.device.brand.key, row.device.brand])).values(),
 ].sort((a, b) => a.name.localeCompare(b.name));
+const groupsOf = (list) => byBrand(list, (row) => row.device.brand, romDeviceCard);
 const rowsOf = (list) =>
   list.map((row) => ({
     key: row.device.key,
-    brand: row.device.brand.key,
-    search: deviceSearchText(row.device),
+    data: filterData(row.device, false),
     head: {
       label: row.device.title,
       href: row.device.url,
@@ -45,8 +52,11 @@ const columns = usedColumns(
   [{ key: 'brand', label: 'Brand', group: 'device', hidden: true }, ...supportColumns(reported)],
   allRows,
 ).filter(({ key }) => key !== 'relock' || !sameOnEveryRow(allRows, key));
-const everywhere = [rom, ...(rom.variants ?? [])].filter((build) => build.features);
+const everywhere = [rom, ...(rom.variants ?? [])]
+  .map((build) => ({ build, items: knownFeatures(features, everywhereCells(features, build)) }))
+  .filter(({ items }) => items.length > 0);
 const { links, security } = rom;
+const count = plural(current.length, 'device');
 ---
 
 <Base
@@ -69,78 +79,100 @@ const { links, security } = rom;
   ]}
   edit={[rom.file]}
 >
-  <article data-pagefind-body data-pagefind-meta={`hint:ROM · ${current.length} devices`}>
-    <section>
-      <h1 data-pagefind-meta="title">{rom.name}</h1>
+  <article data-pagefind-body data-pagefind-meta={`hint:ROM · ${count}`}>
+    <PageHead
+      title={rom.name}
+      logo={{ kind: 'roms', item: rom }}
+      meta={[count, rom.status === 'discontinued' && 'Discontinued']}
+      views={current.length > 0}
+    >
       <p>{rom.description}</p>
-      {rom.status === 'discontinued' && (
-        <p>
-          <strong>This ROM is discontinued.</strong>
-        </p>
-      )}
-      <Facts
-        items={[
-          { label: 'Based on', value: labelOf(rom.base) },
-          { label: 'Google apps', value: labelOf(rom.google) },
-          { label: 'App store', value: labelOf(rom.app_store) },
-          { label: 'Focus', value: rom.focus.map(labelOf).join(', ') },
-          { label: 'Run by', value: labelOf(rom.org) },
-          { label: 'Install with', value: rom.install.map(labelOf).join(', ') },
-          { label: 'Relockable bootloader', value: yesNo(security.relockable_bootloader) },
-          { label: 'Verified boot', value: yesNo(security.verified_boot) },
-          { label: 'Patches', value: labelOf(security.patches) },
-          { label: 'Root', value: yesNo(rom.root) },
-        ]}
-      />
       <ul class="links">
         {Object.entries(links).map(([kind, href]) => (
           <li>
-            <a href={href}>{labelOf(kind)}</a>
+            <a class="button small" href={href}>
+              <Icon name={kind} /> {labelOf(kind)}
+            </a>
           </li>
         ))}
       </ul>
+    </PageHead>
+
+    <section aria-labelledby="glance">
+      <h2 id="glance">At a glance</h2>
+      <Facts
+        items={[
+          { label: 'Google apps', value: googleApps(rom) },
+          { label: 'App store', value: labelOf(rom.app_store) },
+          { label: 'Based on', value: labelOf(rom.base) },
+          { label: 'Install with', value: rom.install.map(labelOf).join(', ') },
+          { label: 'Relockable bootloader', value: romRelock(rom) },
+          { label: 'Verified boot', value: yesNo(security.verified_boot) },
+          { label: 'Security patches', value: labelOf(security.patches) },
+          { label: 'Root', value: yesNo(rom.root) },
+          { label: 'Run by', value: labelOf(rom.org) },
+          { label: 'Focus', value: rom.focus.map(labelOf).join(', ') },
+        ]}
+      />
     </section>
 
     {everywhere.length > 0 && (
       <section aria-labelledby="everywhere">
-        <h2 id="everywhere">What works everywhere</h2>
-        {everywhere.map((build) => (
+        <h2 id="everywhere">On every device</h2>
+        {everywhere.map(({ build, items }) => (
           <>
             {build !== rom && <h3>{build.name}</h3>}
-            <RomFeatures features={features} facts={build.features} />
+            <FeatureList items={items} />
           </>
         ))}
       </section>
     )}
 
-    <section aria-labelledby="devices">
-      <h2 id="devices">Devices</h2>
-      <p>
-        <small>
-          Features show once a ROM's docs or someone's report covers them.{' '}
-          <a href="/contribute/">Know how one works?</a>
-        </small>
-      </p>
-      <Matrix
-        id="rom-devices"
-        caption={`Devices ${rom.name} officially supports`}
-        rowLabel="Device"
-        columns={columns}
-        rows={currentRows}
-        brands={brands}
-        urlState
-      />
+    <section aria-labelledby="devices" data-pagefind-ignore>
+      <h2 id="devices">
+        Devices <span class="count">{current.length}</span>
+      </h2>
+      {current.length > 0 ? (
+        <div class="filtered">
+          <FilterBar
+            controls={['rom-devices-cards', 'rom-devices']}
+            label="Filter devices"
+            total={current.length}
+            brands={brands}
+          />
+          <div data-view="cards">
+            <CardGrid id="rom-devices-cards" groups={groupsOf(current)} level={3} />
+          </div>
+          <div data-view="table">
+            <Matrix
+              id="rom-devices"
+              caption={`Devices ${rom.name} officially supports`}
+              rowLabel="Device"
+              columns={columns}
+              rows={currentRows}
+              urlState
+            />
+          </div>
+        </div>
+      ) : (
+        <p>{rom.name} doesn't officially support any devices right now.</p>
+      )}
       {ended.length > 0 && (
         <details>
-          <summary>{ended.length} devices where support has ended</summary>
-          <Matrix
-            id="rom-devices-ended"
-            caption={`Devices ${rom.name} no longer supports`}
-            rowLabel="Device"
-            columns={columns}
-            rows={endedRows}
-            controls={false}
-          />
+          <summary>{plural(ended.length, 'device')} where support has ended</summary>
+          <div data-view="cards">
+            <CardGrid id="rom-ended-cards" groups={groupsOf(ended)} level={3} />
+          </div>
+          <div data-view="table">
+            <Matrix
+              id="rom-devices-ended"
+              caption={`Devices ${rom.name} no longer supports`}
+              rowLabel="Device"
+              columns={columns}
+              rows={endedRows}
+              controls={false}
+            />
+          </div>
         </details>
       )}
     </section>
@@ -157,12 +189,22 @@ const { links, security } = rom;
     margin-block-start: var(--space-sm);
   }
 
+  .count {
+    margin-inline-start: var(--space-2xs);
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
   .links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs) var(--space-lg);
-    margin: 0;
+    gap: var(--space-xs);
+    margin: var(--space-xs) 0 0;
     padding: 0;
     list-style: none;
+  }
+
+  details[open] > summary {
+    margin-block-end: var(--space-md);
   }
 </style>

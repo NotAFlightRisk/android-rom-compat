@@ -1,9 +1,12 @@
 ---
 import Base from '../components/layout/Base.astro';
+import RomSummary from '../components/cards/RomSummary.astro';
+import Logo from '../components/ui/Logo.astro';
 import Search from '../components/ui/Search.astro';
 import { getModel } from '../lib/data/model.js';
+import { formatDate } from '../lib/dates.js';
 import { site } from '../lib/site.js';
-import { listOf } from '../lib/text.js';
+import { listOf, plural } from '../lib/text.js';
 
 const { devices, roms } = getModel();
 const live = roms.filter((rom) => rom.status === 'active');
@@ -15,6 +18,11 @@ const recent = devices
   .filter((device) => device.latestBuild)
   .toSorted((a, b) => b.latestBuild.localeCompare(a.latestBuild) || a.title.localeCompare(b.title))
   .slice(0, 8);
+const builtBy = (device) =>
+  device.support
+    .filter((row) => row.latest?.date === device.latestBuild)
+    .map((row) => row.rom.name)
+    .join(', ');
 ---
 
 <Base
@@ -40,9 +48,9 @@ const recent = devices
       <ol class="rows">
         {popular.map((device) => (
           <li>
+            <Logo kind="brands" item={device.brand} size="sm" />
             <a href={device.url}>{device.title}</a>
-            <code>{device.codenames[0]}</code>
-            <span>{device.activeCount} ROMs</span>
+            <span>{plural(device.activeCount, 'ROM')}</span>
           </li>
         ))}
       </ol>
@@ -54,14 +62,12 @@ const recent = devices
         <ol class="rows">
           {recent.map((device) => (
             <li>
+              <Logo kind="brands" item={device.brand} size="sm" />
               <a href={device.url}>{device.title}</a>
               <span>
-                {device.support
-                  .filter((row) => row.latest?.date === device.latestBuild)
-                  .map((row) => row.rom.name)
-                  .join(', ')}
+                {builtBy(device)},{' '}
+                <time datetime={device.latestBuild}>{formatDate(device.latestBuild)}</time>
               </span>
-              <time datetime={device.latestBuild}>{device.latestBuild}</time>
             </li>
           ))}
         </ol>
@@ -74,9 +80,7 @@ const recent = devices
     <ul class="roms">
       {live.map((rom) => (
         <li>
-          <a href={rom.url}>{rom.name}</a>
-          <p>{rom.description}</p>
-          <span>{rom.support.filter((row) => row.active).length} devices</span>
+          <RomSummary rom={rom} />
         </li>
       ))}
     </ul>
@@ -115,38 +119,26 @@ const recent = devices
 
   .rows li {
     display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: baseline;
-    gap: var(--space-md);
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-sm);
     padding-block: var(--space-xs);
     border-block-end: 1px solid var(--border);
 
-    > :not(a) {
+    > span {
       color: var(--text-muted);
       font-size: var(--text-sm);
+      text-align: end;
     }
   }
 
   .roms {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
-    gap: var(--space-md) var(--space-xl);
+    gap: var(--space-md);
 
-    li {
+    > li {
       display: grid;
-      gap: var(--space-2xs);
-      padding-block: var(--space-sm);
-      border-block-start: 2px solid var(--accent);
-    }
-
-    a {
-      font-size: var(--text-lg);
-      font-weight: 600;
-    }
-
-    span {
-      color: var(--text-muted);
-      font-size: var(--text-sm);
     }
   }
 </style>

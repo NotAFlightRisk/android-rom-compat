@@ -49,16 +49,14 @@ const { edit, sources } = Astro.props;
   footer {
     display: grid;
     gap: var(--space-sm);
-    padding: var(--space-lg) var(--space-md) var(--space-xl);
+    padding: var(--space-lg) var(--gutter) var(--space-xl);
     border-block-start: 1px solid var(--border);
     background: var(--surface-raised);
     color: var(--text-muted);
     font-size: var(--text-sm);
 
-    > * {
-      inline-size: 100%;
-      max-inline-size: var(--page);
-      margin-inline: auto;
+    p {
+      max-inline-size: none;
     }
   }
 

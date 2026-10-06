@@ -1,0 +1,76 @@
+---
+// A brand or ROM mark on a plate, or its initials when src/assets/logos/ has no file for it
+const marks = import.meta.glob('../../assets/logos/*/*.svg', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+const urls = import.meta.glob('../../assets/logos/*/*.svg', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+});
+
+const { kind, item, size = 'md' } = Astro.props;
+const file = `../../assets/logos/${kind}/${item.key}.svg`;
+const [, , width, height] =
+  marks[file]
+    ?.match(/viewBox="([^"]+)"/)[1]
+    .split(' ')
+    .map(Number) ?? [];
+const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i)[0].toUpperCase();
+---
+
+<span class="logo" data-size={size} aria-hidden="true">
+  {urls[file] ? (
+    <span class="mark" style={`--mark: url(${urls[file]}); --aspect: ${width / height}`} />
+  ) : (
+    <span class="initials">{initials}</span>
+  )}
+</span>
+
+<style>
+  .logo {
+    --size: 2.5rem;
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    block-size: var(--size);
+    min-inline-size: var(--size);
+    padding-inline: calc(var(--size) * 0.2);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--size) * 0.28);
+    background: var(--surface-raised);
+    color: var(--text);
+
+    &[data-size='sm'] {
+      --size: 1.75rem;
+    }
+
+    &[data-size='lg'] {
+      --size: 3.5rem;
+    }
+  }
+
+  /* Wide wordmarks get shorter, so every plate stays within about one and a half squares */
+  .mark {
+    block-size: calc(var(--size) * min(0.56, 1.5 / var(--aspect)));
+    aspect-ratio: var(--aspect);
+    background: currentColor;
+    mask: var(--mark) center / contain no-repeat;
+    print-color-adjust: exact;
+
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+      background: CanvasText;
+    }
+  }
+
+  .initials {
+    color: var(--text-muted);
+    font-size: calc(var(--size) * 0.36);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+</style>

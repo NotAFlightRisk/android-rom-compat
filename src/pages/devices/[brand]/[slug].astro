@@ -1,7 +1,10 @@
 ---
 import Base from '../../../components/layout/Base.astro';
+import PageHead from '../../../components/layout/PageHead.astro';
+import RomCard from '../../../components/cards/RomCard.astro';
 import Matrix from '../../../components/table/Matrix.astro';
 import Facts from '../../../components/ui/Facts.astro';
+import Logo from '../../../components/ui/Logo.astro';
 import { getModel } from '../../../lib/data/model.js';
 import {
   featuresFrom,
@@ -13,9 +16,10 @@ import {
   supportColumns,
   usedColumns,
 } from '../../../lib/table.js';
+import { buildFact, stockFact, unlockFact } from '../../../lib/facts.js';
+import { formatDate } from '../../../lib/dates.js';
 import { labelOf } from '../../../lib/labels.js';
 import { listOf } from '../../../lib/text.js';
-import { today } from '../../../lib/dates.js';
 
 export const getStaticPaths = () =>
   getModel().devices.map((device) => ({
@@ -25,19 +29,19 @@ export const getStaticPaths = () =>
 
 const { device } = Astro.props;
 const { features } = getModel();
-const { bootloader, stock, support } = device;
-const policy = device.brand.bootloader;
-const unlock = `${labelOf(bootloader.unlock)}${bootloader.origin ? ', brand policy' : ''}`;
+const { stock, support } = device;
 const [current, ended] = splitByActive(support);
-const unreported = featuresFrom(features, support, 'none');
+const unlock = unlockFact(device);
+const updates = stockFact(stock);
 const quiet = new Set(
-  [...unreported, ...featuresFrom(features, support, 'hardware')].map(({ key }) => key),
+  [...featuresFrom(features, support, 'none'), ...featuresFrom(features, support, 'hardware')].map(
+    ({ key }) => key,
+  ),
 );
 
 const rowsOf = (list) =>
   list.map((row) => ({
     key: row.rom.key,
-    search: row.rom.name.toLowerCase(),
     head: {
       label: row.rom.name,
       href: row.rom.url,
@@ -45,10 +49,14 @@ const rowsOf = (list) =>
         ...(row.install ? [{ label: 'Install guide', href: row.install }] : []),
         { label: 'Report', href: reportUrl(device, row.rom) },
       ],
-      builds: row.variants.map((variant) => ({
-        label: [`${labelOf(variant.key)} build`, variant.latest?.date].filter(Boolean).join(', '),
-        href: variant.source,
-      })),
+      builds: row.variants
+        .filter((variant) => variant.status === 'active')
+        .map((variant) => ({
+          label: [variant.name, variant.latest && formatDate(variant.latest.date)]
+            .filter(Boolean)
+            .join(', '),
+          href: variant.source,
+        })),
     },
     cells: { ...supportCells(row, features, true), ...romCells(row.rom) },
   }));
@@ -65,20 +73,6 @@ const columns = usedColumns(
   [...currentRows, ...endedRows],
 );
 
-const monthOf = (date) =>
-  new Date(date).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
-const stockLine = ({ android, security_until, updates_until }) => {
-  const until = security_until ?? updates_until;
-  if (until === 'ended' || until < today) return 'Stock updates have ended';
-  const range = android ? `Stock Android ${android.replace(' - ', ' to ')}` : 'Stock';
-  const kind = security_until ? 'security updates' : 'updates';
-  return until ? `${range}, ${kind} until ${monthOf(until)}` : range;
-};
-
-const gaps =
-  unreported.length === features.length
-    ? "Nobody's reported any features on this phone yet."
-    : `Nobody's reported ${listOf(unreported.map(({ name }) => name))} on this phone yet.`;
 const type = device.type && device.type !== 'phone' ? labelOf(device.type) : undefined;
 const romNames = current.map((row) => row.rom.name);
 const codename = device.codenames[0];
@@ -115,70 +109,87 @@ const codename = device.codenames[0];
     data-pagefind-body
     data-pagefind-meta={`hint:${device.brand.name} · ${device.codenames.join(', ')}`}
   >
-    <section>
-      <h1 data-pagefind-meta="title">{device.title}</h1>
-      <Facts
-        items={[
-          {
-            label: device.codenames.length > 1 ? 'Codenames' : 'Codename',
-            value: device.codenames.join(', '),
-            code: true,
-          },
-          { label: 'Model numbers', value: device.aliases?.join(', '), code: true },
-          { label: 'Released', value: device.released },
-          { label: 'Chip', value: device.soc },
-          { label: 'Type', value: type },
-        ]}
-      />
-      {stock && (
-        <p>
-          {stockLine(stock)}, going by <a href={stock.source}>{new URL(stock.source).hostname}</a>.
+    <PageHead
+      title={device.title}
+      logo={{ kind: 'brands', item: device.brand }}
+      meta={[
+        { text: device.codenames.join(', '), code: true },
+        device.released && `Released ${device.released}`,
+        device.soc,
+        type,
+      ]}
+      views={current.length > 0}
+    >
+      {device.aliases?.length > 0 && (
+        <p class="models">
+          Model numbers <code>{device.aliases.join(', ')}</code>
         </p>
       )}
-    </section>
+    </PageHead>
 
-    <section aria-labelledby="bootloader">
-      <h2 id="bootloader">Bootloader</h2>
-      <Facts items={[{ label: 'Unlock', value: unlock }]} />
-      {bootloader.notes && <p>{bootloader.notes}</p>}
-      {bootloader.source && (
-        <p>Going by <a href={bootloader.source}>{new URL(bootloader.source).hostname}</a>.</p>
-      )}
-      {policy && (
-        <p>
-          {device.brand.name}'s policy: {policy.notes} Going by{' '}
-          <a href={policy.source}>{new URL(policy.source).hostname}</a>.
-        </p>
-      )}
-    </section>
+    <Facts
+      panel
+      items={[
+        { label: 'Bootloader', value: unlock.text, ...unlock },
+        updates && { label: 'Stock Android', value: updates.text, ...updates },
+      ].filter(Boolean)}
+    />
 
     <section aria-labelledby="roms">
-      <h2 id="roms">ROMs</h2>
+      <h2 id="roms">ROMs {current.length > 0 && <span class="count">{current.length}</span>}</h2>
       {current.length > 0 ? (
-        <Matrix
-          id="support"
-          caption={`ROMs for the ${device.title}`}
-          rowLabel="ROM"
-          columns={columns}
-          rows={currentRows}
-          urlState
-        />
+        <>
+          <div data-view="cards">
+            <ul class="roms">
+              {current.map((row) => (
+                <li>
+                  <RomCard row={row} features={features} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div data-view="table" data-pagefind-ignore>
+            <Matrix
+              id="support"
+              caption={`ROMs for the ${device.title}`}
+              rowLabel="ROM"
+              columns={columns}
+              rows={currentRows}
+              urlState
+            />
+          </div>
+        </>
       ) : (
         <p>
-          No ROM we track officially supports this one right now. Know different?{' '}
+          None of the ROMs listed here officially supports this device right now. Know of one?{' '}
           <a href="/contribute/">Add it</a>.
         </p>
       )}
-      {ended.length > 0 && (
-        <details>
-          <summary>
-            Support that has ended (
-            {listOf(
-              ended.map((row) => row.rom.name),
-              'and',
-            )}
-            )
-          </summary>
+    </section>
+
+    {ended.length > 0 && (
+      <section aria-labelledby="ended">
+        <h2 id="ended">No longer supported</h2>
+        <div data-view="cards">
+          <ul class="ended">
+            {ended.map((row) => {
+              const build = buildFact(row.latest);
+              return (
+                <li>
+                  <Logo kind="roms" item={row.rom} size="sm" />
+                  <a href={row.rom.url}>{row.rom.name}</a>
+                  {build && (
+                    <span>
+                      Last build <time datetime={build.date}>{build.text}</time>
+                      {row.android && `, Android ${row.android}`}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div data-view="table" data-pagefind-ignore>
           <Matrix
             id="support-ended"
             caption={`Ended support for the ${device.title}`}
@@ -187,17 +198,15 @@ const codename = device.codenames[0];
             rows={endedRows}
             controls={false}
           />
-        </details>
-      )}
-      {support.length > 0 && unreported.length > 0 && (
-        <p>
-          <small>
-            {gaps}{' '}
-            <a href={reportUrl(device)}>Tried one?</a>
-          </small>
-        </p>
-      )}
-    </section>
+        </div>
+      </section>
+    )}
+
+    {support.length > 0 && (
+      <p class="report">
+        <a href={reportUrl(device)}>Tried a ROM on this device? Tell us what works</a>
+      </p>
+    )}
   </article>
 </Base>
 
@@ -205,5 +214,54 @@ const codename = device.codenames[0];
   article {
     display: grid;
     gap: var(--space-xl);
+  }
+
+  .models {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .count {
+    margin-inline-start: var(--space-2xs);
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .roms {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      display: grid;
+    }
+  }
+
+  .ended {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-2xs) var(--space-sm);
+      padding-block: var(--space-xs);
+      border-block-end: 1px solid var(--border);
+    }
+
+    span {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+
+  .report {
+    font-size: var(--text-sm);
   }
 </style>

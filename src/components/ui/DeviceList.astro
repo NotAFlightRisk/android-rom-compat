@@ -1,0 +1,57 @@
+---
+// A list of devices as cards or as a table, with one filter bar driving both
+import CardGrid from '../cards/CardGrid.astro';
+import Matrix from '../table/Matrix.astro';
+import FilterBar from './FilterBar.astro';
+import { byBrand, deviceCard } from '../../lib/cards.js';
+import { deviceColumns, deviceRows } from '../../lib/table.js';
+
+const { id, label, devices, roms, brands = [] } = Astro.props;
+const live = roms.filter((rom) => rom.status === 'active');
+// A brand policy that every device follows is shown once on the page, so cards skip repeating it
+const [unlock, ...others] = new Set(devices.map((device) => device.bootloader.unlock));
+const stated =
+  !others.length && devices.every((device) => device.brand.bootloader?.unlock === unlock);
+// When every device's support has ended there's nothing to hide them behind, so they all show
+const hideEnded = devices.some((device) => device.activeCount > 0);
+const keepEnded = ({ data, ...item }) => ({
+  ...item,
+  data: hideEnded ? data : { ...data, 'data-ended': undefined },
+});
+const toCard = (device) => keepEnded(deviceCard(device, live, !stated));
+const groups = brands.length
+  ? byBrand(devices, (device) => device.brand, toCard)
+  : [{ items: devices.map(toCard) }];
+const columns = deviceColumns(live).map((column) => ({
+  ...column,
+  hidden: column.key === 'brand' && !brands.length,
+}));
+const supported = live.filter((rom) =>
+  devices.some((device) => device.support.some((row) => row.rom === rom && row.active)),
+);
+---
+
+<div class="filtered">
+  <FilterBar
+    controls={[`${id}-cards`, id]}
+    label={`Filter ${label.toLowerCase()}`}
+    total={devices.length}
+    brands={brands}
+    roms={supported}
+    unlock
+    endedCount={hideEnded ? devices.filter((device) => device.activeCount === 0).length : 0}
+  />
+  <div data-view="cards">
+    <CardGrid id={`${id}-cards`} groups={groups} />
+  </div>
+  <div data-view="table" data-pagefind-ignore>
+    <Matrix
+      id={id}
+      caption={`${label}, and which ROMs officially support them`}
+      rowLabel="Device"
+      columns={columns}
+      rows={deviceRows(devices, live).map(keepEnded)}
+      urlState
+    />
+  </div>
+</div>

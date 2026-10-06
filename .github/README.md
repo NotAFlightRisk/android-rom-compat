@@ -16,7 +16,7 @@
 
 Covers GrapheneOS, LineageOS, CalyxOS, /e/OS, crDroid, iodéOS, Evolution X and PixelOS, official builds only. Every bit of data lives as YAML in [`data/`](../data), so fixing a mistake just means editing a file - no coding needed.
 
-It'd rather leave a gap than guess, so anything nobody has checked shows as unknown. A report goes stale once the ROM moves to a newer Android than it was checked on, or when it's over a year old.
+It'd rather leave a gap than guess, so anything nobody has checked is left out, and shows as unknown in the table view. A report goes stale once the ROM moves to a newer Android than it was checked on, or when it's over a year old.
 
 ---
 
