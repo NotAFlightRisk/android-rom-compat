@@ -81,6 +81,10 @@
   name: Retroid Pocket
 - key: samsung
   name: Samsung
+  bootloader:
+    unlock: conditional
+    notes: Galaxy phones outside the US unlock until One UI 8, which reportedly removes the option in every region. US models lost it years ago.
+    source: https://www.sammobile.com/news/say-goodbye-to-your-custom-roms-as-one-ui-8-kills-bootloader-unlock/
 - key: shift
   name: SHIFT
 - key: smartisan
