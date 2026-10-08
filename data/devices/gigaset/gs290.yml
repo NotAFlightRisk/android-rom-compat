@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: GS290
 codenames: [gs290]
-released: 2020
-soc: Media Tek Helio P23 (MT6763V)
-hardware: [5g, cellular, fingerprint, nfc]
+released: 2019
+soc: Mediatek Helio P23 (MT6763V)
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

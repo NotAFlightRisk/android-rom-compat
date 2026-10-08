@@ -2,7 +2,7 @@
 name: SHIFTphone 8.0
 codenames: [otter]
 aliases: [SHIFTphone 8.1]
-released: 2026
+released: 2024
 soc: Qualcomm Dragonwing™ QCM6490 (QCM6490)
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:

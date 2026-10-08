@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 10a
 codenames: [stallion]
+released: 2026
+soc: Google Tensor G4
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
   notes: Carrier models, like Verizon's, can't be unlocked.

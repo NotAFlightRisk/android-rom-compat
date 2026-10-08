@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: GT 2
 codenames: [porsche]
+released: 2022
+soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

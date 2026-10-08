@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pova 5
 codenames: [lh7n]
+released: 2023
+soc: Mediatek Helio G99
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

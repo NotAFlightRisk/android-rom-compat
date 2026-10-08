@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 10 Pro XL
 codenames: [mustang]
+released: 2025
+soc: Google Tensor G5
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
   notes: Carrier models, like Verizon's, can't be unlocked.

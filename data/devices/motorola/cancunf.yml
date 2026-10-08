@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: moto g54 5G
 codenames: [cancunf]
+released: 2023
+soc: Mediatek Dimensity 7020
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
