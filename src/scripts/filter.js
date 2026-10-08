@@ -111,11 +111,15 @@ export function enhanceFilter(form) {
     save();
   }
 
+  // The clear and include buttons hide once clicked, so focus moves to one that stays
+  const refocus = () => (form.querySelector('[aria-expanded]') ?? query).focus();
+
   function clear() {
     query.value = '';
     for (const select of filters) select.value = '';
     if (ended) ended.checked = false;
     update();
+    refocus();
   }
 
   form.addEventListener('submit', (event) => event.preventDefault());
@@ -125,6 +129,7 @@ export function enhanceFilter(form) {
   form.querySelector('[data-show-ended]')?.addEventListener('click', () => {
     ended.checked = true;
     update();
+    refocus();
   });
   apply();
   sort();
