@@ -1,19 +1,35 @@
 ---
 import Base from '../components/layout/Base.astro';
+import PageHead from '../components/layout/PageHead.astro';
+import Icon from '../components/ui/Icon.astro';
 import { site, issueUrl } from '../lib/site.js';
 
 const forms = [
   {
-    template: 'add-device',
-    label: 'Add a device',
-    hint: "A phone that a ROM supports but we don't list",
-  },
-  {
     template: 'report-feature',
+    icon: 'report',
     label: 'Report what works',
     hint: 'VoLTE, NFC, Android Auto and the rest, on one ROM and phone',
   },
-  { template: 'correction', label: 'Fix a mistake', hint: 'Anything wrong on a page' },
+  {
+    template: 'add-device',
+    icon: 'device',
+    label: 'Add a device',
+    hint: "A phone or tablet a ROM officially supports, but we don't list",
+  },
+  { template: 'correction', icon: 'fix', label: 'Fix a mistake', hint: 'Anything wrong on a page' },
+];
+
+const steps = [
+  [
+    'You fill in the form',
+    "Starting from a device page? Each ROM's Report button fills in the device, ROM and Android version.",
+  ],
+  [
+    'A bot checks it',
+    "If something's missing, it comments on the issue saying what, and tries again when you edit it.",
+  ],
+  ['It opens a pull request', 'With your name on the commit.'],
 ];
 ---
 
@@ -22,63 +38,207 @@ const forms = [
   description="Add a device, report what works on a ROM, or fix a mistake. Everything lives in YAML files on GitHub."
   crumbs={[{ label: 'Contribute', url: '/contribute/' }]}
 >
-  <section>
-    <h1>Contribute</h1>
-    <p>
-      All the data is plain YAML on GitHub, so anyone can add to it. Fill in a form, or edit the
-      files yourself. Every page has an edit link at the bottom.
+  <PageHead title="Contribute">
+    <p class="lede">
+      All the data is plain YAML on GitHub, so anyone can add to it, no coding needed. Fill in a
+      form, or edit the files yourself.
     </p>
-  </section>
+  </PageHead>
 
   <section aria-labelledby="forms">
-    <h2 id="forms">Quickest: fill in a form</h2>
-    <ul>
+    <h2 id="forms">Fill in a form</h2>
+    <p>The quickest way. Forms open on GitHub, so you'll need an account there.</p>
+    <ul class="forms">
       {forms.map((form) => (
-        <li>
-          <a href={issueUrl(form.template)}>{form.label}</a> <span>{form.hint}</span>
+        <li class="card">
+          <span class="glyph">
+            <Icon name={form.icon} />
+          </span>
+          <div>
+            <h3>
+              <a class="stretch" href={issueUrl(form.template)}>
+                {form.label}
+              </a>
+            </h3>
+            <p>{form.hint}</p>
+          </div>
+          <Icon name="external" />
         </li>
       ))}
     </ul>
-    <p>
-      A report turns into a pull request by itself, with your name on it. If something's missing,
-      the bot comments on the issue saying what, and tries again when you edit it.
+    <details>
+      <summary>What happens to a report?</summary>
+      <ol class="steps">
+        {steps.map(([title, text]) => (
+          <li>
+            <strong>{title}</strong>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+    </details>
+    <p class="aside">
+      Got a question, or a ROM we should track?{' '}
+      <a href={`${site.repo}/discussions`}>Ask in Discussions</a>.
     </p>
   </section>
 
   <section aria-labelledby="edit">
-    <h2 id="edit">Or edit the data</h2>
+    <h2 id="edit">Or edit the data yourself</h2>
     <p>
-      The <a href={`${site.repo}/blob/main/.github/CONTRIBUTING.md`}>contributing guide</a> shows
-      where each file lives, what to copy, and how to check your change. You can do the whole thing
-      in GitHub's web editor.
+      The contributing guide shows where each file lives, what to copy, and how to check your
+      change. You can do the whole thing in GitHub's web editor, and every device and ROM page links
+      to its files at the bottom.
     </p>
-    <p>
-      Leave <code>data/upstream/</code> alone though. It's rebuilt from each ROM's own device list
-      every Monday, so edits there don't last a week. If it's wrong, it's wrong at the source, and
-      the <a href={issueUrl('correction')}>fix a mistake</a> form is the way to tell us.
-    </p>
-    <p>
-      Always link a source. A ROM's own device page, wiki or changelog is best. A "works for me"
-      from a forum is fine too, just say so in a note.
-    </p>
+    <a class="button" href={`${site.repo}/blob/main/.github/CONTRIBUTING.md`}>
+      <Icon name="docs" /> Contributing guide
+    </a>
+    <ul class="tips">
+      <li>
+        <strong>Always link a source</strong>
+        <p>
+          A ROM's own device page, wiki or changelog is best. A "works for me" from a forum is fine
+          too, just say so in a note.
+        </p>
+      </li>
+      <li>
+        <strong>
+          Leave <code>data/upstream/</code> alone
+        </strong>
+        <p>
+          It's rebuilt from each ROM's own device list every Monday, so edits there don't last a
+          week. If it's wrong, it's wrong at the source, so{' '}
+          <a href={issueUrl('correction')}>tell us with the fix a mistake form</a>.
+        </p>
+      </li>
+    </ul>
   </section>
 </Base>
 
 <style>
-  ul {
-    display: grid;
-    gap: var(--space-sm);
+  section {
+    max-inline-size: var(--page-narrow);
+  }
+
+  ul,
+  ol {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  li {
-    display: grid;
+  li p,
+  .aside {
+    color: var(--text-muted);
   }
 
-  span {
-    color: var(--text-muted);
+  .forms {
+    display: grid;
+    gap: var(--space-xs);
+
+    li {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: var(--space-md);
+
+      > :global(svg) {
+        color: var(--text-muted);
+        transition:
+          color 150ms ease-out,
+          translate 150ms ease-out;
+      }
+
+      &:hover > :global(svg) {
+        color: var(--accent-text);
+        translate: 2px -2px;
+      }
+    }
+
+    h3 {
+      font-size: var(--text-base);
+    }
+
+    p {
+      font-size: var(--text-sm);
+    }
+
+    .stretch {
+      color: var(--text);
+      text-decoration: none;
+    }
+  }
+
+  .glyph {
+    display: grid;
+    place-items: center;
+    inline-size: var(--control);
+    block-size: var(--control);
+    border-radius: var(--radius);
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-size: 1.25rem;
+  }
+
+  .aside {
     font-size: var(--text-sm);
+  }
+
+  .steps,
+  .tips {
+    display: grid;
+    gap: var(--space-md) var(--space-lg);
+  }
+
+  .steps {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    counter-reset: step;
+
+    li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: baseline;
+      align-content: start;
+      gap: var(--space-2xs) var(--space-xs);
+      counter-increment: step;
+
+      &::before {
+        content: counter(step);
+        display: inline-grid;
+        place-items: center;
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+        border: 1px solid transparent;
+        border-radius: var(--radius-pill);
+        background: var(--accent-soft);
+        color: var(--accent-text);
+        font-size: var(--text-xs);
+        font-weight: 600;
+      }
+    }
+
+    p {
+      grid-column: 2;
+    }
+  }
+
+  .tips {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+
+    li {
+      display: grid;
+      align-content: start;
+      gap: var(--space-2xs);
+      padding: var(--space-md);
+      border-radius: var(--radius-lg);
+      background: var(--surface-raised);
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  .button {
+    justify-self: start;
   }
 </style>

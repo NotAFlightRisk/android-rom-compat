@@ -1,47 +1,124 @@
 ---
 import Base from '../components/layout/Base.astro';
+import PageHead from '../components/layout/PageHead.astro';
+import Facts from '../components/ui/Facts.astro';
+import Icon from '../components/ui/Icon.astro';
+import { staleText, statusText } from '../lib/facts.js';
 import { site } from '../lib/site.js';
+
+const sources = [
+  ['Devices and builds', "Each ROM's own published device list, refreshed every week."],
+  [
+    'What works',
+    "Reports, the ROM's docs for that device, or what the ROM says holds on every device. Answers link to their source where there is one.",
+  ],
+];
+
+const answer = (value, meaning, inferred) => ({
+  tone: value,
+  text: statusText({ value, inferred }),
+  meaning,
+});
+const answers = [
+  answer('working', 'As well as it did on the stock ROM.'),
+  answer('partial', 'Works, with a catch. Its note says what.'),
+  answer('broken', 'Its note says what goes wrong.'),
+  answer('broken', 'Worked out, rather than stated outright.', true),
+  answer('unknown', "Nobody's checked yet, so cards leave it out."),
+  answer('n/a', "The phone doesn't have the hardware."),
+  {
+    tone: 'partial',
+    stale: true,
+    text: staleText({ stale: true, checked: '2026-01-15', android: 15 }),
+    meaning:
+      'The ROM has moved to a newer Android since that report, or the report is over a year old.',
+  },
+];
 
 const endpoints = [
   {
     name: 'devices',
-    hint: 'every device, with codenames, model numbers, bootloader and stock support',
+    hint: 'Every device, with codenames, model numbers, bootloader and stock support.',
   },
-  { name: 'roms', hint: 'the ROMs, how they compare, and what they say works on every device' },
+  { name: 'roms', hint: 'The ROMs, how they compare, and what they say works on every device.' },
   {
     name: 'support',
-    hint: 'which ROM supports which device, its latest build, and what works, and where each answer came from',
+    hint: 'Which ROM supports which device, its latest build, what works, and where each answer came from.',
   },
-  { name: 'features', hint: 'the features we track' },
+  { name: 'features', hint: 'The features we track.' },
 ];
+
+const licences = [
+  { label: 'Code', text: 'MIT', href: `${site.repo}/blob/main/LICENSE` },
+  {
+    label: 'Data',
+    text: 'CC BY-SA 4.0',
+    href: `${site.repo}/blob/main/data/LICENSE`,
+    note: 'Reuse it, as long as you credit this project and share alike.',
+  },
+];
+
+const dataset = {
+  '@type': 'Dataset',
+  name: `${site.name} data`,
+  description:
+    'Which custom Android ROMs officially support which phones, their latest builds, whether the bootloader unlocks, and what works on each, as static JSON.',
+  url: new URL('/about/', Astro.site).href,
+  license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  isAccessibleForFree: true,
+  distribution: endpoints.map(({ name }) => ({
+    '@type': 'DataDownload',
+    encodingFormat: 'application/json',
+    contentUrl: new URL(`/api/${name}.json`, Astro.site).href,
+  })),
+};
 ---
 
 <Base
   title="About"
   description="What Android ROM Compat is, where the data comes from, how to use the API, and the licences."
   crumbs={[{ label: 'About', url: '/about/' }]}
+  jsonLd={[dataset]}
 >
-  <section>
-    <h1>About</h1>
-    <p>
+  <PageHead title="About">
+    <p class="lede">
       A list of which Android ROMs support which phones, and what works on each. It covers official
-      builds only, and would rather leave a gap than guess, so anything nobody has checked shows as
-      unknown.
+      builds only, and would rather leave a gap than guess.
     </p>
-    <p>
-      Device lists and build dates come from each ROM's own published list, refreshed every week.
-      What works comes from reports, a ROM's docs for that device, or what the ROM says holds on
-      every device, and answers link to their source where there is one. Anything worked out rather
-      than stated outright reads as likely, like "Likely doesn't work".
-    </p>
-    <p>
-      Once the ROM moves to a newer Android than a report was checked on, or the report is over a
-      year old, it says when it was last checked.
-    </p>
+  </PageHead>
+
+  <section aria-labelledby="sources">
+    <h2 id="sources">Where the data comes from</h2>
+    <dl>
+      {sources.map(([term, text]) => (
+        <div>
+          <dt>{term}</dt>
+          <dd>{text}</dd>
+        </div>
+      ))}
+    </dl>
   </section>
 
-  <section aria-labelledby="disclaimer">
-    <h2 id="disclaimer">Before you flash anything</h2>
+  <section aria-labelledby="answers">
+    <h2 id="answers">Reading the answers</h2>
+    <dl>
+      {answers.map(({ tone, stale, text, meaning }) => (
+        <div>
+          <dt>
+            <span class:list={['status', { stale }]} data-tone={tone}>
+              {text}
+            </span>
+          </dt>
+          <dd>{meaning}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="warning" aria-labelledby="disclaimer">
+    <h2 id="disclaimer">
+      <Icon name="warning" /> Before you flash anything
+    </h2>
     <p>
       Unlocking a bootloader and installing a ROM can wipe your data, brick your phone or void its
       warranty. This site isn't an install guide. Follow the ROM's own instructions for your exact
@@ -52,27 +129,86 @@ const endpoints = [
   <section aria-labelledby="api">
     <h2 id="api">API</h2>
     <p>
-      The whole dataset is available as static JSON, rebuilt on every change. No key, no rate limit.
-      Features missing from a support row are unknown.
+      The whole dataset is static JSON, rebuilt on every change. No key, no rate limit. Features
+      missing from a support row are unknown.
     </p>
-    <ul>
+    <dl>
       {endpoints.map(({ name, hint }) => (
-        <li>
-          <a href={`/api/${name}.json`}>
-            <code>/api/{name}.json</code>
-          </a>{' '}
-          - {hint}
-        </li>
+        <div>
+          <dt>
+            <a href={`/api/${name}.json`}>
+              <code>/api/{name}.json</code>
+            </a>
+          </dt>
+          <dd>{hint}</dd>
+        </div>
       ))}
-    </ul>
+    </dl>
   </section>
 
   <section aria-labelledby="licences">
     <h2 id="licences">Licences</h2>
-    <p>
-      The code is <a href={`${site.repo}/blob/main/LICENSE`}>MIT</a>. The data is
-      <a href={`${site.repo}/blob/main/data/LICENSE`}>CC BY-SA 4.0</a>, so you can reuse it as long
-      as you credit this project and share alike. ROM names and logos belong to their projects.
-    </p>
+    <Facts panel items={licences} />
+    <p>ROM names and logos belong to their projects.</p>
   </section>
 </Base>
+
+<style>
+  section {
+    max-inline-size: var(--page-narrow);
+  }
+
+  section > dl {
+    display: grid;
+    margin: 0;
+
+    > div {
+      display: grid;
+      gap: var(--space-2xs) var(--space-lg);
+      padding-block: var(--space-sm);
+    }
+
+    > div + div {
+      border-block-start: 1px solid var(--border);
+    }
+
+    dt {
+      font-weight: 500;
+    }
+
+    dd {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    @media (width >= 40rem) {
+      grid-template-columns: fit-content(14rem) 1fr;
+
+      > div {
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        align-items: baseline;
+      }
+    }
+  }
+
+  .stale {
+    --icon: url('/icons/stale.svg');
+  }
+
+  .warning {
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    background: var(--partial-bg);
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--partial-text);
+      font-size: var(--text-lg);
+    }
+  }
+</style>

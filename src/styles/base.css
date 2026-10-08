@@ -99,6 +99,10 @@ summary {
   color: var(--accent-text);
   font-weight: 500;
   cursor: pointer;
+
+  [open] > & {
+    margin-block-end: var(--space-md);
+  }
 }
 
 input,
