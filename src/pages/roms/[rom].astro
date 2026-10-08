@@ -8,9 +8,9 @@ import Facts from '../../components/ui/Facts.astro';
 import FilterBar from '../../components/ui/FilterBar.astro';
 import Icon from '../../components/ui/Icon.astro';
 import { getModel } from '../../lib/data/model.js';
-import { byBrand, romDeviceCard } from '../../lib/cards.js';
+import { byBrand, romDeviceCard, romGlance } from '../../lib/cards.js';
 import { deviceFilters, filterData } from '../../lib/filters.js';
-import { everywhereCells, googleApps, knownFeatures, romRelock } from '../../lib/facts.js';
+import { everywhereCells, knownFeatures, romOrg } from '../../lib/facts.js';
 import {
   reportedFeatures,
   splitByActive,
@@ -19,14 +19,14 @@ import {
   sameOnEveryRow,
   usedColumns,
 } from '../../lib/table.js';
-import { labelOf, yesNo } from '../../lib/labels.js';
+import { labelOf } from '../../lib/labels.js';
 import { plural } from '../../lib/text.js';
 
 export const getStaticPaths = () =>
   getModel().roms.map((rom) => ({ params: { rom: rom.key }, props: { rom } }));
 
 const { rom } = Astro.props;
-const { features } = getModel();
+const { features, roms } = getModel();
 const reported = reportedFeatures(features, rom.support);
 const [current, ended] = splitByActive(rom.support);
 const groupsOf = (list) => byBrand(list, (row) => row.device.brand, romDeviceCard);
@@ -52,7 +52,7 @@ const columns = usedColumns(
 const everywhere = [rom, ...(rom.variants ?? [])]
   .map((build) => ({ build, items: knownFeatures(features, everywhereCells(features, build)) }))
   .filter(({ items }) => items.length > 0);
-const { links, security } = rom;
+const glance = romGlance(rom, roms);
 const count = plural(current.length, 'device');
 ---
 
@@ -70,7 +70,7 @@ const count = plural(current.length, 'device');
       description: rom.description,
       applicationCategory: 'OperatingSystem',
       operatingSystem: 'Android',
-      url: links.website,
+      url: rom.links.website,
       offers: { '@type': 'Offer', price: 0, priceCurrency: 'GBP' },
     },
   ]}
@@ -80,14 +80,14 @@ const count = plural(current.length, 'device');
     <PageHead
       title={rom.name}
       logo={{ kind: 'roms', item: rom }}
-      meta={[count, rom.status === 'discontinued' && 'Discontinued']}
+      meta={[count, romOrg(rom), rom.status === 'discontinued' && 'Discontinued']}
       views={current.length > 0}
     >
       <p>{rom.description}</p>
       <ul class="links">
-        {Object.entries(links).map(([kind, href]) => (
+        {Object.entries(rom.links).map(([kind, href]) => (
           <li>
-            <a class="button small" href={href}>
+            <a class:list={['button small', { primary: kind === 'website' }]} href={href}>
               <Icon name={kind} /> {labelOf(kind)}
             </a>
           </li>
@@ -97,20 +97,14 @@ const count = plural(current.length, 'device');
 
     <section aria-labelledby="glance">
       <h2 id="glance">At a glance</h2>
-      <Facts
-        items={[
-          { label: 'Google apps', value: googleApps(rom) },
-          { label: 'App store', value: labelOf(rom.app_store) },
-          { label: 'Based on', value: labelOf(rom.base) },
-          { label: 'Install with', value: rom.install.map(labelOf).join(', ') },
-          { label: 'Relockable bootloader', value: romRelock(rom) },
-          { label: 'Verified boot', value: yesNo(security.verified_boot) },
-          { label: 'Security patches', value: labelOf(security.patches) },
-          { label: 'Root', value: yesNo(rom.root) },
-          { label: 'Run by', value: labelOf(rom.org) },
-          { label: 'Focus', value: rom.focus.map(labelOf).join(', ') },
-        ]}
-      />
+      <div class="glance">
+        {Object.entries(glance).map(([title, items]) => (
+          <div class="card">
+            <h3>{title}</h3>
+            <Facts items={items} />
+          </div>
+        ))}
+      </div>
     </section>
 
     {everywhere.length > 0 && (
@@ -184,6 +178,17 @@ const count = plural(current.length, 'device');
 
   h3 {
     margin-block-start: var(--space-sm);
+  }
+
+  .glance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-md);
+
+    h3 {
+      margin: 0;
+      font-size: var(--text-base);
+    }
   }
 
   .count {

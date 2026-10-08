@@ -65,12 +65,17 @@
   vertical-align: -0.125em;
 }
 
+/* The words set the baseline, so a status lines up with the text beside it */
 .status {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-2xs);
   color: var(--tone-text, inherit);
   font-weight: 500;
+
+  &::before {
+    align-self: center;
+  }
 }
 
 .badge {
@@ -92,6 +97,15 @@
     background: var(--tone-bg);
     color: var(--tone-text);
   }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .button {

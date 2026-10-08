@@ -1,4 +1,13 @@
-import { buildFact, deviceType, lockTone, unlockFact } from './facts.js';
+import {
+  buildFact,
+  deviceType,
+  googleApps,
+  lockTone,
+  romLatest,
+  romSecurity,
+  unlockFact,
+} from './facts.js';
+import { labelOf } from './labels.js';
 import { filterData } from './filters.js';
 import { romStatus } from './table.js';
 
@@ -57,3 +66,35 @@ export const romDeviceCard = (row) => {
     data: filterData(row.device, false),
   };
 };
+
+/** A ROM's app store or base by name, with its logo: one of our ROMs' own, or from logos/software */
+const software = (key, ours) => {
+  const item = { key, name: labelOf(key) };
+  if (key === 'none' || key === 'other') return { text: item.name };
+  return { text: item.name, logo: { kind: ours.has(key) ? 'roms' : 'software', item } };
+};
+
+/** The two cards atop a ROM's page, six facts apiece where the data allows */
+export function romGlance(rom, roms) {
+  const ours = new Map(roms.map((other) => [other.key, other]));
+  const security = romSecurity(rom);
+  const latest = romLatest(rom);
+  return {
+    Security: [
+      { label: 'Relockable bootloader', ...security.relockable },
+      { label: 'Verified boot', ...security.verified_boot },
+      { label: 'Built-in root', ...security.root },
+      { label: 'Security patches', ...security.patches },
+      { label: 'Latest patch', ...latest.patch },
+      { label: 'Latest build', ...latest.built },
+    ],
+    Software: [
+      { label: 'Android', text: latest.android },
+      { label: 'Google apps', text: googleApps(rom) },
+      { label: 'App store', ...software(rom.app_store, ours) },
+      { label: 'Based on', ...software(rom.base, ours), href: ours.get(rom.base)?.url },
+      { label: 'Install with', text: rom.install.map(labelOf) },
+      { label: 'Focus', text: rom.focus.map(labelOf) },
+    ],
+  };
+}

@@ -1,8 +1,8 @@
 # Logos
 
-Single-colour marks used to identify each brand and ROM. The site paints them as a CSS mask, so they always show in the current text colour.
+Single-colour marks used to identify each brand and ROM, and the app stores and bases ROMs are built on. The site paints them as a CSS mask, so they always show in the current text colour.
 
-Brand and ROM names and logos are trademarks of their respective owners and are used here only to identify them. No endorsement is implied.
+Brand, ROM and app names and logos are trademarks of their respective owners and are used here only to identify them. No endorsement is implied.
 
 | File | Source | Licence / terms |
 | --- | --- | --- |
@@ -32,7 +32,11 @@ Brand and ROM names and logos are trademarks of their respective owners and are 
 | `roms/iodeos.svg` | https://gitlab.com/iode/os/public_archive/blocker/iode/-/raw/main/android/app/src/main/res/drawable/ic_iode_foreground.xml | Trademark of iodé Technologies; file header AGPL-3.0-or-later |
 | `roms/evolutionx.svg` | https://raw.githubusercontent.com/Evolution-X/wiki/main/public/icon.svg | Trademark of Evolution X |
 | `roms/pixelos.svg` | https://pixelos.net/images/logo.svg | Trademark of PixelOS |
+| `software/aosp.svg` | https://unpkg.com/simple-icons@16.34.0/icons/android.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `software/fdroid.svg` | https://unpkg.com/simple-icons@16.34.0/icons/fdroid.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `software/play-store.svg` | https://unpkg.com/simple-icons@16.34.0/icons/googleplay.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `software/aurora.svg` | https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/app/src/main/res/drawable/ic_launcher_monochrome.xml | Trademark of Aurora OSS; file header GPL-3.0-or-later |
 
 Simple Icons releases its icon data under CC0-1.0, but its disclaimer notes that the logos themselves remain trademarks of their owners: https://github.com/simple-icons/simple-icons/blob/develop/DISCLAIMER.md
 
-To add a logo, drop a single-colour SVG named after the brand or ROM key into `brands/` or `roms/`; anything without one shows its initials.
+To add a logo, drop a single-colour SVG named after the brand or ROM key into `brands/` or `roms/`, or after a ROM's `app_store` or `base` into `software/`; anything without one shows its initials.

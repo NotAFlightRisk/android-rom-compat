@@ -12,6 +12,8 @@ const named = {
   cli: 'Command line',
   'n/a': 'N/A',
   rom: 'ROM',
+  'non-profit': 'Non-profit',
+  'near-stock': 'Near-stock',
 };
 
 export const labelOf = (value) =>

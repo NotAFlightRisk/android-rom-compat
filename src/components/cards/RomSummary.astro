@@ -7,12 +7,9 @@ import { plural } from '../../lib/text.js';
 
 const { rom, level = 3 } = Astro.props;
 const Heading = `h${level}`;
-const relock = romRelock(rom);
-const badges = [
-  googleApps(rom),
-  relock !== 'No' && (relock === 'Yes' ? 'Relockable bootloader' : 'Relocks on some devices'),
-  ...rom.focus.map(labelOf),
-].filter(Boolean);
+const relocks = { working: 'Relockable bootloader', partial: 'Relocks on some devices' };
+const relock = relocks[romRelock(rom).tone];
+const badges = [googleApps(rom), relock, ...rom.focus.map(labelOf)].filter(Boolean);
 ---
 
 <article class="card summary">
@@ -61,14 +58,5 @@ const badges = [
 
   p {
     color: var(--text-muted);
-  }
-
-  .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2xs);
-    margin: 0;
-    padding: 0;
-    list-style: none;
   }
 </style>

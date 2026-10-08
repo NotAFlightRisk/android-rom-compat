@@ -35,8 +35,9 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
 <style>
   .logo {
     --size: 2.5rem;
-    /* How wide a mark may get, in plate heights */
+    /* How wide and how tall a mark may get, in plate heights */
     --widest: 1.5;
+    --tallest: 0.56;
     display: inline-grid;
     place-items: center;
     flex: none;
@@ -48,11 +49,16 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
     background: var(--surface-raised);
     color: var(--text);
 
-    /* Small enough to sit in a list, so every plate is square and the names beside them line up */
+    /* A line of text high, so every plate is square and the names beside them line up */
     &[data-size='xs'] {
-      --size: 1.25rem;
+      --size: 1.5rem;
       --widest: 0.85;
+      --tallest: 0.7;
       padding: 0;
+
+      .initials {
+        font-size: calc(var(--size) * 0.5);
+      }
     }
 
     &[data-size='sm'] {
@@ -66,7 +72,7 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
 
   /* Wide wordmarks get shorter, so no plate grows past --widest squares */
   .mark {
-    block-size: calc(var(--size) * min(0.56, var(--widest) / var(--aspect)));
+    block-size: calc(var(--size) * min(var(--tallest), var(--widest) / var(--aspect)));
     aspect-ratio: var(--aspect);
     background: currentColor;
     mask: var(--mark) center / contain no-repeat;

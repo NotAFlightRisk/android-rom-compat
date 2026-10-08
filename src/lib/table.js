@@ -1,4 +1,4 @@
-import { labelOf, yesNo } from './labels.js';
+import { labelOf } from './labels.js';
 import { issueUrl } from './site.js';
 import { isLink } from './text.js';
 import { formatMonth } from './dates.js';
@@ -10,8 +10,8 @@ import {
   maintainerOf,
   needsOf,
   relockOf,
-  romRelock,
   reportContext,
+  romSecurity,
   staleText,
   statusText,
 } from './facts.js';
@@ -31,7 +31,7 @@ export const romColumns = [
   { key: 'verified_boot', label: 'Verified boot' },
   { key: 'patches', label: 'Patches' },
   { key: 'install', label: 'Install with' },
-  { key: 'root', label: 'Root' },
+  { key: 'root', label: 'Built-in root' },
 ];
 
 export const romCells = (rom) => ({
@@ -40,11 +40,8 @@ export const romCells = (rom) => ({
   app_store: text(labelOf(rom.app_store)),
   focus: text(rom.focus.map(labelOf).join(', ')),
   org: text(labelOf(rom.org)),
-  relockable: text(romRelock(rom)),
-  verified_boot: text(yesNo(rom.security.verified_boot)),
-  patches: text(labelOf(rom.security.patches)),
+  ...romSecurity(rom),
   install: text(rom.install.map(labelOf).join(', ')),
-  root: text(yesNo(rom.root)),
 });
 
 export const latestCell = ({ latest }, detailed = false) => {

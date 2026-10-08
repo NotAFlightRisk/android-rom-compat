@@ -12,7 +12,9 @@ import {
   maintainerOf,
   needsOf,
   relockFact,
+  romLatest,
   romRelock,
+  romSecurity,
   statusText,
   stockFact,
   unlockFact,
@@ -125,10 +127,41 @@ test('relock and install needs only say what the ROM says', () => {
 
 test("a ROM's relock answer gives way when its own device pages say otherwise", () => {
   const rom = { security: { relockable_bootloader: false }, support: [{ active: true }] };
-  assert.equal(romRelock(rom), 'No');
+  assert.deepEqual(romRelock(rom), { tone: 'broken', text: 'No' });
   rom.support.push({ active: true, relock: { status: 'yes', note: 'Check first' } });
-  assert.equal(romRelock(rom), 'On some devices');
-  assert.equal(romRelock({ security: { relockable_bootloader: true }, support: [] }), 'Yes');
+  assert.deepEqual(romRelock(rom), { tone: 'partial', text: 'On some devices' });
+  const relockable = { security: { relockable_bootloader: true }, support: [] };
+  assert.deepEqual(romRelock(relockable), { tone: 'working', text: 'Yes' });
+});
+
+test("a ROM's security answers are toned, so the weak spots stand out", () => {
+  const security = { relockable_bootloader: true, verified_boot: false, patches: 'best-effort' };
+  assert.deepEqual(romSecurity({ security, root: true, support: [] }), {
+    relockable: { tone: 'working', text: 'Yes' },
+    verified_boot: { tone: 'broken', text: 'No' },
+    patches: { tone: 'partial', text: 'Best effort' },
+    root: { tone: 'partial', text: 'Yes' },
+  });
+});
+
+test("a ROM's newest Android, build and patch come from the devices it still supports", () => {
+  const row = (android, date, patch, active = true) => ({
+    active,
+    android,
+    latest: { date, patch },
+  });
+  const support = [
+    row(15, '2026-08-20', '2026-07-01'),
+    row(16, '2026-09-30'),
+    row(17, '2026-10-01', '2026-10-01', false),
+  ];
+  assert.deepEqual(romLatest({ support }, Date.parse('2026-10-08')), {
+    android: '15 to 16',
+    built: { tone: 'working', text: '30 Sep 2026' },
+    patch: { tone: 'partial', text: 'Jul 2026' },
+  });
+  const unknown = { android: undefined, built: undefined, patch: undefined };
+  assert.deepEqual(romLatest({ support: [] }), unknown);
 });
 
 test('a maintainer is a name, with a link when the ROM gives one', () => {
