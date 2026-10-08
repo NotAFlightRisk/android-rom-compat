@@ -31,9 +31,25 @@ const steps = [
   ],
   ['It opens a pull request', 'With your name on the commit.'],
 ];
+
+const guidelines = [
+  [
+    'Always link a source',
+    `A ROM's own device page, wiki or changelog is best. A "works for me" from a forum is fine too, just say so in a note.`,
+  ],
+  [
+    "Don't guess",
+    "If you can't back something up, leave it out. It shows as unknown, and a gap is better than a wrong answer.",
+  ],
+  [
+    'Note what goes wrong',
+    "Anything that only partly works, or doesn't work, needs a note saying what.",
+  ],
+];
 ---
 
 <Base
+  narrow
   title="Contribute"
   description="Add a device, report what works on a ROM, or fix a mistake. Everything lives in YAML files on GitHub."
   crumbs={[{ label: 'Contribute', url: '/contribute/' }]}
@@ -93,33 +109,31 @@ const steps = [
     <a class="button" href={`${site.repo}/blob/main/.github/CONTRIBUTING.md`}>
       <Icon name="docs" /> Contributing guide
     </a>
-    <ul class="tips">
-      <li>
-        <strong>Always link a source</strong>
-        <p>
-          A ROM's own device page, wiki or changelog is best. A "works for me" from a forum is fine
-          too, just say so in a note.
-        </p>
-      </li>
-      <li>
-        <strong>
-          Leave <code>data/upstream/</code> alone
-        </strong>
-        <p>
-          It's rebuilt from each ROM's own device list every Monday, so edits there don't last a
-          week. If it's wrong, it's wrong at the source, so{' '}
-          <a href={issueUrl('correction')}>tell us with the fix a mistake form</a>.
-        </p>
-      </li>
-    </ul>
+    <details>
+      <summary>Before you edit</summary>
+      <dl class="pairs">
+        {guidelines.map(([title, text]) => (
+          <div>
+            <dt>{title}</dt>
+            <dd>{text}</dd>
+          </div>
+        ))}
+        <div>
+          <dt>
+            Leave <code>data/upstream/</code> alone
+          </dt>
+          <dd>
+            It's rebuilt from each ROM's own device list every Monday, so edits there don't last a
+            week. If it's wrong, it's wrong at the source, so{' '}
+            <a href={issueUrl('correction')}>tell us with the fix a mistake form</a>.
+          </dd>
+        </div>
+      </dl>
+    </details>
   </section>
 </Base>
 
 <style>
-  section {
-    max-inline-size: var(--page-narrow);
-  }
-
   ul,
   ol {
     margin: 0;
@@ -183,14 +197,10 @@ const steps = [
     font-size: var(--text-sm);
   }
 
-  .steps,
-  .tips {
-    display: grid;
-    gap: var(--space-md) var(--space-lg);
-  }
-
   .steps {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-md) var(--space-lg);
     counter-reset: step;
 
     li {
@@ -216,26 +226,13 @@ const steps = [
       }
     }
 
+    strong {
+      font-weight: 600;
+    }
+
     p {
       grid-column: 2;
     }
-  }
-
-  .tips {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-
-    li {
-      display: grid;
-      align-content: start;
-      gap: var(--space-2xs);
-      padding: var(--space-md);
-      border-radius: var(--radius-lg);
-      background: var(--surface-raised);
-    }
-  }
-
-  strong {
-    font-weight: 600;
   }
 
   .button {

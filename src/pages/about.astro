@@ -1,7 +1,6 @@
 ---
 import Base from '../components/layout/Base.astro';
 import PageHead from '../components/layout/PageHead.astro';
-import Facts from '../components/ui/Facts.astro';
 import Icon from '../components/ui/Icon.astro';
 import { staleText, statusText } from '../lib/facts.js';
 import { site } from '../lib/site.js';
@@ -48,16 +47,6 @@ const endpoints = [
   { name: 'features', hint: 'The features we track.' },
 ];
 
-const licences = [
-  { label: 'Code', text: 'MIT', href: `${site.repo}/blob/main/LICENSE` },
-  {
-    label: 'Data',
-    text: 'CC BY-SA 4.0',
-    href: `${site.repo}/blob/main/data/LICENSE`,
-    note: 'Reuse it, as long as you credit this project and share alike.',
-  },
-];
-
 const dataset = {
   '@type': 'Dataset',
   name: `${site.name} data`,
@@ -75,6 +64,7 @@ const dataset = {
 ---
 
 <Base
+  narrow
   title="About"
   description="What Android ROM Compat is, where the data comes from, how to use the API, and the licences."
   crumbs={[{ label: 'About', url: '/about/' }]}
@@ -89,7 +79,7 @@ const dataset = {
 
   <section aria-labelledby="sources">
     <h2 id="sources">Where the data comes from</h2>
-    <dl>
+    <dl class="pairs">
       {sources.map(([term, text]) => (
         <div>
           <dt>{term}</dt>
@@ -101,7 +91,7 @@ const dataset = {
 
   <section aria-labelledby="answers">
     <h2 id="answers">Reading the answers</h2>
-    <dl>
+    <dl class="pairs">
       {answers.map(({ tone, stale, text, meaning }) => (
         <div>
           <dt>
@@ -132,7 +122,7 @@ const dataset = {
       The whole dataset is static JSON, rebuilt on every change. No key, no rate limit. Features
       missing from a support row are unknown.
     </p>
-    <dl>
+    <dl class="pairs">
       {endpoints.map(({ name, hint }) => (
         <div>
           <dt>
@@ -148,50 +138,29 @@ const dataset = {
 
   <section aria-labelledby="licences">
     <h2 id="licences">Licences</h2>
-    <Facts panel items={licences} />
-    <p>ROM names and logos belong to their projects.</p>
+    <dl class="pairs">
+      <div>
+        <dt>Code</dt>
+        <dd>
+          <a href={`${site.repo}/blob/main/LICENSE`}>MIT</a>
+        </dd>
+      </div>
+      <div>
+        <dt>Data</dt>
+        <dd>
+          <a href={`${site.repo}/blob/main/data/LICENSE`}>CC BY-SA 4.0</a>. Reuse it, as long as you
+          credit this project and share alike.
+        </dd>
+      </div>
+      <div>
+        <dt>Names and logos</dt>
+        <dd>ROM and phone brand names and logos belong to their owners.</dd>
+      </div>
+    </dl>
   </section>
 </Base>
 
 <style>
-  section {
-    max-inline-size: var(--page-narrow);
-  }
-
-  section > dl {
-    display: grid;
-    margin: 0;
-
-    > div {
-      display: grid;
-      gap: var(--space-2xs) var(--space-lg);
-      padding-block: var(--space-sm);
-    }
-
-    > div + div {
-      border-block-start: 1px solid var(--border);
-    }
-
-    dt {
-      font-weight: 500;
-    }
-
-    dd {
-      margin: 0;
-      color: var(--text-muted);
-    }
-
-    @media (width >= 40rem) {
-      grid-template-columns: fit-content(14rem) 1fr;
-
-      > div {
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
-        align-items: baseline;
-      }
-    }
-  }
-
   .stale {
     --icon: url('/icons/stale.svg');
   }

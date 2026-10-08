@@ -20,6 +20,7 @@ const {
   ogType = 'website',
   noindex = false,
   headerSearch = true,
+  narrow = false,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const fullTitle = crumbs.length > 1 || title === site.name ? title : `${title} | ${site.name}`;
@@ -109,7 +110,7 @@ const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
       Skip to content
     </a>
     <Header search={headerSearch} />
-    <main id="main">
+    <main id="main" class:list={{ narrow }}>
       {crumbs.length > 0 && <Breadcrumbs trail={trail} />}
       <slot />
     </main>

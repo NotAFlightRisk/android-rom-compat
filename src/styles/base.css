@@ -182,6 +182,15 @@ section {
   gap: var(--space-md);
 }
 
+/* Text pages keep to one narrower column, which their paragraphs fill */
+.narrow > section {
+  max-inline-size: var(--page-narrow);
+
+  p {
+    max-inline-size: none;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
