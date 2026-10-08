@@ -37,6 +37,9 @@ export function unlockFact({ bootloader, brand }) {
   };
 }
 
+/** "Tablet" or "Handheld", since a phone goes without saying */
+export const deviceType = ({ type }) => (type && type !== 'phone' ? labelOf(type) : undefined);
+
 /** Official updates from the manufacturer, e.g. "Security updates until Apr 2032" */
 export function stockFact(stock, now = today) {
   if (!stock) return undefined;

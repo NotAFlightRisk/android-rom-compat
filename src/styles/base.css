@@ -121,6 +121,50 @@ select {
   }
 }
 
+input[type='checkbox'] {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  flex: none;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  margin: 0;
+  border: 1.5px solid var(--text-muted);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease-out,
+    border-color 150ms ease-out;
+
+  &::before {
+    content: '';
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    background: var(--on-accent);
+    mask: url('/icons/working.svg') center / contain no-repeat;
+    scale: 0;
+    transition: scale 150ms ease-out;
+  }
+
+  &:hover {
+    border-color: var(--text);
+  }
+
+  &:checked {
+    border-color: var(--accent-strong);
+    background: var(--accent-strong);
+
+    &::before {
+      scale: 1;
+    }
+  }
+
+  @media (forced-colors: active) {
+    appearance: auto;
+  }
+}
+
 main {
   display: grid;
   align-content: start;

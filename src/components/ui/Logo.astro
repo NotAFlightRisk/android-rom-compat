@@ -18,12 +18,15 @@ const [, , width, height] =
     ?.match(/viewBox="([^"]+)"/)[1]
     .split(' ')
     .map(Number) ?? [];
+const aspect = width / height;
+// A wordmark too wide to read on the smallest plate gives way to initials, as a missing logo does
+const legible = urls[file] && !(size === 'xs' && aspect > 2.5);
 const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i)[0].toUpperCase();
 ---
 
 <span class="logo" data-size={size} aria-hidden="true">
-  {urls[file] ? (
-    <span class="mark" style={`--mark: url(${urls[file]}); --aspect: ${width / height}`} />
+  {legible ? (
+    <span class="mark" style={`--mark: url(${urls[file]}); --aspect: ${aspect}`} />
   ) : (
     <span class="initials">{initials}</span>
   )}
@@ -32,6 +35,8 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
 <style>
   .logo {
     --size: 2.5rem;
+    /* How wide a mark may get, in plate heights */
+    --widest: 1.5;
     display: inline-grid;
     place-items: center;
     flex: none;
@@ -43,6 +48,13 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
     background: var(--surface-raised);
     color: var(--text);
 
+    /* Small enough to sit in a list, so every plate is square and the names beside them line up */
+    &[data-size='xs'] {
+      --size: 1.25rem;
+      --widest: 0.85;
+      padding: 0;
+    }
+
     &[data-size='sm'] {
       --size: 1.75rem;
     }
@@ -52,9 +64,9 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
     }
   }
 
-  /* Wide wordmarks get shorter, so every plate stays within about one and a half squares */
+  /* Wide wordmarks get shorter, so no plate grows past --widest squares */
   .mark {
-    block-size: calc(var(--size) * min(0.56, 1.5 / var(--aspect)));
+    block-size: calc(var(--size) * min(0.56, var(--widest) / var(--aspect)));
     aspect-ratio: var(--aspect);
     background: currentColor;
     mask: var(--mark) center / contain no-repeat;

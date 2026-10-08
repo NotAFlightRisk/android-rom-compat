@@ -2,7 +2,6 @@
 import Base from '../../components/layout/Base.astro';
 import PageHead from '../../components/layout/PageHead.astro';
 import DeviceList from '../../components/ui/DeviceList.astro';
-import Logo from '../../components/ui/Logo.astro';
 import { getModel } from '../../lib/data/model.js';
 
 const { devices, roms, brands } = getModel();
@@ -18,62 +17,5 @@ const { devices, roms, brands } = getModel();
     meta={[`${devices.length} phones, tablets and handhelds`, `${brands.length} brands`]}
     views
   />
-  <details>
-    <summary>Browse all {brands.length} brands</summary>
-    <ul class="brands">
-      {brands.map((brand) => (
-        <li>
-          <a href={brand.url}>
-            <Logo kind="brands" item={brand} size="sm" />
-            {brand.name}
-            <span>{brand.devices.length}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </details>
   <DeviceList id="devices" label="Devices" devices={devices} roms={roms} brands={brands} />
 </Base>
-
-<style>
-  details[open] > summary {
-    margin-block-end: var(--space-sm);
-  }
-
-  .brands {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    a {
-      display: flex;
-      align-items: center;
-      gap: var(--space-xs);
-      padding: var(--space-2xs) var(--space-sm) var(--space-2xs) var(--space-2xs);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-pill);
-      color: var(--text);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      text-decoration: none;
-      transition: border-color 150ms ease-out;
-
-      &:hover {
-        border-color: var(--border-strong);
-        background: var(--surface-raised);
-      }
-    }
-
-    span {
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    :global(.logo) {
-      border-radius: var(--radius-pill);
-    }
-  }
-</style>
