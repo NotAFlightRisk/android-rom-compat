@@ -1,9 +1,11 @@
 ---
-// Labelled facts. A tone shows the answer as a status, and a panel boxes them up as a summary
+// Labelled facts, one to a row, or boxed up side by side as a panel. A tone shows the answer as a
+// status, a list of answers shows as badges, and an answer can bring a logo and a link
 import Icon from './Icon.astro';
+import Logo from './Logo.astro';
 
 const { items, panel = false } = Astro.props;
-const shown = items.filter((item) => item.value !== undefined && item.value !== '');
+const shown = items.filter((item) => item.text?.length > 0);
 ---
 
 <dl class:list={{ panel }}>
@@ -11,18 +13,25 @@ const shown = items.filter((item) => item.value !== undefined && item.value !== 
     <div>
       <dt>{item.label}</dt>
       <dd>
-        {item.tone ? (
+        {Array.isArray(item.text) ? (
+          <ul class="badges">
+            {item.text.map((part) => (
+              <li class="badge">{part}</li>
+            ))}
+          </ul>
+        ) : item.tone ? (
           <span class="status" data-tone={item.tone}>
-            {item.value}
+            {item.text}
           </span>
-        ) : item.code ? (
-          <code>{item.value}</code>
         ) : (
-          item.value
+          <span class="answer">
+            {item.logo && <Logo {...item.logo} size="xs" />}
+            {item.href ? <a href={item.href}>{item.text}</a> : item.text}
+          </span>
         )}
         {item.note && <p>{item.note}</p>}
         {item.source && (
-          <a href={item.source}>
+          <a class="source" href={item.source}>
             {new URL(item.source).hostname} <Icon name="external" />
           </a>
         )}
@@ -34,8 +43,6 @@ const shown = items.filter((item) => item.value !== undefined && item.value !== 
 <style>
   dl {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
-    gap: var(--space-md) var(--space-lg);
     margin: 0;
   }
 
@@ -57,15 +64,42 @@ const shown = items.filter((item) => item.value !== undefined && item.value !== 
       font-weight: 400;
     }
 
-    a {
+    .source {
       font-size: var(--text-sm);
       font-weight: 400;
     }
   }
 
+  .answer {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+
+    :global(.logo) {
+      align-self: center;
+    }
+  }
+
+  /* Rows share the columns, so the answers line up and read down as one list */
+  dl:not(.panel) {
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-lg);
+
+    > div {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      align-items: baseline;
+      padding-block: var(--space-xs);
+    }
+
+    > div + div {
+      border-block-start: 1px solid var(--border);
+    }
+  }
+
   .panel {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    gap: 0;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;

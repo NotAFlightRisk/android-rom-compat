@@ -34,7 +34,7 @@ const Heading = `h${level}`;
               </span>
             )}
             {item.chips.length > 0 && (
-              <ul class="chips" aria-label="ROMs">
+              <ul class="badges" aria-label="ROMs">
                 {item.chips.map((chip) => (
                   <li class="badge" data-tone={chip.tone}>
                     {chip.note ? `${chip.text}, ${chip.note}` : chip.text}
@@ -138,12 +138,6 @@ const Heading = `h${level}`;
       &::before {
         display: none;
       }
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2xs);
     }
 
     /* On phones a group reads as one list rather than a stack of separate cards */

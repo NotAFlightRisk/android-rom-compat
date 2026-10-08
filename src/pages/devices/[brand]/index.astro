@@ -42,10 +42,9 @@ const policy = brand.bootloader && unlockFact({ bootloader: brand.bootloader, br
       items={[
         {
           label: 'Bootloader policy',
-          value: policy.text ?? policy.note,
-          tone: policy.tone,
+          ...policy,
+          text: policy.text ?? policy.note,
           note: policy.text && policy.note,
-          source: policy.source,
         },
       ]}
     />

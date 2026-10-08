@@ -72,14 +72,52 @@ export function buildFact(latest, now) {
 export const relockOf = ({ relock }) =>
   typeof relock === 'string' ? { status: relock } : (relock ?? { status: 'unknown' });
 
+/** Yes or no, for something a ROM is better off having */
+const answer = (yes) => ({ tone: yes ? 'working' : 'broken', text: yesNo(yes) });
+
 /** Whether a ROM relocks the bootloader, allowing for devices whose own page says otherwise */
 export const romRelock = (rom) => {
   const relockable = rom.security.relockable_bootloader;
   const differs = rom.support.some(
     (row) => row.active && relockOf(row).status === (relockable ? 'no' : 'yes'),
   );
-  return differs ? 'On some devices' : yesNo(relockable);
+  return differs ? { tone: 'partial', text: 'On some devices' } : answer(relockable);
 };
+
+const patchTone = { monthly: 'working', 'best-effort': 'partial', none: 'broken' };
+
+/** How well a ROM keeps a device secure, keyed like the ROMs table's columns */
+export const romSecurity = (rom) => ({
+  relockable: romRelock(rom),
+  verified_boot: answer(rom.security.verified_boot),
+  patches: { tone: patchTone[rom.security.patches], text: labelOf(rom.security.patches) },
+  // Root is a trade-off rather than a flaw, so a ROM that ships it reads amber, not red
+  root: { tone: rom.root ? 'partial' : 'working', text: yesNo(rom.root) },
+});
+
+const span = (low, high) => (low === high ? `${high}` : `${low} to ${high}`);
+
+/** The Android versions, newest build and newest patch across the devices a ROM still supports */
+export function romLatest(rom, now) {
+  const active = rom.support.filter((row) => row.active);
+  const newest = (values) => values.filter(Boolean).sort().at(-1);
+  const versions = active.map((row) => Number(row.android)).filter(Boolean);
+  const built = newest(active.map((row) => row.latest?.date));
+  const patch = newest(active.map((row) => row.latest?.patch));
+  return {
+    android: versions.length > 0 ? span(Math.min(...versions), Math.max(...versions)) : undefined,
+    built: built && { tone: ageTone(built, now), text: formatDate(built) },
+    patch: patch && { tone: ageTone(patch, now), text: formatMonth(patch) },
+  };
+}
+
+const orgWords = {
+  company: 'Run by a company',
+  'non-profit': 'Run by a non-profit',
+  community: 'Community project',
+};
+
+export const romOrg = ({ org }) => orgWords[org];
 
 const relockWords = { yes: 'Supported', no: 'Not supported' };
 
