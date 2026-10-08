@@ -28,7 +28,7 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
   {legible ? (
     <span class="mark" style={`--mark: url(${urls[file]}); --aspect: ${aspect}`} />
   ) : (
-    <span class="initials">{initials}</span>
+    <span class="initials" data-initials={initials} />
   )}
 </span>
 
@@ -90,5 +90,10 @@ const initials = item.name.length <= 3 ? item.name : item.name.match(/[a-z0-9]/i
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1;
+
+    /* Drawn by CSS, so a dropdown option's text is just the name */
+    &::before {
+      content: attr(data-initials);
+    }
   }
 </style>
