@@ -1,0 +1,75 @@
+---
+const { pages, depth = 1 } = Astro.props;
+---
+
+<ul class="page-tree" data-depth={depth} role="list">
+  {pages.map((page) => (
+    <li>
+      <a href={page.url}>
+        {page.label} {page.code && <code>{page.code}</code>}
+      </a>
+      {page.children?.length > 0 && <Astro.self pages={page.children} depth={depth + 1} />}
+    </li>
+  ))}
+</ul>
+
+<style is:global>
+  /* Global under .page-tree, like .matrix, so hundreds of links each skip a scoping attribute */
+  .page-tree {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    code {
+      margin-inline-start: var(--space-2xs);
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+    }
+
+    &[data-depth='1'] {
+      display: grid;
+      gap: var(--space-lg);
+
+      > li > a {
+        color: var(--text);
+        font-size: var(--text-lg);
+        font-weight: 600;
+      }
+    }
+
+    &[data-depth='2'] {
+      columns: 14rem;
+      column-gap: var(--space-xl);
+      margin-block-start: var(--space-sm);
+
+      > li {
+        break-inside: avoid;
+      }
+
+      > li > a {
+        color: var(--text);
+        font-weight: 500;
+      }
+    }
+
+    &[data-depth='3'] {
+      margin-block: var(--space-2xs) var(--space-md);
+      padding-inline-start: var(--space-sm);
+      border-inline-start: 1px solid var(--border);
+      font-size: var(--text-sm);
+
+      > li {
+        padding-inline-start: var(--space-sm);
+        text-indent: calc(-1 * var(--space-sm));
+      }
+    }
+  }
+</style>

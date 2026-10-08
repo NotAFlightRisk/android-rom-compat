@@ -1,0 +1,36 @@
+---
+import Base from '../components/layout/Base.astro';
+import PageHead from '../components/layout/PageHead.astro';
+import PageTree from '../components/ui/PageTree.astro';
+import { getModel } from '../lib/data/model.js';
+
+const { brands, devices, roms } = getModel();
+const pages = [
+  { label: 'Home', url: '/' },
+  {
+    label: 'Devices',
+    url: '/devices/',
+    children: brands.map((brand) => ({
+      label: brand.name,
+      url: brand.url,
+      children: brand.devices.map((device) => ({
+        label: device.name,
+        url: device.url,
+        code: device.codenames[0],
+      })),
+    })),
+  },
+  { label: 'ROMs', url: '/roms/', children: roms.map(({ name, url }) => ({ label: name, url })) },
+  { label: 'Contribute', url: '/contribute/' },
+  { label: 'About', url: '/about/' },
+];
+---
+
+<Base
+  title="Sitemap"
+  description={`Every page in one list: all ${devices.length} devices by brand, the ${roms.length} ROMs, and the rest of the site.`}
+  crumbs={[{ label: 'Sitemap', url: '/sitemap/' }]}
+>
+  <PageHead title="Sitemap" />
+  <PageTree pages={pages} />
+</Base>
