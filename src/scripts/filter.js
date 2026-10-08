@@ -15,6 +15,23 @@ function cardSorter(grid, items) {
   };
 }
 
+/** The Filters button opens the tray of dropdowns, and counts how many of them are in use */
+function filterTray(form) {
+  const toggle = form.querySelector('[aria-expanded]');
+  if (!toggle) return () => {};
+  const tray = document.getElementById(toggle.getAttribute('aria-controls'));
+  const tally = toggle.querySelector('[data-tally]');
+  const clear = tray.querySelector('[data-clear]');
+  toggle.addEventListener('click', () => {
+    toggle.setAttribute('aria-expanded', tray.hidden);
+    tray.hidden = !tray.hidden;
+  });
+  return (inUse) => {
+    tally.textContent = inUse;
+    tally.hidden = clear.hidden = inUse === 0;
+  };
+}
+
 /**
  * Filters the [data-search] items in every list a FilterBar controls (cards and table rows),
  * mirrored into the URL. Each select matches the item's space-separated data attribute of the
@@ -36,6 +53,7 @@ export function enhanceFilter(form) {
   const count = form.querySelector('[data-count]');
   const empty = form.querySelector('[data-empty]');
   const emptyEnded = form.querySelector('[data-empty-ended]');
+  const showInUse = filterTray(form);
   const params = new URLSearchParams(location.search);
 
   query.value = params.get('q') ?? '';
@@ -62,6 +80,7 @@ export function enhanceFilter(form) {
     count.textContent = shown === items.length ? `${shown} shown` : `${shown} of ${items.length}`;
     empty.hidden = showable.length > 0;
     if (emptyEnded) emptyEnded.hidden = shown > 0 || showable.length === 0;
+    showInUse(filters.filter((select) => select.value).length + Number(ended?.checked ?? 0));
   }
 
   const sortCards = cardSorter(first, lists[0]);
@@ -86,11 +105,26 @@ export function enhanceFilter(form) {
     history.replaceState(history.state, '', url);
   }
 
-  form.addEventListener('submit', (event) => event.preventDefault());
-  form.addEventListener('input', () => {
+  function update() {
     apply();
     sort();
     save();
+  }
+
+  function clear() {
+    query.value = '';
+    for (const select of filters) select.value = '';
+    if (ended) ended.checked = false;
+    update();
+  }
+
+  form.addEventListener('submit', (event) => event.preventDefault());
+  form.addEventListener('input', update);
+  const clears = form.querySelectorAll('[data-clear]');
+  clears.forEach((button) => button.addEventListener('click', clear));
+  form.querySelector('[data-show-ended]')?.addEventListener('click', () => {
+    ended.checked = true;
+    update();
   });
   apply();
   sort();

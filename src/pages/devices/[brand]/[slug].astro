@@ -16,9 +16,8 @@ import {
   supportColumns,
   usedColumns,
 } from '../../../lib/table.js';
-import { buildFact, stockFact, unlockFact } from '../../../lib/facts.js';
+import { buildFact, deviceType, stockFact, unlockFact } from '../../../lib/facts.js';
 import { formatDate } from '../../../lib/dates.js';
-import { labelOf } from '../../../lib/labels.js';
 import { listOf } from '../../../lib/text.js';
 
 export const getStaticPaths = () =>
@@ -33,6 +32,12 @@ const { stock, support } = device;
 const [current, ended] = splitByActive(support);
 const unlock = unlockFact(device);
 const updates = stockFact(stock);
+const facts = [
+  { label: 'Bootloader', value: unlock.text, ...unlock },
+  updates && { label: 'Stock Android', value: updates.text, ...updates },
+].filter(Boolean);
+// A bare "Unknown" says nothing, so the panel only shows once a fact has something to tell
+const telling = facts.some((fact) => fact.tone !== 'unknown' || fact.note || fact.source);
 const quiet = new Set(
   [...featuresFrom(features, support, 'none'), ...featuresFrom(features, support, 'hardware')].map(
     ({ key }) => key,
@@ -73,7 +78,6 @@ const columns = usedColumns(
   [...currentRows, ...endedRows],
 );
 
-const type = device.type && device.type !== 'phone' ? labelOf(device.type) : undefined;
 const romNames = current.map((row) => row.rom.name);
 const codename = device.codenames[0];
 ---
@@ -116,7 +120,7 @@ const codename = device.codenames[0];
         { text: device.codenames.join(', '), code: true },
         device.released && `Released ${device.released}`,
         device.soc,
-        type,
+        deviceType(device),
       ]}
       views={current.length > 0}
     >
@@ -127,13 +131,7 @@ const codename = device.codenames[0];
       )}
     </PageHead>
 
-    <Facts
-      panel
-      items={[
-        { label: 'Bootloader', value: unlock.text, ...unlock },
-        updates && { label: 'Stock Android', value: updates.text, ...updates },
-      ].filter(Boolean)}
-    />
+    {telling && <Facts panel items={facts} />}
 
     <section aria-labelledby="roms">
       <h2 id="roms">ROMs {current.length > 0 && <span class="count">{current.length}</span>}</h2>

@@ -1,0 +1,105 @@
+---
+// A dropdown whose options can show a brand or ROM logo. Browsers that can style a select's
+// picker draw the logos, and the rest keep their own plain one
+import Logo from './Logo.astro';
+
+const { name, label, options, logos, ...attrs } = Astro.props;
+---
+
+<label {...attrs}>
+  <span class="visually-hidden">{label}</span>
+  <select name={name}>
+    <button>
+      <selectedcontent></selectedcontent>
+    </button>
+    {options.map(([value, text]) => (
+      <option value={value}>
+        {logos && value && <Logo kind={logos} item={{ key: value, name: text }} size="xs" />}
+        {text}
+      </option>
+    ))}
+  </select>
+</label>
+
+<style>
+  select {
+    max-inline-size: 100%;
+  }
+
+  @supports (appearance: base-select) {
+    select,
+    ::picker(select) {
+      appearance: base-select;
+    }
+
+    select {
+      align-items: center;
+      gap: var(--space-xs);
+
+      &::picker-icon {
+        content: '';
+        inline-size: 1em;
+        block-size: 1em;
+        background: var(--text-muted);
+        mask: url('/icons/chevron-down.svg') center / contain no-repeat;
+        transition: rotate 150ms ease-out;
+      }
+
+      &:open::picker-icon {
+        rotate: 180deg;
+      }
+    }
+
+    button,
+    selectedcontent {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      white-space: nowrap;
+    }
+
+    ::picker(select) {
+      max-block-size: min(22rem, 60dvh);
+      margin-block: var(--space-2xs);
+      padding: var(--space-2xs);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-card);
+      box-shadow: var(--shadow);
+    }
+
+    option {
+      gap: var(--space-xs);
+      padding: var(--space-2xs) var(--space-xs);
+      border-radius: var(--radius-sm);
+
+      &:hover,
+      &:focus-visible {
+        outline: none;
+        background: var(--surface-raised);
+      }
+
+      &:checked {
+        font-weight: 500;
+      }
+
+      &::checkmark {
+        content: '';
+        order: 1;
+        inline-size: 1em;
+        block-size: 1em;
+        margin-inline-start: auto;
+        background: var(--accent-text);
+        mask: url('/icons/working.svg') center / contain no-repeat;
+      }
+    }
+
+    @media (forced-colors: active) {
+      select::picker-icon,
+      option::checkmark {
+        forced-color-adjust: none;
+        background: CanvasText;
+      }
+    }
+  }
+</style>

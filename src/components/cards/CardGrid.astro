@@ -22,8 +22,12 @@ const Heading = `h${level}`;
               {brand && item.prefix && <span class="prefix">{item.prefix} </span>}
               {item.title}
             </a>
-            <code>{item.code}</code>
-            {item.meta && <p class="meta">{item.meta}</p>}
+            <p class="meta">
+              <code>{item.code}</code>
+              {item.meta.map((part) => (
+                <span>{part}</span>
+              ))}
+            </p>
             {item.status && (
               <span class="status" data-tone={item.status.tone}>
                 {item.status.text}
@@ -105,18 +109,35 @@ const Heading = `h${level}`;
       display: none;
     }
 
-    .card > code,
+    /* Each part wraps whole, so a date never splits across two lines */
     .meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 var(--space-2xs);
+      margin-block-start: calc(-1 * var(--space-2xs));
       color: var(--text-muted);
       font-size: var(--text-sm);
-    }
+      white-space: nowrap;
 
-    .card > code {
-      margin-block-start: calc(-1 * var(--space-2xs));
+      > :not(:last-child)::after {
+        content: '·' / '';
+        margin-inline-start: var(--space-2xs);
+      }
     }
 
     .status {
       font-size: var(--text-sm);
+    }
+
+    /* A status with nothing to flag reads as a plain fact */
+    .status:not([data-tone]) {
+      color: var(--text-muted);
+      font-weight: 400;
+
+      &::before {
+        display: none;
+      }
     }
 
     .chips {

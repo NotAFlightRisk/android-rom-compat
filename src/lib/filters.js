@@ -22,8 +22,8 @@ const types = { phone: 'Phones', tablet: 'Tablets', handheld: 'Handhelds' };
 const hardware = { '5g': 'With 5G', esim: 'With eSIM', nfc: 'With NFC' };
 
 /**
- * FilterBar's dropdowns for a list of devices. Each keeps only the choices that narrow the list
- * down, so a page of Pixels that all unlock gets no bootloader dropdown
+ * FilterBar's dropdowns for a list of devices, with logos for brands and ROMs. Each keeps only
+ * the choices that narrow the list, so a page of Pixels that all unlock gets no bootloader dropdown
  */
 export function deviceFilters(devices, roms = []) {
   const items = devices.map((device) => filterData(device));
@@ -37,16 +37,17 @@ export function deviceFilters(devices, roms = []) {
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((brand) => [brand.key, brand.name]);
   return [
-    ['brand', 'Brand', 'All brands', brands],
-    ['rom', 'ROM', 'Any ROM', roms.map((rom) => [rom.key, rom.name])],
+    ['brand', 'Brand', 'All brands', brands, 'brands'],
+    ['rom', 'ROM', 'Any ROM', roms.map((rom) => [rom.key, rom.name]), 'roms'],
     ['unlock', 'Bootloader', 'Any bootloader', Object.entries(unlockWords)],
     ['type', 'Type', 'All devices', Object.entries(types)],
     ['hardware', 'Hardware', 'Any hardware', Object.entries(hardware)],
   ]
-    .map(([name, label, any, options]) => ({
+    .map(([name, label, any, options, logos]) => ({
       name,
       label,
       any,
+      logos,
       options: options.filter(([value]) => narrows(name, value)),
     }))
     .filter(({ options }) => options.length > 0);

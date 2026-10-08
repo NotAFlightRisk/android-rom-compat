@@ -1,4 +1,4 @@
-import { buildFact, lockTone, unlockFact } from './facts.js';
+import { buildFact, deviceType, lockTone, unlockFact } from './facts.js';
 import { filterData } from './filters.js';
 import { romStatus } from './table.js';
 
@@ -11,8 +11,8 @@ export const byBrand = (list, brandOf, toItem) =>
 /** Cards leave out the brand their group's heading shows, so a sorted list puts it back */
 const prefixOf = (device) => (device.title === device.name ? undefined : device.brand.name);
 
-/** A card's meta line, e.g. "Android 16 · Built 2 Oct 2026", skipping what's missing */
-const metaLine = (...parts) => parts.filter(Boolean).join(' · ');
+/** What follows the codename on a card, e.g. [2023, "Handheld"], skipping gaps */
+const metaOf = (...parts) => parts.filter(Boolean);
 
 const unlockStatus = (device) => {
   const { unlock } = device.bootloader;
@@ -28,7 +28,7 @@ export const deviceCard = (device, roms, showUnlock = true) => ({
   prefix: prefixOf(device),
   title: device.name,
   code: device.codenames[0],
-  meta: metaLine(device.released),
+  meta: metaOf(device.released, deviceType(device)),
   status: showUnlock ? unlockStatus(device) : undefined,
   chips: roms.flatMap((rom) => {
     const { tone, text } = romStatus(device, rom);
@@ -48,8 +48,11 @@ export const romDeviceCard = (row) => {
     prefix: prefixOf(row.device),
     title: row.device.name,
     code: row.device.codenames[0],
-    meta: metaLine(row.android && `Android ${row.android}`, build && `Built ${build.text}`),
-    status: build?.old && { tone: 'partial', text: build.old },
+    meta: metaOf(row.android && `Android ${row.android}`),
+    status: build && {
+      tone: build.old && 'partial',
+      text: build.old ? `Built ${build.text}, ${build.old.toLowerCase()}` : `Built ${build.text}`,
+    },
     chips: [],
     data: filterData(row.device, false),
   };

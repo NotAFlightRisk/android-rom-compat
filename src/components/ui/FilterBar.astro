@@ -1,8 +1,10 @@
 ---
-// Search and filters for the cards and the table together, and a sort for the cards. Needs JS
+// Search, a sort and a tray of filters for the cards and the table together. Needs JS
 import Icon from './Icon.astro';
+import Select from './Select.astro';
 
 const { controls, label, total, filters = [], endedCount = 0 } = Astro.props;
+const tray = `${controls[0]}-filters`;
 const orders = [
   ['', 'A to Z'],
   ['newest', 'Newest first'],
@@ -28,41 +30,42 @@ const orders = [
       spellcheck="false"
     />
   </label>
-  {filters.map(({ name, label, any, options }) => (
-    <label>
-      <span class="visually-hidden">{label}</span>
-      <select name={name}>
-        <option value="">{any}</option>
-        {options.map(([value, text]) => (
-          <option value={value}>{text}</option>
-        ))}
-      </select>
-    </label>
-  ))}
-  <label data-view="cards">
-    <span class="visually-hidden">Sort</span>
-    <select name="order">
-      {orders.map(([value, text]) => (
-        <option value={value}>{text}</option>
-      ))}
-    </select>
-  </label>
-  {endedCount > 0 && (
-    <label class="check">
-      <input type="checkbox" name="ended" />
-      Include ended support
-    </label>
+  {(filters.length > 0 || endedCount > 0) && (
+    <button type="button" class="button toggle" aria-expanded="false" aria-controls={tray}>
+      <Icon name="filters" /> Filters <span class="tally" data-tally hidden />
+    </button>
   )}
+  <Select name="order" label="Sort" options={orders} data-view="cards" />
   <p class="count" role="status" data-count>
     {total} shown
   </p>
-  <p class="empty" data-empty hidden>
-    Nothing matches. Try fewer filters, or search by codename or model number.
-  </p>
+  <div class="tray" id={tray} hidden>
+    {filters.map(({ name, label, any, options, logos }) => (
+      <Select name={name} label={label} options={[['', any], ...options]} logos={logos} />
+    ))}
+    {endedCount > 0 && (
+      <label class="check">
+        <input type="checkbox" name="ended" />
+        Include ended support
+      </label>
+    )}
+    <button type="button" class="button ghost small" data-clear hidden>
+      Clear filters
+    </button>
+  </div>
+  <div class="empty" data-empty hidden>
+    <p>Nothing matches. Try fewer filters, or search by codename or model number.</p>
+    <button type="button" class="button small" data-clear>
+      Clear filters
+    </button>
+  </div>
   {endedCount > 0 && (
-    <p class="empty" data-empty-ended hidden>
-      Only devices whose support has ended match that. Tick “Include ended support” to see them.
-    </p>
+    <div class="empty" data-empty-ended hidden>
+      <p>Only devices whose support has ended match that.</p>
+      <button type="button" class="button small" data-show-ended>
+        Include ended support
+      </button>
+    </div>
   )}
 </form>
 
@@ -99,27 +102,21 @@ const orders = [
     }
   }
 
-  select {
-    max-inline-size: 100%;
+  .toggle[aria-expanded='true'] {
+    border-color: var(--text-muted);
+    background: var(--surface-raised);
   }
 
-  @media (width < 40rem) {
-    label:has(select) {
-      flex: 1 1 40%;
-    }
-
-    select {
-      inline-size: 100%;
-    }
-  }
-
-  .check {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    min-block-size: var(--control);
-    padding-inline: var(--space-xs);
-    cursor: pointer;
+  .tally {
+    min-inline-size: 1.25rem;
+    padding-inline: var(--space-2xs);
+    border-radius: var(--radius-pill);
+    background: var(--accent-strong);
+    color: var(--on-accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    line-height: 1.25rem;
+    text-align: center;
   }
 
   .count {
@@ -128,13 +125,71 @@ const orders = [
     font-size: var(--text-sm);
   }
 
-  .empty {
+  .tray {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     flex-basis: 100%;
-    max-inline-size: none;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    transition:
+      opacity 150ms ease-out,
+      translate 150ms ease-out;
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 calc(-1 * var(--space-2xs));
+    }
+  }
+
+  /* Boxed like the dropdowns beside it, so the whole thing is one target */
+  .check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-block-size: var(--control);
+    padding-inline: var(--space-sm);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--text-muted);
+    }
+  }
+
+  .tray [data-clear] {
+    margin-inline-start: auto;
+  }
+
+  .empty {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-sm);
+    flex-basis: 100%;
     padding: var(--space-lg);
     border: 1px dashed var(--border-strong);
     border-radius: var(--radius-lg);
     color: var(--text-muted);
     text-align: center;
+  }
+
+  @media (width < 40rem) {
+    .search {
+      flex-basis: 100%;
+      max-inline-size: none;
+    }
+
+    .filters :global(label:has(select)),
+    .check {
+      flex: 1 1 40%;
+    }
+
+    .filters :global(select) {
+      inline-size: 100%;
+    }
   }
 </style>

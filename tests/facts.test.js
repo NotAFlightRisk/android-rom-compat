@@ -5,6 +5,7 @@ import { buildModel } from '../src/lib/data/model.js';
 import {
   buildFact,
   channelText,
+  deviceType,
   everywhereCells,
   firmwareNeed,
   knownFeatures,
@@ -71,6 +72,12 @@ test("the bootloader keeps the device's own note, or borrows the brand policy it
     source: 'https://a.test',
   });
   assert.equal(unlockFact({ bootloader: { unlock: 'no' }, brand }).note, undefined);
+});
+
+test('only a device that is not a phone names its type', () => {
+  assert.equal(deviceType({ type: 'handheld' }), 'Handheld');
+  assert.equal(deviceType({ type: 'phone' }), undefined);
+  assert.equal(deviceType({}), undefined);
 });
 
 test('stock updates read as a date, until they run out', () => {
