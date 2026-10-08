@@ -1,0 +1,22 @@
+---
+import ErrorPage from '../components/layout/ErrorPage.astro';
+import { site } from '../lib/site.js';
+---
+
+<ErrorPage
+  title="Something went wrong"
+  description="The server couldn't load this page. Wait a minute, then try again."
+  icon="server"
+  tone="partial"
+  actions={[
+    { label: 'Try again', url: '', icon: 'retry', primary: true },
+    { label: 'Home', url: '/' },
+  ]}
+>
+  <p class="lede">The problem's on our end, not yours. Wait a minute, then try again.</p>
+  <p slot="after">
+    <small>
+      Still broken? <a href={`${site.repo}/discussions`}>Tell us on GitHub</a>.
+    </small>
+  </p>
+</ErrorPage>

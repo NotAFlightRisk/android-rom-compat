@@ -9,7 +9,7 @@ const loadPagefind = async (url) => {
   return pagefind;
 };
 
-const resultItem = ({ url, meta }) => {
+export const resultItem = ({ url, meta }) => {
   const item = document.createElement('li');
   const link = Object.assign(document.createElement('a'), { href: url });
   const hint = Object.assign(document.createElement('small'), { textContent: meta.hint ?? '' });
@@ -17,6 +17,24 @@ const resultItem = ({ url, meta }) => {
   item.append(link);
   return item;
 };
+
+/** Pages for a URL's words, dropping any that stop a match: "pixel 99 pro" finds "pixel pro" */
+export async function closestPages(url, words, limit) {
+  const pagefind = await loadPagefind(url);
+  const counted = await Promise.all(
+    words.map(async (word) => ({ word, hits: (await pagefind.search(word)).results.length })),
+  );
+  // The rarer a word, the likelier it's the typo, so rare ones go first, while half are left
+  const query = counted
+    .filter(({ hits }) => hits)
+    .sort((a, b) => b.hits - a.hits)
+    .map(({ word }) => word);
+  for (const enough = Math.max(1, words.length / 2); query.length >= enough; query.pop()) {
+    const { results } = await pagefind.search(query.join(' '));
+    if (results.length) return Promise.all(results.slice(0, limit).map((result) => result.data()));
+  }
+  return [];
+}
 
 /** Upgrades a plain search form into live results, and leaves it alone if Pagefind isn't there */
 export function enhanceSearch(form) {

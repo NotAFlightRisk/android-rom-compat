@@ -203,6 +203,20 @@
   }
 }
 
+/* An icon on a tinted square, in the accent unless it has a data-tone */
+.glyph {
+  --size: var(--control);
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: var(--size);
+  block-size: var(--size);
+  border-radius: calc(var(--size) / 5);
+  background: var(--tone-bg, var(--accent-soft));
+  color: var(--tone-text, var(--accent-text));
+  font-size: calc(var(--size) / 2);
+}
+
 .card {
   position: relative;
   display: grid;

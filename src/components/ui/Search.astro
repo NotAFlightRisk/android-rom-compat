@@ -57,6 +57,10 @@ const { id = 'site-search', label = 'Site search', large = false } = Astro.props
     padding-inline-start: 2.25rem;
   }
 
+  .large {
+    inline-size: min(100%, 40rem);
+  }
+
   .large input {
     min-block-size: 3.25rem;
     font-size: var(--text-lg);

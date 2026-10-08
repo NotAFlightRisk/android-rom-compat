@@ -1,31 +1,116 @@
 ---
-import Base from '../components/layout/Base.astro';
+import ErrorPage from '../components/layout/ErrorPage.astro';
 import Search from '../components/ui/Search.astro';
+import { issueUrl } from '../lib/site.js';
 ---
 
-<Base
+<ErrorPage
   title="Page not found"
   description="That page doesn't exist. Search for a phone or ROM instead."
-  noindex
-  headerSearch={false}
+  icon="device"
+  actions={[
+    { label: 'Browse devices', url: '/devices/' },
+    { label: 'Compare ROMs', url: '/roms/' },
+  ]}
 >
-  <section class="lost">
-    <h1>Page not found</h1>
-    <p>That page doesn't exist, or it moved. Try searching for the phone or ROM.</p>
-    <Search id="lost-search" label="Find a phone or ROM" large />
-    <p>
-      <a href="/devices/">Browse all devices</a> or <a href="/roms/">compare ROMs</a>.
+  <p class="lede">
+    There's nothing at <span data-path>this address</span>. It may have moved, or there's a typo in
+    the link.
+  </p>
+  <Search id="lost-search" label="Find a phone or ROM" large />
+  <Fragment slot="after">
+    <p data-report hidden>
+      <small>
+        Followed a link on this site to get here?{' '}
+        <a href={issueUrl('correction')}>Report the broken link</a>.
+      </small>
     </p>
-  </section>
-</Base>
+    <div class="matches" hidden>
+      <h2>Closest matches</h2>
+      <ul></ul>
+    </div>
+  </Fragment>
+</ErrorPage>
+
+<script>
+  import { closestPages, resultItem } from '../scripts/search.js';
+
+  const { origin, pathname } = location;
+  const path = Object.assign(document.createElement('code'), { textContent: pathname });
+  document.querySelector('[data-path]').replaceWith(path);
+
+  // A link from one of our own pages is ours to fix, so the report says which page and where to
+  if (document.referrer.startsWith(`${origin}/`)) {
+    const report = document.querySelector('[data-report]');
+    const link = report.querySelector('a');
+    const url = new URL(link.href);
+    url.searchParams.set('page', document.referrer);
+    url.searchParams.set('wrong', `It links to ${pathname}, which doesn't exist`);
+    link.href = url;
+    report.hidden = false;
+  }
+
+  // Device and ROM URLs name what they're for, e.g. /devices/google/pixel-9-pro-xl/
+  const [, section, ...rest] = pathname.split('/');
+  if (section === 'devices' || section === 'roms') {
+    const matches = document.querySelector('.matches');
+    const search = document.querySelector('[data-site-search]').dataset.siteSearch;
+    const words = rest
+      .join(' ')
+      .split(/[^a-z0-9]+/i)
+      .filter(Boolean);
+    closestPages(search, words, 4)
+      .then((pages) => {
+        matches.querySelector('ul').append(...pages.map(resultItem));
+        matches.hidden = !pages.length;
+      })
+      .catch(() => {});
+  }
+</script>
 
 <style>
-  .lost {
-    justify-items: start;
-    padding-block: var(--space-xl);
+  .lede :global(code) {
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
 
-    :global(form) {
-      inline-size: min(100%, 40rem);
+  .matches {
+    display: grid;
+    gap: var(--space-xs);
+    inline-size: min(100%, 40rem);
+    margin-block-start: var(--space-md);
+    animation: appear 250ms ease-out;
+
+    h2 {
+      font-size: var(--text-lg);
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    :global(a) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0 var(--space-md);
+      padding-block: var(--space-xs);
+      border-block-end: 1px solid var(--border);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      translate: 0 0.25rem;
     }
   }
 </style>
