@@ -7,7 +7,6 @@ export const site = {
 export const nav = [
   { label: 'Devices', url: '/devices/' },
   { label: 'ROMs', url: '/roms/' },
-  { label: 'Contribute', url: '/contribute/' },
 ];
 
 export const editUrl = (file) => `${site.repo}/edit/main/${file.slice(file.indexOf('data/'))}`;

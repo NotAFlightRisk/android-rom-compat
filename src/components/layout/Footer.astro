@@ -4,7 +4,12 @@ import { site, nav, editUrl } from '../../lib/site.js';
 
 const { edit, sources } = Astro.props;
 
-const links = [...nav, { label: 'About', url: '/about/' }, { label: 'API', url: '/about/#api' }];
+const links = [
+  ...nav,
+  { label: 'Contribute', url: '/contribute/' },
+  { label: 'About', url: '/about/' },
+  { label: 'API', url: '/about/#api' },
+];
 ---
 
 <footer>
