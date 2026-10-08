@@ -39,8 +39,11 @@ const current = (url) => Astro.url.pathname.startsWith(url);
       inline-size: 100%;
     }
 
-    @media (width < 52rem) {
-      grid-template-columns: 1fr;
+    @media (width < 44rem) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      column-gap: var(--space-sm);
     }
   }
 
@@ -72,6 +75,10 @@ const current = (url) => Astro.url.pathname.startsWith(url);
     transition:
       color 150ms ease-out,
       background-color 150ms ease-out;
+
+    @media (width < 44rem) {
+      padding-inline: var(--space-xs);
+    }
 
     &:hover {
       background: var(--surface-raised);
