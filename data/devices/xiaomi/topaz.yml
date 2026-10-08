@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 12 4G/NFC
 codenames: [topaz]
+released: 2023
+soc: Qualcomm SM6225 Snapdragon 685
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

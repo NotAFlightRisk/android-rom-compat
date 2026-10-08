@@ -2,5 +2,8 @@
 name: Note 12 Pro
 codenames: [rubyx]
 aliases: [Pro Plus 5G, Pro+ 5G]
+released: 2022
+soc: Mediatek Dimensity 1080
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

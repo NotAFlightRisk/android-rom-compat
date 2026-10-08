@@ -2,5 +2,8 @@
 name: Redmi 12 5G
 codenames: [sky]
 aliases: [Poco M6 Pro 5G]
+released: 2023
+soc: Qualcomm SM4450 Snapdragon 4 Gen 2
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown

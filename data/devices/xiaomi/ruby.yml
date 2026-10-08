@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 12 Pro 5G
 codenames: [ruby]
+released: 2022
+soc: Mediatek Dimensity 1080
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

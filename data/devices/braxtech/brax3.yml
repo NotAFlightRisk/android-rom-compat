@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
-name: Brax3
+name: BraX3
 codenames: [brax3]
+released: 2025
+soc: Mediatek Dimensity 6300
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown

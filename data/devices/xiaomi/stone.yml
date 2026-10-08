@@ -3,5 +3,7 @@ name: Note 12 5G/Poco X5
 slug: note-12-5g-poco-x5-stone
 codenames: [stone]
 aliases: [Poco X5 5G]
+released: 2022
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

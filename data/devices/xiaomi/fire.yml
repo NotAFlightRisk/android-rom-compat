@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 12 4G
 codenames: [fire]
+released: 2023
+soc: Mediatek Helio G88
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

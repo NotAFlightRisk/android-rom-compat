@@ -2,5 +2,8 @@
 name: Redmi Note 12 Pro 4G
 slug: redmi-note-12-pro-4g-sweet-k6a
 codenames: [sweet_k6a]
+released: 2023
+soc: Qualcomm SM7150-AC Snapdragon 732G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

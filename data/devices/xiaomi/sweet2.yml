@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 12 Pro 4G
 codenames: [sweet2]
+released: 2023
+soc: Qualcomm SM7150-AC Snapdragon 732G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

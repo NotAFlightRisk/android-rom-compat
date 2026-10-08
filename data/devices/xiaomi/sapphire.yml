@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 13 4G/NFC
 codenames: [sapphire]
+released: 2024
+soc: Qualcomm SM6225 Snapdragon 685
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

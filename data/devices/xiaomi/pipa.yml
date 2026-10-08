@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pad 6
 codenames: [pipa]
+released: 2023
+soc: Qualcomm SM8250-AC Snapdragon 870
 type: tablet
+hardware: []
 bootloader:
   unlock: unknown

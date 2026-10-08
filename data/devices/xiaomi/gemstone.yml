@@ -1,5 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 12 5G/Poco X5
 codenames: [gemstone]
+released: 2022
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

@@ -2,5 +2,8 @@
 name: Moto G53 5G
 codenames: [penang]
 aliases: [G53j 5G, G53s 5G, G53y 5G]
+released: 2022
+soc: Qualcomm SM4350-AC Snapdragon 480+
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
