@@ -1,0 +1,67 @@
+---
+// What went wrong and the ways on from it, for the 404 and 500 pages
+import Base from './Base.astro';
+import Icon from '../ui/Icon.astro';
+
+const { title, description, icon, tone, actions } = Astro.props;
+---
+
+<Base title={title} description={description} noindex headerSearch={false}>
+  <section class="error">
+    <span class="glyph" data-tone={tone}>
+      <Icon name={icon} />
+    </span>
+    <h1>{title}</h1>
+    <slot />
+    <div class="actions">
+      {actions.map((action) => (
+        <a class:list={['button', { primary: action.primary }]} href={action.url}>
+          {action.icon && <Icon name={action.icon} />}
+          {action.label}
+        </a>
+      ))}
+    </div>
+    <slot name="after" />
+  </section>
+</Base>
+
+<style>
+  .error {
+    justify-items: start;
+    padding-block: var(--space-xl);
+  }
+
+  /* One short buzz, like a phone shaking its head */
+  .glyph {
+    --size: 3.5rem;
+    margin-block-end: var(--space-xs);
+
+    :global(svg) {
+      animation: buzz 700ms 250ms;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  @keyframes buzz {
+    12% {
+      rotate: -14deg;
+    }
+    28% {
+      rotate: 11deg;
+    }
+    44% {
+      rotate: -7deg;
+    }
+    60% {
+      rotate: 4deg;
+    }
+    76% {
+      rotate: -2deg;
+    }
+  }
+</style>
