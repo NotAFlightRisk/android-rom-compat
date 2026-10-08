@@ -33,18 +33,18 @@ const current = (url) => Astro.url.pathname.startsWith(url);
 <style>
   header {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr minmax(12rem, 20rem);
     align-items: center;
     gap: var(--space-sm) var(--space-lg);
     padding: var(--space-sm) var(--gutter);
     border-block-end: 1px solid var(--border);
 
-    @media (width < 48rem) {
-      grid-template-columns: 1fr;
+    :global(form) {
+      inline-size: 100%;
+    }
 
-      :global(form) {
-        inline-size: 100%;
-      }
+    @media (width < 52rem) {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -60,7 +60,6 @@ const current = (url) => Astro.url.pathname.startsWith(url);
 
   ul {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--space-2xs);
     margin: 0;
     padding: 0;
@@ -74,6 +73,9 @@ const current = (url) => Astro.url.pathname.startsWith(url);
     color: var(--text-muted);
     font-weight: 500;
     text-decoration: none;
+    transition:
+      color 150ms ease-out,
+      background-color 150ms ease-out;
 
     &:hover {
       background: var(--surface-raised);
@@ -81,8 +83,16 @@ const current = (url) => Astro.url.pathname.startsWith(url);
     }
 
     &[aria-current='page'] {
-      color: var(--text);
-      box-shadow: inset 0 -2px var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-text);
+    }
+
+    @media (forced-colors: active) {
+      &[aria-current='page'] {
+        forced-color-adjust: none;
+        background: SelectedItem;
+        color: SelectedItemText;
+      }
     }
   }
 </style>
