@@ -60,7 +60,7 @@ export const romDeviceCard = (row) => {
     meta: metaOf(row.android && `Android ${row.android}`),
     status: build && {
       tone: build.old && 'partial',
-      text: build.old ? `Built ${build.text}, ${build.old.toLowerCase()}` : `Built ${build.text}`,
+      text: `${build.old ? 'Last built' : 'Built'} ${build.text}`,
     },
     chips: [],
     data: filterData(row.device, false),
