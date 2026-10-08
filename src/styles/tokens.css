@@ -53,6 +53,7 @@
   --control: 2.5rem;
   --measure: 68ch;
   --page: 80rem;
+  --page-narrow: 60rem;
   /* Lines content up with a centred column of --page, while backgrounds still run edge to edge */
   --gutter: max(var(--space-md), (100% - var(--page)) / 2 + var(--space-md));
 }

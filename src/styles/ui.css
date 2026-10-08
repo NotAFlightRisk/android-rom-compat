@@ -108,6 +108,11 @@
   list-style: none;
 }
 
+.lede {
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
