@@ -9,7 +9,9 @@
 </p>
 
 <p align="center">
-  <img src="screenshot.png" alt="The Pixel 7 page, with a table of the ROMs that support it" width="800" />
+  <a href="https://android-rom-compat.peng.ly/">
+  <img width="800" alt="image" src="https://github.com/user-attachments/assets/4c869f7d-423d-4dfe-9041-bc3913cc7f60" />
+  </a>
 </p>
 
 ## About
@@ -32,7 +34,7 @@ The whole dataset is published as static JSON, rebuilt every time the data chang
 
 - [`/api/devices.json`](https://android-rom-compat.peng.ly/api/devices.json) - every device, with codenames, model numbers, bootloader and stock support
 - [`/api/roms.json`](https://android-rom-compat.peng.ly/api/roms.json) - the ROMs, how they compare, and what they say works on every device
-- [`/api/support.json`](https://android-rom-compat.peng.ly/api/support.json) - which ROM supports which device, its latest build, and what works, with where each answer came from
+- [`/api/support.json`](https://android-rom-compat.peng.ly/api/support.json) - which ROM supports which device, its latest build, and what works
 - [`/api/features.json`](https://android-rom-compat.peng.ly/api/features.json) - the features we track
 
 Device and ROM entries carry a `url` you can stick on the end of the site address to get the page.
