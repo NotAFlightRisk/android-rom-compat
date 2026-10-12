@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S7+ (Wi-Fi)
+codenames: [gts7xlwifi]
+aliases: [SM-T970]
+released: 2020
+soc: Qualcomm SM8250-AB Snapdragon 865+
+type: tablet
+hardware: [fingerprint]
+bootloader:
+  unlock: unknown

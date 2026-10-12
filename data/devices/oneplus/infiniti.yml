@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "15"
+codenames: [infiniti]
+aliases: [CPH2745, CPH2747, CPH2749, PLK110]
+released: 2025
+soc: Qualcomm SM8850 Snapdragon 8 Elite Gen 5
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
