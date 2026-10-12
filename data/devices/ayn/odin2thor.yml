@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Thor
+codenames: [odin2thor]
+released: 2025
+soc: Qualcomm Dragonwing™ QCS8550 (QCS8550)
+type: handheld
+bootloader:
+  unlock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 15T
+codenames: [fairlady]
+aliases: [PLZ110]
+released: 2026
+soc: Qualcomm SM8850 Snapdragon 8 Elite Gen 5
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO X4 GT
+codenames: [xaga]
+aliases: [Redmi Note 11T Pro, Redmi Note 11T Pro+, Redmi K50i, 22041216G, 22041216C, 22041216UC, 22041216I]
+released: 2022
+soc: Mediatek Dimensity 8100
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

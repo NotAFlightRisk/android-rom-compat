@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Tab S7+ (LTE/5G)
+codenames: [gts7xl]
+aliases: [SM-T975, SM-T976B]
+released: 2020
+soc: Qualcomm SM8250-AB Snapdragon 865+
+type: tablet
+hardware: [5g, cellular, fingerprint]
+bootloader:
+  unlock: unknown
