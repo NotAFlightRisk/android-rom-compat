@@ -5,4 +5,6 @@ released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  notes: Unlocks with fastboot, but the stock bootloader can't flash, so installing needs a custom one loaded over EDL first.
+  source: https://wiki.lineageos.org/devices/nx606j/install/

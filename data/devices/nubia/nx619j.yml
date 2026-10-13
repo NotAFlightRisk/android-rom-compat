@@ -5,4 +5,5 @@ released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/nx619j/install/

@@ -5,4 +5,5 @@ released: 2022
 soc: Qualcomm SM6115 Snapdragon 662
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/pro1x/install/

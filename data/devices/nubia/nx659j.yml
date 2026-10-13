@@ -6,4 +6,5 @@ released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/nx659j/install/variant1/

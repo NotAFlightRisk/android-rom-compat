@@ -4,4 +4,5 @@ codenames: [emerald]
 released: 2022
 hardware: [cellular]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://doc.e.foundation/devices/emerald/install/

@@ -6,4 +6,5 @@ released: 2018
 soc: Qualcomm SDM660 Snapdragon 660
 hardware: [cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/nx611j/install/
