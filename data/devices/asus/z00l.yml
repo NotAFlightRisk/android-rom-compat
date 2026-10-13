@@ -7,3 +7,5 @@ soc: Qualcomm MSM8939 Snapdragon 615 / Qualcomm MSM8916 Snapdragon 410
 hardware: [cellular]
 bootloader:
   unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/Z00L/

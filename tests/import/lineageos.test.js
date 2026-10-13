@@ -39,7 +39,8 @@ test('an active device gets android, firmware, relock and the upstream codename 
 
 test('ims and esim quirks become partial features with a note', () => {
   const { device, row } = entry('dm1q');
-  assert.deepEqual(device.bootloader, { unlock: 'no' });
+  assert.equal(device.bootloader.unlock, 'no');
+  assert.equal(device.bootloader.source, 'https://wiki.lineageos.org/devices/dm1q/');
   assert.deepEqual(Object.keys(row.features), ['esim', 'volte']);
   for (const cell of Object.values(row.features)) {
     assert.equal(cell.status, 'partial');

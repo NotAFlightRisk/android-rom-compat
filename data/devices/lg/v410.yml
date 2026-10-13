@@ -7,3 +7,5 @@ type: tablet
 hardware: [cellular]
 bootloader:
   unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/v410/

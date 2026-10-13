@@ -12,6 +12,8 @@ const quirks = {
   ims: ['volte', 'No IMS on LineageOS here, so whether calls work depends on your carrier'],
   esim: ['esim', "LineageOS can't set up eSIMs on this device, physical SIMs are fine"],
 };
+const locked =
+  'No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.';
 
 /** One entry per codename from the wiki's device files, variants folded into the first */
 export function parseWiki(texts) {
@@ -50,7 +52,7 @@ function parseDevice(codename, [first, ...variants], codenames) {
       soc: [first.soc].flat().join(' / ') || undefined,
       type: typeOf(first.type),
       hardware: hardwareOf(first),
-      bootloader: first.is_unlockable === false ? { unlock: 'no' } : {},
+      bootloader: first.is_unlockable === false ? { unlock: 'no', notes: locked, source } : {},
     },
     row: {
       status: maintainers.length ? 'active' : 'discontinued',

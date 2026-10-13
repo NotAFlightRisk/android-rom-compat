@@ -3,10 +3,11 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { parse } from 'yaml';
 
 process.env.DATA_DIR = mkdtempSync(join(tmpdir(), 'store-test-'));
 after(() => rmSync(process.env.DATA_DIR, { recursive: true }));
-const { writeUpstream, readUpstream } = await import('../../scripts/import/store.js');
+const { writeUpstream, readUpstream, upsertDevice } = await import('../../scripts/import/store.js');
 const { today } = await import('../../src/lib/dates.js');
 
 const row = (status = 'active') => ({ status, source: 'https://example.com' });
@@ -59,4 +60,22 @@ test('a row that breaks the schema fails the source instead of the whole import'
   const bad = { a: { ...row(), latest: { date: '+057647-02-01' } } };
   assert.throws(() => writeUpstream('broken', bad), /bad row, devices\.a\.latest\.date/);
   assert.equal(readUpstream('broken').devices.a.latest, undefined);
+});
+
+test('a bootloader answer gains our notes and source only if its own words match', () => {
+  const ours = { unlock: 'no', notes: 'Nope.', source: 'https://example.com/wiki' };
+  const refilled = (codename, bootloader) => {
+    upsertDevice('Acme', { name: codename, codenames: [codename], bootloader });
+    upsertDevice('Acme', { name: codename, codenames: [codename], bootloader: ours });
+    const file = join(process.env.DATA_DIR, `devices/acme/${codename}.yml`);
+    return parse(readFileSync(file, 'utf8')).bootloader;
+  };
+  assert.deepEqual(refilled('blank', { unlock: 'unknown' }), ours);
+  assert.deepEqual(refilled('bare', { unlock: 'no' }), ours);
+  assert.deepEqual(refilled('same', { unlock: 'no', notes: 'Nope.' }), ours);
+  assert.deepEqual(refilled('own', { unlock: 'no', notes: 'Exploit only.' }), {
+    unlock: 'no',
+    notes: 'Exploit only.',
+  });
+  assert.deepEqual(refilled('open', { unlock: 'yes' }), { unlock: 'yes' });
 });

@@ -7,3 +7,5 @@ soc: Samsung Exynos 2200
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/r0s/

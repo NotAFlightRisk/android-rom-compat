@@ -6,3 +6,5 @@ soc: Intel Atom Z3560 / Intel Atom Z3580
 hardware: [cellular]
 bootloader:
   unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/Z00A/

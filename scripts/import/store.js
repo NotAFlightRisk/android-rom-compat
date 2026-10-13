@@ -114,12 +114,18 @@ function createDevice(brand, { name, codenames, aliases, bootloader, ...rest }) 
   return entry;
 }
 
+/** An unknown answer takes ours, and so does a matching one with no words of its own */
+function fillBootloader(current, { unlock, notes, source }) {
+  if (!unlock || unlock === 'unknown') return;
+  const same = current.unlock === unlock && !current.source && (current.notes ?? notes) === notes;
+  if (current.unlock === 'unknown' || same) {
+    Object.assign(current, { unlock }, notes && { notes }, source && { source });
+  }
+}
+
 function fillGaps(current, { aliases, bootloader = {}, ...rest }) {
   for (const [key, value] of Object.entries(deviceFields(rest))) current[key] ??= value;
-  const { unlock, notes } = bootloader;
-  if (current.bootloader.unlock === 'unknown' && unlock && unlock !== 'unknown') {
-    Object.assign(current.bootloader, { unlock }, notes && { notes });
-  }
+  fillBootloader(current.bootloader, bootloader);
   const newAliases = unclaimed(aliases);
   if (newAliases.length) current.aliases = [...(current.aliases ?? []), ...newAliases];
   claim(newAliases);

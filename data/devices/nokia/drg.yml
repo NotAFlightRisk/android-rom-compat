@@ -7,3 +7,5 @@ soc: Qualcomm SDM636 Snapdragon 636
 hardware: [cellular, fingerprint]
 bootloader:
   unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/DRG/
