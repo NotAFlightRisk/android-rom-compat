@@ -7,3 +7,4 @@ hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: conditional
   notes: Carrier models, like Verizon's, can't be unlocked.
+  source: https://grapheneos.org/install/web#prerequisites

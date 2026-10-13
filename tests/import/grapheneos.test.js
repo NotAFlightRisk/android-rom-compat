@@ -30,6 +30,7 @@ test('supported Pixels are active on the newest Android and relock', () => {
     bootloader: {
       unlock: 'conditional',
       notes: "Carrier models, like Verizon's, can't be unlocked.",
+      source: 'https://grapheneos.org/install/web#prerequisites',
     },
   });
   assert.deepEqual(tegu.row, {

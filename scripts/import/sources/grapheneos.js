@@ -7,6 +7,7 @@ const SITE = 'https://raw.githubusercontent.com/GrapheneOS/grapheneos.org/main/s
 const pixel = {
   unlock: 'conditional',
   notes: "Carrier models, like Verizon's, can't be unlocked.",
+  source: 'https://grapheneos.org/install/web#prerequisites',
 };
 
 export const parseSupported = (installer) =>
