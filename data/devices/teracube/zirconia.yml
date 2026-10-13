@@ -4,4 +4,5 @@ codenames: [zirconia]
 released: 2021
 hardware: [cellular]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://doc.e.foundation/devices/zirconia/install/

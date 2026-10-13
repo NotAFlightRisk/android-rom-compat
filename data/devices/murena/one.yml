@@ -5,4 +5,5 @@ aliases: [Murena One]
 released: 2022
 hardware: [cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://doc.e.foundation/devices/one/install/

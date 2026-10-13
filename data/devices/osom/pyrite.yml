@@ -5,4 +5,5 @@ released: 2022
 soc: Qualcomm SM8350-AC Snapdragon 888+
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/pyrite/install/

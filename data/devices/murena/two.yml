@@ -6,4 +6,5 @@ released: 2023
 soc: MediaTek MT6771 Helio P70
 hardware: [cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://doc.e.foundation/devices/two/install/

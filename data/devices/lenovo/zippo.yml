@@ -6,4 +6,6 @@ released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
 hardware: [cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  notes: Needs an unlock file from Lenovo's ZUI site first, which takes a Lenovo account.
+  source: https://wiki.lineageos.org/devices/zippo/install/

@@ -7,4 +7,6 @@ soc: Mediatek MT8188J
 type: tablet
 hardware: [fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/sunstone/install/

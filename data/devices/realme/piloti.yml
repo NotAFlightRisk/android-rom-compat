@@ -6,4 +6,6 @@ released: 2025
 soc: Qualcomm SM8750 Snapdragon 8 Elite
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: conditional
+  notes: Only phones bought in China unlock, using realme's Deep Testing app, which hands out a limited number of slots each month.
+  source: https://wiki.lineageos.org/devices/piloti/install/

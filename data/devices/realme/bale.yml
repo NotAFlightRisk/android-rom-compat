@@ -6,4 +6,6 @@ released: 2024
 soc: Qualcomm SM8635 Snapdragon 8s Gen3
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: conditional
+  notes: Only phones bought in China unlock, using realme's Deep Testing app, which hands out a limited number of slots each month.
+  source: https://wiki.lineageos.org/devices/bale/install/

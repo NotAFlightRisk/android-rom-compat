@@ -6,4 +6,5 @@ soc: Mediatek Helio G99
 type: tablet
 hardware: [cellular]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://doc.e.foundation/devices/mimir/install/

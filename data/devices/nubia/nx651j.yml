@@ -6,4 +6,5 @@ released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
 hardware: [5g, cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/nx651j/install/variant1/

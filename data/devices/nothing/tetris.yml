@@ -6,4 +6,5 @@ released: 2024
 soc: Mediatek Dimensity 7300
 hardware: [5g, cellular, fingerprint]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://doc.e.foundation/devices/tetris/install/

@@ -6,4 +6,5 @@ released: 2023
 soc: Qualcomm SM8475 Snapdragon 8+ Gen1
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/Pong/install/

@@ -5,4 +5,6 @@ released: 2017
 soc: Qualcomm MSM8996 Pro Snapdragon 821
 hardware: [cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/h870d/install/
