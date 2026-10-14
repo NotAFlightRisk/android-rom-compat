@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel Fold
 codenames: [felix]
+aliases: [G9FPL, G0B96]
 released: 2023
 soc: Google Tensor GS201
 hardware: [5g, cellular, esim, fingerprint, nfc]

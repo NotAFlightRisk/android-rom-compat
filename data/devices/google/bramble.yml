@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 4a 5G
 codenames: [bramble]
-aliases: [G025E]
+aliases: [G025E, G6QU3, G025I, G025H]
 released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
 hardware: [5g, cellular, esim, fingerprint, nfc]

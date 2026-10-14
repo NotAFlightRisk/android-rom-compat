@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 6 Pro
 codenames: [raven]
+aliases: [GLU0G, G8V0U, GF5KQ]
 released: 2021
 soc: Google Tensor GS101
 hardware: [5g, cellular, esim, fingerprint, nfc]

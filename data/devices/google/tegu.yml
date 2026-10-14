@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 9a
 codenames: [tegu]
+aliases: [GXQ96, GTF7P, G3Y12]
 released: 2025
 soc: Google Tensor G4
 hardware: [5g, cellular, esim, fingerprint, nfc]

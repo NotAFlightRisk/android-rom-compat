@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 7
 codenames: [panther]
+aliases: [GVU6C, GQML3, G03Z5]
 released: 2022
 soc: Google Tensor GS201
 hardware: [5g, cellular, esim, fingerprint, nfc]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 9 Pro XL
 codenames: [komodo]
+aliases: [GGX8B, GQ57S, GZC4K]
 released: 2024
 soc: Google Tensor G4
 hardware: [5g, cellular, esim, fingerprint, nfc]

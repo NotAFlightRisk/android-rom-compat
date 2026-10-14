@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 4 XL
 codenames: [coral]
+aliases: [G020J]
 released: 2019
 soc: Qualcomm SM8150 Snapdragon 855
 hardware: [cellular, esim, nfc]
