@@ -1865,13 +1865,6 @@ devices:
     latest: { version: "9.18", date: 2024-07-30 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/13.0/starlte.json
     install: https://forum.xda-developers.com/t/rom-13-crdroid-android-9-x-for-samsung-galaxy-s9-s9-n9.4560457/
-  stone:
-    status: discontinued
-    channel: stable
-    android: 15
-    latest: { version: "11.10", date: 2025-10-10 }
-    source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/stone.json
-    install: https://xdaforums.com/t/rom-15-0-stone-crdroid-11-official.4704640/
   surya:
     status: discontinued
     channel: stable
