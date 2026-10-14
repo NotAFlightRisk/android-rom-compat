@@ -21,12 +21,12 @@
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/roboto": "^5.3.0",
     "@fontsource-variable/roboto-mono": "^5.3.0",
-    "@lucide/astro": "^1.52.0",
-    "@sentry/browser": "^11.4.0",
-    "astro": "^7.3.5"
+    "@lucide/astro": "^1.55.0",
+    "@sentry/browser": "^11.6.0",
+    "astro": "^7.3.8"
   },
   "devDependencies": {
-    "@sentry/vite-plugin": "^5.4.0",
+    "@sentry/vite-plugin": "^5.4.1",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "pagefind": "^1.5.2",
