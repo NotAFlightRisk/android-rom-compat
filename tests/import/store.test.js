@@ -35,12 +35,12 @@ test('devices that vanish are kept as discontinued', () => {
   });
 });
 
-test("a codename that becomes another device's second name takes its row along", () => {
-  writeUpstream('moved', { old: row() });
+test('a codename that moves in with another device brings its row, ended or not', () => {
+  writeUpstream('moved', { old: row(), gone: row() });
   upsertDevice('Acme', { name: 'New', codenames: ['new', 'old'] });
-  const result = writeUpstream('moved', { new: row() });
-  assert.deepEqual(result, { rows: 1, added: 1, ended: 0 });
-  assert.deepEqual(Object.keys(readUpstream('moved').devices), ['new']);
+  upsertDevice('Acme', { name: 'Newer', codenames: ['newer', 'gone'] });
+  writeUpstream('moved', { new: row() });
+  assert.deepEqual(readUpstream('moved').devices, { new: row(), newer: row('discontinued') });
 });
 
 test('a source that loses a fifth of its devices fails and leaves the file alone', () => {
