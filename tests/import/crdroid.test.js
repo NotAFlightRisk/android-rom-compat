@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { newestBranches, parse } from '../../scripts/import/sources/crdroid.js';
+import { freshest, newestBranches, parse } from '../../scripts/import/sources/crdroid.js';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`../fixtures/feeds/${name}`, import.meta.url), 'utf8'));
@@ -68,4 +68,14 @@ test('only alpha, beta and nightly builds count as beta', () => {
 
 test('a file with no builds gives nothing', () => {
   assert.equal(parse({ response: [] }, { branch: '16.0', codename: 'tegu' }, now), undefined);
+});
+
+test('two codenames for one phone keep the live build, or else the newer one', () => {
+  const build = (status, date) => ({ status, latest: { date } });
+  const live = build('active', '2026-10-06');
+  const old = build('discontinued', '2025-10-10');
+  assert.equal(freshest(undefined, old), old);
+  assert.equal(freshest(old, live), live);
+  assert.equal(freshest(live, old), live);
+  assert.equal(freshest(old, build('discontinued', '2024-01-01')), old);
 });

@@ -51,6 +51,14 @@ export function parse(json, { codename, branch }, now = Date.now()) {
   return { brand, device: { name, codenames: [codename.toLowerCase()], aliases }, row };
 }
 
+/** Of two builds that turn out to be one phone, the live one, or else the newer */
+export function freshest(a, b) {
+  if (!a) return b;
+  const live = (row) => row.status === 'active';
+  if (live(a) !== live(b)) return live(a) ? a : b;
+  return b.latest.date > a.latest.date ? b : a;
+}
+
 export default async function crdroid({ previous }) {
   const branches = await fetchJson(`${API}/branches?per_page=100`);
   const trees = {};
@@ -68,7 +76,7 @@ export default async function crdroid({ previous }) {
       return;
     }
     const key = upsertDevice(parsed.brand, parsed.device);
-    if (key) devices[key] = parsed.row;
+    if (key) devices[key] = freshest(devices[key], parsed.row);
   });
   return { devices, ...(failed.length && { note: `couldn't read ${failed.join(', ')}` }) };
 }
