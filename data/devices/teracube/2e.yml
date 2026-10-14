@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=../../../schema/device.json
-name: 2E
-codenames: [2e]
-bootloader:
-  unlock: unknown
