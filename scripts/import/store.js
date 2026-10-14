@@ -168,6 +168,9 @@ const sortedByKey = (object) =>
 const activeCount = (devices) =>
   Object.values(devices).filter((row) => row.status === 'active').length;
 
+/** A codename that's become another device's second name, so its row moved in with it */
+const movedHouse = (codename) => existing.has(codename) && existing.get(codename).key !== codename;
+
 /**
  * Writes upstream/<name>.yml, keeping rows that vanished as discontinued. Throws, leaving the
  * file alone, when a source suddenly returns far fewer active devices than last time
@@ -182,7 +185,9 @@ export function writeUpstream(name, devices, { schema = 'upstream', force = fals
     );
   }
 
-  const kept = Object.entries(before).filter(([codename]) => !outOfScope.has(codename));
+  const kept = Object.entries(before).filter(
+    ([codename]) => !outOfScope.has(codename) && !movedHouse(codename),
+  );
   const ended = kept.filter(([codename, row]) => !devices[codename] && row.status === 'active');
   const merged = sortedByKey({
     ...Object.fromEntries(kept),

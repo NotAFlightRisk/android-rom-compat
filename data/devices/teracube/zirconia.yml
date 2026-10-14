@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 2e (2020)
-codenames: [zirconia]
+codenames: [zirconia, 2e]
 released: 2021
 hardware: [cellular]
 bootloader:

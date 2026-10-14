@@ -35,6 +35,14 @@ test('devices that vanish are kept as discontinued', () => {
   });
 });
 
+test("a codename that becomes another device's second name takes its row along", () => {
+  writeUpstream('moved', { old: row() });
+  upsertDevice('Acme', { name: 'New', codenames: ['new', 'old'] });
+  const result = writeUpstream('moved', { new: row() });
+  assert.deepEqual(result, { rows: 1, added: 1, ended: 0 });
+  assert.deepEqual(Object.keys(readUpstream('moved').devices), ['new']);
+});
+
 test('a source that loses a fifth of its devices fails and leaves the file alone', () => {
   writeUpstream('floor', rows(10));
   assert.throws(() => writeUpstream('floor', rows(7)), /only 7 active devices, last import had 10/);
