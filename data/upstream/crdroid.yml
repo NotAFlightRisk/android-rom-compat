@@ -1617,13 +1617,6 @@ devices:
     latest: { version: "9.0", date: 2022-11-02 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/13.0/RMX1921.json
     install: https://forum.xda-developers.com/t/rom-11-0-crdroid-android-7-3-official-13-03-2021.4122075
-  rmx1931:
-    status: discontinued
-    channel: stable
-    android: 11
-    latest: { version: "7.3", date: 2021-02-21 }
-    source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/11.0/RMX1931.json
-    install: https://forum.xda-developers.com/t/rom-android-11-rmx1931-crdroid-v7-2-beta.4215127/
   rmx1941:
     status: discontinued
     channel: stable
