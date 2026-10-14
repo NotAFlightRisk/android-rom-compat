@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 8a
 codenames: [akita]
+aliases: [GKV4X, G6GPR, G8HHN, G576D]
 released: 2024
 soc: Google Tensor G3
 hardware: [5g, cellular, esim, fingerprint, nfc]

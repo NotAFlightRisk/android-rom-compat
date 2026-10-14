@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 9 Pro
 codenames: [caiman]
+aliases: [GR83Y, GWVK6, GEC77]
 released: 2024
 soc: Google Tensor G4
 hardware: [5g, cellular, esim, fingerprint, nfc]

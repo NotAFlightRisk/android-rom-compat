@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 9 Pro Fold
 codenames: [comet]
+aliases: [GC15S, GGH2X]
 released: 2024
 soc: Google Tensor G4
 hardware: [5g, cellular, esim, fingerprint, nfc]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 8 Pro
 codenames: [husky]
+aliases: [GC3VE, G1MNW, GE9DP]
 released: 2023
 soc: Google Tensor G3
 hardware: [5g, cellular, esim, fingerprint, nfc]

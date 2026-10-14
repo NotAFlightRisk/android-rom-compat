@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 10a
 codenames: [stallion]
+aliases: [GE1GQ, GV0BP, G4H7L]
 released: 2026
 soc: Google Tensor G4
 hardware: [5g, cellular, esim, fingerprint, nfc]

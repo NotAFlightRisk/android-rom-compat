@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 5a
 codenames: [barbet]
+aliases: [G1F8F, G4S1M]
 released: 2021
 soc: Qualcomm SM7250 Snapdragon 765G
 hardware: [5g, cellular, esim, fingerprint, nfc]

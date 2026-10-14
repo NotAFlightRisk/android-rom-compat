@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 10 Pro XL
 codenames: [mustang]
+aliases: [GUL82, GYPW4, G45RY]
 released: 2025
 soc: Google Tensor G5
 hardware: [5g, cellular, esim, fingerprint, nfc]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 7a
 codenames: [lynx]
+aliases: [GWKK3, GHL1X, G0DZQ, G82U8]
 released: 2023
 soc: Google Tensor GS201
 hardware: [5g, cellular, esim, fingerprint, nfc]

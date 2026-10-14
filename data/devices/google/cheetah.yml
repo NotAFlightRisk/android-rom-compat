@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 7 Pro
 codenames: [cheetah]
+aliases: [GP4BC, GE2AE, GFE4J]
 released: 2022
 soc: Google Tensor GS201
 hardware: [5g, cellular, esim, fingerprint, nfc]

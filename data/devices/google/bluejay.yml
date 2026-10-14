@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 6a
 codenames: [bluejay]
+aliases: [GX7AS, G1AZG, GB62Z, GB17L]
 released: 2022
 soc: Google Tensor GS101
 hardware: [5g, cellular, esim, fingerprint, nfc]

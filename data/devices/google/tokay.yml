@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 9
 codenames: [tokay]
+aliases: [G2YBB, G1B60, GUR25]
 released: 2024
 soc: Google Tensor G4
 hardware: [5g, cellular, esim, fingerprint, nfc]

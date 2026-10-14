@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 10 Pro Fold
 codenames: [rango]
+aliases: [GU0NP, GM66V]
 released: 2025
 soc: Google Tensor G5
 hardware: [5g, cellular, esim, fingerprint, nfc]

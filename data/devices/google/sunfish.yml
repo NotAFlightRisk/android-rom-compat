@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 4a
 codenames: [sunfish]
+aliases: [G025J, G025N, G025M]
 released: 2020
 soc: Qualcomm SM7150-AB Snapdragon 730G
 hardware: [cellular, esim, fingerprint, nfc]

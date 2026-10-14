@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 8
 codenames: [shiba]
+aliases: [G9BQD, GKWS6, GZPF0, GPJ41]
 released: 2023
 soc: Google Tensor G3
 hardware: [5g, cellular, esim, fingerprint, nfc]
