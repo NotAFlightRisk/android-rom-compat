@@ -31,7 +31,7 @@ export function parse(devicesYml, downloadsYml) {
   const builds = new Map(parseYaml(downloadsYml).stable.map((build) => [build.codename, build]));
 
   return Object.entries(lists).flatMap(([list, status]) =>
-    devices[`${list}_codenames`].map((codename) => {
+    (devices[`${list}_codenames`] ?? []).map((codename) => {
       const { brand, model, android } = devices[codename];
       const build = builds.get(codename);
       const [name, ...aliases] = model

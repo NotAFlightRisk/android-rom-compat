@@ -55,6 +55,14 @@ test('upcoming and previous devices have no build, so no latest or install', () 
   assert.equal(byCodename.sunfish.row.install, undefined);
 });
 
+test('an empty list, like upcoming between launches, is skipped', () => {
+  const quiet = devicesYml.replace('upcoming_codenames:\n  - stallion\n', 'upcoming_codenames:\n');
+  const codenames = parse(quiet, fixture('calyxos-downloads.yml')).map(
+    (entry) => entry.device.codenames[0],
+  );
+  assert.deepEqual(codenames, Object.keys(byCodename).filter((name) => name !== 'stallion'));
+});
+
 test('supportEnds keeps real months only', () => {
   const ends = supportEnds(devicesYml);
   assert.equal(ends.tegu, '2032-04-01');
