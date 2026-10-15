@@ -80,6 +80,10 @@ const columns = usedColumns(
 
 const romNames = current.map((row) => row.rom.name);
 const codename = device.codenames[0];
+const named = `the ${device.title} (${codename})`;
+const unsupported = device.ended
+  ? `Custom ROM support for ${named}, and whether its bootloader unlocks.`
+  : `No custom ROM officially supports ${named} yet. Here's whether its bootloader unlocks.`;
 ---
 
 <Base
@@ -87,7 +91,7 @@ const codename = device.codenames[0];
   description={
     romNames.length
       ? `Which ROMs run on the ${device.title} and what works: ${listOf(romNames, 'and')}.`
-      : `Custom ROM support for the ${device.title} (${codename}), and whether its bootloader unlocks.`
+      : unsupported
   }
   crumbs={[
     { label: 'Devices', url: '/devices/' },
@@ -159,8 +163,8 @@ const codename = device.codenames[0];
         </>
       ) : (
         <p>
-          None of the ROMs listed here officially supports this device right now. Know of one?{' '}
-          <a href="/contribute/">Add it</a>.
+          None of the <a href="/roms/">ROMs we track</a> officially supports the {device.title}{' '}
+          {device.ended ? 'right now' : 'yet'}. Know of one? <a href="/contribute/">Add it</a>.
         </p>
       )}
     </section>

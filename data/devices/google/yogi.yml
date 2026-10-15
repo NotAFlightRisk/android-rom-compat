@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 11 Pro Fold
+codenames: [yogi]
+aliases: [GZDQ6]
+released: 2026
+soc: Google Tensor G6
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

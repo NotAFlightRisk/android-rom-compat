@@ -106,6 +106,7 @@ export function buildModel(data = getData(), now = new Date()) {
   for (const device of devices.values()) {
     device.support.sort((a, b) => a.rom.name.localeCompare(b.rom.name));
     device.activeCount = device.support.filter((row) => row.active).length;
+    device.ended = device.activeCount === 0 && device.support.length > 0;
     device.latestBuild = device.support
       .map((row) => row.latest?.date)
       .filter(Boolean)

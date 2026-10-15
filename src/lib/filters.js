@@ -4,7 +4,7 @@ export const deviceSearchText = (device) =>
   [device.title, ...device.codenames, ...(device.aliases ?? [])].join(' ').toLowerCase();
 
 /** What FilterBar matches and sorts on, spread onto a device's card and its table row alike */
-export const filterData = (device, ended = device.activeCount === 0) => ({
+export const filterData = (device, ended = device.ended) => ({
   'data-search': deviceSearchText(device),
   'data-brand': device.brand.key,
   'data-rom': device.support

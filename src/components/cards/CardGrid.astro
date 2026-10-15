@@ -43,8 +43,8 @@ const Heading = `h${level}`;
               </ul>
             )}
             {item.empty && (
-              <span class="status" data-tone="ended">
-                {item.empty}
+              <span class="status" data-tone={item.empty.tone}>
+                {item.empty.text}
               </span>
             )}
           </li>
