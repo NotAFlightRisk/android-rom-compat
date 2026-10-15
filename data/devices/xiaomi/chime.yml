@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: POCO M3
 codenames: [chime]
-aliases: [Redmi 9T]
+aliases: [Redmi 9T, M2010J19CG, M2010J19CT, M2010J19CI, M2010J19SG, M2010J19SI, M2010J19SR, M2010J19ST, M2010J19SY, M2010J19SL, M2010J19SC]
+released: 2020
+soc: Qualcomm SM6115 Snapdragon 662
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

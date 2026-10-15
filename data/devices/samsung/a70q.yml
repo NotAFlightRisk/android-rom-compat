@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy A70
 codenames: [a70q]
+aliases: [SM-A705F, SM-A705FN, SM-A705GM, SM-A705MN, SM-A705U, SM-A705U1, SM-A705W, SM-A7050, SM-A705YN]
+released: 2019
+soc: Qualcomm SM6150 Snapdragon 675
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

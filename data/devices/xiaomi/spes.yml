@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 11
 codenames: [spes]
+aliases: [2201117TG, 2201117TI, 2201117TL, 2201117TY]
+released: 2022
+soc: Qualcomm SM6225 Snapdragon 680 4G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

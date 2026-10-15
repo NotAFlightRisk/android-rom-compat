@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 4A/5A
 codenames: [rova]
+released: 2016
+soc: Qualcomm MSM8917 Snapdragon 425
+hardware: [cellular]
 bootloader:
   unlock: unknown

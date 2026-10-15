@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: MI9
 codenames: [cepheus]
+aliases: [M1902F1G, M1902F1A, M1902F1T, M1902F1C]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
