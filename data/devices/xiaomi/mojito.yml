@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 10
-codenames: [mojito]
+codenames: [mojito, sunny]
+aliases: [M2101K7AG, M2101K7AI]
+released: 2021
+soc: Qualcomm SDM678 Snapdragon 678
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
