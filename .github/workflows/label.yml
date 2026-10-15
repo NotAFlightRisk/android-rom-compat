@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   label:
-    name: 🏷️ Sort by type
+    name: 🏷️ Sort by what it touches
     runs-on: ubuntu-latest
     if: >-
       github.event.pull_request.head.repo.full_name == github.repository
@@ -21,33 +21,62 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Take the label off the conventional commit type
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.pull_request.number }}
-          TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          prefix=${TITLE%%:*}
-          type=${prefix%%(*}
-          case "${type%!}" in
-            feat) wanted=enhancement ;;
-            fix)  wanted=bug ;;
-            docs) wanted=documentation ;;
-            *)    wanted= ;;
-          esac
-          case "$prefix" in
-            *'!') wanted="${wanted:+$wanted,}breaking-change" ;;
-          esac
-          for label in enhancement bug documentation breaking-change; do
-            case ",$wanted," in
-              *",$label,"*) ;;
-              *) stale="${stale:+$stale,}$label" ;;
-            esac
-          done
-          args=(--remove-label "$stale")
-          if [ -n "$wanted" ]; then
-            args+=(--add-label "$wanted")
-          fi
-          gh pr edit "$NUMBER" "${args[@]}"
-          echo "### ${wanted:-no type label}" >> "$GITHUB_STEP_SUMMARY"
+      - name: Take the label off its Category, or guess from the title and files
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { number, title, body, labels } = context.payload.pull_request;
+            const kinds = {
+              'new device': 'new-device',
+              device: 'device',
+              bootloader: 'bootloader',
+              'what works': 'feature-status',
+              rom: 'rom',
+              import: 'import',
+              ui: 'ui',
+              api: 'api',
+              scripts: 'scripts',
+              docs: 'documentation',
+              maintenance: 'maintenance',
+              security: 'security',
+              dependencies: 'dependencies',
+            };
+            const areas = [
+              [/^(src\/(?!pages\/api\/)|public\/|astro\.config)/, 'ui'],
+              [/^scripts\//, 'scripts'],
+              [/^src\/pages\/api\//, 'api'],
+              [/^data\/support\//, 'feature-status'],
+              [/^data\/upstream\//, 'import'],
+              [/^data\/roms\//, 'rom'],
+              [/^data\//, 'device'],
+            ];
+            const [, type, scope, bang] = title.match(/^(\w+)(?:\((.+?)\))?(!?):/) ?? [];
+
+            const guess = async () => {
+              if (scope === 'deps') return 'dependencies';
+              if (type === 'docs') return 'documentation';
+              const files = await github.paginate(github.rest.pulls.listFiles, {
+                ...context.repo,
+                pull_number: number,
+              });
+              const touched = (path) => files.some(({ filename }) => path.test(filename));
+              return areas.find(([path]) => touched(path))?.[1] ?? 'maintenance';
+            };
+
+            const [, category = ''] =
+              (body ?? '').replace(/<!--[\s\S]*?-->/g, '').match(/^### Category\s+([^#\s].*)/m) ?? [];
+            const words = category.toLowerCase().match(/[a-z]+/g) ?? [];
+            const owned = [...Object.values(kinds), 'breaking-change'];
+            const has = labels.map(({ name }) => name);
+            const current = has.filter((name) => Object.values(kinds).includes(name));
+            const kind = kinds[words.slice(0, 2).join(' ')] ?? kinds[words[0]];
+            const wanted = kind ? [kind] : current.length ? current : [await guess()];
+            if (bang) wanted.push('breaking-change');
+
+            const issue = { ...context.repo, issue_number: number };
+            for (const name of has.filter((name) => owned.includes(name) && !wanted.includes(name))) {
+              await github.rest.issues.removeLabel({ ...issue, name });
+            }
+            const missing = wanted.filter((name) => !has.includes(name));
+            if (missing.length) await github.rest.issues.addLabels({ ...issue, labels: missing });
+            await core.summary.addHeading(wanted.join(', '), 3).write();

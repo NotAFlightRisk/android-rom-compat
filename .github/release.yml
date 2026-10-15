@@ -12,23 +12,28 @@ changelog:
     - title: 💥 Breaking Changes
       labels:
         - breaking-change
-    - title: 📋 Data
-      labels:
-        - data
-    - title: ✨ New Features
-      labels:
-        - enhancement
-        - feature
-    - title: 🐛 Bug Fixes
-      labels:
-        - bug
-        - fix
     - title: 🔒 Security
       labels:
         - security
-    - title: 📖 Documentation
+    - title: 📱 Devices
       labels:
+        - new-device
+        - device
+        - bootloader
+    - title: 🧪 What Works
+      labels:
+        - feature-status
+    - title: 🧩 ROMs
+      labels:
+        - rom
+        - import
+    - title: 🛠️ Site and Code
+      labels:
+        - ui
+        - api
+        - scripts
         - documentation
+        - maintenance
     - title: 📦 Dependencies
       labels:
         - dependencies

@@ -125,8 +125,8 @@ Everything needs a `source`. The ROM's own device page, wiki or release notes ar
 
 `android-rom-compat-bot` opens two kinds of PR:
 
-- `chore(data): weekly import` - every Monday, refreshing `data/upstream/` and filling gaps in `data/devices/`. The description lists how each source got on
-- `feat(data): ...` - one per report form, touching one file in `data/support/`, and closing the issue once merged
+- `chore(data): weekly import`, labelled `import` - every Monday, refreshing `data/upstream/` and filling gaps in `data/devices/`. The description lists how each source got on
+- `feat(data): ...`, labelled `feature-status` - one per report form, touching one file in `data/support/`, and closing the issue once merged
 
 They run the same checks as everyone else's, and get squash merged once they pass.
 
@@ -157,7 +157,7 @@ Add `--file data/devices/google/tegu.yml` to check just one file.
 1. Find the file on GitHub, or click "Edit on GitHub" at the bottom of any page on the site
 2. Hit the pencil icon. GitHub will make you a copy (a fork) automatically
 3. Make your change, then "Propose changes" and "Create pull request"
-4. Say where the info came from in the description
+4. Say where the info came from in the description, and pick a Category from the list in it
 
 To add a new file, go to the folder and pick Add file --> Create new file. Typing a path with slashes in the name box makes the folders for you.
 
@@ -165,7 +165,7 @@ To add a new file, go to the folder and pick Add file --> Create new file. Typin
 
 ## Code changes
 
-Same deal as any project: fork, branch off `main`, keep it focused, and run `npm test` and `npm run build` before you push. Commit messages and PR titles use [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:` and so on), since the release notes are generated from them.
+Same deal as any project: fork, branch off `main`, keep it focused, and run `npm test` and `npm run build` before you push. Commit messages and PR titles use [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:` and so on), and the PR's Category is one from the list in the template.
 
 ---
 

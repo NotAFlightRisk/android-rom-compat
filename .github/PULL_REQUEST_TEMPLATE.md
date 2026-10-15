@@ -1,5 +1,9 @@
 ### Category
-<!-- Bugfix / Feature / Docs / Refactor / Dependencies -->
+<!--
+Data: New device / Device / Bootloader / What works / ROM
+Code: UI / API / Scripts / Docs / Maintenance
+Or: Security / Dependencies
+-->
 
 ### Overview
 <!-- What changed, and why. A couple of sentences is plenty -->
