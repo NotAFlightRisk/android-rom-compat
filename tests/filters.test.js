@@ -11,7 +11,6 @@ const device = (key, extra) => ({
   brand: acme,
   bootloader: { unlock: 'yes' },
   support: [{ rom: tidyos, active: true }],
-  activeCount: 1,
   ...extra,
 });
 
