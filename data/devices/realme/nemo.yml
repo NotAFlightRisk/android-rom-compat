@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 6/6i/6s/Narzo
 codenames: [nemo]
+aliases: [RMX2002, RMX2003]
+released: 2020
+soc: Mediatek Helio G90T
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

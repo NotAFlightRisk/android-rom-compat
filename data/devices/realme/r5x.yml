@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 5/5i/5s
 codenames: [r5x]
+aliases: [RMX1911, RMX1925, RMX1927, RMX2030]
+released: 2019
+soc: Qualcomm SM6125 Snapdragon 665
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown

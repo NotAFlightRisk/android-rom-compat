@@ -1,7 +1,10 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pad 5
 codenames: [nabu]
+aliases: [21051182G, 21051182C]
 released: 2021
+soc: Qualcomm SM8150-AC Snapdragon 860
 type: tablet
+hardware: []
 bootloader:
   unlock: unknown

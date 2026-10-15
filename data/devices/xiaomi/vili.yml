@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 11T Pro
 codenames: [vili]
+aliases: [2107113SG, 2107113SI, 2107113SR]
+released: 2021
+soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

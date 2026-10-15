@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 9T Pro
 codenames: [raphael]
-aliases: [Redmi K20 Pro]
+aliases: [Redmi K20 Pro, M1903F11G, M1903F11A, M1903F11C, M1903F11I]
+released: 2019
+soc: Qualcomm SM8150 Snapdragon 855
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

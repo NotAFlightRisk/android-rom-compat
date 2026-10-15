@@ -2,5 +2,9 @@
 name: Redmi Note 10
 slug: redmi-note-10-sunny
 codenames: [sunny]
+aliases: [M2101K7AG, M2101K7AI]
+released: 2021
+soc: Qualcomm SM6150-AC Snapdragon 678
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown

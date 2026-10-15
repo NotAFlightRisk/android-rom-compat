@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 6 Pro
 codenames: [rmx2061]
+released: 2020
+soc: Qualcomm SM7125 Snapdragon 720G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

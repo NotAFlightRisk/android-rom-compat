@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi Note 10 Lite
 codenames: [toco]
+aliases: [M2002F4LG]
+released: 2020
+soc: Qualcomm SM7150-AB Snapdragon 730G
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
