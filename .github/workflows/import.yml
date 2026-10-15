@@ -60,7 +60,7 @@ jobs:
           commit-message: 'chore(data): weekly import'
           title: 'chore(data): weekly import'
           body-path: import-summary.md
-          labels: data
+          labels: import
       - if: steps.validate.outputs.draft != 'false'
         run: |
           echo "The imported data did not validate - the weekly pull request is a draft" >&2

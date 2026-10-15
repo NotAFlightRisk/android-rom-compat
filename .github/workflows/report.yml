@@ -87,10 +87,18 @@ jobs:
             Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.id }}+${{ github.event.issue.user.login }}@users.noreply.github.com>
           title: 'feat(data): ${{ steps.report.outputs.summary }}'
           body: |
+            ### Category
+            What works (from a report)
+
+            ### Overview
             ${{ steps.report.outputs.summary }}, reported in #${{ github.event.issue.number }}.
 
+            ### Issue Number
             Closes #${{ github.event.issue.number }}
-          labels: data
+
+            ### Additional Info
+            Made from the report form, with the reporter's name on the commit.
+          labels: feature-status
 
       - name: Point the issue at it
         if: steps.pr.outputs.pull-request-number

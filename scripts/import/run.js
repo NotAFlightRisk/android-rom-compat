@@ -32,8 +32,22 @@ for (const name of names) {
   console.log(lines.at(-1));
 }
 
-lines.push('', `${stats.devices} new devices`, ...stats.skipped.map((line) => `skipped ${line}`));
-writeFileSync('import-summary.md', `${lines.join('\n')}\n`);
+const details = [...lines, ...stats.skipped.map((line) => `skipped ${line}`)];
+writeFileSync(
+  'import-summary.md',
+  `### Category
+Import (weekly)
+
+### Overview
+Refreshes each ROM's device list and fills gaps in the device files. ${stats.devices} new devices this week.
+
+### Issue Number
+None
+
+### Additional Info
+${details.join('\n')}
+`,
+);
 if (names.length && lines.filter((line) => line.includes(': FAILED,')).length === names.length) {
   process.exitCode = 1;
 }
