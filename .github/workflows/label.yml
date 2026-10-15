@@ -25,7 +25,8 @@ jobs:
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
-            const { number, title, body, labels } = context.payload.pull_request;
+            const { number, title, body } = context.payload.pull_request;
+            const issue = { ...context.repo, issue_number: number };
             const kinds = {
               'new device': 'new-device',
               device: 'device',
@@ -67,13 +68,13 @@ jobs:
               (body ?? '').replace(/<!--[\s\S]*?-->/g, '').match(/^### Category\s+([^#\s].*)/m) ?? [];
             const words = category.toLowerCase().match(/[a-z]+/g) ?? [];
             const owned = [...Object.values(kinds), 'breaking-change'];
+            const { data: labels } = await github.rest.issues.listLabelsOnIssue(issue);
             const has = labels.map(({ name }) => name);
             const current = has.filter((name) => Object.values(kinds).includes(name));
             const kind = kinds[words.slice(0, 2).join(' ')] ?? kinds[words[0]];
             const wanted = kind ? [kind] : current.length ? current : [await guess()];
             if (bang) wanted.push('breaking-change');
 
-            const issue = { ...context.repo, issue_number: number };
             for (const name of has.filter((name) => owned.includes(name) && !wanted.includes(name))) {
               await github.rest.issues.removeLabel({ ...issue, name });
             }
