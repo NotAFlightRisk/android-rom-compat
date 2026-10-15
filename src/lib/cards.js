@@ -33,7 +33,7 @@ const unlockStatus = (device) => {
 /** What a card says once every ROM has stopped building for a device, or before any start */
 const emptyStatus = (device) => {
   if (device.ended) return { tone: 'ended', text: 'Support has ended' };
-  if (device.support.length === 0) return { tone: 'n/a', text: 'No ROMs yet' };
+  if (device.support.length === 0) return { tone: 'empty', text: 'No ROMs yet' };
 };
 
 /** A device on the device lists: its bootloader and the ROMs that still build for it */

@@ -8,6 +8,7 @@ import Logo from '../../../components/ui/Logo.astro';
 import { getModel } from '../../../lib/data/model.js';
 import {
   featuresFrom,
+  missingRomUrl,
   reportUrl,
   romCells,
   romColumns,
@@ -162,9 +163,14 @@ const unsupported = device.ended
           </div>
         </>
       ) : (
-        <p>
-          None of the <a href="/roms/">ROMs we track</a> officially supports the {device.title}{' '}
-          {device.ended ? 'right now' : 'yet'}. Know of one? <a href="/contribute/">Add it</a>.
+        <p class="unsupported">
+          <span>
+            None of the <a href="/roms/">ROMs we track</a> officially supports the {device.title}{' '}
+            {device.ended ? 'right now' : 'yet'}.
+          </span>{' '}
+          <span>
+            Know of one? <a href={missingRomUrl(device)}>Add it</a>.
+          </span>
         </p>
       )}
     </section>
@@ -265,5 +271,14 @@ const unsupported = device.ended
 
   .report {
     font-size: var(--text-sm);
+  }
+
+  /* Wraps between the two sentences before it wraps inside either */
+  .unsupported {
+    max-inline-size: none;
+
+    span {
+      display: inline-block;
+    }
   }
 </style>

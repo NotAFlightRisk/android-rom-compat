@@ -76,8 +76,6 @@ Add `aliases` for model numbers and other names people search for. `type` is `ta
 
 The import only ever fills gaps in a device file, so your edits stay put. If the brand's new, add it to `data/brands.yml` too.
 
-A new flagship can go in before any ROM supports it, as that's when plenty of people come looking. The import joins it up once one does. Just wait until it's out and the maker's published the codename (Google's [factory images](https://developers.google.com/android/images) list every Pixel's) - the import matches on it, so a guessed codename turns into a duplicate.
-
 A brand can carry its own `bootloader` block, for the policy that applies across its phones:
 
 ```yaml
