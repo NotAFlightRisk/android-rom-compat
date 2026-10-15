@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pixel 11
+codenames: [cubs]
+aliases: [GPQQ7, GUJ0N]
+released: 2026
+soc: Google Tensor G6
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

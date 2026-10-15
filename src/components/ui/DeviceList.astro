@@ -14,7 +14,7 @@ const [unlock, ...others] = new Set(devices.map((device) => device.bootloader.un
 const stated =
   !others.length && devices.every((device) => device.brand.bootloader?.unlock === unlock);
 // When every device's support has ended there's nothing to hide them behind, so they all show
-const hideEnded = devices.some((device) => device.activeCount > 0);
+const hideEnded = devices.some((device) => !device.ended);
 const keepEnded = ({ data, ...item }) => ({
   ...item,
   data: hideEnded ? data : { ...data, 'data-ended': undefined },
@@ -35,7 +35,7 @@ const columns = deviceColumns(live, devices).map((column) => ({
     label={`Filter ${label.toLowerCase()}`}
     total={devices.length}
     filters={deviceFilters(devices, live)}
-    endedCount={hideEnded ? devices.filter((device) => device.activeCount === 0).length : 0}
+    endedCount={hideEnded ? devices.filter((device) => device.ended).length : 0}
   />
   <div data-view="cards">
     <CardGrid id={`${id}-cards`} groups={groups} />

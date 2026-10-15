@@ -51,7 +51,7 @@
   --shadow-sm: 0 1px 3px rgb(18 26 29 / 0.08);
   --shadow: 0 0.5rem 1.5rem -0.5rem rgb(18 26 29 / 0.2);
   --control: 2.5rem;
-  --measure: 68ch;
+  --measure: 80ch;
   --page: 80rem;
   --page-narrow: 60rem;
   /* Lines content up with a centred column of --page, while backgrounds still run edge to edge */

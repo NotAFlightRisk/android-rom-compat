@@ -37,6 +37,12 @@
   --tone-bg: transparent;
 }
 
+[data-tone='empty'] {
+  --icon: url('/icons/empty.svg');
+  --tone-text: var(--text-muted);
+  --tone-bg: transparent;
+}
+
 /* An icon painted from --icon in the text colour, so one file serves every theme */
 .status::before,
 .masked::before {

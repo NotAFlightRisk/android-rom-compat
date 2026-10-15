@@ -1,5 +1,5 @@
 import { labelOf } from './labels.js';
-import { issueUrl } from './site.js';
+import { issueUrl, site } from './site.js';
 import { isLink } from './text.js';
 import { formatMonth } from './dates.js';
 import { filterData } from './filters.js';
@@ -137,6 +137,15 @@ export const reportUrl = (device, row) => {
     ...(row?.android && { android: row.android }),
   });
   return `${issueUrl('report-feature')}&${fields}`;
+};
+
+/** The fix a mistake form, for a ROM that supports the device but isn't listed */
+export const missingRomUrl = (device) => {
+  const fields = new URLSearchParams({
+    title: `[Correction]: Missing ROM for the ${device.title} (${device.key})`,
+    page: site.url + device.url,
+  });
+  return `${issueUrl('correction')}&${fields}`;
 };
 
 export const splitByActive = (rows) => [

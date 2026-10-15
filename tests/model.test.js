@@ -99,3 +99,14 @@ test('rows join docs, hand-written rows, variants and stock support', () => {
   assert.deepEqual([handmade.generated, handmade.status, handmade.android], [false, 'active', 14]);
   assert.equal(tidy.device.stock.security_until, '2027-01-01');
 });
+
+test('a device has ended once its ROMs stop, but not before any start', () => {
+  const data = loadData('tests/fixtures/good');
+  const [rocket] = data.devices;
+  data.devices.push({ ...rocket, key: 'comet', data: { ...rocket.data, codenames: ['comet'] } });
+  const endedOf = () =>
+    Object.fromEntries(buildModel(data).devices.map((device) => [device.key, device.ended]));
+  assert.deepEqual(endedOf(), { rocket: false, comet: false });
+  for (const rom of data.roms) rom.data.status = 'discontinued';
+  assert.deepEqual(endedOf(), { rocket: true, comet: false });
+});

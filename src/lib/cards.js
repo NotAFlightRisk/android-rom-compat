@@ -30,6 +30,12 @@ const unlockStatus = (device) => {
     : { tone: lockTone[unlock], text: unlockFact(device).text };
 };
 
+/** What a card says once every ROM has stopped building for a device, or before any start */
+const emptyStatus = (device) => {
+  if (device.ended) return { tone: 'ended', text: 'Support has ended' };
+  if (device.support.length === 0) return { tone: 'empty', text: 'No ROMs yet' };
+};
+
 /** A device on the device lists: its bootloader and the ROMs that still build for it */
 export const deviceCard = (device, roms, showUnlock = true) => ({
   key: device.key,
@@ -44,7 +50,7 @@ export const deviceCard = (device, roms, showUnlock = true) => ({
     if (tone === 'working') return [{ text: rom.name }];
     return tone === 'partial' ? [{ text: rom.name, tone, note: text.toLowerCase() }] : [];
   }),
-  empty: device.activeCount === 0 ? 'Support has ended' : undefined,
+  empty: emptyStatus(device),
   data: filterData(device),
 });
 

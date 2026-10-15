@@ -8,6 +8,7 @@ import Logo from '../../../components/ui/Logo.astro';
 import { getModel } from '../../../lib/data/model.js';
 import {
   featuresFrom,
+  missingRomUrl,
   reportUrl,
   romCells,
   romColumns,
@@ -80,6 +81,10 @@ const columns = usedColumns(
 
 const romNames = current.map((row) => row.rom.name);
 const codename = device.codenames[0];
+const named = `the ${device.title} (${codename})`;
+const unsupported = device.ended
+  ? `Custom ROM support for ${named}, and whether its bootloader unlocks.`
+  : `No custom ROM officially supports ${named} yet. Here's whether its bootloader unlocks.`;
 ---
 
 <Base
@@ -87,7 +92,7 @@ const codename = device.codenames[0];
   description={
     romNames.length
       ? `Which ROMs run on the ${device.title} and what works: ${listOf(romNames, 'and')}.`
-      : `Custom ROM support for the ${device.title} (${codename}), and whether its bootloader unlocks.`
+      : unsupported
   }
   crumbs={[
     { label: 'Devices', url: '/devices/' },
@@ -158,9 +163,14 @@ const codename = device.codenames[0];
           </div>
         </>
       ) : (
-        <p>
-          None of the ROMs listed here officially supports this device right now. Know of one?{' '}
-          <a href="/contribute/">Add it</a>.
+        <p class="unsupported">
+          <span>
+            None of the <a href="/roms/">ROMs we track</a> officially supports the {device.title}{' '}
+            {device.ended ? 'right now' : 'yet'}.
+          </span>{' '}
+          <span>
+            Know of one? <a href={missingRomUrl(device)}>Add it</a>.
+          </span>
         </p>
       )}
     </section>
@@ -261,5 +271,10 @@ const codename = device.codenames[0];
 
   .report {
     font-size: var(--text-sm);
+  }
+
+  /* Wraps between the two sentences before it wraps inside either */
+  .unsupported span {
+    display: inline-block;
   }
 </style>

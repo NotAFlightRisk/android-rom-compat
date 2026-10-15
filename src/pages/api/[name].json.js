@@ -10,7 +10,7 @@ const known = (cells) =>
 
 const dumps = {
   devices: ({ devices }) =>
-    devices.map(({ brand, title, activeCount, ...device }) => ({
+    devices.map(({ brand, title, activeCount, ended, ...device }) => ({
       ...strip(device),
       brand: brand.key,
     })),
