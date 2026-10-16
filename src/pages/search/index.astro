@@ -12,7 +12,7 @@ import { issueUrl, site } from '../../lib/site.js';
 
 const model = getModel();
 const { devices, roms, brands } = model;
-// Only features some phone is known to have working, so none of them leads nowhere
+// Just the features some phone is known to have working, so no filter comes up empty
 const { features } = buildIndex(model);
 const live = roms.filter((rom) => rom.status === 'active');
 const filters = [
@@ -100,7 +100,10 @@ const website = {
             <a href={item.url}>
               {item.logo && <Logo kind={item.logo} item={item} size="xs" />}
               {item.name}
-              {item.count !== undefined && <small>{item.count}</small>}
+              <small>
+                {item.count}
+                <span class="visually-hidden"> devices</span>
+              </small>
             </a>
           </li>
         ))}
