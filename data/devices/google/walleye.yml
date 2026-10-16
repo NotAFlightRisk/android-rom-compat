@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 2
 codenames: [walleye]
+aliases: [G011A]
 released: 2017
 soc: Qualcomm SDM835 Snapdragon 835
 hardware: [cellular, esim, fingerprint, nfc]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy S23 Ultra
 codenames: [dm3q]
+aliases: [SM-S918B, SM-S918U, SM-S918U1, SM-S918W, SM-S9180, SM-S918N, SM-S918Q, SCG20, SC-52D]
 released: 2023
 soc: Qualcomm SM8550 Snapdragon 8 Gen2
 hardware: [5g, cellular, esim, fingerprint, nfc]

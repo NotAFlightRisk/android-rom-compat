@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 9
 codenames: [merlinx]
+aliases: [Redmi 10X 4G, M2003J15SS, M2003J15SI, M2003J15SG, M2003J15SC]
 released: 2020
 soc: Mediatek Helio G85
 hardware: [cellular, fingerprint, nfc]

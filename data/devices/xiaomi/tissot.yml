@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi A1
 codenames: [tissot]
+aliases: [MDG2, MDI2]
 released: 2017
 soc: Qualcomm MSM8953 Snapdragon 625
 hardware: [cellular, fingerprint]

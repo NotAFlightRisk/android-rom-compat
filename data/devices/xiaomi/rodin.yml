@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Poco X7 Pro
 codenames: [rodin]
+aliases: [Redmi Turbo 4, 2412DPC0AG, 2412DPC0AI, 24129RT7CC]
 released: 2025
 soc: Mediatek Dimensity 8400 Ultra
 hardware: [5g, cellular, fingerprint, nfc]
