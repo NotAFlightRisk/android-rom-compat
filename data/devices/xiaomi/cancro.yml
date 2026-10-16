@@ -3,7 +3,7 @@ name: Mi 3
 codenames: [cancro]
 aliases: [Mi 4]
 released: 2013
-soc: Qualcomm MSM8974 Snapdragon 800
+soc: Qualcomm MSM8974 Snapdragon 800 / Qualcomm MSM8974AC Snapdragon 801
 hardware: [cellular]
 bootloader:
   unlock: unknown

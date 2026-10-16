@@ -3,7 +3,7 @@ name: one fusion+
 codenames: [liber]
 aliases: [one fusion+ (India), XT2067-2]
 released: 2020
-soc: Qualcomm SM7150-AA Snapdragon 730
+soc: Qualcomm SM7150-AA Snapdragon 730 / Qualcomm SM7150-AB Snapdragon 730G
 hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown
