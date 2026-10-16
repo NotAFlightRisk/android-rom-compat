@@ -38,6 +38,7 @@ const redirectsFile = {
         new URL('_redirects', dir),
         Object.entries(codenameRedirects)
           .map(([from, to]) => `${from} ${to} 301\n`)
+          .concat('/search/:term /search/ 200\n/search/:term/ /search/ 200\n')
           .join(''),
       ),
   },
