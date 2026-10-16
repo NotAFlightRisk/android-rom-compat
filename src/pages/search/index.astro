@@ -7,9 +7,13 @@ import Logo from '../../components/ui/Logo.astro';
 import Select from '../../components/ui/Select.astro';
 import { getModel } from '../../lib/data/model.js';
 import { deviceFilters } from '../../lib/filters.js';
+import { buildIndex } from '../../lib/search.js';
 import { issueUrl, site } from '../../lib/site.js';
 
-const { devices, roms, brands, features } = getModel();
+const model = getModel();
+const { devices, roms, brands } = model;
+// Only features some phone is known to have working, so none of them leads nowhere
+const { features } = buildIndex(model);
 const live = roms.filter((rom) => rom.status === 'active');
 const filters = [
   ...deviceFilters(devices, live),
@@ -30,7 +34,11 @@ const groups = [
   [
     'features',
     'What works',
-    features.map((feature) => ({ ...feature, url: `/search/?works=${feature.key}` })),
+    features.map((feature) => ({
+      ...feature,
+      url: `/search/?works=${feature.key}`,
+      count: feature.devices,
+    })),
   ],
 ];
 const website = {

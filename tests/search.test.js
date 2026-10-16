@@ -80,6 +80,21 @@ test('a word from a phone name stays a word, even when a ROM or feature starts w
   );
 });
 
+test('a feature typed on its own is the feature, even if a phone is named after it', () => {
+  assert.deepEqual(names('5g'), ['Samsung Galaxy S20 5G']);
+  assert.deepEqual(search(catalogue, '5g').named.features, ['5g']);
+});
+
+test('a ROM or feature that is still being typed leaves the results be', () => {
+  assert.deepEqual(names('pixel 7 l'), names('pixel 7'));
+  assert.deepEqual(names('pixel 5'), []);
+});
+
+test('two ROMs and a feature need it working on both', () => {
+  assert.deepEqual(names('lineage pixelos'), ['Google Pixel 7']);
+  assert.deepEqual(names('lineage pixelos volte'), []);
+});
+
 test('one typo still finds the phone', () => {
   assert.ok(nearly('pixle', 'pixel'));
   assert.ok(!nearly('pixel', 'pixies'));
@@ -89,6 +104,8 @@ test('one typo still finds the phone', () => {
 test('ended support sinks below the rest, or goes when asked', () => {
   assert.deepEqual(names('galaxy'), ['Samsung Galaxy S20 5G', 'Samsung Galaxy S21']);
   assert.deepEqual(names('galaxy', { active: true }), ['Samsung Galaxy S20 5G']);
+  assert.deepEqual(names('pixel 7 pro', { active: true }), ['Google Pixel 7 Pro']);
+  assert.deepEqual(names('google', { active: true }).length, 3);
 });
 
 test('nothing typed and nothing picked lists nothing', () => {

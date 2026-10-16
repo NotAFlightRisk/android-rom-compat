@@ -27,6 +27,41 @@ export function nearly(a, b) {
 
 const phrasesOf = ({ key, name }) => [wordsOf(name), wordsOf(key)];
 
+/** What /search.json serves: every device with the features known to work on each live ROM */
+export function buildIndex({ devices, roms, brands, features }) {
+  const entries = devices.map((device) => ({
+    name: device.title,
+    url: device.url,
+    brand: device.brand.key,
+    codenames: device.codenames,
+    aliases: device.aliases,
+    type: device.type ?? 'phone',
+    hardware: device.hardware,
+    released: device.released,
+    unlock: device.bootloader.unlock,
+    ended: device.ended,
+    roms: Object.fromEntries(
+      device.support
+        .filter((row) => row.active)
+        .map((row) => [
+          row.rom.key,
+          features.filter(({ key }) => row.cells[key].tone === 'working').map(({ key }) => key),
+        ]),
+    ),
+  }));
+  const countOf = (key) =>
+    entries.filter((entry) => Object.values(entry.roms).some((works) => works.includes(key)))
+      .length;
+  return {
+    roms: roms.map(({ key, name }) => ({ key, name })),
+    brands: brands.map(({ key, name }) => ({ key, name })),
+    features: features
+      .map(({ key, name }) => ({ key, name, devices: countOf(key) }))
+      .filter((feature) => feature.devices > 0),
+    devices: entries,
+  };
+}
+
 /** The index from /search.json, with each device's words and codes worked out once */
 export function prepare(index) {
   const vocabulary = new Set();
@@ -59,11 +94,12 @@ const spliceOut = (words, phrase) => {
 
 /**
  * Splits a query into the words a device's name has to match, and the ROMs and features it names,
- * e.g. "pixel 7 lineage volte". Words that are part of some device's name always stay words,
- * so "5G" in "Galaxy S20 5G" is a phone and not a feature
+ * e.g. "pixel 7 lineage volte". A name that's also part of a device's name only counts on its
+ * own, so "5G" is the feature but "Galaxy S20 5G" is a phone
  */
 export function readQuery(query, { roms, features, vocabulary }) {
   const words = wordsOf(query);
+  const whole = words.join(' ');
   const known = [...vocabulary];
   const halfTyped = (word) => known.some((own) => own.startsWith(word));
   const picks = (items) =>
@@ -71,7 +107,8 @@ export function readQuery(query, { roms, features, vocabulary }) {
       ({ phrases, name }) =>
         phrases.some(
           (phrase) =>
-            phrase.some((word) => !vocabulary.has(word)) && spliceOut(words, phrase),
+            (phrase.join(' ') === whole || phrase.some((word) => !vocabulary.has(word))) &&
+            spliceOut(words, phrase),
         ) ||
         words.some(
           (word, i) =>
@@ -114,14 +151,14 @@ export const fittingRoms = (device, roms, features) =>
 
 const supports = (device, roms, features) =>
   roms.every((rom) => rom in device.roms) &&
-  (!features.length || fittingRoms(device, roms, features).length > 0);
+  (!features.length || fittingRoms(device, roms, features).length >= Math.max(roms.length, 1));
 
 const matchesFilters = (device, filters) =>
   (!filters.brand || device.brand === filters.brand) &&
   (!filters.unlock || device.unlock === filters.unlock) &&
   (!filters.type || device.type === filters.type) &&
   (!filters.hardware || (device.hardware ?? []).includes(filters.hardware)) &&
-  (!filters.active || !device.ended);
+  (!filters.active || Object.keys(device.roms).length > 0);
 
 /** The best first: closest name, then still supported, then plainest name, most ROMs and newest */
 const ranking = (a, b) =>
@@ -147,17 +184,27 @@ export function search(catalogue, query, filters = {}) {
     ...new Set([...features.map(({ key }) => key), filters.works].filter(Boolean)),
   ];
   const asked = wordsOf(query).length > 0 || Object.values(filters).some(Boolean);
-  const devices = catalogue.devices
-    .filter((device) => matchesFilters(device, filters))
-    .filter((device) => supports(device, romKeys, featureKeys))
-    .map((device) =>
-      words.length
-        ? { device, score: score(words, device), size: device.words.length }
-        : { device, score: 0, size: 0 },
-    )
-    .filter((hit) => hit.score > 0 || !words.length)
-    .sort(ranking)
-    .map(({ device }) => device);
+  const candidates = catalogue.devices.filter(
+    (device) => matchesFilters(device, filters) && supports(device, romKeys, featureKeys),
+  );
+  const fitting = (text) =>
+    candidates
+      .map((device) =>
+        text.length
+          ? { device, score: score(text, device), size: device.words.length }
+          : { device, score: 0, size: 0 },
+      )
+      .filter((hit) => hit.score > 0 || !text.length)
+      .sort(ranking)
+      .map(({ device }) => device);
+  // Halfway through typing a ROM or feature, like "pixel 7 li", the rest still shows
+  const last = words.at(-1);
+  const typing =
+    words.length > 1 &&
+    /^[a-z]/.test(last) &&
+    [...catalogue.roms, ...catalogue.features].some(({ name }) => compact(name).startsWith(last));
+  const full = fitting(words);
+  const devices = full.length || !typing ? full : fitting(words.slice(0, -1));
 
   const pickedOr = (picked, items) => [
     ...new Set([...picked, ...items.filter((item) => startsAny(words, item.name))]),
