@@ -5,5 +5,6 @@ aliases: [Pad 4, OPD2513, OPD2514]
 released: 2026
 soc: Qualcomm SM8850 Snapdragon 8 Elite Gen 5
 type: tablet
+hardware: []
 bootloader:
   unlock: unknown
