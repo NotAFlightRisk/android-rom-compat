@@ -3,7 +3,7 @@ name: "3"
 codenames: [oneplus3]
 aliases: [3T, A3000, A3003]
 released: 2016
-soc: Qualcomm MSM8996 Snapdragon 820
+soc: Qualcomm MSM8996 Snapdragon 820 / Qualcomm MSM8996 Pro Snapdragon 821
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

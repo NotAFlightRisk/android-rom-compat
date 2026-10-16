@@ -26,6 +26,14 @@ test('hardware counts every variant, not just the first', () => {
   assert.deepEqual(entry('r8q').device.hardware, ['5g', 'cellular', 'fingerprint', 'nfc']);
 });
 
+test('variants with different chips list them all', () => {
+  assert.equal(
+    entry('fogos').device.soc,
+    'Qualcomm SM6375 Snapdragon 695 / Qualcomm SM6375-AC Snapdragon 6s Gen 3',
+  );
+  assert.equal(entry('r8q').device.soc, 'Qualcomm SM8250 Snapdragon 865');
+});
+
 test('an active device gets android, firmware, relock and the upstream codename spelling', () => {
   const { vendor, device, row } = entry('fp4');
   assert.equal(vendor, 'Fairphone');

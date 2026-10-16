@@ -41,6 +41,7 @@ export function parseWiki(texts) {
 function parseDevice(codename, [first, ...variants], codenames) {
   const names = [...new Set([first, ...variants].map((file) => file.name))];
   const models = [first, ...variants].flatMap((file) => file.models ?? []).map(String);
+  const socs = new Set([first, ...variants].flatMap((file) => file.soc ?? []));
   const aliases = [...names.slice(1), ...models].filter(
     (alias) => !codenames.has(alias.toLowerCase()),
   );
@@ -61,7 +62,7 @@ function parseDevice(codename, [first, ...variants], codenames) {
       codenames: [codename.toLowerCase()],
       aliases,
       released: Number(String(first.release).slice(0, 4)) || undefined,
-      soc: [first.soc].flat().join(' / ') || undefined,
+      soc: [...socs].join(' / ') || undefined,
       type: typeOf(first.type),
       hardware: [...new Set([first, ...variants].flatMap(hardwareOf))].sort(),
       bootloader: first.is_unlockable === false ? { unlock: 'no', notes: locked, source } : {},
