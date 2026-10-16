@@ -5,5 +5,6 @@ aliases: [SM-T500]
 released: 2020
 soc: Qualcomm SM6115 Snapdragon 662
 type: tablet
+hardware: []
 bootloader:
   unlock: unknown

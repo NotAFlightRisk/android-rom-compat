@@ -4,5 +4,6 @@ codenames: [odin_m0]
 released: 2022
 soc: Qualcomm SDM845 Snapdragon 845
 type: handheld
+hardware: []
 bootloader:
   unlock: unknown
