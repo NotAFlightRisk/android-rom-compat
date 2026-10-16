@@ -27,5 +27,6 @@ features:
   android_auto: { status: working, note: 'Wired and wireless, through sandboxed Google Play', source: https://grapheneos.org/usage#android-auto }
   rcs: { status: working, note: 'With sandboxed Google Play, only known to work in the owner profile', source: https://grapheneos.org/usage#rcs }
   integrity: { status: basic, inferred: true, note: 'The docs only cover the retired SafetyNet, where it passes the basic check but not the certified one', source: https://grapheneos.org/usage#banking-apps }
+  camera: { status: working, note: 'Matches stock, and Pixel Camera works fully without Google Play', source: https://grapheneos.org/usage#camera }
   fingerprint: { status: working, note: 'Five failed tries turns it off until you unlock with your PIN or password', source: https://grapheneos.org/features#more-secure-fingerprint-unlock }
   esim: { status: working, note: 'Switch on eSIM support in Settings first, it''s off by default', source: https://grapheneos.org/usage#esim-support }
