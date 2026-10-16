@@ -1,0 +1,231 @@
+---
+import Base from '../../components/layout/Base.astro';
+import CardGrid from '../../components/cards/CardGrid.astro';
+import PageHead from '../../components/layout/PageHead.astro';
+import Icon from '../../components/ui/Icon.astro';
+import Logo from '../../components/ui/Logo.astro';
+import Select from '../../components/ui/Select.astro';
+import { getModel } from '../../lib/data/model.js';
+import { deviceFilters } from '../../lib/filters.js';
+import { issueUrl, site } from '../../lib/site.js';
+
+const { devices, roms, brands, features } = getModel();
+const live = roms.filter((rom) => rom.status === 'active');
+const filters = [
+  ...deviceFilters(devices, live),
+  {
+    name: 'works',
+    label: 'What works',
+    any: 'Anything works',
+    options: features.map(({ key, name }) => [key, `${name} works`]),
+  },
+];
+const groups = [
+  ['roms', 'ROMs', live.map((rom) => ({ ...rom, logo: 'roms', count: rom.activeCount }))],
+  [
+    'brands',
+    'Brands',
+    brands.map((brand) => ({ ...brand, logo: 'brands', count: brand.devices.length })),
+  ],
+  [
+    'features',
+    'What works',
+    features.map((feature) => ({ ...feature, url: `/search/?works=${feature.key}` })),
+  ],
+];
+const website = {
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/search/{query}/` },
+    'query-input': 'required name=query',
+  },
+};
+---
+
+<Base
+  title="Search phones, ROMs and features"
+  description={`Find any of ${devices.length} Android phones and tablets by name, model number or codename, then narrow it down by ROM, brand, bootloader and what works.`}
+  crumbs={[{ label: 'Search', url: '/search/' }]}
+  jsonLd={[website]}
+  headerSearch={false}
+>
+  <PageHead title="Search" />
+  <form class="finder" role="search" action="/search/" method="get" data-finder>
+    <label class="query">
+      <span class="visually-hidden">Phone, model number, codename, ROM or feature</span>
+      <Icon name="search" />
+      <input
+        type="search"
+        name="q"
+        placeholder="Pixel 7a, SM-G991B, lineage volte..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </label>
+    <div class="dropdowns">
+      {filters.map(({ name, label, any, options, logos }) => (
+        <Select name={name} label={label} options={[['', any], ...options]} logos={logos} />
+      ))}
+      <label class="check">
+        <input type="checkbox" name="active" value="1" />
+        Still supported
+      </label>
+    </div>
+    <p class="count" role="status" data-count></p>
+  </form>
+
+  {groups.map(([kind, heading, items]) => (
+    <section class="shortcuts" data-kind={kind} aria-labelledby={`${kind}-head`}>
+      <h2 id={`${kind}-head`}>{heading}</h2>
+      <ul>
+        {items.map((item) => (
+          <li data-key={item.key}>
+            <a href={item.url}>
+              {item.logo && <Logo kind={item.logo} item={item} size="xs" />}
+              {item.name}
+              {item.count !== undefined && <small>{item.count}</small>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <section data-kind="devices" aria-labelledby="devices-head" hidden>
+    <h2 id="devices-head">Devices</h2>
+    <CardGrid id="results" groups={[{ items: [] }]} />
+    <button type="button" class="button" data-more hidden></button>
+  </section>
+
+  <div class="empty" data-empty hidden>
+    <p>Nothing matches that. Check the spelling, or try the model number or codename.</p>
+    <a href={issueUrl('add-device')}>Ask for a phone to be added</a>
+  </div>
+</Base>
+
+<script>
+  import { enhanceFinder } from '../../scripts/finder.js';
+  document.querySelectorAll('[data-finder]').forEach(enhanceFinder);
+</script>
+
+<style>
+  .finder {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .query {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-inline-size: 40rem;
+
+    :global(svg) {
+      position: absolute;
+      inset-inline-start: var(--space-sm);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    input {
+      inline-size: 100%;
+      min-block-size: 3.25rem;
+      padding-inline-start: 2.5rem;
+      font-size: var(--text-lg);
+    }
+  }
+
+  .dropdowns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+
+    @media (width < 40rem) {
+      > :global(label) {
+        flex: 1 1 40%;
+      }
+
+      :global(select) {
+        inline-size: 100%;
+      }
+    }
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-block-size: var(--control);
+    padding-inline: var(--space-sm);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--text-muted);
+    }
+  }
+
+  .count {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  h2 {
+    font-size: var(--text-lg);
+  }
+
+  .shortcuts ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .shortcuts a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-block-size: var(--control);
+    padding: var(--space-2xs) var(--space-sm) var(--space-2xs) var(--space-2xs);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface-card);
+    color: var(--text);
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-sm);
+    }
+
+    small {
+      color: var(--text-muted);
+    }
+  }
+
+  [data-kind='features'] a {
+    padding-inline-start: var(--space-sm);
+  }
+
+  [data-more] {
+    justify-self: start;
+  }
+
+  .empty {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+    text-align: center;
+  }
+</style>
