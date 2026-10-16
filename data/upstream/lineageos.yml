@@ -13,6 +13,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a21s/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a21s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a21s/ }
   a3xelte:
     status: discontinued
     android: 10
@@ -21,6 +22,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a3xelte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a3xelte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a3xelte/ }
   a52q:
     status: active
     android: 17
@@ -32,6 +34,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a52q/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a52q/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a52q/ }
   a52sxq:
     status: active
     android: 17
@@ -43,6 +46,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a52sxq/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a52sxq/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a52sxq/ }
   a5xelte:
     status: discontinued
     android: 10
@@ -51,6 +55,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a5xelte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a5xelte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a5xelte/ }
   a5y17lte:
     status: discontinued
     android: 11
@@ -60,6 +65,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a5y17lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a5y17lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a5y17lte/ }
   a6020:
     status: discontinued
     android: 7
@@ -77,6 +83,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a71/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a71/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a71/ }
   a72q:
     status: active
     android: 17
@@ -88,6 +95,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a72q/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a72q/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a72q/ }
   a73xq:
     status: active
     android: 17
@@ -99,6 +107,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a73xq/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a73xq/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a73xq/ }
   a7xelte:
     status: discontinued
     android: 10
@@ -107,6 +116,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a7xelte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a7xelte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a7xelte/ }
   a7y17lte:
     status: discontinued
     android: 11
@@ -116,6 +126,7 @@ devices:
     install: https://wiki.lineageos.org/devices/a7y17lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/a7y17lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/a7y17lte/ }
   addison:
     status: discontinued
     android: 11
@@ -186,6 +197,7 @@ devices:
     install: https://wiki.lineageos.org/devices/alphaplus/install/variant1/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/alphaplus/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/alphaplus/ }
   amber:
     status: discontinued
     android: 10
@@ -441,6 +453,7 @@ devices:
     install: https://wiki.lineageos.org/devices/betalm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/betalm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/betalm/ }
   beyond0lte:
     status: active
     android: 16
@@ -452,6 +465,7 @@ devices:
     install: https://wiki.lineageos.org/devices/beyond0lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/beyond0lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/beyond0lte/ }
   beyond1lte:
     status: active
     android: 16
@@ -463,6 +477,7 @@ devices:
     install: https://wiki.lineageos.org/devices/beyond1lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/beyond1lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/beyond1lte/ }
   beyond2lte:
     status: active
     android: 16
@@ -474,6 +489,7 @@ devices:
     install: https://wiki.lineageos.org/devices/beyond2lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/beyond2lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/beyond2lte/ }
   beyondx:
     status: active
     android: 16
@@ -485,6 +501,7 @@ devices:
     install: https://wiki.lineageos.org/devices/beyondx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/beyondx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/beyondx/ }
   billie:
     status: active
     android: 17
@@ -579,6 +596,7 @@ devices:
     features:
       esim: { status: partial, note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine", source: https://wiki.lineageos.org/devices/c1s/ }
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/c1s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/c1s/ }
   c2s:
     status: active
     android: 17
@@ -591,6 +609,7 @@ devices:
     features:
       esim: { status: partial, note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine", source: https://wiki.lineageos.org/devices/c2s/ }
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/c2s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/c2s/ }
   caihong:
     status: active
     android: 16
@@ -679,6 +698,7 @@ devices:
     install: https://wiki.lineageos.org/devices/caymanlm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/caymanlm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/caymanlm/ }
   caymanslm:
     status: active
     android: 15
@@ -690,6 +710,7 @@ devices:
     install: https://wiki.lineageos.org/devices/caymanslm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/caymanslm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/caymanslm/ }
   cebu:
     status: active
     android: 17
@@ -714,6 +735,7 @@ devices:
     install: https://wiki.lineageos.org/devices/chagalllte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/chagalllte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/chagalllte/ }
   chagallwifi:
     status: discontinued
     android: 7
@@ -866,6 +888,7 @@ devices:
     install: https://wiki.lineageos.org/devices/crownlte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/crownlte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/crownlte/ }
   cupid:
     status: active
     android: 17
@@ -886,6 +909,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d1/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d1/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d1/ }
   d1x:
     status: active
     android: 16
@@ -897,6 +921,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d1x/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d1x/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d1x/ }
   d2att:
     status: discontinued
     android: 7
@@ -905,6 +930,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d2att/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d2att/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d2att/ }
   d2s:
     status: active
     android: 16
@@ -916,6 +942,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d2s/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d2s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d2s/ }
   d2spr:
     status: discontinued
     android: 7
@@ -924,6 +951,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d2spr/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d2spr/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d2spr/ }
   d2tmo:
     status: discontinued
     android: 7
@@ -938,6 +966,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d2vzw/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d2vzw/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d2vzw/ }
   d2x:
     status: active
     android: 16
@@ -949,6 +978,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d2x/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d2x/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d2x/ }
   d800:
     status: discontinued
     android: 11
@@ -957,6 +987,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d800/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d800/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d800/ }
   d801:
     status: discontinued
     android: 11
@@ -965,6 +996,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d801/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d801/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d801/ }
   d802:
     status: discontinued
     android: 11
@@ -973,6 +1005,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d802/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d802/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d802/ }
   d803:
     status: discontinued
     android: 11
@@ -981,6 +1014,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d803/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d803/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d803/ }
   d850:
     status: discontinued
     android: 11
@@ -989,6 +1023,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d850/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d850/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d850/ }
   d851:
     status: discontinued
     android: 11
@@ -997,6 +1032,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d851/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d851/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d851/ }
   d852:
     status: discontinued
     android: 11
@@ -1005,6 +1041,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d852/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d852/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d852/ }
   d855:
     status: discontinued
     android: 11
@@ -1013,6 +1050,7 @@ devices:
     install: https://wiki.lineageos.org/devices/d855/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/d855/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/d855/ }
   davinci:
     status: active
     android: 16
@@ -1089,6 +1127,7 @@ devices:
     features:
       esim: { status: partial, note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine", source: https://wiki.lineageos.org/devices/dm1q/ }
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/dm1q/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/dm1q/ }
   dodge:
     status: active
     android: 17
@@ -1206,6 +1245,7 @@ devices:
     install: https://wiki.lineageos.org/devices/ether/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/ether/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/ether/ }
   evert:
     status: active
     android: 15
@@ -1238,6 +1278,7 @@ devices:
     install: https://wiki.lineageos.org/devices/f62/install/variant1/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/f62/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/f62/ }
   fairlady:
     status: active
     android: 17
@@ -1301,6 +1342,7 @@ devices:
     install: https://wiki.lineageos.org/devices/flashlmdd/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/flashlmdd/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/flashlmdd/ }
   flounder:
     status: discontinued
     android: 7
@@ -1420,6 +1462,7 @@ devices:
     install: https://wiki.lineageos.org/devices/g2m/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/g2m/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/g2m/ }
   g710n:
     status: active
     android: 15
@@ -1431,6 +1474,7 @@ devices:
     install: https://wiki.lineageos.org/devices/g710n/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/g710n/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/g710n/ }
   g710ulm:
     status: active
     android: 15
@@ -1442,6 +1486,7 @@ devices:
     install: https://wiki.lineageos.org/devices/g710ulm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/g710ulm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/g710ulm/ }
   garnet:
     status: active
     android: 16
@@ -1541,6 +1586,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gta4l/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gta4l/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gta4l/ }
   gta4lwifi:
     status: active
     android: 17
@@ -1561,6 +1607,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gta4xl/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gta4xl/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gta4xl/ }
   gta4xlswifi:
     status: active
     android: 16
@@ -1592,6 +1639,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gtesqltespr/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gtesqltespr/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gtesqltespr/ }
   gtowifi:
     status: active
     android: 15
@@ -1609,6 +1657,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gts210ltexx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gts210ltexx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gts210ltexx/ }
   gts210vewifi:
     status: discontinued
     android: 9
@@ -1638,6 +1687,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gts4lv/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gts4lv/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gts4lv/ }
   gts4lvwifi:
     status: active
     android: 15
@@ -1658,6 +1708,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gts7l/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gts7l/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gts7l/ }
   gts7lwifi:
     status: active
     android: 17
@@ -1678,6 +1729,7 @@ devices:
     install: https://wiki.lineageos.org/devices/gts7xl/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/gts7xl/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/gts7xl/ }
   gts7xlwifi:
     status: active
     android: 17
@@ -1740,6 +1792,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h811/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h811/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h811/ }
   h815:
     status: discontinued
     android: 7
@@ -1748,6 +1801,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h815/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h815/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h815/ }
   h830:
     status: active
     android: 15
@@ -1759,6 +1813,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h830/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h830/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h830/ }
   h850:
     status: active
     android: 15
@@ -1770,6 +1825,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h850/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h850/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h850/ }
   h870:
     status: active
     android: 15
@@ -1781,6 +1837,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h870/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h870/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h870/ }
   h870d:
     status: active
     android: 15
@@ -1792,6 +1849,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h870d/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h870d/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h870d/ }
   h872:
     status: active
     android: 15
@@ -1802,6 +1860,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h872/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h872/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h872/ }
   h873:
     status: active
     android: 15
@@ -1813,6 +1872,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h873/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h873/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h873/ }
   h910:
     status: active
     android: 15
@@ -1824,6 +1884,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h910/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h910/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h910/ }
   h918:
     status: active
     android: 15
@@ -1835,6 +1896,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h918/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h918/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h918/ }
   h990:
     status: active
     android: 15
@@ -1846,6 +1908,7 @@ devices:
     install: https://wiki.lineageos.org/devices/h990/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/h990/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/h990/ }
   ha3g:
     status: discontinued
     android: 7
@@ -1918,6 +1981,7 @@ devices:
     install: https://wiki.lineageos.org/devices/hero2lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/hero2lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/hero2lte/ }
   herolte:
     status: discontinued
     android: 7
@@ -1926,6 +1990,7 @@ devices:
     install: https://wiki.lineageos.org/devices/herolte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/herolte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/herolte/ }
   hiae:
     status: discontinued
     android: 8
@@ -1952,6 +2017,7 @@ devices:
     install: https://wiki.lineageos.org/devices/hlte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/hlte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/hlte/ }
   hltechn:
     status: discontinued
     android: 11
@@ -1960,6 +2026,7 @@ devices:
     install: https://wiki.lineageos.org/devices/hltechn/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/hltechn/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/hltechn/ }
   hltekor:
     status: discontinued
     android: 11
@@ -1968,6 +2035,7 @@ devices:
     install: https://wiki.lineageos.org/devices/hltekor/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/hltekor/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/hltekor/ }
   hltetmo:
     status: discontinued
     android: 11
@@ -1976,6 +2044,8 @@ devices:
     install: https://wiki.lineageos.org/devices/hltetmo/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/hltetmo/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/hltetmo/ }
+      nfc: { status: broken, note: LineageOS doesn't support NFC on this device, source: https://wiki.lineageos.org/devices/hltetmo/ }
   hotdog:
     status: active
     android: 17
@@ -2058,6 +2128,7 @@ devices:
     install: https://wiki.lineageos.org/devices/i9305/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/i9305/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/i9305/ }
   ibiza:
     status: active
     android: 17
@@ -2131,6 +2202,7 @@ devices:
     install: https://wiki.lineageos.org/devices/j7elte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/j7elte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/j7elte/ }
   jactivelte:
     status: discontinued
     android: 11
@@ -2139,6 +2211,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jactivelte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jactivelte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jactivelte/ }
   jag3gds:
     status: discontinued
     android: 7
@@ -2153,6 +2226,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jagnm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jagnm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jagnm/ }
   jalebi:
     status: discontinued
     android: 7
@@ -2185,6 +2259,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jflteatt/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jflteatt/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jflteatt/ }
   jfltespr:
     status: discontinued
     android: 11
@@ -2193,6 +2268,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jfltespr/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jfltespr/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jfltespr/ }
   jfltevzw:
     status: discontinued
     android: 11
@@ -2201,6 +2277,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jfltevzw/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jfltevzw/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jfltevzw/ }
   jfltexx:
     status: discontinued
     android: 11
@@ -2209,6 +2286,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jfltexx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jfltexx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jfltexx/ }
   jfvelte:
     status: discontinued
     android: 11
@@ -2217,6 +2295,7 @@ devices:
     install: https://wiki.lineageos.org/devices/jfvelte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/jfvelte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/jfvelte/ }
   joan:
     status: active
     android: 15
@@ -2228,6 +2307,7 @@ devices:
     install: https://wiki.lineageos.org/devices/joan/install/variant1/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/joan/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/joan/ }
   judyln:
     status: active
     android: 15
@@ -2239,6 +2319,7 @@ devices:
     install: https://wiki.lineageos.org/devices/judyln/install/variant1/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/judyln/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/judyln/ }
   judyp:
     status: active
     android: 15
@@ -2250,6 +2331,7 @@ devices:
     install: https://wiki.lineageos.org/devices/judyp/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/judyp/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/judyp/ }
   judypn:
     status: active
     android: 15
@@ -2261,6 +2343,7 @@ devices:
     install: https://wiki.lineageos.org/devices/judypn/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/judypn/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/judypn/ }
   k3gxx:
     status: discontinued
     android: 7
@@ -2295,6 +2378,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kccat6/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kccat6/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kccat6/ }
   kebab:
     status: active
     android: 17
@@ -2360,6 +2444,7 @@ devices:
     install: https://wiki.lineageos.org/devices/klte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/klte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/klte/ }
   klteactivexx:
     status: discontinued
     android: 11
@@ -2368,6 +2453,7 @@ devices:
     install: https://wiki.lineageos.org/devices/klteactivexx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/klteactivexx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/klteactivexx/ }
   klteaio:
     status: discontinued
     android: 11
@@ -2376,6 +2462,7 @@ devices:
     install: https://wiki.lineageos.org/devices/klteaio/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/klteaio/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/klteaio/ }
   kltechn:
     status: discontinued
     android: 11
@@ -2385,6 +2472,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kltechn/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kltechn/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kltechn/ }
   kltechnduo:
     status: discontinued
     android: 11
@@ -2394,6 +2482,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kltechnduo/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kltechnduo/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kltechnduo/ }
   klteduos:
     status: discontinued
     android: 11
@@ -2403,6 +2492,7 @@ devices:
     install: https://wiki.lineageos.org/devices/klteduos/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/klteduos/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/klteduos/ }
   kltedv:
     status: discontinued
     android: 11
@@ -2412,6 +2502,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kltedv/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kltedv/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kltedv/ }
   kltekdi:
     status: discontinued
     android: 11
@@ -2421,6 +2512,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kltekdi/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kltekdi/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kltekdi/ }
   kltekor:
     status: discontinued
     android: 11
@@ -2430,6 +2522,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kltekor/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kltekor/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kltekor/ }
   kltesprsports:
     status: discontinued
     android: 7
@@ -2438,6 +2531,7 @@ devices:
     install: https://wiki.lineageos.org/devices/kltesprsports/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/kltesprsports/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/kltesprsports/ }
   komodo:
     status: active
     android: 17
@@ -2455,6 +2549,7 @@ devices:
     install: https://wiki.lineageos.org/devices/ks01lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/ks01lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/ks01lte/ }
   kugo:
     status: discontinued
     android: 11
@@ -2479,6 +2574,7 @@ devices:
     install: https://wiki.lineageos.org/devices/l01k/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/l01k/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/l01k/ }
   lake:
     status: active
     android: 15
@@ -2564,6 +2660,7 @@ devices:
     install: https://wiki.lineageos.org/devices/lentislte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/lentislte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/lentislte/ }
   lettuce:
     status: discontinued
     android: 9
@@ -2624,6 +2721,7 @@ devices:
     install: https://wiki.lineageos.org/devices/ls990/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/ls990/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/ls990/ }
   ls997:
     status: active
     android: 15
@@ -2635,6 +2733,7 @@ devices:
     install: https://wiki.lineageos.org/devices/ls997/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/ls997/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/ls997/ }
   lt02ltespr:
     status: discontinued
     android: 7
@@ -2643,6 +2742,7 @@ devices:
     install: https://wiki.lineageos.org/devices/lt02ltespr/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/lt02ltespr/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/lt02ltespr/ }
   lt03lte:
     status: discontinued
     android: 7
@@ -2651,6 +2751,7 @@ devices:
     install: https://wiki.lineageos.org/devices/lt03lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/lt03lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/lt03lte/ }
   luigi:
     status: active
     android: 17
@@ -2685,6 +2786,7 @@ devices:
     install: https://wiki.lineageos.org/devices/m20lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/m20lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/m20lte/ }
   m216:
     status: discontinued
     android: 7
@@ -2693,6 +2795,7 @@ devices:
     install: https://wiki.lineageos.org/devices/m216/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/m216/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/m216/ }
   m52xq:
     status: active
     android: 17
@@ -2704,6 +2807,7 @@ devices:
     install: https://wiki.lineageos.org/devices/m52xq/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/m52xq/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/m52xq/ }
   m7:
     status: discontinued
     android: 7
@@ -2854,6 +2958,7 @@ devices:
     install: https://wiki.lineageos.org/devices/mh2lm/install/variant1/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/mh2lm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/mh2lm/ }
   mi439:
     status: discontinued
     android: 16
@@ -3007,6 +3112,7 @@ devices:
     install: https://wiki.lineageos.org/devices/n5120/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/n5120/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/n5120/ }
   nairo:
     status: active
     android: 16
@@ -3239,6 +3345,7 @@ devices:
     install: https://wiki.lineageos.org/devices/oneplus2/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/oneplus2/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/oneplus2/ }
   oneplus3:
     status: discontinued
     android: 11
@@ -3662,6 +3769,7 @@ devices:
     install: https://wiki.lineageos.org/devices/r8q/install/variant1/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/r8q/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/r8q/ }
   r8s:
     status: active
     android: 17
@@ -3673,6 +3781,7 @@ devices:
     install: https://wiki.lineageos.org/devices/r8s/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/r8s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/r8s/ }
   racer:
     status: active
     android: 16
@@ -3804,6 +3913,7 @@ devices:
     install: https://wiki.lineageos.org/devices/rs988/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/rs988/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/rs988/ }
   rtwo:
     status: active
     android: 17
@@ -3825,18 +3935,24 @@ devices:
     relock: no
     source: https://wiki.lineageos.org/devices/s3ve3gds/
     install: https://wiki.lineageos.org/devices/s3ve3gds/install/
+    features:
+      nfc: { status: broken, note: LineageOS doesn't support NFC on this device, source: https://wiki.lineageos.org/devices/s3ve3gds/ }
   s3ve3gjv:
     status: discontinued
     android: 11
     relock: no
     source: https://wiki.lineageos.org/devices/s3ve3gjv/
     install: https://wiki.lineageos.org/devices/s3ve3gjv/install/
+    features:
+      nfc: { status: broken, note: LineageOS doesn't support NFC on this device, source: https://wiki.lineageos.org/devices/s3ve3gjv/ }
   s3ve3gxx:
     status: discontinued
     android: 11
     relock: no
     source: https://wiki.lineageos.org/devices/s3ve3gxx/
     install: https://wiki.lineageos.org/devices/s3ve3gxx/install/
+    features:
+      nfc: { status: broken, note: LineageOS doesn't support NFC on this device, source: https://wiki.lineageos.org/devices/s3ve3gxx/ }
   s5neolte:
     status: discontinued
     android: 10
@@ -3845,6 +3961,7 @@ devices:
     install: https://wiki.lineageos.org/devices/s5neolte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/s5neolte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/s5neolte/ }
   sagit:
     status: active
     android: 15
@@ -3924,6 +4041,7 @@ devices:
     install: https://wiki.lineageos.org/devices/serranoltexx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/serranoltexx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/serranoltexx/ }
   shamu:
     status: discontinued
     android: 11
@@ -3932,6 +4050,7 @@ devices:
     install: https://wiki.lineageos.org/devices/shamu/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/shamu/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/shamu/ }
   shark:
     status: active
     android: 15
@@ -4001,6 +4120,7 @@ devices:
     install: https://wiki.lineageos.org/devices/star2lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/star2lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/star2lte/ }
   starlte:
     status: discontinued
     android: 13
@@ -4010,6 +4130,7 @@ devices:
     install: https://wiki.lineageos.org/devices/starlte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/starlte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/starlte/ }
   style3lm:
     status: active
     android: 15
@@ -4020,6 +4141,7 @@ devices:
     install: https://wiki.lineageos.org/devices/style3lm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/style3lm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/style3lm/ }
   sumire:
     status: discontinued
     android: 7
@@ -4086,6 +4208,7 @@ devices:
     install: https://wiki.lineageos.org/devices/t0lte/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/t0lte/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/t0lte/ }
   t6:
     status: discontinued
     android: 7
@@ -4179,6 +4302,7 @@ devices:
     install: https://wiki.lineageos.org/devices/timelm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/timelm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/timelm/ }
   tissot:
     status: discontinued
     android: 13
@@ -4319,6 +4443,7 @@ devices:
     install: https://wiki.lineageos.org/devices/us996/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/us996/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/us996/ }
   us996d:
     status: active
     android: 15
@@ -4330,6 +4455,7 @@ devices:
     install: https://wiki.lineageos.org/devices/us996d/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/us996d/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/us996d/ }
   us997:
     status: active
     android: 15
@@ -4340,6 +4466,7 @@ devices:
     install: https://wiki.lineageos.org/devices/us997/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/us997/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/us997/ }
   v1awifi:
     status: discontinued
     android: 7
@@ -4360,6 +4487,7 @@ devices:
     install: https://wiki.lineageos.org/devices/v410/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/v410/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/v410/ }
   v480:
     status: discontinued
     android: 7
@@ -4380,6 +4508,7 @@ devices:
     install: https://wiki.lineageos.org/devices/v521/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/v521/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/v521/ }
   vayu:
     status: active
     android: 15
@@ -4452,6 +4581,7 @@ devices:
     install: https://wiki.lineageos.org/devices/vs985/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/vs985/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/vs985/ }
   vs995:
     status: active
     android: 15
@@ -4463,6 +4593,7 @@ devices:
     install: https://wiki.lineageos.org/devices/vs995/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/vs995/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/vs995/ }
   w5:
     status: discontinued
     android: 7
@@ -4518,6 +4649,7 @@ devices:
     install: https://wiki.lineageos.org/devices/winglm/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/winglm/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/winglm/ }
   wt88047:
     status: discontinued
     android: 10
@@ -4561,6 +4693,7 @@ devices:
     features:
       esim: { status: partial, note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine", source: https://wiki.lineageos.org/devices/x1s/ }
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/x1s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/x1s/ }
   x2:
     status: discontinued
     android: 11
@@ -4618,6 +4751,7 @@ devices:
     features:
       esim: { status: partial, note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine", source: https://wiki.lineageos.org/devices/y2s/ }
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/y2s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/y2s/ }
   ytx703f:
     status: discontinued
     android: 11
@@ -4705,6 +4839,7 @@ devices:
     features:
       esim: { status: partial, note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine", source: https://wiki.lineageos.org/devices/z3s/ }
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/z3s/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/z3s/ }
   zangya:
     status: discontinued
     android: 13
@@ -4731,6 +4866,7 @@ devices:
     install: https://wiki.lineageos.org/devices/zerofltexx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/zerofltexx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/zerofltexx/ }
   zeroltexx:
     status: discontinued
     android: 7
@@ -4739,6 +4875,7 @@ devices:
     install: https://wiki.lineageos.org/devices/zeroltexx/install/
     features:
       volte: { status: partial, note: "No IMS on LineageOS here, so whether calls work depends on your carrier", source: https://wiki.lineageos.org/devices/zeroltexx/ }
+      vowifi: { status: broken, note: "No IMS on LineageOS here, so no Wi-Fi calling", source: https://wiki.lineageos.org/devices/zeroltexx/ }
   zeus:
     status: active
     android: 17
