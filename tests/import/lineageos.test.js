@@ -37,13 +37,17 @@ test('an active device gets android, firmware, relock and the upstream codename 
   });
 });
 
-test('ims and esim quirks become partial features with a note', () => {
+test('ims and esim quirks become features with a note', () => {
   const { device, row } = entry('dm1q');
   assert.equal(device.bootloader.unlock, 'no');
   assert.equal(device.bootloader.source, 'https://wiki.lineageos.org/devices/dm1q/');
-  assert.deepEqual(Object.keys(row.features), ['esim', 'volte']);
+  const statuses = Object.entries(row.features).map(([key, cell]) => [key, cell.status]);
+  assert.deepEqual(statuses, [
+    ['esim', 'partial'],
+    ['volte', 'partial'],
+    ['vowifi', 'broken'],
+  ]);
   for (const cell of Object.values(row.features)) {
-    assert.equal(cell.status, 'partial');
     assert.ok(cell.note);
     assert.equal(cell.source, 'https://wiki.lineageos.org/devices/dm1q/');
   }

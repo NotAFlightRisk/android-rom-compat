@@ -9,8 +9,20 @@ const WIKI = 'https://wiki.lineageos.org/devices';
 const BUILDS = 'https://download.lineageos.org/api/v2/devices';
 
 const quirks = {
-  ims: ['volte', 'No IMS on LineageOS here, so whether calls work depends on your carrier'],
-  esim: ['esim', "LineageOS can't set up eSIMs on this device, physical SIMs are fine"],
+  ims: {
+    volte: {
+      status: 'partial',
+      note: 'No IMS on LineageOS here, so whether calls work depends on your carrier',
+    },
+    vowifi: { status: 'broken', note: 'No IMS on LineageOS here, so no Wi-Fi calling' },
+  },
+  esim: {
+    esim: {
+      status: 'partial',
+      note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine",
+    },
+  },
+  nfc: { nfc: { status: 'broken', note: "LineageOS doesn't support NFC on this device" } },
 };
 const locked =
   'No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.';
@@ -37,9 +49,9 @@ function parseDevice(codename, [first, ...variants], codenames) {
   const branch = Number.parseFloat(first.current_branch);
   const firmware = first.before_install?.version;
   const features = Object.fromEntries(
-    (first.quirks ?? [])
-      .filter((quirk) => quirks[quirk])
-      .map((quirk) => [quirks[quirk][0], { status: 'partial', note: quirks[quirk][1], source }]),
+    (first.quirks ?? []).flatMap((quirk) =>
+      Object.entries(quirks[quirk] ?? {}).map(([key, cell]) => [key, { ...cell, source }]),
+    ),
   );
 
   return {
