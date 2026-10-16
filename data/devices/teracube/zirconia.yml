@@ -2,7 +2,8 @@
 name: 2e (2020)
 codenames: [zirconia, 2e]
 released: 2021
-hardware: [cellular]
+soc: MediaTek Helio A25
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://doc.e.foundation/devices/zirconia/install/
