@@ -1,0 +1,13 @@
+before_install: {instructions: 'needs_specific_android_fw', lineage_version: 21, version: '13'}
+codename: r8q
+current_branch: 23.2
+maintainers: [ata-kaner]
+models: [SM-G781B, SM-G781B/DS, SM-G781N, SM-G7810]
+name: Galaxy S20 FE 5G
+network: [2G GSM, 3G UMTS, 4G LTE, 5G NR]
+peripherals: [A-GPS, Accelerometer, Compass, DP over USB-C, Dual SIM, Dual-frequency GNSS, Fingerprint reader, BeiDou, Galileo, GLONASS, GPS, SBAS, QZSS, Gyroscope, Hall effect sensor, Light sensor, NFC, Pedometer, Proximity sensor, Qi wireless charging, Qi reverse wireless charging, Stereo speakers, USB OTG]
+release: 2020-10-02
+soc: Qualcomm SM8250 Snapdragon 865
+type: phone
+variant: 2
+vendor: Samsung

@@ -22,6 +22,10 @@ test('migrated files are dropped and variants fold into one codename', () => {
   assert.equal(lmi.row.install, 'https://wiki.lineageos.org/devices/lmi/install/variant1/');
 });
 
+test('hardware counts every variant, not just the first', () => {
+  assert.deepEqual(entry('r8q').device.hardware, ['5g', 'cellular', 'fingerprint', 'nfc']);
+});
+
 test('an active device gets android, firmware, relock and the upstream codename spelling', () => {
   const { vendor, device, row } = entry('fp4');
   assert.equal(vendor, 'Fairphone');
