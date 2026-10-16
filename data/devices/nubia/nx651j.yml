@@ -4,7 +4,7 @@ codenames: [nx651j]
 aliases: [Red Magic 5G Lite, NX651J-EEA]
 released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
-hardware: [5g, cellular, fingerprint]
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://wiki.lineageos.org/devices/nx651j/install/variant1/

@@ -63,7 +63,7 @@ function parseDevice(codename, [first, ...variants], codenames) {
       released: Number(String(first.release).slice(0, 4)) || undefined,
       soc: [first.soc].flat().join(' / ') || undefined,
       type: typeOf(first.type),
-      hardware: hardwareOf(first),
+      hardware: [...new Set([first, ...variants].flatMap(hardwareOf))].sort(),
       bootloader: first.is_unlockable === false ? { unlock: 'no', notes: locked, source } : {},
     },
     row: {

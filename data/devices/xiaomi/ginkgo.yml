@@ -4,6 +4,6 @@ codenames: [ginkgo]
 aliases: [Redmi Note 8T, 8T, Note 8T]
 released: 2019
 soc: Qualcomm SM6125 Snapdragon 665
-hardware: [cellular, fingerprint]
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
