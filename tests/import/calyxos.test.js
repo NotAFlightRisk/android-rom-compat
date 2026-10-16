@@ -23,7 +23,15 @@ test('a Pixel with a stable build gets latest, install and a plain relock', () =
     latest: { version: '7.2.5.20', date: '2026-09-09' },
     source: 'https://calyxos.org/docs/guide/device-support/',
     install: 'https://calyxos.org/install/devices/tegu/',
+    features: {
+      esim: { status: 'working', source: 'https://calyxos.org/features/list/#sim-support' },
+    },
   });
+});
+
+test('eSIM works where CalyxOS says yes or dual, and stays unknown otherwise', () => {
+  assert.equal(byCodename.fp4.row.features.esim.status, 'working');
+  assert.equal(byCodename.lemonadep.row.features, undefined);
 });
 
 test('non-Pixels relock with a note, and keep upstream case in the install link', () => {

@@ -3,6 +3,7 @@ import { fetchText } from '../fetch.js';
 import { upsertDevice, withoutBrand } from '../store.js';
 
 export const DATA = 'https://raw.githubusercontent.com/CalyxOS/calyxos.org/main/pages/_data';
+const SIM_SUPPORT = 'https://calyxos.org/features/list/#sim-support';
 
 const lists = {
   upcoming: 'active',
@@ -14,6 +15,7 @@ const brands = { pixel: 'Google', oneplus: 'OnePlus' };
 const brandName = (brand) => brands[brand] ?? brand[0].toUpperCase() + brand.slice(1);
 
 const offPixel = { status: 'yes', note: "Check CalyxOS's device page before relocking" };
+const esimWorks = ['yes', 'dual'];
 
 /** Lowercase codename -> the month the manufacturer stops updating it, as YYYY-MM-01 */
 export function supportEnds(devicesYml) {
@@ -32,7 +34,7 @@ export function parse(devicesYml, downloadsYml) {
 
   return Object.entries(lists).flatMap(([list, status]) =>
     (devices[`${list}_codenames`] ?? []).map((codename) => {
-      const { brand, model, android } = devices[codename];
+      const { brand, model, android, esim } = devices[codename];
       const build = builds.get(codename);
       const [name, ...aliases] = model
         .replace(/^The\s+|\s+\(beta\)$/gi, '')
@@ -46,6 +48,9 @@ export function parse(devicesYml, downloadsYml) {
         ...(build && { latest: { version: String(build.version), date: String(build.date) } }),
         source: 'https://calyxos.org/docs/guide/device-support/',
         ...(build && { install: `https://calyxos.org/install/devices/${codename}/` }),
+        ...(esimWorks.includes(esim) && {
+          features: { esim: { status: 'working', source: SIM_SUPPORT } },
+        }),
       };
       const device = { name, codenames: [codename.toLowerCase()], aliases };
       return { brand: brandName(brand), device, row };
