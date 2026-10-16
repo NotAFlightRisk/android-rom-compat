@@ -147,6 +147,8 @@ export async function enhanceFinder(form) {
   } catch {
     count.textContent = "Search didn't load, so refresh to try again.";
     return;
+  } finally {
+    delete document.documentElement.dataset.searching;
   }
   romNames = Object.fromEntries(catalogue.roms.map((rom) => [rom.key, rom.name]));
   form.addEventListener('input', update);

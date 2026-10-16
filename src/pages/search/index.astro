@@ -53,6 +53,12 @@ const website = {
   headerSearch={false}
 >
   <PageHead title="Search" />
+  <script is:inline>
+    // A link to a search opens on its results, so the browse lists keep out of the way until then
+    if (location.pathname !== '/search/' || location.search) {
+      document.documentElement.dataset.searching = '';
+    }
+  </script>
   <form class="finder" role="search" action="/search/" method="get" data-finder>
     <label class="query">
       <span class="visually-hidden">Phone, model number, codename, ROM or feature</span>
@@ -177,6 +183,10 @@ const website = {
 
   h2 {
     font-size: var(--text-lg);
+  }
+
+  :global([data-searching]) .shortcuts {
+    display: none;
   }
 
   .shortcuts ul {
