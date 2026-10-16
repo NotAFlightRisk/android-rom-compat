@@ -5,4 +5,6 @@ released: 2025
 soc: Mediatek Dimensity 6300
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: yes
+  notes: Unlocks with fastboot, though Brax warns OTA updates can then fail and you'd update by flashing full firmware instead.
+  source: https://opensource.braxtech.net/Technical%20Guides/guides/unlock-bootloader/
