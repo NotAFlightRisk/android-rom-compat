@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 9 5G
 codenames: [oscarru]
+aliases: [RMX3474]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
 hardware: [5g, cellular, fingerprint, nfc]
