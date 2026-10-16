@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 5s Plus
 codenames: [natrium]
+aliases: ["2016070"]
 released: 2016
 soc: Qualcomm MSM8996 Pro Snapdragon 821
 hardware: [cellular, fingerprint, nfc]

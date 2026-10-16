@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 8 Explorer Edition
 codenames: [ursa]
+aliases: [M1807E8S]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]

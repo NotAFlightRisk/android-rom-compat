@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: "6"
 codenames: [enchilada]
+aliases: [A6000, A6003]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]

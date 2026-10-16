@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 8 Pro
 codenames: [equuleus]
+aliases: [M1807E8A]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]

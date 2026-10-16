@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Zenfone Max Pro M2
 codenames: [x01bd]
+aliases: [ZB631KL, X01BDA]
 released: 2018
 soc: Qualcomm SDM660 Snapdragon 660
 hardware: [cellular, fingerprint]

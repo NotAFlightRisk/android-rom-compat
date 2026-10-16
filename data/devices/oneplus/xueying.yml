@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Open
 codenames: [xueying]
+aliases: [CPH2551]
 released: 2023
 soc: Qualcomm SM8550 Snapdragon 8 Gen2
 hardware: [5g, cellular, esim, fingerprint, nfc]

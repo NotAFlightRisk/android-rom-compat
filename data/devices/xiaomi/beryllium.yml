@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: POCO F1
 codenames: [beryllium]
+aliases: [M1805E10A]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 7
 codenames: [lavender]
+aliases: [Redmi Note 7S, M1901F7G, M1901F7H, M1901F7I, M1901F7E, M1901F7T, M1901F7C]
 released: 2019
 soc: Qualcomm SDM660 Snapdragon 660
 hardware: [cellular, fingerprint]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi MIX 2S
 codenames: [polaris]
+aliases: [M1803D5XA, M1803D5XE, M1803D5XT, M1803D5XC]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]

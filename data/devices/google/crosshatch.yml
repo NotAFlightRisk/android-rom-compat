@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pixel 3 XL
 codenames: [crosshatch]
+aliases: [G013C, G013D]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, esim, fingerprint, nfc]

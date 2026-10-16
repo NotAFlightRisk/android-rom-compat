@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi Note 2
 codenames: [scorpio]
+aliases: ["2015213", "2015211", "2015212"]
 released: 2016
 soc: Qualcomm MSM8996 Pro Snapdragon 821
 hardware: [cellular, fingerprint, nfc]

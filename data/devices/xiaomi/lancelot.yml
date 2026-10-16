@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 9
 codenames: [lancelot]
+aliases: [Redmi 9 Prime, POCO M2, M2004J19G, M2004J19I, M2004J19C, M2004J19AG, M2004J19PI]
 released: 2020
 soc: Mediatek Helio G80
 hardware: [cellular, fingerprint, nfc]

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 5
 codenames: [gemini]
+aliases: ["2015105", "2015201", "2015628"]
 released: 2016
 soc: Qualcomm MSM8996 Snapdragon 820
 hardware: [cellular, fingerprint, nfc]
