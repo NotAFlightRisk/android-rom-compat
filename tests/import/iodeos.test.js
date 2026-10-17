@@ -1,9 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { parseTable } from '../../scripts/import/sources/iodeos.js';
+import { feedUrls, latestBuild, parseTable } from '../../scripts/import/sources/iodeos.js';
 
 const html = readFileSync('tests/fixtures/feeds/iodeos.html', 'utf8');
+const feed = (name) => readFileSync(`tests/fixtures/feeds/iodeos-ota-${name}.json`, 'utf8');
 const entries = parseTable(html);
 const entry = (codename) => entries.find((item) => item.device.codenames[0] === codename);
 
@@ -51,4 +52,31 @@ test('columns are found by header name, not position', () => {
       '$3$1',
     );
   assert.deepEqual(parseTable(swap(html)), entries);
+});
+
+test('the release feed is tried as the table spells the codename, then lowercase', () => {
+  assert.deepEqual(feedUrls(entry('hawao').feed), [
+    'https://ota.iode.tech/v7-release/Hawao.json',
+    'https://ota.iode.tech/v7-release/hawao.json',
+  ]);
+  assert.deepEqual(feedUrls(entry('gts4lvwifi').feed), [
+    'https://ota.iode.tech/v6-release/gts4lvwifi.json',
+  ]);
+});
+
+test('latest build reads the newer feeds, missing comma and all', () => {
+  assert.deepEqual(latestBuild(feed('fp5')), {
+    version: '7.9',
+    date: '2026-10-05',
+    patch: '2026-09-01',
+  });
+});
+
+test('old style feeds give the version and date from the file name', () => {
+  const [build] = JSON.parse(feed('poplar')).response;
+  const older = { ...build, datetime: 1, filename: 'iode-4.36-20260901-poplar-ota.zip' };
+  const expected = { version: '4.37', date: '2026-10-05' };
+  assert.deepEqual(latestBuild(feed('poplar')), expected);
+  assert.deepEqual(latestBuild(JSON.stringify({ response: [older, build] })), expected);
+  assert.equal(latestBuild('{ "response": [] }'), undefined);
 });
