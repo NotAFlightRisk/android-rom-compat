@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../schema/support.json
+features:
+  volte: { status: working, android: 16, checked: 2026-10-17, source: https://murena.com/shop/smartphones/brand-new/murena-gs6/ }
+  vowifi: { status: working, android: 16, checked: 2026-10-17, source: https://murena.com/shop/smartphones/brand-new/murena-gs6/ }
