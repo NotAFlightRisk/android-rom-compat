@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 9A
 codenames: [blossom]
+aliases: [Redmi 9AT, Redmi 9i, Redmi 9C, Redmi 9C NFC, Redmi 9 Activ, Redmi 10A, POCO C3, POCO C31, M2006C3LG, M2006C3LVG, M2006C3LI, M2006C3LII, M2006C3LC, M2006C3MG, M2006C3MT, M2006C3MNG, M2006C3MII, M2006C3MI, 211033MI, 220233L2G, 220233L2I, 220233L2C]
+released: 2020
+soc: Mediatek Helio G25 / Mediatek Helio G35
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
