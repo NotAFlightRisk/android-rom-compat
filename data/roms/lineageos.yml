@@ -21,6 +21,9 @@ links:
 features:
   wallet: { status: broken, inferred: true, note: "Tap-to-pay needs a Play Integrity verdict LineageOS doesn't promise", source: https://wiki.lineageos.org/faq#my-device-doesnt-pass-play-integrity }
   push: { status: partial, note: Needs Google apps or microG added yourself, source: https://wiki.lineageos.org/faq#my-notifications-do-not-work }
+  fingerprint: { status: working, inferred: true, note: Official builds have to support it on phones that came with Android 6 or later, source: https://github.com/LineageOS/charter/blob/main/device-support-requirements.md#fingerprint-sensor }
+  nfc: { status: working, inferred: true, note: Official builds have to support it wherever stock did, source: https://github.com/LineageOS/charter/blob/main/device-support-requirements.md#nfc }
+  bluetooth_audio: { status: working, inferred: true, note: "Official builds have to support it, though aptX isn't guaranteed", source: https://github.com/LineageOS/charter/blob/main/device-support-requirements.md#audio }
 variants:
   - key: microg
     name: LineageOS for microG

@@ -18,3 +18,5 @@ links:
   source: https://github.com/crdroidandroid
 features:
   push: { status: partial, inferred: true, note: 'Official builds ship without Google apps, add them yourself', source: https://github.com/crdroidandroid/rules-and-guidelines#software }
+  fingerprint: { status: working, inferred: true, note: Official builds have to support it, source: https://github.com/crdroidandroid/rules-and-guidelines#fingerprint }
+  bluetooth_audio: { status: working, inferred: true, note: Official builds have to support every audio output stock did, source: https://github.com/crdroidandroid/rules-and-guidelines#audio }
