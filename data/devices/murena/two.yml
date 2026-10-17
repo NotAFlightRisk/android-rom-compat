@@ -4,7 +4,7 @@ codenames: [two]
 aliases: [Murena Two]
 released: 2023
 soc: MediaTek MT6771 Helio P70
-hardware: [cellular, fingerprint]
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://doc.e.foundation/devices/two/install/
