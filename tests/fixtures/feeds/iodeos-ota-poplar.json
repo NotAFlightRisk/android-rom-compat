@@ -1,0 +1,12 @@
+{
+  "response": [
+    {
+      "datetime": 1790958633,
+      "filename": "iode-4.37-20261005-poplar-ota.zip",
+      "romtype": "UNOFFICIAL",
+      "size": 1219811961,
+      "url": "https://gitlab.iode.tech/ota/release/-/raw/master/poplar/iode-4.37-20261005-poplar-ota.zip",
+      "version": "C - 4.37"
+    }
+  ]
+}

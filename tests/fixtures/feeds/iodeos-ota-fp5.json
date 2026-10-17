@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-10-05",
+    "datetime": 1790867805,
+    "files": [
+      {
+        "filename": "iode-7.9-20261005-FP5-ota.zip",
+        "os_patch_level": "2026-09-01",
+        "os_sdk_level": 36,
+        "size": 1639002283,
+        "url": "https://gitlab.iode.tech/ota/release/-/raw/master/FP5/iode-7.9-20261005-FP5-ota.zip"
+      }
+    ]
+    "type": "release",
+    "version": "7.9"
+  }
+]
