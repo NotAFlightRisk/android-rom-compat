@@ -19,5 +19,6 @@ links:
   docs: https://blog.pixelos.net
   community: https://t.me/pixeloschat
 features:
+  wallet: { status: broken, inferred: true, note: "Google says tap-to-pay doesn't run on custom ROMs or unlocked bootloaders", source: https://support.google.com/wallet/answer/12200245 }
   push: { status: working, inferred: true, note: Google apps come built in, source: https://pixelos.net }
   integrity: { status: basic, inferred: true, note: "Spoofs certified props, but the docs only promise the retired SafetyNet check", source: https://github.com/PixelOS-AOSP/blog/blob/main/docs/guides/HowToRoot.md }
