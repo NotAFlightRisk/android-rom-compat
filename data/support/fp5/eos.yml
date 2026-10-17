@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../schema/support.json
+features:
+  volte: { status: working, note: If your carrier supports it, android: 14, checked: 2026-03-06, source: https://web.archive.org/web/20260308090540/https://murena.com/shop/smartphones/brand-new/murena-fairphone-5/ }
+  vowifi: { status: working, note: If your carrier supports it, android: 14, checked: 2026-03-06, source: https://web.archive.org/web/20260308090540/https://murena.com/shop/smartphones/brand-new/murena-fairphone-5/ }
