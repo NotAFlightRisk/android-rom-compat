@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 11 Pro/Poco X4 Pro
 codenames: [veux]
-aliases: [Poco X4 Pro 5G, 2201116SG, 2201116SR, 2201116SC, 2201116SI, 2201116PG, 2201116PI]
+aliases: [Poco X4 Pro 5G, Redmi Note 11 Pro 5G, Redmi Note 11E Pro, Redmi Note 11 Pro+ 5G, 2201116SG, 2201116SR, 2201116SC, 2201116SI, 2201116PG, 2201116PI]
 released: 2022
 soc: Qualcomm SM6375 Snapdragon 695
 hardware: [5g, cellular, fingerprint, nfc]
