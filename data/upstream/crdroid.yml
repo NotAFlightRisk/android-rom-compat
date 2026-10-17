@@ -1697,13 +1697,6 @@ devices:
     latest: { version: "12.11", date: 2026-06-07 }
     source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/16.0/rtwo.json
     install: https://xdaforums.com/t/rom-official-16-qpr2-rtwo-crdroid-12-for-motorola-edge-40-pro-motorola-moto-x40-motorola-edge-2023.4790779/
-  ruby:
-    status: discontinued
-    channel: stable
-    android: 15
-    latest: { version: "11.0", date: 2024-12-21 }
-    source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/15.0/ruby.json
-    install: https://xdaforums.com/t/rom-15-unofficial-crdroid-v11-aosp-stable.4709159/
   rubyx:
     status: active
     channel: stable
