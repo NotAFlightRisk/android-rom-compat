@@ -20,5 +20,6 @@ links:
   community: https://t.me/EvolutionX
 features:
   push: { status: working, inferred: true, note: 'Google apps come built in, except on the vanilla builds', source: https://wiki.evolution-x.org/installing-evolution-x }
+  android_auto: { status: working, inferred: true, note: 'Comes with the built-in Google apps, except on the vanilla builds', source: https://github.com/Evolution-X/vendor_gms/blob/cnb/gms_full.mk }
   integrity: { status: basic, inferred: true, note: Ships a Play Integrity Fix setting that aims for basic integrity, source: https://github.com/Evolution-X/packages_apps_Evolver/blob/cnb/res/values/evolution_strings.xml }
   wallet: { status: broken, inferred: true, note: Tap-to-pay needs a stronger Play Integrity verdict than the basic one it aims for, source: https://github.com/Evolution-X/packages_apps_Evolver/blob/cnb/res/values/evolution_strings.xml }
