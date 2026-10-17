@@ -4,7 +4,7 @@ codenames: [one]
 aliases: [Murena One]
 released: 2022
 soc: Mediatek Helio P60
-hardware: [cellular, fingerprint]
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://doc.e.foundation/devices/one/install/
