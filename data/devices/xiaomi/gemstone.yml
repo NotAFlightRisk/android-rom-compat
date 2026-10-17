@@ -1,8 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 12 5G/Poco X5
 codenames: [gemstone, stone]
-aliases: [Poco X5 5G]
+aliases: [Poco X5 5G, Redmi Note 12 5G, Redmi Note 12R Pro, 22111317G, 22111317I, 22101317C, 22111317PG, 22111317PI]
 released: 2022
+soc: Qualcomm SM4375 Snapdragon 4 Gen 1 / Qualcomm SM6375 Snapdragon 695
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
