@@ -1,0 +1,12 @@
+codename: addison
+current_branch: 18.1
+maintainers: []
+models: [XT1635-01, XT1635-02, XT1635-03]
+name: moto z play
+network: [2G GSM, 3G UMTS, 4G LTE]
+peripherals: [3.5mm jack, Accelerometer, Compass, Fingerprint reader, GPS, Gyroscope, Light sensor, NFC, Proximity sensor]
+quirks: [aux_cameras]
+release: 2016-09
+soc: Qualcomm MSM8953 Snapdragon 625
+type: phone
+vendor: Motorola

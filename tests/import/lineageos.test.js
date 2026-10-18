@@ -65,6 +65,15 @@ test('ims and esim quirks become features with a note', () => {
   }
 });
 
+test('camera quirks make the camera partial', () => {
+  for (const codename of ['addison', 'beckham']) {
+    const { camera } = entry(codename).row.features;
+    assert.equal(camera.status, 'partial');
+    assert.ok(camera.note);
+    assert.equal(camera.source, `https://wiki.lineageos.org/devices/${codename}/`);
+  }
+});
+
 test('no maintainers means discontinued, and no network means no cellular', () => {
   const { device, row } = entry('castor_windy');
   assert.equal(row.status, 'discontinued');

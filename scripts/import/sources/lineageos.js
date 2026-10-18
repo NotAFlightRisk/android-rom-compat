@@ -23,6 +23,18 @@ const quirks = {
     },
   },
   nfc: { nfc: { status: 'broken', note: "LineageOS doesn't support NFC on this device" } },
+  aux_cameras: {
+    camera: {
+      status: 'partial',
+      note: 'LineageOS only runs the main front and rear cameras here, not the extra ones',
+    },
+  },
+  external_cameras: {
+    camera: {
+      status: 'partial',
+      note: "Add-on cameras, like Moto Mods, don't work on LineageOS here",
+    },
+  },
 };
 const locked =
   'No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.';

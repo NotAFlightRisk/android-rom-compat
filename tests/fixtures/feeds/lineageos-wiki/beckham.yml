@@ -1,0 +1,13 @@
+before_install: {instructions: 'needs_specific_android_fw', lineage_version: 17.1, version: '9'}
+codename: beckham
+current_branch: 22.2
+maintainers: [jro1979]
+models: [XT1929-2, XT1929-3, XT1929-4, XT1929-5, XT1929-6]
+name: moto z3 play
+network: [2G GSM, 2G CDMA, 3G UMTS, 4G LTE]
+peripherals: [Accelerometer, Compass, Fingerprint reader, GPS, Gyroscope, Light sensor, Moto Mods, NFC, Proximity sensor]
+quirks: [external_cameras]
+release: 2018-06
+soc: Qualcomm SDM636 Snapdragon 636
+type: phone
+vendor: Motorola
