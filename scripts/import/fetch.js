@@ -11,18 +11,18 @@ const githubHosts = ['https://api.github.com/', 'https://raw.githubusercontent.c
 const BACKOFF = 500;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function fetchText(url, { headers = {}, tries = 5 } = {}) {
+export async function fetchText(url, { headers = {}, body, tries = 5 } = {}) {
   const sent = { 'user-agent': 'android-rom-compat importer', ...headers };
   if (token && githubHosts.some((host) => url.startsWith(host)))
     sent.authorization = `Bearer ${token}`;
   const again = async (wait) => {
     await sleep(wait);
-    return fetchText(url, { headers, tries: tries - 1 });
+    return fetchText(url, { headers, body, tries: tries - 1 });
   };
 
   let response;
   try {
-    response = await fetch(url, { headers: sent });
+    response = await fetch(url, { headers: sent, ...(body && { method: 'POST', body }) });
   } catch (error) {
     if (tries <= 1) throw error;
     return again(BACKOFF);

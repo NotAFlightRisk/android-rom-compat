@@ -16,7 +16,10 @@ export const products = {
   nokia: 'nokia',
 };
 
-const brandPrefix = /^(the\s+)?(google|samsung|fairphone|oneplus|sony|motorola|nokia)\s+/;
+const XIAOMI = 'https://trust.mi.com/bff/psti/phone/online';
+const XIAOMI_PAGE = 'https://trust.mi.com/misrc/updates/detail?tab=phone';
+
+const brandPrefix = /^(the\s+)?(google|samsung|fairphone|oneplus|sony|motorola|nokia|xiaomi)\s+/;
 const YEAR = /\b(19|20)\d\d\b/g;
 
 const squash = (text) => text.replace(/\+/g, ' plus ').replace(/[^a-z0-9]+/g, '');
@@ -56,9 +59,36 @@ export function stockRow(release, source) {
   };
 }
 
+/** A release from Xiaomi's own list, which only says when security updates stop */
+export const xiaomiRelease = ({ productName, eolTime }) => ({
+  brand: 'xiaomi',
+  label: productName.trim(),
+  row: { security_until: eolTime.slice(0, 10), source: XIAOMI_PAGE },
+});
+
+async function xiaomiReleases() {
+  const phones = [];
+  for (let page = 1; ; page++) {
+    const body = JSON.stringify({ page, pageSize: 100 });
+    const headers = { 'content-type': 'application/json' };
+    const { data = [], count } = await fetchJson(XIAOMI, { headers, body });
+    phones.push(...data);
+    if (!data.length || phones.length >= count) return phones.map(xiaomiRelease);
+  }
+}
+
+/** When support ends, with ended sorting first and no date at all last */
+const cutoff = ({ row }) => {
+  const until = row.security_until ?? row.updates_until ?? '9';
+  return until === 'ended' ? '0' : until;
+};
+const earliest = (a, b) => (cutoff(b) < cutoff(a) ? b : a);
+
 /**
- * Joins stock rows onto our devices by brand and name, exact names before yearless ones. When two
- * releases squash to the same key the plainer label wins, so "Galaxy S6" beats "Galaxy S6 (USA)"
+ * Joins stock rows onto our devices by brand and name, exact names before yearless ones, and a
+ * device's own name before its aliases. Aliases that hit several phones give the earliest cut-off,
+ * since the page covers all of them. When two releases squash to the same key the plainer label
+ * wins, so "Galaxy S6" beats "Galaxy S6 (USA)"
  */
 export function join(devices, releases) {
   const index = {};
@@ -69,10 +99,17 @@ export function join(devices, releases) {
   }
   const rows = {};
   for (const { brand, key, data } of devices) {
-    const keys = [data.name, ...(data.aliases ?? [])].map(String).map(nameKeys);
-    const names = [...keys.map(({ full }) => full), ...keys.map(({ yearless }) => yearless)];
-    const release = names.map((name) => index[brand]?.[name]).find(Boolean);
-    if (release) rows[key] = release.row;
+    const [own, ...aliases] = [data.name, ...(data.aliases ?? [])].map(String).map(nameKeys);
+    const tiers = [
+      [own.full],
+      aliases.map(({ full }) => full),
+      [own.yearless],
+      aliases.map(({ yearless }) => yearless),
+    ];
+    const hits = tiers
+      .map((names) => names.map((name) => index[brand]?.[name]).filter(Boolean))
+      .find((found) => found.length);
+    if (hits) rows[key] = hits.reduce(earliest).row;
   }
   return rows;
 }
@@ -90,7 +127,7 @@ export function fromCalyxos(devices, rows, ends) {
 }
 
 export default async function stock() {
-  const brands = new Set(Object.values(products));
+  const brands = new Set([...Object.values(products), 'xiaomi']);
   const devices = loadData(DATA).devices.filter(({ brand }) => brands.has(brand));
 
   const releases = [];
@@ -105,6 +142,11 @@ export default async function stock() {
     }
   }
   if (failed.length === Object.keys(products).length) throw new Error('endoflife.date is down');
+  const xiaomi = await xiaomiReleases().catch(() => {
+    failed.push('xiaomi');
+    return [];
+  });
+  releases.push(...xiaomi);
 
   const rows = join(devices, releases);
   const ends = await fetchText(`${CALYXOS}/devices.yml`).then(supportEnds).catch(() => ({}));
