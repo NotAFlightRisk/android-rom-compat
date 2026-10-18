@@ -133,6 +133,8 @@ devices:
     relock: no
     source: https://wiki.lineageos.org/devices/addison/
     install: https://wiki.lineageos.org/devices/addison/install/
+    features:
+      camera: { status: partial, note: "LineageOS only runs the main front and rear cameras here, not the extra ones", source: https://wiki.lineageos.org/devices/addison/ }
   ahannah:
     status: discontinued
     android: 11
@@ -180,6 +182,8 @@ devices:
     relock: no
     source: https://wiki.lineageos.org/devices/albus/
     install: https://wiki.lineageos.org/devices/albus/install/
+    features:
+      camera: { status: partial, note: "LineageOS only runs the main front and rear cameras here, not the extra ones", source: https://wiki.lineageos.org/devices/albus/ }
   alioth:
     status: active
     android: 17
@@ -403,6 +407,8 @@ devices:
     latest: { version: "22.2", date: 2026-10-07, patch: 2026-09-01 }
     source: https://wiki.lineageos.org/devices/beckham/
     install: https://wiki.lineageos.org/devices/beckham/install/
+    features:
+      camera: { status: partial, note: "Add-on cameras, like Moto Mods, don't work on LineageOS here", source: https://wiki.lineageos.org/devices/beckham/ }
   benz:
     status: active
     android: 17
@@ -2949,6 +2955,8 @@ devices:
     latest: { version: "22.2", date: 2026-10-10, patch: 2026-10-01 }
     source: https://wiki.lineageos.org/devices/messi/
     install: https://wiki.lineageos.org/devices/messi/install/
+    features:
+      camera: { status: partial, note: "Add-on cameras, like Moto Mods, don't work on LineageOS here", source: https://wiki.lineageos.org/devices/messi/ }
   mh2lm:
     status: discontinued
     android: 14
@@ -3130,6 +3138,8 @@ devices:
     latest: { version: "22.2", date: 2026-10-07, patch: 2026-09-01 }
     source: https://wiki.lineageos.org/devices/nash/
     install: https://wiki.lineageos.org/devices/nash/install/variant1/
+    features:
+      camera: { status: partial, note: "Add-on cameras, like Moto Mods, don't work on LineageOS here", source: https://wiki.lineageos.org/devices/nash/ }
   natrium:
     status: active
     android: 15
