@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "brand": "Redmi",
+      "productName": "REDMI Note 17 Pro Max 5G",
+      "status": 1,
+      "eolTime": "2032-09-17T06:03:38.000Z",
+      "createdAt": "2026-10-10T06:04:12.000Z",
+      "updatedAt": "2026-10-10T06:04:12.000Z",
+      "launchTime": "2026-09-17T06:03:30.000Z"
+    },
+    {
+      "brand": "POCO",
+      "productName": " POCO X8 Pro",
+      "status": 1,
+      "eolTime": "2032-03-17T07:01:45.000Z",
+      "createdAt": "2026-03-18T07:02:07.000Z",
+      "updatedAt": "2026-03-18T07:02:07.000Z",
+      "launchTime": "2026-03-17T07:01:44.000Z"
+    },
+    {
+      "brand": "Redmi",
+      "productName": "Redmi Note 12 Pro",
+      "status": 1,
+      "eolTime": "2026-04-20T00:00:00.000Z",
+      "createdAt": "2024-06-11T15:25:26.000Z",
+      "updatedAt": "2024-06-11T15:25:26.000Z",
+      "launchTime": "2023-04-20T00:00:00.000Z"
+    },
+    {
+      "brand": "Xiaomi",
+      "productName": "Xiaomi 12T Pro",
+      "status": 1,
+      "eolTime": "2026-10-13T00:00:00.000Z",
+      "createdAt": "2024-06-11T15:25:26.000Z",
+      "updatedAt": "2024-06-11T15:25:26.000Z",
+      "launchTime": "2022-10-13T00:00:00.000Z"
+    },
+    {
+      "brand": "Redmi",
+      "productName": "Redmi Note 12 Pro 5G",
+      "status": 1,
+      "eolTime": "2027-03-23T00:00:00.000Z",
+      "createdAt": "2024-06-11T15:25:26.000Z",
+      "updatedAt": "2024-06-11T15:25:26.000Z",
+      "launchTime": "2023-03-23T00:00:00.000Z"
+    },
+    {
+      "brand": "Xiaomi",
+      "productName": "Mi Max2",
+      "status": 1,
+      "eolTime": "2020-07-01T00:00:00.000Z",
+      "createdAt": "2024-06-11T15:25:26.000Z",
+      "updatedAt": "2024-06-11T15:25:26.000Z",
+      "launchTime": "2017-07-01T00:00:00.000Z"
+    }
+  ],
+  "count": 6
+}

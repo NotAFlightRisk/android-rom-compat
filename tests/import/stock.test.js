@@ -7,6 +7,7 @@ import {
   nameKeys,
   products,
   stockRow,
+  xiaomiRelease,
 } from '../../scripts/import/sources/stock.js';
 
 const fixture = (name) =>
@@ -98,6 +99,60 @@ test('a year on our side still finds a release without one, but not the other wa
     ],
   );
   assert.deepEqual(rows, { a5y17lte: { source: 'a5' } });
+});
+
+test("Xiaomi's list gives the security cut-off as a date, from Xiaomi's own page", () => {
+  const [first, second] = fixture('stock-xiaomi.json').data.map(xiaomiRelease);
+  assert.deepEqual(first, {
+    brand: 'xiaomi',
+    label: 'REDMI Note 17 Pro Max 5G',
+    row: {
+      security_until: '2032-09-17',
+      source: 'https://trust.mi.com/misrc/updates/detail?tab=phone',
+    },
+  });
+  assert.equal(second.label, 'POCO X8 Pro');
+});
+
+test('Xiaomi names join without the brand, the 4G or the spacing', () => {
+  const xiaomi = fixture('stock-xiaomi.json').data.map(xiaomiRelease);
+  const rows = join(
+    [
+      device('xiaomi', 'diting', '12T Pro'),
+      device('xiaomi', 'sweet2', 'Redmi Note 12 Pro 4G'),
+      device('xiaomi', 'rubyx', 'Note 12 Pro', { aliases: ['Redmi Note 12 Pro 5G'] }),
+      device('xiaomi', 'oxygen', 'Mi Max 2'),
+    ],
+    xiaomi,
+  );
+  const until = (key) => rows[key].security_until;
+  assert.deepEqual(
+    ['diting', 'sweet2', 'rubyx', 'oxygen'].map(until),
+    ['2026-10-13', '2026-04-20', '2027-03-23', '2020-07-01'],
+  );
+});
+
+test("a device's own name wins, and aliases alone give the earliest cut-off", () => {
+  const rows = join(
+    [
+      device('motorola', 'fogos', 'moto g34 5G', { aliases: ['moto g45 5G'] }),
+      device('xiaomi', 'gemstone', 'Note 12 5G/Poco X5', {
+        aliases: ['POCO X5 5G', 'Redmi Note 12 5G'],
+      }),
+      device('sony', 'twins', 'Xperia Twin', { aliases: ['Xperia A', 'Xperia B'] }),
+    ],
+    [
+      { brand: 'motorola', label: 'Moto G34 5G', row: { security_until: '2027-01-31' } },
+      { brand: 'motorola', label: 'Moto G45 5G', row: { security_until: '2026-09-30' } },
+      { brand: 'xiaomi', label: 'POCO X5 5G', row: { security_until: '2027-02-06' } },
+      { brand: 'xiaomi', label: 'Redmi Note 12 5G', row: { security_until: '2026-03-23' } },
+      { brand: 'sony', label: 'Xperia A', row: { security_until: '2030-01-01' } },
+      { brand: 'sony', label: 'Xperia B', row: { security_until: 'ended' } },
+    ],
+  );
+  assert.equal(rows.fogos.security_until, '2027-01-31');
+  assert.equal(rows.gemstone.security_until, '2026-03-23');
+  assert.equal(rows.twins.security_until, 'ended');
 });
 
 test('CalyxOS fills Pixels endoflife.date missed, and nothing else', () => {

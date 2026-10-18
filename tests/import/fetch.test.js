@@ -7,8 +7,8 @@ const reply = (status, body = '') => new Response(body, { status });
 
 function stub(t, replies) {
   const calls = [];
-  t.mock.method(globalThis, 'fetch', async (url) => {
-    calls.push(url);
+  t.mock.method(globalThis, 'fetch', async (url, init) => {
+    calls.push({ url, ...init });
     const next = replies.shift();
     if (next instanceof Error) throw next;
     return next;
@@ -26,6 +26,18 @@ test('a dropped connection is retried the same way', async (t) => {
   const calls = stub(t, [new TypeError('fetch failed'), reply(200, 'devices:')]);
   assert.equal(await fetchText(SOURCE), 'devices:');
   assert.equal(calls.length, 2);
+});
+
+test('a body goes as a POST, retries included', async (t) => {
+  const calls = stub(t, [reply(502), reply(200, '[]')]);
+  assert.equal(await fetchText(SOURCE, { body: '{"page":1}' }), '[]');
+  assert.deepEqual(
+    calls.map(({ method, body }) => [method, body]),
+    [
+      ['POST', '{"page":1}'],
+      ['POST', '{"page":1}'],
+    ],
+  );
 });
 
 test('a 404 is the source telling us something, so it stands', async (t) => {
