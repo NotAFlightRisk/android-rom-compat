@@ -53,6 +53,12 @@ test('a codename another brand already uses gets a device of its own', () => {
   assert.ok(existsSync(join(process.env.DATA_DIR, 'devices/tidy/twin.yml')));
 });
 
+test('a name that opens with another brand we list goes to that brand', () => {
+  upsertDevice('Acme', { name: 'Rocket', codenames: ['rocket'] });
+  assert.equal(upsertDevice('Tidy', { name: 'Acme Rocket', codenames: ['rocket'] }), 'acme/rocket');
+  assert.ok(!existsSync(join(process.env.DATA_DIR, 'devices/tidy/rocket.yml')));
+});
+
 test('a source that loses a fifth of its devices fails and leaves the file alone', () => {
   writeUpstream('floor', rows(10));
   assert.throws(() => writeUpstream('floor', rows(7)), /only 7 active devices, last import had 10/);

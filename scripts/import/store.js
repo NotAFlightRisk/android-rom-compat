@@ -133,11 +133,21 @@ function fillGaps(brand, current, { aliases, bootloader = {}, ...rest }) {
   claim(brand, newAliases);
 }
 
+/** Lenovo's "ZUK Z2 Plus" is ZUK's Z2 Plus, as ZUK is a brand of its own here */
+function ownBrand(vendor, device) {
+  const [first, ...rest] = device.name.trim().split(/\s+/);
+  const brands = read(join(DATA, 'brands.yml')) ?? [];
+  const owner = brands.find(({ key }) => key === slugify(first));
+  if (!owner || !rest.length || owner.key === brandKey(vendor)) return [vendor, device];
+  return [owner.name, { ...device, name: rest.join(' ') }];
+}
+
 /**
  * Finds or creates a device, only ever filling fields that are missing or unknown.
  * Returns its brand/codename, or null when it's out of scope
  */
-export function upsertDevice(brandName, device) {
+export function upsertDevice(vendor, imported) {
+  const [brandName, device] = ownBrand(vendor, imported);
   const brand = brandKey(brandName);
   const id = `${brand}/${device.codenames[0]}`;
   if (device.type === 'skip') outOfScope.add(id);
