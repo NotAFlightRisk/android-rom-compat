@@ -128,7 +128,9 @@ function fillBootloader(current, { unlock, notes, source }) {
 function fillGaps(brand, current, { aliases, bootloader = {}, ...rest }) {
   for (const [key, value] of Object.entries(deviceFields(rest))) current[key] ??= value;
   fillBootloader(current.bootloader, bootloader);
-  const newAliases = unclaimed(brand, aliases);
+  const newAliases = unclaimed(brand, aliases).filter(
+    (alias) => alias.toLowerCase() !== current.name.toLowerCase(),
+  );
   if (newAliases.length) current.aliases = [...(current.aliases ?? []), ...newAliases];
   claim(brand, newAliases);
 }
