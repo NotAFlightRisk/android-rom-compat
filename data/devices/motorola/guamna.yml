@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g play (2021)
+codenames: [guamna]
+aliases: [XT2093-3, XT2093-4]
+released: 2021
+soc: Qualcomm SM4250 Snapdragon 460
+hardware: [cellular, fingerprint]
+bootloader:
+  unlock: unknown
