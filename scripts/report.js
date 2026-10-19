@@ -52,10 +52,14 @@ function readAnswers(body) {
 
 function findDevice(query, errors) {
   const names = (device) => [device.name, device.title];
-  const device = model.devices.find((entry) =>
-    [...names(entry), ...entry.codenames, ...(entry.aliases ?? [])].some(sameAs(query)),
+  const found = model.devices.filter((entry) =>
+    [entry.id, ...names(entry), ...entry.codenames, ...(entry.aliases ?? [])].some(sameAs(query)),
   );
-  if (device) return device;
+  if (found.length === 1) return found[0];
+  if (found.length) {
+    const ids = listOf(found.map((entry) => entry.id));
+    return void errors.push(`"${query}" could be ${ids}, so use whichever's yours`);
+  }
   const gap = (entry) => Math.min(...names(entry).map((name) => distance(tidy(query), tidy(name))));
   const nearest = model.devices.toSorted((a, b) => gap(a) - gap(b)).slice(0, 3);
   const guesses = listOf(nearest.map((entry) => entry.title));
@@ -120,7 +124,7 @@ function report(answers) {
   });
   if (errors.length) return { errors };
 
-  const file = join(root, 'support', device.key, `${rom.key}.yml`);
+  const file = join(root, 'support', device.brand.key, device.key, `${rom.key}.yml`);
   const fresh = !existsSync(file);
   const doc = fresh ? new Document({}) : parseDocument(readFileSync(file, 'utf8'));
   for (const [feature, cell] of cells) {
@@ -129,7 +133,7 @@ function report(answers) {
     doc.setIn(['features', feature.key], node);
   }
   mkdirSync(dirname(file), { recursive: true });
-  const hint = fresh ? '# yaml-language-server: $schema=../../../schema/support.json\n' : '';
+  const hint = fresh ? '# yaml-language-server: $schema=../../../../schema/support.json\n' : '';
   writeFileSync(file, hint + doc.toString({ lineWidth: 0 }));
 
   const statuses = listOf(

@@ -1,5 +1,5 @@
 import { fetchJson, mapLimit } from '../fetch.js';
-import { brandKey, upsertDevice, withoutBrand } from '../store.js';
+import { brandKey, rowsFor, upsertDevice, withoutBrand } from '../store.js';
 import { isoDate } from '../../../src/lib/dates.js';
 
 const REPO = 'crdroidandroid/android_vendor_crDroidOTA';
@@ -72,7 +72,7 @@ export default async function crdroid({ previous }) {
     const json = await fetchJson(url).catch(() => void failed.push(entry.codename));
     const parsed = json && parse(json, entry);
     if (!parsed) {
-      if (previous[lower]) devices[lower] = previous[lower];
+      Object.assign(devices, rowsFor(previous, lower));
       return;
     }
     const key = upsertDevice(parsed.brand, parsed.device);

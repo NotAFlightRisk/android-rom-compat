@@ -9,7 +9,7 @@
     "imported": { "type": "string", "format": "date" },
     "devices": {
       "type": "object",
-      "propertyNames": { "$ref": "device.json#/$defs/codename" },
+      "propertyNames": { "$ref": "device.json#/$defs/id" },
       "additionalProperties": {
         "type": "object",
         "required": ["source"],

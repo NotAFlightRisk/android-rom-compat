@@ -17,7 +17,7 @@ Everything lives in [`data/`](../data):
 - `roms/` - one file per ROM, like `grapheneos.yml`, plus anything that's true on every device it runs on
 - `devices/<brand>/` - one file per device, named after its codename, like `devices/google/tegu.yml`
 - `upstream/` - generated from each ROM's own device list every week. Don't edit these
-- `support/<codename>/` - one file per ROM, for what people have reported, like `support/tegu/lineageos.yml`
+- `support/<brand>/<codename>/` - one file per ROM, for what people have reported, like `support/google/tegu/lineageos.yml`
 
 `brands.yml` lists the brands and `features.yml` lists the features we track.
 
@@ -29,10 +29,10 @@ The files in `upstream/` get rewritten by a bot every Monday, so any change you 
 
 The [form](https://github.com/NotAFlightRisk/android-rom-compat/issues/new?template=report-feature.yml) is the easy way. Pick a device and ROM, set whatever you've tried, and a bot opens a pull request for you with your name on the commit. If something's missing or doesn't add up, it comments on the issue saying what - just edit the issue and it'll try again. The "Report what works" button on each ROM on a device page fills in the device, the ROM and its Android version for you.
 
-Rather do it by hand? Add a `features` section to `data/support/<codename>/<rom>.yml`, making the file if it's not there yet. Anything you leave out shows as unknown, which is fine.
+Rather do it by hand? Add a `features` section to `data/support/<brand>/<codename>/<rom>.yml`, making the file if it's not there yet. Anything you leave out shows as unknown, which is fine.
 
 ```yaml
-# yaml-language-server: $schema=../../../schema/support.json
+# yaml-language-server: $schema=../../../../schema/support.json
 features:
   nfc: { status: working, android: 16, build: '2026091000', checked: 2026-09-17, source: tested }
   camera: { status: partial, note: No 48MP mode, android: 16, checked: 2026-09-17, source: tested }
@@ -97,10 +97,10 @@ stay unknown.
 
 ## Adding support for a ROM
 
-If the ROM has a file in `data/upstream/`, its device list comes from there and you can't add rows by hand - the ROM's own site is the place to fix it. For a ROM without an importer, make `data/support/<codename>/<rom>.yml` with the whole row:
+If the ROM has a file in `data/upstream/`, its device list comes from there and you can't add rows by hand - the ROM's own site is the place to fix it. For a ROM without an importer, make `data/support/<brand>/<codename>/<rom>.yml` with the whole row:
 
 ```yaml
-# yaml-language-server: $schema=../../../schema/support.json
+# yaml-language-server: $schema=../../../../schema/support.json
 status: active
 android: 16
 maintainer: someone
@@ -139,7 +139,7 @@ On GitHub, just open the pull request - the checks run automatically, and any pr
 Working locally? Run `npm i` once, then `npm run validate`. It lists every problem it finds, like this:
 
 ```
-✗ data/support/tegu/lineageos.yml
+✗ data/support/google/tegu/lineageos.yml
   android: comes from data/upstream/lineageos.yml, so only features go here
   features.esim: "partial" needs a note, e.g. { status: partial, note: ... }
 ✗ data/devices/google/tegu.yml

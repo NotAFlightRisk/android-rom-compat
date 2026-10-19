@@ -77,10 +77,10 @@ export function check(data) {
 
   const names = new Map();
   const slugs = new Map();
-  const claim = (id, file, path) => {
-    const owner = names.get(id);
-    if (owner && owner !== file) report(file, path, `"${id}" is already used by ${owner}`);
-    else names.set(id, file);
+  const claim = (brand, name, file, path) => {
+    const owner = names.get(`${brand}/${name}`);
+    if (owner && owner !== file) report(file, path, `"${name}" is already used by ${owner}`);
+    else names.set(`${brand}/${name}`, file);
   };
 
   for (const device of data.devices) {
@@ -101,10 +101,10 @@ export function check(data) {
     codenames.forEach((codename, i) => {
       if (codename !== key && brands.has(codename))
         report(file, `codenames[${i}]`, `"${codename}" is a brand name, so it can't be a codename`);
-      claim(codename, file, `codenames[${i}]`);
+      claim(brand, codename, file, `codenames[${i}]`);
     });
     strings(fields.aliases).forEach((alias, i) =>
-      claim(alias.toLowerCase(), file, `aliases[${i}]`),
+      claim(brand, alias.toLowerCase(), file, `aliases[${i}]`),
     );
     strings(fields.hardware).forEach((item, i) => {
       if (!hardware.has(item)) {
@@ -118,7 +118,7 @@ export function check(data) {
     slugs.set(url, file);
   }
 
-  const primaries = new Set(data.devices.map((device) => device.key));
+  const primaries = new Set(data.devices.map((device) => device.id));
 
   const checkCells = (file, prefix, cells, rom) => {
     for (const [key, raw] of Object.entries(isObject(cells) ? cells : {})) {
@@ -166,24 +166,23 @@ export function check(data) {
     }
     if (!validate(name === 'stock' ? 'stock' : 'upstream', entry)) continue;
 
-    for (const [codename, row] of Object.entries(entry.data.devices)) {
-      if (!variant) documented.add(`${codename}/${name}`);
-      if (!primaries.has(codename))
-        report(file, `devices.${codename}`, `there's no device with that codename`);
+    for (const [id, row] of Object.entries(entry.data.devices)) {
+      if (!variant) documented.add(`${id}:${name}`);
+      if (!primaries.has(id)) report(file, `devices.${id}`, `there's no data/devices/${id}.yml`);
       if (row.latest?.date > today)
-        report(file, `devices.${codename}.latest.date`, "can't be in the future");
-      checkCells(file, `devices.${codename}.features`, row.features, rom);
+        report(file, `devices.${id}.latest.date`, "can't be in the future");
+      checkCells(file, `devices.${id}.features`, row.features, rom);
     }
   }
 
   for (const entry of data.support) {
-    const { file, codename, rom: romKey } = entry;
+    const { file, device, codename, rom: romKey } = entry;
     if (entry.misplaced) {
-      report(file, '', 'support lives at data/support/<codename>/<rom>.yml');
+      report(file, '', 'support lives at data/support/<brand>/<codename>/<rom>.yml');
       continue;
     }
-    if (!primaries.has(codename)) {
-      const owner = names.get(codename);
+    if (!primaries.has(device)) {
+      const owner = names.get(device);
       report(
         file,
         '',
@@ -197,7 +196,7 @@ export function check(data) {
     if (!validate('support', entry) && !isObject(entry.data)) continue;
 
     const { features: cells, ...facts } = entry.data;
-    if (documented.has(`${codename}/${romKey}`)) {
+    if (documented.has(`${device}:${romKey}`)) {
       for (const field of Object.keys(facts)) {
         report(file, field, `comes from data/upstream/${romKey}.yml, so only features go here`);
       }

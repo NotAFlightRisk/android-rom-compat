@@ -49,13 +49,15 @@ export function loadData(root = 'data') {
     devices: records('devices', ([brand, key, ...rest]) => ({
       brand,
       key,
+      id: `${brand}/${key}`,
       misplaced: !key || rest.length > 0,
     })),
     upstream: records('upstream', ([name, ...rest]) => ({
       name,
       misplaced: rest.length > 0,
     })),
-    support: records('support', ([codename, rom, ...rest]) => ({
+    support: records('support', ([brand, codename, rom, ...rest]) => ({
+      device: `${brand}/${codename}`,
       codename,
       rom,
       misplaced: !rom || rest.length > 0,

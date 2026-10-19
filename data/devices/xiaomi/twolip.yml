@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 6 Pro
-codenames: [twolip]
+codenames: [twolip, tulip]
 released: 2018
 soc: Qualcomm SDM636 Snapdragon 636
 hardware: [cellular, fingerprint]
