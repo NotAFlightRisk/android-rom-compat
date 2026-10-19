@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Pro¹
 codenames: [pro1]
+aliases: [QX1000]
 released: 2019
 soc: Qualcomm MSM8998 Snapdragon 835
 hardware: [cellular, fingerprint, nfc]
