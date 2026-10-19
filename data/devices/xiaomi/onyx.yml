@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO F7
+codenames: [onyx]
+aliases: [Redmi Turbo 4 Pro, 25053PC47G, 25053PC47I, 25053RT47C]
+released: 2025
+soc: Qualcomm SM8735 Snapdragon 8s Gen 4
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown
