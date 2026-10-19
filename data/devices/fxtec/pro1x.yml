@@ -3,7 +3,7 @@ name: Pro¹ X
 codenames: [pro1x]
 released: 2022
 soc: Qualcomm SM6115 Snapdragon 662
-hardware: [5g, cellular, fingerprint, nfc]
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://wiki.lineageos.org/devices/pro1x/install/
