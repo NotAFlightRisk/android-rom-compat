@@ -50,6 +50,13 @@ function callFeatures(answer, name) {
   return { volte: broken(), vowifi: broken() };
 }
 
+/** A no on a phone without 5G is missing hardware, so only one with 5G in its name gets broken */
+function fiveGFeatures(answer, name) {
+  if (answer === 'yes') return { '5g': 'working' };
+  if (answer !== 'no' || !/\b5G\b/i.test(name)) return {};
+  return { '5g': { status: 'broken', note: 'iodéOS lists 5G as not working here' } };
+}
+
 /** One entry per device row in iodéOS's TablePress table, GSIs left out */
 export function parseTable(html) {
   const table = html.match(/<table id="tablepress-1"[\s\S]*?<\/table>/)[0];
@@ -69,7 +76,7 @@ export function parseTable(html) {
     const major = cell('version').match(/^\d+/)?.[0];
     const features = {
       ...callFeatures(cell('calls').toLowerCase(), fullName),
-      ...(cell('fiveG').toLowerCase() === 'yes' && { '5g': 'working' }),
+      ...fiveGFeatures(cell('fiveG').toLowerCase(), fullName),
     };
 
     return [

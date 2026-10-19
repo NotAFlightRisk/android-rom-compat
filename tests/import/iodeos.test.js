@@ -33,12 +33,17 @@ test('variants on separate lines become aliases and codenames are lowercased', (
   assert.deepEqual(device.aliases, ['XT2233-1', 'XT2233-2']);
 });
 
-test('calls marked no are broken with a note, and 5G marked no is left out', () => {
+test('calls marked no are broken with a note', () => {
   const { row } = entry('beyondx');
   assert.equal(row.relock, 'no');
   assert.equal(row.features.volte.status, 'broken');
   assert.ok(row.features.vowifi.note);
-  assert.equal(row.features['5g'], undefined);
+});
+
+test('5G marked no is broken on a phone named 5G, and left out on the rest', () => {
+  assert.equal(entry('beyondx').row.features['5g'].status, 'broken');
+  assert.ok(entry('beyondx').row.features['5g'].note);
+  assert.equal(entry('a5y17lte').row.features['5g'], undefined);
 });
 
 test('wifi-only tablets get no call features at all', () => {
