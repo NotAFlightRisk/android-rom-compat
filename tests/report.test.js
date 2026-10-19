@@ -32,7 +32,7 @@ function report(t, issue) {
   const blocks = written.matchAll(/^(\w+)<<(\S+)\n([\s\S]*?)\n\2$/gm);
   const output = Object.fromEntries([...blocks].map(([, name, , value]) => [name, value]));
   const supportFile = (rom) =>
-    parse(readFileSync(join(data, 'support/rocket', `${rom}.yml`), 'utf8'));
+    parse(readFileSync(join(data, 'support/acme/rocket', `${rom}.yml`), 'utf8'));
   return { status: run.status, output, data, supportFile };
 }
 
@@ -74,12 +74,12 @@ test('partial or broken without a note fails, naming only the feature missing on
 test("report links fill in the form's own fields", () => {
   const form = parse(readFileSync('.github/ISSUE_TEMPLATE/report-feature.yml', 'utf8'));
   const ids = new Set(form.body.map((field) => field.id));
-  const device = { key: 'rocket', title: 'Acme Rocket' };
+  const device = { key: 'rocket', id: 'acme/rocket', title: 'Acme Rocket' };
   const link = new URL(reportUrl(device, { rom: { name: 'TidyOS' }, android: 16 }));
   const { template, title, ...fields } = Object.fromEntries(link.searchParams);
   assert.equal(template, 'report-feature.yml');
   assert.equal(title, '[Report]: Acme Rocket (rocket) on TidyOS');
-  assert.deepEqual(fields, { device: 'rocket', rom: 'TidyOS', android: '16' });
+  assert.deepEqual(fields, { device: 'acme/rocket', rom: 'TidyOS', android: '16' });
   assert.ok(Object.keys(fields).every((id) => ids.has(id)));
   assert.deepEqual(
     [...new URL(reportUrl(device)).searchParams.keys()],

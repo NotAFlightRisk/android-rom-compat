@@ -23,10 +23,10 @@ const releases = ['pixel', 'fairphone', 'samsung-mobile', 'sony-xperia'].flatMap
 });
 const rowOf = (label) => releases.find((release) => release.label === label).row;
 
-const device = (brand, key, name, extra = {}) => ({
+const device = (brand, codename, name, extra = {}) => ({
   brand,
-  key,
-  data: { name, codenames: [key], ...extra },
+  id: codename,
+  data: { name, codenames: [codename], ...extra },
 });
 
 test('dates pass through, and a null date on an ended release becomes ended', () => {

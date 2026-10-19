@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: broken, note: Not supported on this phone yet, android: 10, checked: 2023-04-28, source: https://web.archive.org/web/20230430163616/https://murena.com/shop/smartphones/premium-refurbished/murena-galaxy-s9-refurbished/ }
+  vowifi: { status: broken, note: Not supported on this phone yet, android: 10, checked: 2023-04-28, source: https://web.archive.org/web/20230430163616/https://murena.com/shop/smartphones/premium-refurbished/murena-galaxy-s9-refurbished/ }

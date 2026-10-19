@@ -98,7 +98,7 @@ export function join(devices, releases) {
     if (!byName[full] || release.label.length < byName[full].label.length) byName[full] = release;
   }
   const rows = {};
-  for (const { brand, key, data } of devices) {
+  for (const { brand, id, data } of devices) {
     const [own, ...aliases] = [data.name, ...(data.aliases ?? [])].map(String).map(nameKeys);
     const tiers = [
       [own.full],
@@ -109,7 +109,7 @@ export function join(devices, releases) {
     const hits = tiers
       .map((names) => names.map((name) => index[brand]?.[name]).filter(Boolean))
       .find((found) => found.length);
-    if (hits) rows[key] = hits.reduce(earliest).row;
+    if (hits) rows[id] = hits.reduce(earliest).row;
   }
   return rows;
 }
@@ -118,10 +118,10 @@ export function join(devices, releases) {
 export function fromCalyxos(devices, rows, ends) {
   const source = 'https://calyxos.org/docs/guide/device-support/';
   const extra = {};
-  for (const { brand, key, data } of devices) {
-    if (brand !== 'google' || rows[key]) continue;
+  for (const { brand, id, data } of devices) {
+    if (brand !== 'google' || rows[id]) continue;
     const end = data.codenames.map((codename) => ends[codename]).find(Boolean);
-    if (end) extra[key] = { security_until: end, source };
+    if (end) extra[id] = { security_until: end, source };
   }
   return extra;
 }

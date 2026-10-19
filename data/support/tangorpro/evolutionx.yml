@@ -1,3 +1,0 @@
-# yaml-language-server: $schema=../../../schema/support.json
-features:
-  android_auto: { status: broken, inferred: true, note: The Wi-Fi tablet builds leave Android Auto out, android: 16, checked: 2026-07-29, source: https://github.com/Evolution-X/vendor_gms/blob/bka/gms_full_tablet_wifionly.mk }

@@ -32,7 +32,6 @@ for (const name of names) {
   console.log(lines.at(-1));
 }
 
-const details = [...lines, ...stats.skipped.map((line) => `skipped ${line}`)];
 writeFileSync(
   'import-summary.md',
   `### Category
@@ -45,7 +44,7 @@ Refreshes each ROM's device list and fills gaps in the device files. ${stats.dev
 None
 
 ### Additional Info
-${details.join('\n')}
+${lines.join('\n')}
 `,
 );
 if (names.length && lines.filter((line) => line.includes(': FAILED,')).length === names.length) {

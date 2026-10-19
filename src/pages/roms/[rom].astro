@@ -32,7 +32,7 @@ const [current, ended] = splitByActive(rom.support);
 const groupsOf = (list) => byBrand(list, (row) => row.device.brand, romDeviceCard);
 const rowsOf = (list) =>
   list.map((row) => ({
-    key: row.device.key,
+    key: row.device.id,
     data: filterData(row.device, false),
     head: {
       label: row.device.title,

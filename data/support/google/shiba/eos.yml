@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, note: If your carrier supports it, android: 16, checked: 2026-10-16, source: https://murena.com/shop/smartphones/premium-refurbished/murena-pixel-8-refurbished/ }
+  vowifi: { status: working, note: If your carrier supports it, android: 16, checked: 2026-10-16, source: https://murena.com/shop/smartphones/premium-refurbished/murena-pixel-8-refurbished/ }

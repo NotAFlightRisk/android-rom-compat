@@ -100,10 +100,30 @@ test('rows join docs, hand-written rows, variants and stock support', () => {
   assert.equal(tidy.device.stock.security_until, '2027-01-01');
 });
 
+test("two brands' devices can share a codename and keep their own ROMs", () => {
+  const data = loadData('tests/fixtures/good');
+  const [rocket] = data.devices;
+  data.brands.data.push({ key: 'zeta', name: 'Zeta' });
+  data.devices.push({ ...rocket, brand: 'zeta', id: 'zeta/rocket' });
+  const romsOf = (device) => device.support.map((row) => row.rom.key).sort();
+  assert.deepEqual(
+    buildModel(data).devices.map((device) => [device.id, romsOf(device)]),
+    [
+      ['acme/rocket', ['handmadeos', 'tidyos']],
+      ['zeta/rocket', []],
+    ],
+  );
+});
+
 test('a device has ended once its ROMs stop, but not before any start', () => {
   const data = loadData('tests/fixtures/good');
   const [rocket] = data.devices;
-  data.devices.push({ ...rocket, key: 'comet', data: { ...rocket.data, codenames: ['comet'] } });
+  data.devices.push({
+    ...rocket,
+    key: 'comet',
+    id: 'acme/comet',
+    data: { ...rocket.data, codenames: ['comet'] },
+  });
   const endedOf = () =>
     Object.fromEntries(buildModel(data).devices.map((device) => [device.key, device.ended]));
   assert.deepEqual(endedOf(), { rocket: false, comet: false });

@@ -1,7 +1,10 @@
 import { listOf } from '../text.js';
 
+// JSON pointers write a key's slash as ~1, like the one in brand/codename
+const decode = (part) => part.replaceAll('~1', '/').replaceAll('~0', '~');
+
 export const pathOf = (pointer, extra) =>
-  [...pointer.split('/').slice(1), ...(extra ? [extra] : [])].reduce((out, part) => {
+  [...pointer.split('/').slice(1).map(decode), ...(extra ? [extra] : [])].reduce((out, part) => {
     if (/^\d+$/.test(part)) return `${out}[${part}]`;
     return out ? `${out}.${part}` : part;
   }, '');

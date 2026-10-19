@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, note: If your carrier supports it, android: 12, checked: 2025-10-07, source: https://web.archive.org/web/20251007121920/https://murena.com/america/shop/smartphones/premium-refurbished/pixel-5/ }
+  vowifi: { status: working, note: If your carrier supports it, android: 12, checked: 2025-10-07, source: https://web.archive.org/web/20251007121920/https://murena.com/america/shop/smartphones/premium-refurbished/pixel-5/ }

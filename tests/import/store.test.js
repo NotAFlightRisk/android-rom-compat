@@ -1,6 +1,6 @@
 import { after, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parse } from 'yaml';
@@ -11,24 +11,25 @@ const { writeUpstream, readUpstream, upsertDevice } = await import('../../script
 const { today } = await import('../../src/lib/dates.js');
 
 const row = (status = 'active') => ({ status, source: 'https://example.com' });
-const rows = (count, prefix = 'dev') =>
-  Object.fromEntries(Array.from({ length: count }, (_, i) => [`${prefix}${i}`, row()]));
+const rows = (count) =>
+  Object.fromEntries(Array.from({ length: count }, (_, i) => [`acme/dev${i}`, row()]));
 
-test('rows are sorted by codename, with the generated header', () => {
-  writeUpstream('sorted', { zeta: row(), alpha: row() });
+test('rows are sorted by brand and codename, with the generated header', () => {
+  writeUpstream('sorted', { 'acme/zeta': row(), 'acme/alpha': row() });
   const text = readFileSync(join(process.env.DATA_DIR, 'upstream/sorted.yml'), 'utf8');
   assert.match(
     text,
     /^# yaml-language-server: \$schema=\.\.\/\.\.\/schema\/upstream\.json\n# Generated/,
   );
-  assert.deepEqual(Object.keys(readUpstream('sorted').devices), ['alpha', 'zeta']);
+  assert.deepEqual(Object.keys(readUpstream('sorted').devices), ['acme/alpha', 'acme/zeta']);
 });
 
 test('devices that vanish are kept as discontinued', () => {
-  writeUpstream('ended', { keep: row(), gone: { ...row(), latest: { date: '2026-01-01' } } });
-  const result = writeUpstream('ended', { keep: row() });
+  const gone = { ...row(), latest: { date: '2026-01-01' } };
+  writeUpstream('ended', { 'acme/keep': row(), 'acme/gone': gone });
+  const result = writeUpstream('ended', { 'acme/keep': row() });
   assert.deepEqual(result, { rows: 2, added: 0, ended: 1 });
-  assert.deepEqual(readUpstream('ended').devices.gone, {
+  assert.deepEqual(readUpstream('ended').devices['acme/gone'], {
     status: 'discontinued',
     source: 'https://example.com',
     latest: { date: '2026-01-01' },
@@ -36,11 +37,20 @@ test('devices that vanish are kept as discontinued', () => {
 });
 
 test('a codename that moves in with another device brings its row, ended or not', () => {
-  writeUpstream('moved', { old: row(), gone: row() });
+  writeUpstream('moved', { 'acme/old': row(), 'acme/gone': row() });
   upsertDevice('Acme', { name: 'New', codenames: ['new', 'old'] });
   upsertDevice('Acme', { name: 'Newer', codenames: ['newer', 'gone'] });
-  writeUpstream('moved', { new: row() });
-  assert.deepEqual(readUpstream('moved').devices, { new: row(), newer: row('discontinued') });
+  writeUpstream('moved', { 'acme/new': row() });
+  assert.deepEqual(readUpstream('moved').devices, {
+    'acme/new': row(),
+    'acme/newer': row('discontinued'),
+  });
+});
+
+test('a codename another brand already uses gets a device of its own', () => {
+  assert.equal(upsertDevice('Acme', { name: 'Twin', codenames: ['twin'] }), 'acme/twin');
+  assert.equal(upsertDevice('Tidy', { name: 'Twin', codenames: ['twin'] }), 'tidy/twin');
+  assert.ok(existsSync(join(process.env.DATA_DIR, 'devices/tidy/twin.yml')));
 });
 
 test('a source that loses a fifth of its devices fails and leaves the file alone', () => {
@@ -55,19 +65,19 @@ test('an import with nothing new keeps the old imported date', () => {
   const file = join(process.env.DATA_DIR, 'upstream/same.yml');
   writeFileSync(
     file,
-    'imported: 2020-01-01\ndevices:\n  a: { status: active, source: https://example.com }\n',
+    'imported: 2020-01-01\ndevices:\n  acme/a: { status: active, source: https://example.com }\n',
   );
-  writeUpstream('same', { a: row() });
+  writeUpstream('same', { 'acme/a': row() });
   assert.equal(readUpstream('same').imported, '2020-01-01');
-  writeUpstream('same', { a: row(), b: row() });
+  writeUpstream('same', { 'acme/a': row(), 'acme/b': row() });
   assert.equal(readUpstream('same').imported, today);
 });
 
 test('a row that breaks the schema fails the source instead of the whole import', () => {
-  writeUpstream('broken', { a: row() });
-  const bad = { a: { ...row(), latest: { date: '+057647-02-01' } } };
-  assert.throws(() => writeUpstream('broken', bad), /bad row, devices\.a\.latest\.date/);
-  assert.equal(readUpstream('broken').devices.a.latest, undefined);
+  writeUpstream('broken', { 'acme/a': row() });
+  const bad = { 'acme/a': { ...row(), latest: { date: '+057647-02-01' } } };
+  assert.throws(() => writeUpstream('broken', bad), /bad row, devices\.acme\/a\.latest\.date/);
+  assert.equal(readUpstream('broken').devices['acme/a'].latest, undefined);
 });
 
 test('a bootloader answer gains our notes and source only if its own words match', () => {

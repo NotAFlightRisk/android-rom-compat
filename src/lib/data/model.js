@@ -25,7 +25,7 @@ export function buildModel(data = getData(), now = new Date()) {
   );
 
   const devices = new Map(
-    data.devices.map(({ file, brand: brandKey, key, data: device }) => {
+    data.devices.map(({ file, brand: brandKey, key, id, data: device }) => {
       const brand = brands.get(brandKey);
       const prefixed = device.name.toLowerCase().startsWith(brand.name.toLowerCase());
       const slug = device.slug ?? slugify(device.name);
@@ -36,6 +36,7 @@ export function buildModel(data = getData(), now = new Date()) {
           ? { ...device.bootloader, unlock: policy, origin: 'brand' }
           : device.bootloader,
         key,
+        id,
         file,
         brand,
         slug,
@@ -44,35 +45,35 @@ export function buildModel(data = getData(), now = new Date()) {
         support: [],
       };
       brand.devices.push(entry);
-      return [key, entry];
+      return [id, entry];
     }),
   );
 
   const upstream = new Map();
   for (const { name, data: file } of data.upstream) {
-    for (const [codename, row] of Object.entries(file.devices ?? {})) {
+    for (const [id, row] of Object.entries(file.devices ?? {})) {
       if (name === 'stock') {
-        if (devices.has(codename)) devices.get(codename).stock = row;
-      } else upstream.set(`${codename}/${name}`, row);
+        if (devices.has(id)) devices.get(id).stock = row;
+      } else upstream.set(`${id}:${name}`, row);
     }
   }
-  const reports = new Map(data.support.map((entry) => [`${entry.codename}/${entry.rom}`, entry]));
+  const reports = new Map(data.support.map((entry) => [`${entry.device}:${entry.rom}`, entry]));
 
   const pairs = [...upstream.keys(), ...reports.keys()].filter((pair) => {
-    const [codename, name] = pair.split('/');
-    return devices.has(codename) && roms.has(name);
+    const [id, name] = pair.split(':');
+    return devices.has(id) && roms.has(name);
   });
 
   const support = [...new Set(pairs)].map((pair) => {
-    const [codename, romKey] = pair.split('/');
-    const device = devices.get(codename);
+    const [id, romKey] = pair.split(':');
+    const device = devices.get(id);
     const rom = roms.get(romKey);
     const docs = upstream.get(pair);
     const report = reports.get(pair);
     const { features: reported, ...facts } = report?.data ?? {};
     const { features: documented, ...row } = docs ?? facts;
     const variants = (rom.variants ?? []).flatMap((variant) => {
-      const build = upstream.get(`${codename}/${romKey}-${variant.key}`);
+      const build = upstream.get(`${id}:${romKey}-${variant.key}`);
       return build ? [{ ...variant, ...build }] : [];
     });
     const entry = {

@@ -44,12 +44,25 @@ test('codenames, aliases and web addresses must be unique', () => {
   expectProblem(/rocket\.yml name: same web address/);
 });
 
+test('codenames and aliases only have to be unique within a brand', () => {
+  const data = loadData('tests/fixtures/good');
+  const [rocket] = data.devices;
+  data.brands.data.push({ key: 'zeta', name: 'Zeta' });
+  data.devices.push({
+    ...rocket,
+    brand: 'zeta',
+    id: 'zeta/rocket',
+    file: 'devices/zeta/rocket.yml',
+  });
+  assert.deepEqual(check(data), []);
+});
+
 test('files must point at a real brand, device and ROM', () => {
   expectProblem(/nope\/acme\.yml brand folder "nope" isn't in/);
   expectProblem(/ghost\/tidyos\.yml there's no device with the codename "ghost"/);
   expectProblem(/rocket\/missingos\.yml there's no ROM called "missingos"/);
   expectProblem(/^roms\/nested\/deep\.yml ROMs live at data\/roms/);
-  expectProblem(/^upstream\/tidyos\.yml devices\.nobody: there's no device/);
+  expectProblem(/^upstream\/tidyos\.yml devices\.acme\/nobody: there's no data\/devices/);
 });
 
 test('feature values are checked against features.yml', () => {
@@ -60,8 +73,8 @@ test('feature values are checked against features.yml', () => {
 });
 
 test('support files only hold features when an importer covers the device', () => {
-  expectProblem(/^support\/comet\/tidyos\.yml status: comes from data\/upstream\/tidyos\.yml/);
-  expectProblem(/^support\/rocket\/tidyos\.yml status: is missing/);
+  expectProblem(/^support\/acme\/comet\/tidyos\.yml status: comes from data\/upstream/);
+  expectProblem(/^support\/acme\/rocket\/tidyos\.yml status: is missing/);
 });
 
 test('ROM features need a source, and variants must exist', () => {
@@ -80,5 +93,5 @@ test('a codename can never be a brand name, wherever it is in the list', () => {
 });
 
 test('builds from the future are caught', () => {
-  expectProblem(/devices\.comet\.latest\.date: can't be in the future/);
+  expectProblem(/devices\.acme\/comet\.latest\.date: can't be in the future/);
 });

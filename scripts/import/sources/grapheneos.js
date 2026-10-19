@@ -1,5 +1,5 @@
 import { fetchText, mapLimit } from '../fetch.js';
-import { upsertDevice } from '../store.js';
+import { rowsFor, upsertDevice } from '../store.js';
 import { isoDate } from '../../../src/lib/dates.js';
 
 const SITE = 'https://raw.githubusercontent.com/GrapheneOS/grapheneos.org/main/static';
@@ -76,7 +76,7 @@ export default async function grapheneos({ previous }) {
   await mapLimit([...parseNamed(faq).keys()], 5, async (codename) => {
     latest[codename] = await fetchText(`https://releases.grapheneos.org/${codename}-stable`)
       .then(parseBuild)
-      .catch(() => previous[codename]?.latest);
+      .catch(() => Object.values(rowsFor(previous, codename))[0]?.latest);
   });
 
   const devices = {};

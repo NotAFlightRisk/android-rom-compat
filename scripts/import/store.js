@@ -8,9 +8,9 @@ import { slugify } from '../../src/lib/text.js';
 import { today } from '../../src/lib/dates.js';
 
 export const DATA = process.env.DATA_DIR ?? fileURLToPath(new URL('../../data/', import.meta.url));
-export const stats = { devices: 0, skipped: [] };
+export const stats = { devices: 0 };
 
-/** Codenames that are TVs, set-top boxes or devkits, which we don't list */
+/** Brand/codenames that are TVs, set-top boxes or devkits, which we don't list */
 export const outOfScope = new Set();
 
 const brandAliases = {
@@ -54,14 +54,16 @@ const devicesDir = join(DATA, 'devices');
 const existing = new Map();
 const slugs = new Set();
 const claimed = new Set();
-const claim = (names) => names.forEach((name) => claimed.add(name.toLowerCase()));
-const unclaimed = (names = []) =>
-  [...new Set(names)].filter((name) => !claimed.has(name.toLowerCase()));
+const claim = (brand, names) =>
+  names.forEach((name) => claimed.add(`${brand}/${name.toLowerCase()}`));
+const unclaimed = (brand, names = []) =>
+  [...new Set(names)].filter((name) => !claimed.has(`${brand}/${name.toLowerCase()}`));
 
 function track(entry) {
-  entry.device.codenames.forEach((codename) => existing.set(codename, entry));
-  claim([...entry.device.codenames, ...(entry.device.aliases ?? [])]);
-  slugs.add(`${entry.brand}/${entry.device.slug ?? slugify(entry.device.name)}`);
+  const { brand, device } = entry;
+  device.codenames.forEach((codename) => existing.set(`${brand}/${codename}`, entry));
+  claim(brand, [...device.codenames, ...(device.aliases ?? [])]);
+  slugs.add(`${brand}/${device.slug ?? slugify(device.name)}`);
 }
 
 if (existsSync(devicesDir)) {
@@ -96,14 +98,14 @@ const deviceFields = ({ released, soc, type, hardware }) => ({
 
 function createDevice(brand, { name, codenames, aliases, bootloader, ...rest }) {
   const slug = slugify(name);
-  const newAliases = unclaimed(aliases);
+  const newAliases = unclaimed(brand, aliases);
   const entry = {
     brand,
     key: codenames[0],
     device: {
       name,
       ...(slugs.has(`${brand}/${slug}`) && { slug: `${slug}-${slugify(codenames[0])}` }),
-      codenames: [codenames[0], ...unclaimed(codenames.slice(1))],
+      codenames: [codenames[0], ...unclaimed(brand, codenames.slice(1))],
       ...(newAliases.length && { aliases: newAliases }),
       ...deviceFields(rest),
       bootloader: { unlock: 'unknown', ...bootloader },
@@ -123,44 +125,42 @@ function fillBootloader(current, { unlock, notes, source }) {
   }
 }
 
-function fillGaps(current, { aliases, bootloader = {}, ...rest }) {
+function fillGaps(brand, current, { aliases, bootloader = {}, ...rest }) {
   for (const [key, value] of Object.entries(deviceFields(rest))) current[key] ??= value;
   fillBootloader(current.bootloader, bootloader);
-  const newAliases = unclaimed(aliases);
+  const newAliases = unclaimed(brand, aliases);
   if (newAliases.length) current.aliases = [...(current.aliases ?? []), ...newAliases];
-  claim(newAliases);
+  claim(brand, newAliases);
 }
 
 /**
  * Finds or creates a device, only ever filling fields that are missing or unknown.
- * Returns its primary codename, or null when it's out of scope or another brand owns it
+ * Returns its brand/codename, or null when it's out of scope
  */
 export function upsertDevice(brandName, device) {
-  const codename = device.codenames[0];
-  if (device.type === 'skip') outOfScope.add(codename);
-  if (outOfScope.has(codename)) return null;
   const brand = brandKey(brandName);
-  const found = existing.get(codename);
-  if (found && found.brand !== brand) {
-    stats.skipped.push(
-      `${codename} (${brandName} ${device.name}) clashes with ${found.brand}/${found.key}`,
-    );
-    return null;
-  }
+  const id = `${brand}/${device.codenames[0]}`;
+  if (device.type === 'skip') outOfScope.add(id);
+  if (outOfScope.has(id)) return null;
+  const found = existing.get(id);
   ensureBrand(brand, brandName);
 
   const entry = found ?? createDevice(brand, device);
   const before = found && JSON.stringify(entry.device);
-  if (found) fillGaps(entry.device, device);
+  if (found) fillGaps(brand, entry.device, device);
   if (!found || JSON.stringify(entry.device) !== before) {
     save(join(devicesDir, brand, `${entry.key}.yml`), inOrder(entry.device), 'device');
   }
-  return entry.key;
+  return `${brand}/${entry.key}`;
 }
 
 const upstreamFile = (name) => join(DATA, 'upstream', `${name}.yml`);
 
 export const readUpstream = (name) => read(upstreamFile(name)) ?? { devices: {} };
+
+/** Last import's rows for a codename, whichever brand they're filed under */
+export const rowsFor = (previous, codename) =>
+  Object.fromEntries(Object.entries(previous).filter(([id]) => id.endsWith(`/${codename}`)));
 
 const sortedByKey = (object) =>
   Object.fromEntries(Object.entries(object).sort(([a], [b]) => a.localeCompare(b)));
@@ -168,8 +168,11 @@ const sortedByKey = (object) =>
 const activeCount = (devices) =>
   Object.values(devices).filter((row) => row.status === 'active').length;
 
-/** Whose file a codename lives in now, in case it's moved in with another device */
-const ownerOf = (codename) => existing.get(codename)?.key ?? codename;
+/** Whose file a brand/codename lives in now, in case it's moved in with another device */
+const ownerOf = (id) => {
+  const owner = existing.get(id);
+  return owner ? `${owner.brand}/${owner.key}` : id;
+};
 
 /**
  * Writes upstream/<name>.yml, keeping rows that vanished as discontinued. Throws, leaving the
@@ -186,14 +189,12 @@ export function writeUpstream(name, devices, { schema = 'upstream', force = fals
   }
 
   const kept = Object.entries(before)
-    .filter(([codename]) => !outOfScope.has(codename))
-    .map(([codename, row]) => [ownerOf(codename), row]);
-  const ended = kept.filter(([codename, row]) => !devices[codename] && row.status === 'active');
+    .filter(([id]) => !outOfScope.has(id))
+    .map(([id, row]) => [ownerOf(id), row]);
+  const ended = kept.filter(([id, row]) => !devices[id] && row.status === 'active');
   const merged = sortedByKey({
     ...Object.fromEntries(kept),
-    ...Object.fromEntries(
-      ended.map(([codename, row]) => [codename, { ...row, status: 'discontinued' }]),
-    ),
+    ...Object.fromEntries(ended.map(([id, row]) => [id, { ...row, status: 'discontinued' }])),
     ...devices,
   });
   const problem = schemaProblem(schema, { imported: today, devices: merged });
@@ -205,6 +206,6 @@ export function writeUpstream(name, devices, { schema = 'upstream', force = fals
     header: GENERATED,
     padded: true,
   });
-  const added = Object.keys(devices).filter((codename) => !before[codename]).length;
+  const added = Object.keys(devices).filter((id) => !before[id]).length;
   return { rows: Object.keys(merged).length, added, ended: ended.length };
 }

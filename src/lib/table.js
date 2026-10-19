@@ -132,7 +132,7 @@ export const reportUrl = (device, row) => {
   const rom = row?.rom;
   const fields = new URLSearchParams({
     title: `[Report]: ${device.title} (${device.key})${rom ? ` on ${rom.name}` : ''}`,
-    device: device.key,
+    device: device.id,
     ...(rom && { rom: rom.name }),
     ...(row?.android && { android: row.android }),
   });
@@ -177,7 +177,7 @@ export const romStatus = (device, rom) => {
 
 export const deviceRows = (devices, roms) =>
   devices.map((device) => ({
-    key: device.key,
+    key: device.id,
     data: filterData(device),
     head: { label: device.title, href: device.url, code: device.codenames.join(', ') },
     cells: {
