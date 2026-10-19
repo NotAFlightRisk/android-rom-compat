@@ -59,6 +59,13 @@ test('a name that opens with another brand we list goes to that brand', () => {
   assert.ok(!existsSync(join(process.env.DATA_DIR, 'devices/tidy/rocket.yml')));
 });
 
+test("a device's own name never turns up as one of its aliases", () => {
+  upsertDevice('Acme', { name: 'Comet', codenames: ['c1'] });
+  upsertDevice('Acme', { name: 'Comet Max', codenames: ['c1'], aliases: ['COMET', 'Comet Max'] });
+  const file = join(process.env.DATA_DIR, 'devices/acme/c1.yml');
+  assert.deepEqual(parse(readFileSync(file, 'utf8')).aliases, ['Comet Max']);
+});
+
 test('a source that loses a fifth of its devices fails and leaves the file alone', () => {
   writeUpstream('floor', rows(10));
   assert.throws(() => writeUpstream('floor', rows(7)), /only 7 active devices, last import had 10/);
