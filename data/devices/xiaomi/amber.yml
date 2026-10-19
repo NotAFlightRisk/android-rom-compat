@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 11T
+codenames: [amber, agate]
+aliases: [Mi 11T, 21081111RG]
+released: 2021
+soc: MediaTek Dimensity 1200-Ultra
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

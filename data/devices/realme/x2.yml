@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: X2
+codenames: [x2]
+aliases: [RMX1991, RMX1992, RMX1993]
+released: 2019
+soc: Qualcomm SM7150-AB Snapdragon 730G
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

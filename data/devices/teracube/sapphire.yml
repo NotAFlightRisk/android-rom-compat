@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 2s (2025)
+codenames: [sapphire]
+released: 2025
+soc: MediaTek Helio G36
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: yes
+  source: https://doc.e.foundation/devices/sapphire/install/
