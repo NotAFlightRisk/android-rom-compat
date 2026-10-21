@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  android_auto: { status: broken, note: /e/ only supports it from Android 13 and this phone is on Android 12, android: 12, checked: 2026-09-22, source: https://doc.e.foundation/os/how-to/android-auto/ }

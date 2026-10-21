@@ -2,3 +2,4 @@
 features:
   volte: { status: working, note: If your carrier supports it, android: 11, checked: 2024-10-01, source: https://web.archive.org/web/20241006063013/https://murena.com/shop/smartphones/brand-new/murena-one/ }
   vowifi: { status: working, note: If your carrier supports it, android: 11, checked: 2024-10-01, source: https://web.archive.org/web/20241006063013/https://murena.com/shop/smartphones/brand-new/murena-one/ }
+  android_auto: { status: broken, note: /e/ only supports it from Android 13 and this phone is on Android 12, android: 12, checked: 2026-09-22, source: https://doc.e.foundation/os/how-to/android-auto/ }
