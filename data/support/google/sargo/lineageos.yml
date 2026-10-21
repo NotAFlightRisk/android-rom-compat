@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  vowifi: { status: partial, note: Works on some carriers and not others, android: 15, checked: 2026-10-16, source: https://github.com/LineageOS/issues/issues/564#issuecomment-6223661345 }

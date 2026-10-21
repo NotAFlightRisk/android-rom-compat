@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  camera: { status: broken, note: "Only the front camera works, the rear ones aren't detected", android: 17, build: '24.0-20261015', checked: 2026-10-15, source: https://github.com/LineageOS/issues/issues/802 }
