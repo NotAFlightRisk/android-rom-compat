@@ -21,9 +21,9 @@
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/roboto": "^5.3.0",
     "@fontsource-variable/roboto-mono": "^5.3.0",
-    "@lucide/astro": "^1.55.0",
-    "@sentry/browser": "^11.6.0",
-    "astro": "^7.3.8"
+    "@lucide/astro": "^1.59.0",
+    "@sentry/browser": "^11.8.0",
+    "astro": "^7.4.0"
   },
   "devDependencies": {
     "@sentry/vite-plugin": "^5.4.1",
