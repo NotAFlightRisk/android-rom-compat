@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  camera: { status: partial, note: Only one of the three rear cameras shows up in camera apps, android: 17, build: '24.0-20261011', checked: 2026-10-14, source: https://github.com/LineageOS/issues/issues/702 }
