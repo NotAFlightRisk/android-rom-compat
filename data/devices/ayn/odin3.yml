@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Odin 3
+codenames: [odin3]
+released: 2025
+soc: Qualcomm Dragonwing™ CQ8725S (CQ8725S)
+type: handheld
+hardware: []
+bootloader:
+  unlock: unknown
