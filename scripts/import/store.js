@@ -58,6 +58,8 @@ const claim = (brand, names) =>
   names.forEach((name) => claimed.add(`${brand}/${name.toLowerCase()}`));
 const unclaimed = (brand, names = []) =>
   [...new Set(names)].filter((name) => !claimed.has(`${brand}/${name.toLowerCase()}`));
+const aliasesFor = (brand, name, aliases) =>
+  unclaimed(brand, aliases).filter((alias) => alias.toLowerCase() !== name.toLowerCase());
 
 function track(entry) {
   const { brand, device } = entry;
@@ -98,7 +100,7 @@ const deviceFields = ({ released, soc, type, hardware }) => ({
 
 function createDevice(brand, { name, codenames, aliases, bootloader, ...rest }) {
   const slug = slugify(name);
-  const newAliases = unclaimed(brand, aliases);
+  const newAliases = aliasesFor(brand, name, aliases);
   const entry = {
     brand,
     key: codenames[0],
@@ -128,9 +130,7 @@ function fillBootloader(current, { unlock, notes, source }) {
 function fillGaps(brand, current, { aliases, bootloader = {}, ...rest }) {
   for (const [key, value] of Object.entries(deviceFields(rest))) current[key] ??= value;
   fillBootloader(current.bootloader, bootloader);
-  const newAliases = unclaimed(brand, aliases).filter(
-    (alias) => alias.toLowerCase() !== current.name.toLowerCase(),
-  );
+  const newAliases = aliasesFor(brand, current.name, aliases);
   if (newAliases.length) current.aliases = [...(current.aliases ?? []), ...newAliases];
   claim(brand, newAliases);
 }

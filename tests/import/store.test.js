@@ -62,8 +62,11 @@ test('a name that opens with another brand we list goes to that brand', () => {
 test("a device's own name never turns up as one of its aliases", () => {
   upsertDevice('Acme', { name: 'Comet', codenames: ['c1'] });
   upsertDevice('Acme', { name: 'Comet Max', codenames: ['c1'], aliases: ['COMET', 'Comet Max'] });
-  const file = join(process.env.DATA_DIR, 'devices/acme/c1.yml');
-  assert.deepEqual(parse(readFileSync(file, 'utf8')).aliases, ['Comet Max']);
+  upsertDevice('Acme', { name: 'Nova 3', codenames: ['n3'], aliases: ['Nova 3', 'N-3'] });
+  const aliasesOf = (file) =>
+    parse(readFileSync(join(process.env.DATA_DIR, 'devices/acme', file), 'utf8')).aliases;
+  assert.deepEqual(aliasesOf('c1.yml'), ['Comet Max']);
+  assert.deepEqual(aliasesOf('n3.yml'), ['N-3']);
 });
 
 test('a source that loses a fifth of its devices fails and leaves the file alone', () => {
