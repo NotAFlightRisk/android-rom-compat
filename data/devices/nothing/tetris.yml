@@ -3,7 +3,7 @@ name: CMF Phone 1
 codenames: [tetris]
 aliases: [Nothing CMF Phone 1]
 released: 2024
-soc: Mediatek Dimensity 7300
+soc: MediaTek Dimensity 7300
 hardware: [5g, cellular, fingerprint]
 bootloader:
   unlock: yes

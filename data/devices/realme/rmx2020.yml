@@ -3,7 +3,7 @@ name: C3/Narzo 10A
 codenames: [rmx2020]
 aliases: [Narzo 10A, RMX2027]
 released: 2020
-soc: Mediatek Helio G70
+soc: MediaTek Helio G70
 hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown

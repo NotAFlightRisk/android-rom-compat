@@ -2,7 +2,7 @@
 name: BraX3
 codenames: [brax3]
 released: 2025
-soc: Mediatek Dimensity 6300
+soc: MediaTek Dimensity 6300
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: yes

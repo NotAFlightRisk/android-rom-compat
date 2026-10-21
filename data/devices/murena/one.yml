@@ -3,7 +3,7 @@ name: One
 codenames: [one]
 aliases: [Murena One]
 released: 2022
-soc: Mediatek Helio P60
+soc: MediaTek Helio P60
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes

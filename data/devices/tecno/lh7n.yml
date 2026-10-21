@@ -2,7 +2,7 @@
 name: Pova 5
 codenames: [lh7n]
 released: 2023
-soc: Mediatek Helio G99
+soc: MediaTek Helio G99
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

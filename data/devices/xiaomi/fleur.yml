@@ -3,7 +3,7 @@ name: Redmi Note 11S
 codenames: [fleur]
 aliases: [Poco M4 Pro 4G, 2201117SG, 2201117SI, 2201117SL, 2201117SY, 2201117PG, 2201117PI]
 released: 2022
-soc: Mediatek Helio G96
+soc: MediaTek Helio G96
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

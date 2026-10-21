@@ -3,7 +3,7 @@ name: Redmi 12 4G
 codenames: [fire]
 aliases: [23053RN02A, 23053RN02I, 23053RN02L]
 released: 2023
-soc: Mediatek Helio G88
+soc: MediaTek Helio G88
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

@@ -3,7 +3,7 @@ name: Note 12 Pro
 codenames: [rubyx, ruby]
 aliases: [Pro Plus 5G, Pro+ 5G, Redmi Note 12 Pro 5G, Redmi Note 12 Pro+ 5G, Redmi Note 12 Discovery Edition, 22101316G, 22101316I, 22101316C, 22101316UG, 22101316UP, 22101316UCP, 22101316UC]
 released: 2022
-soc: Mediatek Dimensity 1080
+soc: MediaTek Dimensity 1080
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

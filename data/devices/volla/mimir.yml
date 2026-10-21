@@ -2,7 +2,7 @@
 name: Tablet
 codenames: [mimir]
 released: 2025
-soc: Mediatek Helio G99
+soc: MediaTek Helio G99
 type: tablet
 hardware: [cellular]
 bootloader:
