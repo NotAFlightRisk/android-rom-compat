@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  fingerprint: { status: working, android: 17, checked: 2026-09-30, source: https://gitlab.com/CalyxOS/calyxos/-/issues/3637 }
+  bluetooth_audio: { status: working, note: Calls and media, android: 17, checked: 2026-09-30, source: https://gitlab.com/CalyxOS/calyxos/-/issues/3637 }
