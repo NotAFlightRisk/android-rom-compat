@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  camera: { status: partial, note: "Nothing's camera app works, apart from portrait mode", android: 16, checked: 2025-12-30, source: https://github.com/crdroidandroid/android_vendor_crDroidOTA/blob/97a376ce16c8abb76074f1d635e4ee8d037cdc4b/Spacewar_changelog.txt }
