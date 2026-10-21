@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: partial, note: New in 7.7 and iodé says it may not be fully reliable yet, android: 16, build: '7.7', checked: 2026-07-22, source: https://gitlab.iode.tech/ota/news/-/blob/79b825c976280030608fec99f94189ac4f18c593/posts.json#L4254 }
+  vowifi: { status: partial, note: New in 7.7 and iodé says it may not be fully reliable yet, android: 16, build: '7.7', checked: 2026-07-22, source: https://gitlab.iode.tech/ota/news/-/blob/79b825c976280030608fec99f94189ac4f18c593/posts.json#L4254 }
