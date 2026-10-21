@@ -2,7 +2,7 @@
 name: Q25 Pro
 codenames: [q25]
 released: 2025
-soc: Mediatek Helio G99
+soc: MediaTek Helio G99
 hardware: [cellular, nfc]
 bootloader:
   unlock: yes

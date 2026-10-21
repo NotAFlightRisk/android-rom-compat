@@ -3,7 +3,7 @@ name: POCO X6 Pro 5G
 codenames: [duchamp]
 aliases: [POCO X6 Pro, Redmi K70E]
 released: 2023
-soc: Mediatek Dimensity 8300 Ultra
+soc: MediaTek Dimensity 8300 Ultra
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

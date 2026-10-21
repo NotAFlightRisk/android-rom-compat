@@ -3,7 +3,7 @@ name: 7/Narzo 20 Pro/30
 codenames: [salaa, rmx2151]
 aliases: [Narzo 20 Pro, Narzo 30 4G, RMX2153, RMX2155, RMX2156, RMX2161, RMX2163]
 released: 2020
-soc: Mediatek Helio G95
+soc: MediaTek Helio G95
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

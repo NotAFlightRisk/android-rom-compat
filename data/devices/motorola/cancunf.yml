@@ -3,7 +3,7 @@ name: moto g54 5G
 codenames: [cancunf]
 aliases: [XT2343-1, XT2343-2, XT2343-3, XT2343-4, XT2343-5]
 released: 2023
-soc: Mediatek Dimensity 7020
+soc: MediaTek Dimensity 7020
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown

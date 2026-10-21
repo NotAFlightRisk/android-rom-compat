@@ -3,7 +3,7 @@ name: Fire Max 11
 codenames: [sunstone]
 aliases: [KFSNWI]
 released: 2023
-soc: Mediatek MT8188J
+soc: MediaTek MT8188J
 type: tablet
 hardware: [fingerprint]
 bootloader:
