@@ -2,3 +2,4 @@
 features:
   volte: { status: working, note: If your carrier supports it, android: 13, checked: 2026-01-02, source: https://web.archive.org/web/20260105053757/https://murena.com/shop/smartphones/brand-new/murena-fairphone-4-eu/ }
   vowifi: { status: working, note: If your carrier supports it, android: 13, checked: 2026-01-02, source: https://web.archive.org/web/20260105053757/https://murena.com/shop/smartphones/brand-new/murena-fairphone-4-eu/ }
+  widevine: { status: L1, note: Seen with the bootloader relocked, android: 16, build: '4.3', checked: 2026-10-08, source: https://gitlab.e.foundation/e/backlog/-/issues/9776 }

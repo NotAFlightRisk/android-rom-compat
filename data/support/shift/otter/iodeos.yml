@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  fingerprint: { status: working, android: 16, checked: 2026-06-17, source: https://gitlab.iode.tech/ota/news/-/blob/79b825c976280030608fec99f94189ac4f18c593/posts.json#L4202 }

@@ -2,3 +2,4 @@
 features:
   volte: { status: working, android: 16, checked: 2026-10-17, source: https://murena.com/shop/smartphones/brand-new/murena-gs6/ }
   vowifi: { status: working, android: 16, checked: 2026-10-17, source: https://murena.com/shop/smartphones/brand-new/murena-gs6/ }
+  camera: { status: partial, note: "Photos come out soft and washed out, worst in low light", android: 16, build: '4.3', checked: 2026-10-06, source: https://gitlab.e.foundation/e/backlog/-/issues/9718 }
