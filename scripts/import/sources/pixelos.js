@@ -1,4 +1,4 @@
-import { fetchHead, fetchJson, mapLimit } from '../fetch.js';
+import { fetchJson, fetchPatchLevel, mapLimit } from '../fetch.js';
 import { upsertDevice } from '../store.js';
 import { dateOf, namesOf, typeOfName } from './evolutionx.js';
 
@@ -43,12 +43,6 @@ export function parse({ devices }) {
 /** The version and XDA thread from API/devices/<codename>.json */
 export const detailOf = (json) => ({ version: versionOf(json.download_link), install: json.xda });
 
-/** Build zips open with a metadata file that names the security patch level */
-export const patchOf = (head) =>
-  head.match(/^post-security-patch-level=(\d{4}-\d\d-\d\d)$/m)?.[1];
-
-const fetchPatch = async (link) => link && patchOf(await fetchHead(link, 4096));
-
 export const withDetail = (row, { version, patch, install }) => ({
   ...row,
   ...(row.latest && {
@@ -70,7 +64,8 @@ export default async function pixelos({ previous }) {
     const { latest, install } = previous[key] ?? {};
     const known = row.latest && latest?.date === row.latest.date ? latest : {};
     const json = await orNote(fetchJson(`${API}/devices/${codename}.json`), codename);
-    const patch = json && (await orNote(fetchPatch(json.download_link), codename));
+    const zip = json?.download_link;
+    const patch = zip && (await orNote(fetchPatchLevel(zip), codename));
     const detail = json ? detailOf(json) : { version: known.version, install };
     devices[key] = withDetail(row, { ...detail, patch: patch ?? known.patch });
   });

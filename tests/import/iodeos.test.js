@@ -74,13 +74,14 @@ test('latest build reads the newer feeds, missing comma and all', () => {
     version: '7.9',
     date: '2026-10-05',
     patch: '2026-09-01',
+    zip: 'https://gitlab.iode.tech/ota/release/-/raw/master/FP5/iode-7.9-20261005-FP5-ota.zip',
   });
 });
 
 test('old style feeds give the version and date from the file name', () => {
   const [build] = JSON.parse(feed('poplar')).response;
   const older = { ...build, datetime: 1, filename: 'iode-4.36-20260901-poplar-ota.zip' };
-  const expected = { version: '4.37', date: '2026-10-05' };
+  const expected = { version: '4.37', date: '2026-10-05', zip: build.url };
   assert.deepEqual(latestBuild(feed('poplar')), expected);
   assert.deepEqual(latestBuild(JSON.stringify({ response: [older, build] })), expected);
   assert.equal(latestBuild('{ "response": [] }'), undefined);
