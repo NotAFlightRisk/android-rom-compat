@@ -48,3 +48,12 @@ test('the device file adds a version from the download link, and a null xda adds
   const xda = 'https://xdaforums.com/t/pixelos-garnet';
   assert.equal(withDetail(row, { install: xda }).install, xda);
 });
+
+test('the patch level read off the build zip goes in with the version', () => {
+  const { row } = byCodename.RMX2020;
+  assert.deepEqual(withDetail(row, { version: '16.2', patch: '2026-06-01' }).latest, {
+    version: '16.2',
+    date: '2026-06-18',
+    patch: '2026-06-01',
+  });
+});

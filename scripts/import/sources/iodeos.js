@@ -1,4 +1,4 @@
-import { BROWSER_UA, fetchText, mapLimit } from '../fetch.js';
+import { BROWSER_UA, fetchPatchLevel, fetchText, mapLimit } from '../fetch.js';
 import { upsertDevice, withoutBrand } from '../store.js';
 
 const SOURCE = 'https://iode.tech/iodeos-official-supported-devices/';
@@ -115,7 +115,12 @@ export function latestBuild(text) {
   const [, version, year, month, day] = file?.filename?.match(buildFile) ?? [];
   if (!version) return undefined;
   const patch = file.os_patch_level;
-  return { version, date: `${year}-${month}-${day}`, ...(patch && { patch }) };
+  return {
+    version,
+    date: `${year}-${month}-${day}`,
+    ...(patch && { patch }),
+    ...(file.url && { zip: file.url }),
+  };
 }
 
 /** Release channel URLs, with the codename as the table spells it and then in lowercase */
@@ -157,7 +162,10 @@ export default async function iodeos({ previous }) {
   await mapLimit(found, 6, async ({ key, row, feed }) => {
     let latest = previous[key]?.latest;
     try {
-      latest = feed && (await fetchLatest(feed));
+      const newest = feed && (await fetchLatest(feed));
+      const { zip, ...build } = newest || {};
+      const patch = zip && (await fetchPatchLevel(zip).catch(() => undefined));
+      latest = newest && { ...build, ...(patch && { patch }) };
     } catch (error) {
       failures.push(error.message);
     }

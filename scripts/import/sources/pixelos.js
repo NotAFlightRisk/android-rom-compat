@@ -1,4 +1,4 @@
-import { fetchJson, mapLimit } from '../fetch.js';
+import { fetchJson, fetchPatchLevel, mapLimit } from '../fetch.js';
 import { upsertDevice } from '../store.js';
 import { dateOf, namesOf, typeOfName } from './evolutionx.js';
 
@@ -43,9 +43,11 @@ export function parse({ devices }) {
 /** The version and XDA thread from API/devices/<codename>.json */
 export const detailOf = (json) => ({ version: versionOf(json.download_link), install: json.xda });
 
-export const withDetail = (row, { version, install }) => ({
+export const withDetail = (row, { version, patch, install }) => ({
   ...row,
-  ...(version && row.latest && { latest: { version, ...row.latest } }),
+  ...(row.latest && {
+    latest: { ...(version && { version }), ...row.latest, ...(patch && { patch }) },
+  }),
   ...(install?.startsWith('http') && { install }),
 });
 
@@ -54,15 +56,18 @@ export default async function pixelos({ previous }) {
 
   const devices = {};
   const failed = [];
+  const orNote = (promise, codename) => promise.catch(() => void failed.push(codename));
   await mapLimit(parsed, 5, async ({ codename, brand, device, row }) => {
     const key = upsertDevice(brand, device);
     if (!key) return;
     if (row.status !== 'active') return void (devices[key] = row);
-    const url = `${API}/devices/${codename}.json`;
-    const json = await fetchJson(url).catch(() => void failed.push(codename));
     const { latest, install } = previous[key] ?? {};
-    const version = row.latest && latest?.date === row.latest.date ? latest.version : undefined;
-    devices[key] = withDetail(row, json ? detailOf(json) : { version, install });
+    const known = row.latest && latest?.date === row.latest.date ? latest : {};
+    const json = await orNote(fetchJson(`${API}/devices/${codename}.json`), codename);
+    const zip = json?.download_link;
+    const patch = zip && (await orNote(fetchPatchLevel(zip), codename));
+    const detail = json ? detailOf(json) : { version: known.version, install };
+    devices[key] = withDetail(row, { ...detail, patch: patch ?? known.patch });
   });
   return { devices, ...(failed.length && { note: `couldn't read ${failed.join(', ')}` }) };
 }

@@ -1,4 +1,4 @@
-import { fetchJson, mapLimit } from '../fetch.js';
+import { fetchJson, fetchPatchLevel, mapLimit } from '../fetch.js';
 import { brandKey, rowsFor, upsertDevice, withoutBrand } from '../store.js';
 import { isoDate } from '../../../src/lib/dates.js';
 
@@ -75,6 +75,9 @@ export default async function crdroid({ previous }) {
       Object.assign(devices, rowsFor(previous, lower));
       return;
     }
+    const zip = parsed.row.status === 'active' && json.response[0].download;
+    const patch = zip && (await fetchPatchLevel(zip).catch(() => undefined));
+    if (patch) parsed.row.latest.patch = patch;
     const key = upsertDevice(parsed.brand, parsed.device);
     if (key) devices[key] = freshest(devices[key], parsed.row);
   });

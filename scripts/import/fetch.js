@@ -11,13 +11,13 @@ const githubHosts = ['https://api.github.com/', 'https://raw.githubusercontent.c
 const BACKOFF = 500;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function fetchText(url, { headers = {}, body, tries = 5 } = {}) {
+async function request(url, { headers = {}, body, tries = 5 } = {}) {
   const sent = { 'user-agent': 'android-rom-compat importer', ...headers };
   if (token && githubHosts.some((host) => url.startsWith(host)))
     sent.authorization = `Bearer ${token}`;
   const again = async (wait) => {
     await sleep(wait);
-    return fetchText(url, { headers, body, tries: tries - 1 });
+    return request(url, { headers, body, tries: tries - 1 });
   };
 
   let response;
@@ -35,10 +35,32 @@ export async function fetchText(url, { headers = {}, body, tries = 5 } = {}) {
   if (!response.ok) {
     throw Object.assign(new Error(`${response.status} from ${url}`), { status: response.status });
   }
-  return response.text();
+  return response;
 }
 
+export const fetchText = async (url, options) => (await request(url, options)).text();
+
 export const fetchJson = async (url, options) => JSON.parse(await fetchText(url, options));
+
+/** The first few bytes of a file, hanging up early on servers that ignore the range */
+export async function fetchHead(url, bytes, options = {}) {
+  const headers = { ...options.headers, range: `bytes=0-${bytes - 1}` };
+  const response = await request(url, { ...options, headers });
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of response.body ?? []) {
+    chunks.push(chunk);
+    size += chunk.length;
+    if (size >= bytes) break;
+  }
+  return Buffer.concat(chunks).subarray(0, bytes).toString('latin1');
+}
+
+/** Build zips open with a metadata file that names the security patch level */
+export async function fetchPatchLevel(zip) {
+  const head = await fetchHead(zip, 4096);
+  return head.match(/^post-security-patch-level=(\d{4}-\d\d-\d\d)$/m)?.[1];
+}
 
 /** Runs an async function over items, a few at a time, so nobody's server gets hammered */
 export async function mapLimit(items, limit, run) {
