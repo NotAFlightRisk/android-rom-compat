@@ -62,6 +62,8 @@ test('latest build is the newest on the newest Android branch, with its patch le
   assert.deepEqual(latestBuild(ota, patches), expected);
   assert.deepEqual(latestBuild({ response: ota.response.toReversed() }, patches), expected);
   assert.equal(latestBuild({ response: [] }, patches), undefined);
+  const zip = 'https://ota.ecloud.global/official/FP4/e-4.2-a16-official-FP4.zip';
+  assert.equal(latestBuild({ response: [{ ...ota.response[0], url: zip }] }, patches).zip, zip);
 });
 
 test('a branch with a security note instead of a bulletin gets no patch', () => {

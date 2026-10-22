@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
-import { clone, fetchJson, mapLimit } from '../fetch.js';
+import { clone, fetchJson, fetchPatchLevel, mapLimit } from '../fetch.js';
 import { hardwareOf, typeOf } from '../hardware.js';
 import { upsertDevice, withoutBrand } from '../store.js';
 import { isoDate } from '../../../src/lib/dates.js';
@@ -107,6 +107,7 @@ export function latestBuild({ response = [] }, patches) {
       date: isoDate(build.datetime * 1000),
       ...(patch && { patch }),
     },
+    ...(build.url && { zip: build.url }),
   };
 }
 
@@ -133,6 +134,8 @@ export default async function eos({ previous }) {
     let build = previous[key]?.latest && { latest: previous[key].latest };
     try {
       build = latestBuild(await fetchJson(`${OTA}/${codename}/${feed}/x`), patches);
+      const patch = build?.zip && (await fetchPatchLevel(build.zip).catch(() => undefined));
+      if (patch) build.latest.patch = patch;
     } catch (error) {
       failures.push(error.message);
     }
