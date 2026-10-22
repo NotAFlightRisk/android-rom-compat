@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { detailOf, parse, withDetail } from '../../scripts/import/sources/pixelos.js';
+import { detailOf, parse, patchOf, withDetail } from '../../scripts/import/sources/pixelos.js';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`../fixtures/feeds/${name}`, import.meta.url), 'utf8'));
@@ -47,4 +47,21 @@ test('the device file adds a version from the download link, and a null xda adds
   });
   const xda = 'https://xdaforums.com/t/pixelos-garnet';
   assert.equal(withDetail(row, { install: xda }).install, xda);
+});
+
+test('the patch level comes from the metadata at the front of the build zip', () => {
+  const head = [
+    'PK\u0003\u0004META-INF/com/android/metadata',
+    'post-build=realme/RMX2020/RMX2020:11/RP1A.200720.011/1652239672541:user/release-keys',
+    'post-security-patch-level=2026-06-01',
+    'post-timestamp=1781814660',
+  ].join('\n');
+  assert.equal(patchOf(head), '2026-06-01');
+  assert.equal(patchOf('PK\u0003\u0004 not an OTA'), undefined);
+  const { row } = byCodename.RMX2020;
+  assert.deepEqual(withDetail(row, { version: '16.2', patch: '2026-06-01' }).latest, {
+    version: '16.2',
+    date: '2026-06-18',
+    patch: '2026-06-01',
+  });
 });
