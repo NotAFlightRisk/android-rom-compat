@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { namesOf, newestBranch, parse } from '../../scripts/import/sources/evolutionx.js';
+import { namesOf, newestBranch, parse, patchOf } from '../../scripts/import/sources/evolutionx.js';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`../fixtures/feeds/${name}`, import.meta.url), 'utf8'));
@@ -66,4 +66,13 @@ test('names split into aliases, minus bare suffixes and bracketed lists', () => 
     name: 'POCO M2 Pro',
     aliases: [],
   });
+});
+
+test("the patch month is the changelog's, unless it's newer than the build", () => {
+  const changelog = 'This is Android 16 QPR2 with September 2026 security patches\n\nNotes:\n';
+  assert.equal(patchOf(changelog, '2026-09-15'), '2026-09-01');
+  const bullet = 'Device changes:\n- October 2026 Security Patch';
+  assert.equal(patchOf(bullet, '2026-10-20'), '2026-10-01');
+  assert.equal(patchOf(changelog, '2026-08-30'), undefined);
+  assert.equal(patchOf('Notes:\n- Signed build', '2026-09-15'), undefined);
 });

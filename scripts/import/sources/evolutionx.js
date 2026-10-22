@@ -1,4 +1,4 @@
-import { fetchJson, mapLimit } from '../fetch.js';
+import { fetchJson, fetchText, mapLimit } from '../fetch.js';
 import { brandKey, rowsFor, upsertDevice, withoutBrand } from '../store.js';
 import { isoDate } from '../../../src/lib/dates.js';
 
@@ -23,6 +23,17 @@ export function namesOf(model, brand) {
 export const typeOfName = (name) => (/\b(pad|tab|tablet)\b/i.test(name) ? 'tablet' : undefined);
 
 export const dateOf = (seconds) => isoDate(seconds * 1000);
+
+const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+/** The patch month a maintainer's changelog names, unless it's somehow newer than the build */
+export function patchOf(changelog, built) {
+  const line = changelog.split('\n').find((text) => /security patch/i.test(text)) ?? '';
+  const [, month = '', year] = line.match(/([a-z]+) (\d{4})/i) ?? [];
+  const index = months.indexOf(month.slice(0, 3).toLowerCase());
+  const patch = index >= 0 && `${year}-${String(index + 1).padStart(2, '0')}-01`;
+  return patch && patch <= built ? patch : undefined;
+}
 
 const maintainerOf = ({ maintainer, github }) =>
   /^[a-z\d-]+$/i.test(github ?? '')
@@ -70,6 +81,11 @@ export default async function evolutionx({ previous }) {
       Object.assign(devices, rowsFor(previous, lower));
       return;
     }
+    const { latest, status } = parsed.row;
+    const changelog = `${OTA}/${entry.branch}/changelogs/${entry.codename}.txt`;
+    const notes = latest && status === 'active' && (await fetchText(changelog).catch(() => ''));
+    const patch = notes && patchOf(notes, latest.date);
+    if (patch) latest.patch = patch;
     const key = upsertDevice(parsed.brand, parsed.device);
     if (key) devices[key] = parsed.row;
   });
