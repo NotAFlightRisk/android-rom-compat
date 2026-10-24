@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  bluetooth_audio: { status: working, note: Speakers connect since /e/OS 4.3 and earbuds already did, android: 16, build: '4.3', checked: 2026-09-21, source: https://gitlab.e.foundation/e/os/releases/-/releases/v4.3-a16 }

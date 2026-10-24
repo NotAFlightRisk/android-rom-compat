@@ -2,3 +2,4 @@
 features:
   volte: { status: working, note: If your carrier supports it, android: 11, checked: 2025-01-06, source: https://web.archive.org/web/20250117040332/https://murena.com/shop/smartphones/brand-new/murena-teracube-2e-emerald-eu/ }
   vowifi: { status: broken, note: Not supported on this phone, android: 11, checked: 2025-01-06, source: https://web.archive.org/web/20250117040332/https://murena.com/shop/smartphones/brand-new/murena-teracube-2e-emerald-eu/ }
+  bluetooth_audio: { status: working, note: Speakers connect since /e/OS 4.3 and earbuds already did, android: 16, build: '4.3', checked: 2026-09-21, source: https://gitlab.e.foundation/e/os/releases/-/releases/v4.3-a16 }
