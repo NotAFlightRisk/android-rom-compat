@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: RS4
+codenames: [s666ln]
+bootloader:
+  unlock: unknown

@@ -32,6 +32,7 @@ Brand, ROM and app names and logos are trademarks of their respective owners and
 | `roms/iodeos.svg` | https://gitlab.com/iode/os/public_archive/blocker/iode/-/raw/main/android/app/src/main/res/drawable/ic_iode_foreground.xml | Trademark of iodé Technologies; file header AGPL-3.0-or-later |
 | `roms/evolutionx.svg` | https://raw.githubusercontent.com/Evolution-X/wiki/main/public/icon.svg | Trademark of Evolution X |
 | `roms/pixelos.svg` | https://pixelos.net/images/logo.svg | Trademark of PixelOS |
+| `roms/axionos.svg` | https://raw.githubusercontent.com/AxionAOSP/AxionAOSP.github.io/main/src/app/icon.svg | Trademark of AxionOS (redrawn in one colour, gradient dropped) |
 | `software/aosp.svg` | https://unpkg.com/simple-icons@16.34.0/icons/android.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `software/fdroid.svg` | https://unpkg.com/simple-icons@16.34.0/icons/fdroid.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `software/play-store.svg` | https://unpkg.com/simple-icons@16.34.0/icons/googleplay.svg | Simple Icons 16.34.0, CC0-1.0 |

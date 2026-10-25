@@ -35,6 +35,10 @@
   name: HTC
 - key: huawei
   name: Huawei
+- key: infinix
+  name: Infinix
+- key: itel
+  name: itel
 - key: leeco
   name: LeEco
 - key: lenovo

@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Phone (3a) Lite
+codenames: [galaxian]
+bootloader:
+  unlock: unknown
