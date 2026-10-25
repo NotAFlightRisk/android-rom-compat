@@ -188,7 +188,8 @@ const unsupported = device.ended
                   <a href={row.rom.url}>{row.rom.name}</a>
                   {build && (
                     <span>
-                      Last build <time datetime={build.date}>{build.text}</time>
+                      {row.stalled ? 'Still listed, but last built' : 'Last build'}{' '}
+                      <time datetime={build.date}>{build.text}</time>
                       {row.android && `, Android ${row.android}`}
                     </span>
                   )}

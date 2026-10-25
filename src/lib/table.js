@@ -169,7 +169,7 @@ export const deviceColumns = (roms, devices) => [
 export const romStatus = (device, rom) => {
   const row = device.support.find((entry) => entry.rom === rom);
   if (!row) return { tone: 'n/a', text: 'No' };
-  if (!row.active) return { tone: 'ended', text: 'Ended' };
+  if (!row.active) return { tone: 'ended', text: row.stalled ? 'Stalled' : 'Ended' };
   return !row.latest || ageTone(row.latest.date) !== 'broken'
     ? { tone: 'working', text: 'Active' }
     : { tone: 'partial', text: 'Old build' };

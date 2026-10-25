@@ -6,7 +6,10 @@ import { staleText, statusText } from '../lib/facts.js';
 import { site } from '../lib/site.js';
 
 const sources = [
-  ['Devices and builds', "Each ROM's own published device list, refreshed every week."],
+  [
+    'Devices and builds',
+    "Each ROM's own published device list, refreshed every week. A device it still lists but hasn't built for in a year counts as stalled, not supported.",
+  ],
   [
     'What works',
     "Reports, the ROM's docs for that device, or what the ROM says holds on every device. Answers link to their source where there is one.",

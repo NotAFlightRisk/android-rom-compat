@@ -72,6 +72,8 @@ export function buildModel(data = getData(), now = new Date()) {
     const report = reports.get(pair);
     const { features: reported, ...facts } = report?.data ?? {};
     const { features: documented, ...row } = docs ?? facts;
+    const listed = row.status === 'active' && rom.status === 'active';
+    const stalled = listed && row.latest?.date < staleBefore;
     const variants = (rom.variants ?? []).flatMap((variant) => {
       const build = upstream.get(`${id}:${romKey}-${variant.key}`);
       return build ? [{ ...variant, ...build }] : [];
@@ -84,7 +86,8 @@ export function buildModel(data = getData(), now = new Date()) {
       device,
       rom,
       variants,
-      active: row.status === 'active' && rom.status === 'active',
+      active: listed && !stalled,
+      stalled,
       cells: Object.fromEntries(
         features.map((feature) => [
           feature.key,
