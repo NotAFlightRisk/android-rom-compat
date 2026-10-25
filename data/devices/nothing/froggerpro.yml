@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Phone (4a) Pro
+codenames: [froggerpro]
+aliases: [A069P]
+released: 2026
+soc: Qualcomm SM7750-AB Snapdragon 7 Gen 4
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

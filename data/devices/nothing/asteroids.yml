@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Phone (3a)
+codenames: [asteroids]
+aliases: [Phone (3a) Pro, A059, A059P]
+released: 2025
+soc: Qualcomm SM7635 Snapdragon 7s Gen 3
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

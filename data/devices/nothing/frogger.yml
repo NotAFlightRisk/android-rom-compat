@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Phone (4a)
+codenames: [frogger]
+aliases: [A069]
+released: 2026
+soc: Qualcomm SM7635-AC Snapdragon 7s Gen 4
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

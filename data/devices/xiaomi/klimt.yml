@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 15T Pro
+codenames: [klimt]
+aliases: [2506BPN68G, 2506BPN68R]
+released: 2025
+soc: MediaTek Dimensity 9400+
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

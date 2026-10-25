@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 15 Pro 5G
+codenames: [lapis]
+aliases: [25080RABDG, 25080RABDI, 25080RABDC, 25080RABDR, 25080RABDT]
+released: 2025
+soc: MediaTek Dimensity 7400 Ultra
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

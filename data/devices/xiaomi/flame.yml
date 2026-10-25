@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 14C 5G
+codenames: [flame]
+aliases: [Redmi 14R 5G, POCO M7 5G, 2411DRN47I, 2411DRN47G, 2411DRN47R, 2411DRN47C, 24108PCE2I]
+released: 2024
+soc: Qualcomm SM4450 Snapdragon 4 Gen 2
+hardware: [5g, cellular, fingerprint]
+bootloader:
+  unlock: unknown

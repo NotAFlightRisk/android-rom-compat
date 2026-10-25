@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: CMF Phone 2 Pro
+codenames: [galaga]
+aliases: [A001]
+released: 2025
+soc: MediaTek Dimensity 7300 Pro
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

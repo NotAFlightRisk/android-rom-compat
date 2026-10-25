@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Phone (3)
+codenames: [metroid]
+aliases: [A024]
+released: 2025
+soc: Qualcomm SM8735 Snapdragon 8s Gen 4
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
