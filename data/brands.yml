@@ -89,8 +89,8 @@
   name: Samsung
   bootloader:
     unlock: conditional
-    notes: Galaxy phones outside the US unlock until One UI 8, which reportedly removes the option in every region. US models lost it years ago.
-    source: https://www.sammobile.com/news/say-goodbye-to-your-custom-roms-as-one-ui-8-kills-bootloader-unlock/
+    notes: Galaxy phones from outside the US and Canada unlock until they update to One UI 8, which removes the option for good, so ones that launched with it can't unlock at all. US and Canadian models lost it years ago.
+    source: https://github.com/salvogiangri/UN1CA/discussions/129
 - key: shift
   name: SHIFT
 - key: smartisan
