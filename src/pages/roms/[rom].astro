@@ -150,7 +150,10 @@ const count = plural(current.length, 'device');
       )}
       {ended.length > 0 && (
         <details>
-          <summary>{plural(ended.length, 'device')} where support has ended</summary>
+          <summary>
+            {plural(ended.length, 'device')} where support has ended
+            {ended.some((row) => row.stalled) && ' or stalled'}
+          </summary>
           <div data-view="cards">
             <CardGrid id="rom-ended-cards" groups={groupsOf(ended)} level={3} />
           </div>

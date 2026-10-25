@@ -100,6 +100,16 @@ test('rows join docs, hand-written rows, variants and stock support', () => {
   assert.equal(tidy.device.stock.security_until, '2027-01-01');
 });
 
+test('a listed row with no build in a year is stalled, not active', () => {
+  const statusOf = (now) => {
+    const { active, stalled } = rowOf(now, 'tidyos');
+    return { active, stalled };
+  };
+  assert.deepEqual(statusOf('2026-12-01'), { active: true, stalled: false });
+  assert.deepEqual(statusOf('2027-02-01'), { active: false, stalled: true });
+  assert.equal(rowOf('2027-02-01', 'handmadeos').stalled, false);
+});
+
 test("two brands' devices can share a codename and keep their own ROMs", () => {
   const data = loadData('tests/fixtures/good');
   const [rocket] = data.devices;
