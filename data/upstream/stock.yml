@@ -294,6 +294,7 @@ devices:
   xiaomi/amber: { security_until: 2025-09-23, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/apollon: { security_until: 2023-09-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/begonia: { security_until: 2022-09-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
+  xiaomi/beryl: { security_until: 2029-01-09, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/blossom: { security_until: 2023-07-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/cepheus: { security_until: 2022-02-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/chime: { security_until: 2024-03-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
@@ -310,7 +311,9 @@ devices:
   xiaomi/equuleus: { security_until: 2021-08-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/fire: { security_until: 2027-06-16, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/fleur: { security_until: 2025-01-28, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
+  xiaomi/flourite: { security_until: 2032-01-15, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/fuxi: { security_until: 2028-03-08, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
+  xiaomi/gale: { security_until: 2026-11-10, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/garnet: { security_until: 2028-01-15, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/gauguin: { security_until: 2023-09-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/gemstone: { security_until: 2026-03-23, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
@@ -318,11 +321,14 @@ devices:
   xiaomi/grus: { security_until: 2022-02-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/haydn: { security_until: 2025-02-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/jasmine_sprout: { security_until: 2021-07-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
+  xiaomi/klimt: { security_until: 2031-09-24, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/lancelot: { security_until: 2023-06-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
+  xiaomi/lapis: { security_until: 2032-01-15, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/laurel_sprout: { security_until: 2022-08-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/lavender: { security_until: 2022-03-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/lime: { security_until: 2024-03-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/lisa: { security_until: 2025-09-23, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
+  xiaomi/malachite: { security_until: 2029-01-30, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/marble: { security_until: 2026-05-09, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/merlinx: { security_until: 2023-05-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }
   xiaomi/mi439: { security_until: 2022-07-01, source: https://trust.mi.com/misrc/updates/detail?tab=phone }

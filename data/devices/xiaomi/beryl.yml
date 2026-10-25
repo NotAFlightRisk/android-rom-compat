@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 14 5G
+codenames: [beryl]
+aliases: [POCO M7 Pro 5G, 24094RAD4G, 24094RAD4I, 24094RAD4C, 2409FPCC4G]
+released: 2024
+soc: MediaTek Dimensity 7025 Ultra
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 13C
+codenames: [gale]
+aliases: [POCO C65, 23108RN04Y, 23106RN0DA, 23100RN82L, 2311DRN14I, 2310FPCA4G, 2310FPCA4I]
+released: 2023
+soc: MediaTek Helio G85
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 15 Pro+ 5G
+codenames: [flourite]
+aliases: [POCO M8 Pro 5G, 2510ERA8BG, 2510ERA8BI, 2510ERA8BC, 2510ERA8BT, 25104RADAC, 2510EPC8BG]
+released: 2025
+soc: Qualcomm SM7635-AC Snapdragon 7s Gen 4
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
