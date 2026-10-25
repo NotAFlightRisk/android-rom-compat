@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Nord 2 5G
 codenames: [op6893]
-aliases: [X7 Max 5G, DN2101, DN2103]
+aliases: [Nord 2, X7 Max 5G, DN2101, DN2103]
 released: 2021
 soc: MediaTek Dimensity 1200
 hardware: [5g, cellular, fingerprint, nfc]

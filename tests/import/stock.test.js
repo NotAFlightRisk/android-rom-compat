@@ -4,7 +4,10 @@ import { test } from 'node:test';
 import {
   fromCalyxos,
   join,
+  lgRows,
+  motorolaReleases,
   nameKeys,
+  onePlusReleases,
   products,
   stockRow,
   xiaomiRelease,
@@ -168,4 +171,54 @@ test('CalyxOS fills Pixels endoflife.date missed, and nothing else', () => {
       source: 'https://calyxos.org/docs/guide/device-support/',
     },
   });
+});
+
+test("OnePlus's page gives phones a padded security date, and leaves its IoT tab out", () => {
+  const html = `const producList = [{ status: '1', name: 'OnePlus Nord 2', date: '2024/7/1', },
+    { status: '2', name: 'OnePlus Watch Lite', date: '2027/11/1', }]`;
+  assert.deepEqual(onePlusReleases(html), [
+    {
+      brand: 'oneplus',
+      label: 'OnePlus Nord 2',
+      row: { security_until: '2024-07-01', source: 'https://www.oneplus.com/uk/psti' },
+    },
+  ]);
+});
+
+test("Motorola's guide gives a month, and Android only once it says what the phone's had", () => {
+  const leaf = (...lines) => ({ taglessText: lines.join('\n') });
+  const guide = {
+    guideID: 6806,
+    name: 'Security {US}',
+    questions: [
+      leaf('motorola one action*', 'Security updates will stop on August, 2022'),
+      leaf(
+        'motorola edge 20 pro',
+        'Security updates will stop on August, 2023',
+        'Launched On: Android 11',
+        'Upgraded To: Android 13',
+      ),
+      leaf('Pick your phone'),
+    ],
+  };
+  const html = `<script>var x = ${JSON.stringify(guide)};</script>`;
+  assert.deepEqual(motorolaReleases(html, 'https://moto.test'), [
+    {
+      brand: 'motorola',
+      label: 'motorola one action',
+      row: { security_until: '2022-08-01', source: 'https://moto.test' },
+    },
+    {
+      brand: 'motorola',
+      label: 'motorola edge 20 pro',
+      row: { android: '11 - 13', security_until: '2023-08-01', source: 'https://moto.test' },
+    },
+  ]);
+  assert.deepEqual(motorolaReleases('<p>Technical Difficulties</p>', 'https://moto.test'), []);
+});
+
+test('every LG phone has ended, and nobody else', () => {
+  const rows = lgRows([device('lg', 'h850', 'G5'), device('google', 'tegu', 'Pixel 9a')]);
+  assert.deepEqual(Object.keys(rows), ['h850']);
+  assert.equal(rows.h850.security_until, 'ended');
 });
