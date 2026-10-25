@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Nord CE 3 Lite 5G
 codenames: [larry]
-aliases: [Nord N30 5G, CPH2467, CPH2465, CPH2513]
+aliases: [Nord CE 3 Lite, Nord N30 5G, CPH2467, CPH2465, CPH2513]
 released: 2023
 soc: Qualcomm SM6375 Snapdragon 695
 hardware: [5g, cellular, fingerprint, nfc]

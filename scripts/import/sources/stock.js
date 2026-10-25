@@ -18,6 +18,21 @@ export const products = {
 
 const XIAOMI = 'https://trust.mi.com/bff/psti/phone/online';
 const XIAOMI_PAGE = 'https://trust.mi.com/misrc/updates/detail?tab=phone';
+const ONEPLUS = 'https://www.oneplus.com/uk/psti';
+const LG_NOTICE =
+  'https://www.lg.com/us/support/announcements-detail/notice-on-termination-of-services-of-lg-electronics-mobile-phone-software-upgrade-update-center-and-lg-bridge-USNTC20250410200140';
+
+/** Motorola's page drops a phone once support ends, so older phones come from archived copies */
+const MOTOROLA_LIVE = 'https://en-us.support.motorola.com/app/software-security-update';
+const MOTOROLA_OLD =
+  'https://motorola-global-portal.custhelp.com/app/software-security-page/g_id/6806';
+export const motorolaPages = [
+  MOTOROLA_LIVE,
+  `https://web.archive.org/web/20230814082825/${MOTOROLA_LIVE}`,
+  `https://web.archive.org/web/20220413155903/${MOTOROLA_OLD}`,
+  `https://web.archive.org/web/20210607224525/${MOTOROLA_OLD}`,
+  `https://web.archive.org/web/20210311195314/${MOTOROLA_OLD}`,
+];
 
 const brandPrefix = /^(the\s+)?(google|samsung|fairphone|oneplus|sony|motorola|nokia|xiaomi)\s+/;
 const YEAR = /\b(19|20)\d\d\b/g;
@@ -77,6 +92,74 @@ async function xiaomiReleases() {
   }
 }
 
+/** OnePlus's UK security update page keeps its table as a JS literal, phones under status 1 */
+export function onePlusReleases(html) {
+  const rows = html.matchAll(
+    /status:\s*'(\d)',\s*name:\s*'([^']+)',\s*date:\s*'(\d{4})\/(\d+)\/(\d+)'/g,
+  );
+  return [...rows]
+    .filter(([, status]) => status === '1')
+    .map(([, , label, year, month, day]) => ({
+      brand: 'oneplus',
+      label,
+      row: {
+        security_until: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+        source: ONEPLUS,
+      },
+    }));
+}
+
+/** The JSON object starting at a given index, found by counting braces outside strings */
+export function jsonAt(text, start) {
+  let depth = 0;
+  let quoted = false;
+  for (let i = start; i < text.length; i++) {
+    const char = text[i];
+    if (quoted) {
+      if (char === '\\') i++;
+      else if (char === '"') quoted = false;
+    } else if (char === '"') quoted = true;
+    else if (char === '{') depth++;
+    else if (char === '}' && --depth === 0) return JSON.parse(text.slice(start, i + 1));
+  }
+}
+
+const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+/** "August", 2022 becomes 2022-08-01 */
+const monthOf = (name, year) => {
+  const index = months.indexOf(name.slice(0, 3).toLowerCase());
+  return index >= 0 ? `${year}-${String(index + 1).padStart(2, '0')}-01` : undefined;
+};
+
+/** Every phone in a Motorola security page's guide that says when its updates stop */
+export function motorolaReleases(html, source) {
+  const start = html.indexOf('{"guideID":');
+  const guide = start >= 0 && jsonAt(html, start);
+  return (guide?.questions ?? []).flatMap(({ taglessText = '' }) => {
+    const [, month, year] = taglessText.match(/Security updates will stop on (\w+), (\d{4})/) ?? [];
+    const until = month && monthOf(month, year);
+    if (!until) return [];
+    const label = taglessText.trim().split('\n')[0].replace(/\*$/, '').trim();
+    const first = taglessText.match(/Launched On: Android ([\d.]+)/i)?.[1];
+    const last = taglessText.match(/Upgraded? To: Android ([\d.]+)/i)?.[1];
+    const android = first && last && (first === last ? first : `${first} - ${last}`);
+    const row = { ...(android && { android }), security_until: until, source };
+    return [{ brand: 'motorola', label, row }];
+  });
+}
+
+/** LG shut its phone update service down for every model on 30 June 2025 */
+export const lgRows = (devices) =>
+  Object.fromEntries(
+    devices
+      .filter(({ brand }) => brand === 'lg')
+      .map(({ id }) => [
+        id,
+        { updates_until: 'ended', security_until: 'ended', source: LG_NOTICE },
+      ]),
+  );
+
 /** When support ends, with ended sorting first and no date at all last */
 const cutoff = ({ row }) => {
   const until = row.security_until ?? row.updates_until ?? '9';
@@ -127,7 +210,7 @@ export function fromCalyxos(devices, rows, ends) {
 }
 
 export default async function stock() {
-  const brands = new Set([...Object.values(products), 'xiaomi']);
+  const brands = new Set([...Object.values(products), 'xiaomi', 'lg']);
   const devices = loadData(DATA).devices.filter(({ brand }) => brands.has(brand));
 
   const releases = [];
@@ -147,8 +230,20 @@ export default async function stock() {
     return [];
   });
   releases.push(...xiaomi);
+  const onePlus = await fetchText(ONEPLUS)
+    .then(onePlusReleases)
+    .catch(() => []);
+  if (!onePlus.length) failed.push('oneplus.com');
+  releases.push(...onePlus);
+  for (const page of motorolaPages) {
+    const found = await fetchText(page.replace(/(\/web\/\d+)\//, '$1id_/'))
+      .then((html) => motorolaReleases(html, page))
+      .catch(() => []);
+    if (!found.length) failed.push(page.includes('archive.org') ? `${page} (archived)` : page);
+    releases.push(...found);
+  }
 
-  const rows = join(devices, releases);
+  const rows = { ...join(devices, releases), ...lgRows(devices) };
   const ends = await fetchText(`${CALYXOS}/devices.yml`).then(supportEnds).catch(() => ({}));
   const extra = fromCalyxos(devices, rows, ends);
   const notes = [
