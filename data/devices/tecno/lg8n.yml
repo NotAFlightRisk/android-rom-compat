@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
-name: POVA 4 Pro
+name: Pova 4 Pro
 codenames: [lg8n]
+released: 2022
+soc: MediaTek Helio G99
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

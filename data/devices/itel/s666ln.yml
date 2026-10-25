@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: RS4
 codenames: [s666ln]
+released: 2024
+soc: MediaTek Helio G99
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 15R
 codenames: [macan]
+aliases: [CPH2767, CPH2769, CPH2771]
+released: 2025
+soc: Qualcomm SM8845 Snapdragon 8 Gen 5
+hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
