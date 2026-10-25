@@ -17,7 +17,8 @@ function spread(items, size, groupOf, idOf = (item) => item) {
 const bySupport = (a, b) =>
   b.activeCount - a.activeCount ||
   (b.released ?? 0) - (a.released ?? 0) ||
-  b.support.length - a.support.length;
+  b.support.length - a.support.length ||
+  a.title.localeCompare(b.title);
 const byNewest = (a, b) =>
   b.date.localeCompare(a.date) || a.device.title.localeCompare(b.device.title);
 

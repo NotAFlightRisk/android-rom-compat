@@ -30,6 +30,21 @@ test('most supported tops up from the same brands when there are too few of them
   ]);
 });
 
+test('most supported breaks ties on the newer phone, then more ROMs ever, then the name', () => {
+  const moto = (title, released, romsEver) => ({
+    ...phone(title, 'motorola', 4),
+    released,
+    support: Array(romsEver),
+  });
+  const devices = [
+    moto('g34', 2023, 4),
+    moto('g84', 2023, 5),
+    moto('g54', 2023, 5),
+    moto('g85', 2024, 4),
+  ];
+  assert.deepEqual(titles(mostSupported(devices, 4)), ['g85', 'g54', 'g84', 'g34']);
+});
+
 test("recently built gives each ROM its newest build on a phone that's still free", () => {
   const fp4 = phone('Fairphone 4', 'fairphone', 2, { calyxos: '2026-10-06', eos: '2026-09-29' });
   const fp3 = phone('Fairphone 3', 'fairphone', 1, { eos: '2026-09-20' });
