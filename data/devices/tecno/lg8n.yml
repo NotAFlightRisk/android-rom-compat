@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POVA 4 Pro
+codenames: [lg8n]
+bootloader:
+  unlock: unknown

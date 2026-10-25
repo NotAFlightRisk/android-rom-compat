@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Hot 50 4G
+codenames: [x6882]
+bootloader:
+  unlock: unknown
