@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
-name: C25
+name: C25/C25s/Narzo 50A
 codenames: [even]
+aliases: [C25s, Narzo 50A, RMX3191, RMX3193, RMX3195, RMX3197, RMX3430]
+released: 2021
+hardware: [cellular, fingerprint]
 bootloader:
   unlock: unknown

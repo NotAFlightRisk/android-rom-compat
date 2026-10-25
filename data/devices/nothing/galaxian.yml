@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Phone (3a) Lite
 codenames: [galaxian]
+aliases: [A001T]
+released: 2025
+soc: MediaTek Dimensity 7300 Pro
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

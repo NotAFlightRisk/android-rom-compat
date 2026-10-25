@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Phone (2a)
 codenames: [pacman]
+aliases: [A142]
+released: 2024
+soc: MediaTek Dimensity 7200 Pro
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
