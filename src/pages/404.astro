@@ -33,9 +33,11 @@ import { issueUrl } from '../lib/site.js';
 </ErrorPage>
 
 <script>
+  import { track } from '../scripts/plausible.js';
   import { closestPages, resultItem } from '../scripts/search.js';
 
   const { origin, pathname } = location;
+  track('404', { path: pathname });
   const path = Object.assign(document.createElement('code'), { textContent: pathname });
   document.querySelector('[data-path]').replaceWith(path);
 
