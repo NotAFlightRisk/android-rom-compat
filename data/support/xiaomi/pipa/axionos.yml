@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  android_auto: { status: broken, inferred: true, note: "Its Google apps build is the trimmed-down set, which didn't include Android Auto yet", android: 16, build: '2.6-20260519', checked: 2026-05-19, source: https://gitlab.com/AxionAOSP/android_vendor_gms/-/blob/60c3464929454b7699fad3a169da6e56065fc195/common/Android.bp }
