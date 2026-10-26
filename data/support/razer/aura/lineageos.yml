@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, android: 15, checked: 2026-10-26, source: https://github.com/NotAFlightRisk/android-rom-compat/issues/114 }
+  fingerprint: { status: partial, note: "Won't unlock straight from the lock screen - tap Emergency call, press power to turn the screen off, then touch the sensor", android: 15, checked: 2026-10-26, source: https://github.com/NotAFlightRisk/android-rom-compat/issues/114 }
