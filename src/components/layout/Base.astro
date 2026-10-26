@@ -84,9 +84,10 @@ const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
     )}
     {plausible && (
       <script is:inline define:vars={{ src: plausible }}>
-        const script = Object.assign(document.createElement('script'), { src, async: true });
-        script.onload = () => window.plausible.init({ endpoint: new URL('/api/event', src).href });
-        document.head.append(script);
+        window.plausible = (...args) => (plausible.q ??= []).push(args);
+        plausible.init = (options) => (plausible.o = options);
+        plausible.init({ endpoint: new URL('/api/event', src).href });
+        document.head.append(Object.assign(document.createElement('script'), { src, async: true }));
       </script>
     )}
     {sentry && (
