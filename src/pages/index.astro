@@ -5,24 +5,15 @@ import Logo from '../components/ui/Logo.astro';
 import Search from '../components/ui/Search.astro';
 import { getModel } from '../lib/data/model.js';
 import { formatDate } from '../lib/dates.js';
+import { mostSupported, recentlyBuilt } from '../lib/home.js';
 import { site } from '../lib/site.js';
 import { listOf, plural } from '../lib/text.js';
 
+const listLength = 8;
 const { devices, roms } = getModel();
 const live = roms.filter((rom) => rom.status === 'active');
-const popular = devices
-  .filter((device) => device.activeCount > 0)
-  .toSorted((a, b) => b.activeCount - a.activeCount || (b.released ?? 0) - (a.released ?? 0))
-  .slice(0, 10);
-const recent = devices
-  .filter((device) => device.latestBuild)
-  .toSorted((a, b) => b.latestBuild.localeCompare(a.latestBuild) || a.title.localeCompare(b.title))
-  .slice(0, 8);
-const builtBy = (device) =>
-  device.support
-    .filter((row) => row.latest?.date === device.latestBuild)
-    .map((row) => row.rom.name)
-    .join(', ');
+const popular = mostSupported(devices, listLength);
+const recent = recentlyBuilt(devices, popular, listLength);
 ---
 
 <Base
@@ -57,13 +48,12 @@ const builtBy = (device) =>
       <section aria-labelledby="recent">
         <h2 id="recent">Recently built</h2>
         <ol class="rows">
-          {recent.map((device) => (
+          {recent.map(({ device, rom, date }) => (
             <li>
               <Logo kind="brands" item={device.brand} size="sm" />
               <a href={device.url}>{device.title}</a>
               <span>
-                {builtBy(device)},{' '}
-                <time datetime={device.latestBuild}>{formatDate(device.latestBuild)}</time>
+                {rom.name}, <time datetime={date}>{formatDate(date)}</time>
               </span>
             </li>
           ))}

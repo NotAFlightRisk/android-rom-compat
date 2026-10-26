@@ -1,6 +1,6 @@
 ---
 import Search from '../ui/Search.astro';
-import { nav } from '../../lib/site.js';
+import { nav, site } from '../../lib/site.js';
 
 const { search } = Astro.props;
 
@@ -23,7 +23,7 @@ const current = (url) => Astro.url.pathname.startsWith(url);
       ))}
     </ul>
   </nav>
-  {search && <Search />}
+  {search ? <Search /> : <a class="repo" href={site.repo}>GitHub</a>}
 </header>
 
 <style>
@@ -65,7 +65,8 @@ const current = (url) => Astro.url.pathname.startsWith(url);
     list-style: none;
   }
 
-  nav a {
+  nav a,
+  .repo {
     display: block;
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius);
@@ -95,6 +96,30 @@ const current = (url) => Astro.url.pathname.startsWith(url);
         forced-color-adjust: none;
         background: SelectedItem;
         color: SelectedItemText;
+      }
+    }
+  }
+
+  .repo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    justify-self: end;
+
+    @media (width < 44rem) {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      inline-size: 1em;
+      aspect-ratio: 1;
+      background: currentColor;
+      mask: url('../../assets/github.svg') center / contain no-repeat;
+
+      @media (forced-colors: active) {
+        forced-color-adjust: none;
+        background: CanvasText;
       }
     }
   }
