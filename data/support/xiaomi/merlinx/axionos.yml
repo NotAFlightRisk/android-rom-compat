@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  push: { status: partial, inferred: true, note: 'Builds come without Google apps, add them yourself', android: 16, build: '2.7-20260613', checked: 2026-06-13, source: https://github.com/AxionAOSP/official_devices/tree/44449c5067d0e3e86594bd7871cc14026eda594a/OTA/GMS }
+  android_auto: { status: broken, inferred: true, note: "Builds come without Google apps, so Android Auto isn't there", android: 16, build: '2.7-20260613', checked: 2026-06-13, source: https://github.com/AxionAOSP/official_devices/tree/44449c5067d0e3e86594bd7871cc14026eda594a/OTA/GMS }
+  integrity: { status: fails, inferred: true, note: "Builds come without Google apps, so there's no Play Integrity check to pass", android: 16, build: '2.7-20260613', checked: 2026-06-13, source: https://github.com/AxionAOSP/official_devices/tree/44449c5067d0e3e86594bd7871cc14026eda594a/OTA/GMS }
