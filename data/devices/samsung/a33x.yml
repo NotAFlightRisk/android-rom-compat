@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy A33 5G
 codenames: [a33x]
+aliases: [SM-A336B, SM-A336E, SM-A336M, SM-A336N, SM-A3360, SM-A336B/DS, SM-A336B/DSN, SM-A336E/DS]
+released: 2022
+soc: Samsung Exynos 1280
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

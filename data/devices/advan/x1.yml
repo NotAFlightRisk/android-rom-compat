@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: X1
 codenames: [x1]
+aliases: ["6781"]
+released: 2025
+soc: MediaTek Helio G100
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

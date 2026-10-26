@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy A25 5G
 codenames: [a25x]
+aliases: [SM-A256B, SM-A256E, SM-A2560, SM-A256B/DS, SM-A256B/DSN, SM-A256E/DS, SM-A256E/DSN]
+released: 2023
+soc: Samsung Exynos 1280
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
