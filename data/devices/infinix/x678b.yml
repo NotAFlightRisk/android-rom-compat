@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Note 30 Pro
+codenames: [x678b]
+bootloader:
+  unlock: unknown

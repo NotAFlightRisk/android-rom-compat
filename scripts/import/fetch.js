@@ -11,18 +11,18 @@ const githubHosts = ['https://api.github.com/', 'https://raw.githubusercontent.c
 const BACKOFF = 500;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function request(url, { headers = {}, body, tries = 5 } = {}) {
+async function request(url, { headers = {}, body, signal, tries = 5 } = {}) {
   const sent = { 'user-agent': 'android-rom-compat importer', ...headers };
   if (token && githubHosts.some((host) => url.startsWith(host)))
     sent.authorization = `Bearer ${token}`;
   const again = async (wait) => {
     await sleep(wait);
-    return request(url, { headers, body, tries: tries - 1 });
+    return request(url, { headers, body, signal, tries: tries - 1 });
   };
 
   let response;
   try {
-    response = await fetch(url, { headers: sent, ...(body && { method: 'POST', body }) });
+    response = await fetch(url, { headers: sent, signal, ...(body && { method: 'POST', body }) });
   } catch (error) {
     if (tries <= 1) throw error;
     return again(BACKOFF);
@@ -58,7 +58,7 @@ export async function fetchHead(url, bytes, options = {}) {
 
 /** Build zips open with a metadata file that names the security patch level */
 export async function fetchPatchLevel(zip) {
-  const head = await fetchHead(zip, 4096);
+  const head = await fetchHead(zip, 4096, { signal: AbortSignal.timeout(30_000) });
   return head.match(/^post-security-patch-level=(\d{4}-\d\d-\d\d)$/m)?.[1];
 }
 

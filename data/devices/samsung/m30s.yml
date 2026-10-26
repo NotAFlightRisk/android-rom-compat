@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M30s
+codenames: [m30s]
+bootloader:
+  unlock: unknown

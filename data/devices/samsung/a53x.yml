@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A53 5G
+codenames: [a53x]
+bootloader:
+  unlock: unknown
