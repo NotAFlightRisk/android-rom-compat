@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  push: { status: partial, inferred: true, note: 'Builds come without Google apps, add them yourself', android: 16, build: '3.11-20260612', checked: 2026-06-12, source: https://github.com/ProjectInfinity-X/official_devices/tree/7ecefe15095398235a677b313c11a206a0897289/gapps }
+  android_auto: { status: broken, inferred: true, note: "Builds come without Google apps, so Android Auto isn't there", android: 16, build: '3.11-20260612', checked: 2026-06-12, source: https://github.com/ProjectInfinity-X/official_devices/tree/7ecefe15095398235a677b313c11a206a0897289/gapps }
