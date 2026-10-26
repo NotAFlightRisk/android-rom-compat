@@ -6,7 +6,7 @@ devices:
     status: active
     android: 17
     maintainer: { name: Doo, link: https://t.me/RizkKuy }
-    latest: { version: "4.1", date: 2026-10-15, patch: 2026-10-01 }
+    latest: { version: "4.1", date: 2026-10-25, patch: 2026-10-01 }
     source: https://projectinfinity-x.com/downloads/X1
     install: https://github.com/ProjectInfinity-X/official_devices/blob/17/flashguide/X1.txt
   google/akita:
@@ -20,14 +20,14 @@ devices:
     status: active
     android: 16
     maintainer: { name: Bobby Panarisi (306bobby-android), link: https://t.me/the306bobby }
-    latest: { version: "3.10", date: 2026-05-04 }
+    latest: { version: "3.10", date: 2026-05-04, patch: 2026-05-01 }
     source: https://projectinfinity-x.com/downloads/barbet
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/barbet.txt
   google/bramble:
     status: active
     android: 16
     maintainer: { name: Bobby Panarisi (306bobby-android), link: https://t.me/the306bobby }
-    latest: { version: "3.10", date: 2026-05-04 }
+    latest: { version: "3.10", date: 2026-05-04, patch: 2026-05-01 }
     source: https://projectinfinity-x.com/downloads/bramble
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/bramble.txt
   google/caiman:
@@ -41,14 +41,14 @@ devices:
     status: active
     android: 16
     maintainer: { name: Pyrtle93, link: https://t.me/Pyrtle93 }
-    latest: { version: "3.12", date: 2026-08-25 }
+    latest: { version: "3.12", date: 2026-08-25, patch: 2026-08-01 }
     source: https://projectinfinity-x.com/downloads/cheetah
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/cheetah.txt
   google/husky:
     status: active
     android: 16
     maintainer: { name: Libra420T, link: https://t.me/Libra420T }
-    latest: { version: "3.12", date: 2026-09-15 }
+    latest: { version: "3.12", date: 2026-09-15, patch: 2026-09-01 }
     source: https://projectinfinity-x.com/downloads/husky
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/husky.txt
   google/komodo:
@@ -83,7 +83,7 @@ devices:
     status: active
     android: 16
     maintainer: { name: xioyo, link: https://t.me/xioyo }
-    latest: { version: "3.12", date: 2026-08-14 }
+    latest: { version: "3.12", date: 2026-08-14, patch: 2026-08-01 }
     source: https://projectinfinity-x.com/downloads/raven
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/raven.txt
   google/redfin:
@@ -139,7 +139,7 @@ devices:
     status: active
     android: 16
     maintainer: { name: ussr_1674, link: https://t.me/ussr_1674 }
-    latest: { version: "3.12", date: 2026-08-13 }
+    latest: { version: "3.12", date: 2026-08-13, patch: 2026-08-01 }
     source: https://projectinfinity-x.com/downloads/cancunf
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/cancunf.txt
   motorola/dubai:
@@ -216,7 +216,7 @@ devices:
     status: active
     android: 16
     maintainer: { name: HARISH, link: https://github.com/Codecity001 }
-    latest: { version: "3.12", date: 2026-08-01 }
+    latest: { version: "3.12", date: 2026-08-01, patch: 2026-07-01 }
     source: https://projectinfinity-x.com/downloads/guacamoleb
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/guacamoleb.txt
   oneplus/hotdogb:
@@ -230,7 +230,7 @@ devices:
     status: active
     android: 17
     maintainer: { name: NullCode (nullcode1337), link: https://github.com/NullCode1337 }
-    latest: { version: "4.0", date: 2026-10-01, patch: 2026-09-01 }
+    latest: { version: "4.1", date: 2026-10-26, patch: 2026-10-01 }
     source: https://projectinfinity-x.com/downloads/ktm
     install: https://github.com/ProjectInfinity-X/official_devices/blob/17/flashguide/ktm.txt
   oneplus/lemonade:
@@ -328,14 +328,14 @@ devices:
     status: active
     android: 16
     maintainer: { name: FrEeRuNnEr4EvEr, link: https://t.me/FreeRunner4ever }
-    latest: { version: "3.12", date: 2026-07-11 }
+    latest: { version: "3.12", date: 2026-07-11, patch: 2026-07-01 }
     source: https://projectinfinity-x.com/downloads/beyond0lte
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/beyond0lte.txt
   samsung/beyond1lte:
     status: active
     android: 16
     maintainer: { name: FrEeRuNnEr4EvEr, link: https://t.me/FreeRunner4ever }
-    latest: { version: "3.12", date: 2026-07-11 }
+    latest: { version: "3.12", date: 2026-07-11, patch: 2026-07-01 }
     source: https://projectinfinity-x.com/downloads/beyond1lte
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/beyond1lte.txt
   samsung/beyond2lte:
@@ -349,14 +349,14 @@ devices:
     status: active
     android: 16
     maintainer: { name: FrEeRuNnEr4EvEr, link: https://t.me/FreeRunner4ever }
-    latest: { version: "3.12", date: 2026-07-12 }
+    latest: { version: "3.12", date: 2026-07-12, patch: 2026-07-01 }
     source: https://projectinfinity-x.com/downloads/beyondx
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/beyondx.txt
   samsung/d1:
     status: active
     android: 16
     maintainer: { name: FrEeRuNnEr4EvEr, link: https://t.me/FreeRunner4ever }
-    latest: { version: "3.12", date: 2026-07-12 }
+    latest: { version: "3.12", date: 2026-07-12, patch: 2026-07-01 }
     source: https://projectinfinity-x.com/downloads/d1
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/d1.txt
   samsung/d1x:
@@ -377,7 +377,7 @@ devices:
     status: active
     android: 16
     maintainer: { name: FrEeRuNnEr4EvEr, link: https://t.me/FreeRunner4ever }
-    latest: { version: "3.12", date: 2026-07-12 }
+    latest: { version: "3.12", date: 2026-07-12, patch: 2026-07-01 }
     source: https://projectinfinity-x.com/downloads/d2x
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/d2x.txt
   samsung/f62:
@@ -488,7 +488,7 @@ devices:
     status: active
     android: 16
     maintainer: { name: Akif, link: https://github.com/akifakif32 }
-    latest: { version: "3.11", date: 2026-06-12 }
+    latest: { version: "3.11", date: 2026-06-12, patch: 2026-06-01 }
     source: https://projectinfinity-x.com/downloads/gemini
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/gemini.txt
   xiaomi/gemstone:
@@ -600,7 +600,7 @@ devices:
     status: active
     android: 16
     maintainer: { name: MufasaXz, link: https://t.me/MufasaXz }
-    latest: { version: "3.12", date: 2026-08-18 }
+    latest: { version: "3.12", date: 2026-08-18, patch: 2026-08-01 }
     source: https://projectinfinity-x.com/downloads/pipa
     install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/pipa.txt
   xiaomi/raphael:
@@ -633,11 +633,11 @@ devices:
     install: https://github.com/ProjectInfinity-X/official_devices/blob/17/flashguide/rubyx.txt
   xiaomi/sapphire:
     status: active
-    android: 16
-    maintainer: { name: Liieko, link: https://t.me/Liieko }
-    latest: { version: "3.12", date: 2026-08-17, patch: 2026-08-01 }
+    android: 17
+    maintainer: { name: Liekoo (@Liieko), link: https://github.com/Liekoo }
+    latest: { version: "4.1", date: 2026-10-25, patch: 2026-10-01 }
     source: https://projectinfinity-x.com/downloads/sapphire
-    install: https://github.com/ProjectInfinity-X/official_devices/blob/16/flashguide/sapphire.txt
+    install: https://github.com/ProjectInfinity-X/official_devices/blob/17/flashguide/sapphire.txt
   xiaomi/sky:
     status: active
     android: 16
