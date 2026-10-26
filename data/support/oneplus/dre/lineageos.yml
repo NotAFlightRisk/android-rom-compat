@@ -1,3 +1,3 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
-  bluetooth_audio: { status: broken, note: "Headphones connect, but no media sound comes through them", android: 17, build: '24.0-20261016', checked: 2026-10-18, source: https://github.com/LineageOS/issues/issues/796 }
+  bluetooth_audio: { status: broken, note: "Headphones connect, but no media sound comes through them", android: 17, build: '24.0-20261023', checked: 2026-10-25, source: https://github.com/LineageOS/issues/issues/796#issuecomment-6400121321 }
