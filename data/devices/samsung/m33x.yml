@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M33 5G
+codenames: [m33x]
+aliases: [SM-M336B, SM-M336BU, SM-M336K, SM-M336B/DS, SM-M336BU/DS]
+released: 2022
+soc: Samsung Exynos 1280
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO X8 Pro 5G
+codenames: [klee]
+aliases: [Redmi Turbo 5, 2511FPC34G, 2511FPC34I, 2511FRT34C, 2606FRT34I]
+released: 2026
+soc: MediaTek Dimensity 8500 Ultra
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

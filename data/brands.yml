@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=../schema/brands.json
 - key: 10-or
   name: 10.or
+- key: advan
+  name: ADVAN
 - key: amazon
   name: Amazon
 - key: ark

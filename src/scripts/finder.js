@@ -2,6 +2,7 @@ import { fittingRoms, prepare, search } from '../lib/search.js';
 import { lockTone, unlockWords } from '../lib/facts.js';
 import { labelOf } from '../lib/labels.js';
 import { listOf, plural } from '../lib/text.js';
+import { trackSearch } from './plausible.js';
 
 const PAGE = 48;
 
@@ -135,10 +136,12 @@ export async function enhanceFinder(form) {
     shown = 0;
     list.replaceChildren();
     showMore();
+    const matched = found.length > 0 || shortcuts.some((group) => !group.hidden);
     devices.hidden = !found.length;
-    empty.hidden = browsing || found.length > 0 || shortcuts.some((group) => !group.hidden);
+    empty.hidden = browsing || matched;
     count.textContent = browsing ? '' : summary(found.length, named, catalogue);
     save(query, filters);
+    if (query) trackSearch(query, matched);
   }
 
   count.textContent = 'Loading...';

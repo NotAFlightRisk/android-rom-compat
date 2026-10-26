@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: Infinity X
+description: LineageOS-based ROM with a Pixel feel and plenty of customisation, with Google apps built in, or left out on its vanilla builds.
+status: active
+base: lineageos
+focus: [customisation, performance]
+google: bundled
+app_store: play-store
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  patches: best-effort
+install: [recovery]
+root: false
+links:
+  website: https://projectinfinity-x.com
+  source: https://github.com/ProjectInfinity-X
+features:
+  wallet: { status: broken, inferred: true, note: "Google says tap-to-pay doesn't run on custom ROMs or unlocked bootloaders", source: https://support.google.com/wallet/answer/12200245 }
+  push: { status: working, inferred: true, note: 'Google apps come built in, except on the vanilla builds', source: https://github.com/ProjectInfinity-X/official_devices/tree/17/gapps }
+  android_auto: { status: working, inferred: true, note: 'Comes with the built-in Google apps, except on the vanilla builds', source: https://gitlab.com/tejas101k/proprietary_vendor_pixel_gms/-/blob/seventeen/common/common-vendor.mk }

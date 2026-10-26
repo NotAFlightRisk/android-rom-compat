@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M30s
+codenames: [m30s]
+aliases: [SM-M307F, SM-M307FN, SM-M3070, SM-M307F/DS, SM-M307FN/DS]
+released: 2019
+soc: Samsung Exynos 9611
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

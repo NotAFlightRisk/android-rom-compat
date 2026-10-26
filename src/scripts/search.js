@@ -1,3 +1,5 @@
+import { trackSearch } from './plausible.js';
+
 const LIMIT = 8;
 let pagefind;
 
@@ -63,6 +65,7 @@ export function enhanceSearch(form) {
       list.replaceChildren(...results.map(resultItem));
       status.textContent = results.length ? `${search.results.length} found` : 'Nothing found';
       show(true);
+      trackSearch(query, results.length > 0);
     } catch {
       close();
     }
