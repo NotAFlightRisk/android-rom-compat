@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '22.2-20261014', checked: 2026-10-14, source: https://github.com/LineageOS/android_device_nokia_sdm660-common/blob/6021c4799f9df86d27809787e0e7758a09520907/proprietary-files.txt#L567 }
