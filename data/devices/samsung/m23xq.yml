@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M23 5G
+codenames: [m23xq]
+bootloader:
+  unlock: unknown

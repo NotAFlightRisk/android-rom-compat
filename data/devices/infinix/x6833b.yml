@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Note 30
+codenames: [x6833b]
+bootloader:
+  unlock: unknown

@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy M34 5G
+codenames: [m34x]
+bootloader:
+  unlock: unknown

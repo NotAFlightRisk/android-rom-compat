@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO X8 Pro 5G
+codenames: [klee]
+bootloader:
+  unlock: unknown

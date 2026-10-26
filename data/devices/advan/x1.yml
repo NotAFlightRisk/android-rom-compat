@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: X1
+codenames: [x1]
+bootloader:
+  unlock: unknown
