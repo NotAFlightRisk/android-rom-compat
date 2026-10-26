@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy M23 5G
 codenames: [m23xq]
+aliases: [Galaxy F23 5G, SM-M236B, SM-E236B, SM-M236Q, SM-M236L, SM-M236B/DS]
+released: 2022
+soc: Qualcomm SM7225 Snapdragon 750G
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy A53 5G
 codenames: [a53x]
+aliases: [SM-A536B, SM-A536E, SM-A536N, SM-A5360, SC-53C, SCG15, SM-A536B/DS, SM-A536E/DS]
+released: 2022
+soc: Samsung Exynos 1280
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

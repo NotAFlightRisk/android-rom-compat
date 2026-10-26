@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Galaxy M34 5G
 codenames: [m34x]
+aliases: [Galaxy F34 5G, SM-M346B, SM-M346B1, SM-M346B2, SM-E346B, SM-M346B/DS, SM-M346B1/DS]
+released: 2023
+soc: Samsung Exynos 1280
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
