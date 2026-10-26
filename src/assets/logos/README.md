@@ -6,23 +6,23 @@ Brand, ROM and app names and logos are trademarks of their respective owners and
 
 | File | Source | Licence / terms |
 | --- | --- | --- |
-| `brands/asus.svg` | https://unpkg.com/simple-icons@16.34.0/icons/asus.svg | Simple Icons 16.34.0, CC0-1.0 |
-| `brands/fairphone.svg` | https://unpkg.com/simple-icons@16.34.0/icons/fairphone.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `brands/asus.svg` | https://www.asus.com/new_asus_ico_256x256.png | Trademark of ASUSTeK Computer (traced in one colour) |
+| `brands/fairphone.svg` | https://www.fairphone.com/web/image/website/2/favicon | Trademark of Fairphone (traced in one colour) |
 | `brands/google.svg` | https://unpkg.com/simple-icons@16.34.0/icons/google.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `brands/htc.svg` | https://unpkg.com/simple-icons@16.34.0/icons/htc.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `brands/huawei.svg` | https://unpkg.com/simple-icons@16.34.0/icons/huawei.svg | Simple Icons 16.34.0, CC0-1.0 |
-| `brands/lenovo.svg` | https://unpkg.com/simple-icons@16.34.0/icons/lenovo.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `brands/lenovo.svg` | https://www.lenovo.com/favicon.ico | Trademark of Lenovo (redrawn in one colour, with the L from the Simple Icons 16.34.0 wordmark) |
 | `brands/lg.svg` | https://unpkg.com/simple-icons@16.34.0/icons/lg.svg | Simple Icons 16.34.0, CC0-1.0 (face symbol only, "LG" letters removed) |
 | `brands/meizu.svg` | https://unpkg.com/simple-icons@16.34.0/icons/meizu.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `brands/motorola.svg` | https://unpkg.com/simple-icons@16.34.0/icons/motorola.svg | Simple Icons 16.34.0, CC0-1.0 |
-| `brands/nokia.svg` | https://unpkg.com/simple-icons@16.34.0/icons/nokia.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `brands/nokia.svg` | https://www.nokia.com/favicon.ico | Trademark of Nokia (redrawn in one colour, with the N from the Simple Icons 16.34.0 wordmark) |
 | `brands/nvidia.svg` | https://unpkg.com/simple-icons@16.34.0/icons/nvidia.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `brands/oneplus.svg` | https://unpkg.com/simple-icons@16.34.0/icons/oneplus.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `brands/oppo.svg` | https://unpkg.com/simple-icons@16.34.0/icons/oppo.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `brands/razer.svg` | https://unpkg.com/simple-icons@16.34.0/icons/razer.svg | Simple Icons 16.34.0, CC0-1.0 |
-| `brands/samsung.svg` | https://unpkg.com/simple-icons@16.34.0/icons/samsung.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `brands/samsung.svg` | https://resources.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/app_ico.png | Trademark of Samsung (traced in one colour) |
 | `brands/solana.svg` | https://unpkg.com/simple-icons@16.34.0/icons/solana.svg | Simple Icons 16.34.0, CC0-1.0 |
-| `brands/sony.svg` | https://unpkg.com/simple-icons@16.34.0/icons/sony.svg | Simple Icons 16.34.0, CC0-1.0 |
+| `brands/sony.svg` | https://www.sony.net/favicon.ico | Trademark of Sony (redrawn in one colour, with the S from the Simple Icons 16.34.0 wordmark) |
 | `brands/xiaomi.svg` | https://unpkg.com/simple-icons@16.34.0/icons/xiaomi.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `roms/lineageos.svg` | https://unpkg.com/simple-icons@16.34.0/icons/lineageos.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `roms/grapheneos.svg` | https://unpkg.com/simple-icons@16.34.0/icons/grapheneos.svg | Simple Icons 16.34.0, CC0-1.0 |
