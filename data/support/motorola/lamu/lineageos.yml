@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261015', checked: 2026-10-15, source: https://github.com/LineageOS/android_device_motorola_mt6768-common/blob/81aeb5f4a688388910f11ce45fa1187baa1c3a17/proprietary-files.txt#L241 }
