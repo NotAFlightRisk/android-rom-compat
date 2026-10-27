@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: moto g pure
+codenames: [ellis]
+aliases: [XT2163-1, XT2163-2, XT2163-4, XT2163-6, XT2163-7, XT2163DL]
+released: 2021
+soc: MediaTek Helio G25
+hardware: [cellular, fingerprint]
+bootloader:
+  unlock: unknown

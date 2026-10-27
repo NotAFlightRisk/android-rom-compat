@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy Z Fold5
+codenames: [q5q]
+aliases: [SM-F946B, SM-F946B/DS]
+released: 2023
+soc: Qualcomm SM8550 Snapdragon 8 Gen2
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/q5q/
