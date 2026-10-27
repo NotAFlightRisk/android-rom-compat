@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 30
 codenames: [x6833b]
-released: 2023
+released: 2026
 soc: MediaTek Helio G99
 hardware: [cellular, fingerprint, nfc]
 bootloader:
