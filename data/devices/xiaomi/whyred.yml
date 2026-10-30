@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 5 Pro
 codenames: [whyred]
+aliases: [Redmi Note 5, M1803E7SG, M1803E7SH, MEI7S, MEE7S, MET7S]
 released: 2018
 soc: Qualcomm SDM636 Snapdragon 636
 hardware: [cellular, fingerprint]
