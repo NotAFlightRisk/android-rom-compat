@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
-name: RM6785
+name: 6/6i/6s/7/Narzo/Narzo 20 Pro/30
 codenames: [rm6785]
+released: 2020
+soc: MediaTek Helio G90T / MediaTek Helio G95
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
