@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Hot 50 4G
 codenames: [x6882]
+released: 2024
+soc: MediaTek Helio G100
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

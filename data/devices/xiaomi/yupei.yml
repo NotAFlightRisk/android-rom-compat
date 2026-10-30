@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pad 8
+codenames: [yupei]
+aliases: [25097RP43G, 25097RP43C, 25097RP43I]
+released: 2025
+soc: Qualcomm SM8735 Snapdragon 8s Gen 4
+type: tablet
+hardware: []
+bootloader:
+  unlock: unknown

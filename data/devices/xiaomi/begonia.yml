@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 8 Pro
 codenames: [begonia]
+aliases: [M1906G7G, M1906G7E, M1906G7T]
+released: 2019
+soc: MediaTek Helio G90T
+hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

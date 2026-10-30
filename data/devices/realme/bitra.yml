@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: GT Neo 2
 codenames: [bitra]
+aliases: [RMX3370]
+released: 2021
+soc: Qualcomm SM8250-AC Snapdragon 870
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown

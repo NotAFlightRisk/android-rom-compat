@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 13 4G/NFC
-codenames: [sapphire]
+codenames: [sapphire, sapphiren]
+aliases: [Redmi Note 13 4G, 23129RAA4G, 23129RA5FL, 23124RA7EO]
 released: 2024
 soc: Qualcomm SM6225 Snapdragon 685
 hardware: [cellular, fingerprint, nfc]
