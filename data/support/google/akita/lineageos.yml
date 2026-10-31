@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261021', checked: 2026-10-21, source: https://github.com/LineageOS/android_device_google_akita/blob/858f7569eeca987d2c577ceb6a1a8cc78fdc377a/akita/proprietary-files.txt#L147 }

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '4.3', checked: 2026-09-20, source: https://github.com/LineageOS/android_device_razer_aura/blob/bad0518b5a663c08a0765809e2c87a6870485287/proprietary-files.txt#L690 }
