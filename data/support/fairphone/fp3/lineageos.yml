@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '22.2-20261021', checked: 2026-10-21, source: https://github.com/LineageOS/android_device_fairphone_FP3/blob/ced6e2f9445a883ccd28de27117b3a841d9d58b3/proprietary-files.txt#L510 }

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261020', checked: 2026-10-20, source: https://github.com/LineageOS/android_device_xiaomi_sm6125-common/blob/0e2b2bbfbc218d73a1f9fc17cfb3d82401f06ad9/proprietary-files.txt#L378 }
