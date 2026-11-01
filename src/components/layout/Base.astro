@@ -79,7 +79,8 @@ const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
     {graph.length > 0 && (
       <script
         type="application/ld+json"
-        set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}
+        set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
+          .replaceAll('<', '\\u003c')}
       ></script>
     )}
     {plausible && (
