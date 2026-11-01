@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261024', checked: 2026-10-24, source: https://github.com/LineageOS/android_device_motorola_sm7435-common/blob/d710800afdbbbb89cdcb600793caafa7406c197c/proprietary-files.txt#L818 }
