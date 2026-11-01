@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261023', checked: 2026-10-23, source: https://github.com/LineageOS/android_device_oneplus_sm8550-common/blob/f2b894e43273ecf8a042cda3f2a01448238df2a5/proprietary-files.txt#L734 }

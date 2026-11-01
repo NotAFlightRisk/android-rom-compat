@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '22.2-20261024', checked: 2026-10-24, source: https://github.com/LineageOS/android_device_google_bonito/blob/9102be473e2c1d1ebefa1665bace015377bdd16a/sargo/proprietary-files-radio.txt#L79 }
   vowifi: { status: partial, note: Works on some carriers and not others, android: 15, checked: 2026-10-16, source: https://github.com/LineageOS/issues/issues/564#issuecomment-6223661345 }

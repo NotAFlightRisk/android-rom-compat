@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '4.3', checked: 2026-09-18, source: https://github.com/LineageOS/android_device_razer_nicole/blob/bf88e3a51218d6f2d3cc2b843d648171604739ad/proprietary-files.txt#L535 }

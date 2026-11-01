@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '4.2', checked: 2026-08-15, source: https://github.com/LineageOS/android_device_google_coral/blob/b6997b1ce9ae75a42d8029d05b766d5a9c3ca576/flame/proprietary-files.txt#L121 }

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '4.2', checked: 2026-08-14, source: https://gitlab.e.foundation/e/devices/android_device_google_sunfish/-/blob/08533d8d7ce999e163cf6e43e21544b73fda67c8/sunfish/proprietary-files.txt#L118 }
