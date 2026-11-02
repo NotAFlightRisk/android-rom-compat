@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10 VIII
+codenames: [pdx268]
+aliases: [XQ-GH54, XQ-GH74]
+released: 2026
+soc: Qualcomm SM6475-AB Snapdragon 6 Gen 3
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
