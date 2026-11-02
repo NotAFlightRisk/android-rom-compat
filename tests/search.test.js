@@ -18,6 +18,7 @@ const catalogue = prepare({
   roms: [
     { key: 'lineageos', name: 'LineageOS' },
     { key: 'pixelos', name: 'PixelOS' },
+    { key: 'grapheneos', name: 'GrapheneOS' },
   ],
   brands: [{ key: 'google', name: 'Google' }],
   features: [
@@ -28,7 +29,7 @@ const catalogue = prepare({
     device('Google Pixel 7', {
       codenames: ['panther'],
       released: 2022,
-      roms: { lineageos: ['volte'], pixelos: [] },
+      roms: { lineageos: ['volte'], pixelos: [], grapheneos: [] },
     }),
     device('Google Pixel 7 Pro', {
       codenames: ['cheetah'],
@@ -46,6 +47,9 @@ const catalogue = prepare({
       ended: true,
     }),
     device('Samsung Galaxy S20 5G', { codenames: ['x1s'], roms: { lineageos: ['volte', '5g'] } }),
+    device('Samsung Galaxy A52 4G', { codenames: ['a52q'] }),
+    device('Xiaomi POCO X3 Pro', { codenames: ['vayu'] }),
+    device('Realme 5/5i/5s', { codenames: ['r5x'] }),
   ],
 });
 
@@ -102,10 +106,32 @@ test('one typo still finds the phone', () => {
 });
 
 test('ended support sinks below the rest, or goes when asked', () => {
-  assert.deepEqual(names('galaxy'), ['Samsung Galaxy S20 5G', 'Samsung Galaxy S21']);
+  assert.deepEqual(names('galaxy'), [
+    'Samsung Galaxy S20 5G',
+    'Samsung Galaxy A52 4G',
+    'Samsung Galaxy S21',
+  ]);
   assert.deepEqual(names('galaxy', { active: true }), ['Samsung Galaxy S20 5G']);
   assert.deepEqual(names('pixel 7 pro', { active: true }), ['Google Pixel 7 Pro']);
   assert.deepEqual(names('google', { active: true }).length, 3);
+});
+
+test('words wrapped round a phone drop out when nothing fits with them in', () => {
+  assert.deepEqual(names('pixel 7 rom'), names('pixel 7'));
+  assert.deepEqual(names('roms for pixel 7'), names('pixel 7'));
+  assert.deepEqual(names('pixel 7 on lineageos'), names('pixel 7 lineageos'));
+  assert.deepEqual(names('does pixel 7 support grapheneos'), ['Google Pixel 7']);
+  assert.deepEqual(names('rom lineageos'), names('lineageos'));
+  assert.deepEqual(names('does it support'), []);
+  for (const query of ['custom rom for realme 5s', 'i need a software for realme 5s']) {
+    assert.deepEqual(names(query), ['Realme 5/5i/5s']);
+  }
+});
+
+test('a phone name that happens to hold one of those words still counts', () => {
+  assert.deepEqual(names('samsung a52'), ['Samsung Galaxy A52 4G']);
+  assert.deepEqual(names('poco x3 pro'), ['Xiaomi POCO X3 Pro']);
+  assert.deepEqual(names('pixel 7a lineage'), []);
 });
 
 test('nothing typed and nothing picked lists nothing', () => {
