@@ -11,6 +11,8 @@
   name: ASUS
 - key: ayn
   name: AYN
+- key: bluefox
+  name: Bluefox
 - key: bq
   name: BQ
 - key: braxtech

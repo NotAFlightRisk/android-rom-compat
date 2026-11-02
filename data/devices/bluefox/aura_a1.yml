@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Aura A1
+codenames: [aura_a1]
+aliases: [BF00A]
+released: 2026
+soc: MediaTek Helio G100
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown
