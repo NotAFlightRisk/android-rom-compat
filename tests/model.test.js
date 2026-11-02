@@ -49,6 +49,19 @@ test('a brand without an unlock leaves the device unknown', () => {
   assert.deepEqual(unlockOf('unknown', undefined), { unlock: 'unknown' });
 });
 
+test("a device takes the brand's unlock costs, marked as such, unless it has its own", () => {
+  const data = loadData('tests/fixtures/good');
+  const [brandWide] = buildModel(data).devices;
+  assert.deepEqual(brandWide.unlock_costs, {
+    notes: 'Unlocking wipes the keys for good.',
+    source: 'https://acme.test/costs',
+    origin: 'brand',
+  });
+  const own = { notes: 'Only the camera.', source: 'https://acme.test/rocket' };
+  data.devices[0].data.unlock_costs = own;
+  assert.deepEqual(buildModel(data).devices[0].unlock_costs, own);
+});
+
 test("a card's own relock beats the ROM's", () => {
   assert.deepEqual(rowOf('2026-02-01', 'tidyos').relock, { status: 'yes', note: 'Check first' });
 });

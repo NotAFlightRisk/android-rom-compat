@@ -2,6 +2,8 @@
   name: Acme
   bootloader:
     notes: Acme phones unlock with fastboot.
+  unlock_costs:
+    notes: Unlocking wipes the keys for good.
 - key: tidy
   name: Tidy
   bootloader:

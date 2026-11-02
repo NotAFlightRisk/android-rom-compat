@@ -17,7 +17,7 @@ import {
   supportColumns,
   usedColumns,
 } from '../../../lib/table.js';
-import { buildFact, deviceType, stockFact, unlockFact } from '../../../lib/facts.js';
+import { buildFact, costsFact, deviceType, stockFact, unlockFact } from '../../../lib/facts.js';
 import { formatDate } from '../../../lib/dates.js';
 import { listOf } from '../../../lib/text.js';
 
@@ -35,6 +35,7 @@ const unlock = unlockFact(device);
 const updates = stockFact(stock);
 const facts = [
   { label: 'Bootloader', ...unlock },
+  costsFact(device.unlock_costs),
   updates && { label: 'Stock Android', ...updates },
 ].filter(Boolean);
 // A bare "Unknown" says nothing, so the panel only shows once a fact has something to tell

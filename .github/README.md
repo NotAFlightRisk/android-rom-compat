@@ -32,7 +32,7 @@ Know a feature works (or doesn't) on your phone? Spotted something out of date? 
 
 The whole dataset is published as static JSON, rebuilt every time the data changes. No key and no rate limit.
 
-- [`/api/devices.json`](https://android-rom-compat.peng.ly/api/devices.json) - every device, with codenames, model numbers, bootloader and stock support
+- [`/api/devices.json`](https://android-rom-compat.peng.ly/api/devices.json) - every device, with codenames, model numbers, bootloader, what unlocking costs and stock support
 - [`/api/roms.json`](https://android-rom-compat.peng.ly/api/roms.json) - the ROMs, how they compare, and what they say works on every device
 - [`/api/support.json`](https://android-rom-compat.peng.ly/api/support.json) - which ROM supports which device, its latest build, and what works
 - [`/api/features.json`](https://android-rom-compat.peng.ly/api/features.json) - the features we track
