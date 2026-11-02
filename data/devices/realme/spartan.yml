@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: GT Neo 3T
-codenames: [spartan]
+codenames: [spartan, rmx3371]
 aliases: [RMX3371]
 released: 2022
 soc: Qualcomm SM8250-AC Snapdragon 870

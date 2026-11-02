@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 10C
+codenames: [fog, rain, wind]
+aliases: [Redmi 10 Power, Redmi 10 (India), 220333QAG, 220333QBI, 220333QNY, 220333QL]
+released: 2022
+soc: Qualcomm SM6225 Snapdragon 680 4G
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

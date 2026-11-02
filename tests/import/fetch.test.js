@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { fetchHead, fetchPatchLevel, fetchText } from '../../scripts/import/fetch.js';
+import {
+  fetchHead,
+  fetchMetadata,
+  fetchPatchLevel,
+  fetchText,
+} from '../../scripts/import/fetch.js';
 
 const SOURCE = 'https://example.com/devices.yml';
 const reply = (status, body = '') => new Response(body, { status });
@@ -71,7 +76,9 @@ test('fetchPatchLevel reads the metadata a build zip opens with', async (t) => {
     'post-security-patch-level=2026-06-01',
     'post-timestamp=1781814660',
   ].join('\n');
-  stub(t, [reply(206, metadata), reply(206, 'PK\u0003\u0004 not an OTA')]);
+  stub(t, [reply(206, metadata), reply(206, 'PK\u0003\u0004 not an OTA'), reply(206, metadata)]);
   assert.equal(await fetchPatchLevel(SOURCE), '2026-06-01');
   assert.equal(await fetchPatchLevel(SOURCE), undefined);
+  const { 'post-build': fingerprint } = await fetchMetadata(SOURCE);
+  assert.match(fingerprint, /^realme\/RMX2020\/RMX2020:11\//);
 });

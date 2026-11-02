@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  push: { status: partial, inferred: true, note: 'Builds come without Google apps, add them yourself', android: 16, build: '4.5', checked: 2026-06-06, source: https://sourceforge.net/projects/alphadroid-project/files/begonia/ }
+  android_auto: { status: broken, inferred: true, note: "Builds come without Google apps, so Android Auto isn't there", android: 16, build: '4.5', checked: 2026-06-06, source: https://sourceforge.net/projects/alphadroid-project/files/begonia/ }
