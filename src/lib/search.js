@@ -168,16 +168,25 @@ const ranking = (a, b) =>
   Object.keys(b.device.roms).length - Object.keys(a.device.roms).length ||
   (b.device.released ?? 0) - (a.device.released ?? 0);
 
+const filler = new Set(
+  wordsOf(`a an any best can custom do does for i is it my need of on rom roms run runs software
+    support supports to what which will with`),
+);
+
+/** The query without the words people wrap a phone in, like "roms for" or "does it support" */
+const withoutFiller = (query) =>
+  query
+    .split(/\s+/)
+    .filter((typed) => !wordsOf(typed).every((word) => filler.has(word)))
+    .join(' ');
+
 const startsAny = (words, name) => {
   const own = compact(name);
   return words.some((word) => own === word || (word.length > 2 && own.startsWith(word)));
 };
 
-/**
- * Everything that fits a query and the dropdowns: ROMs, brands and features by name, and the
- * devices that fit, best first. A ROM or feature picked from a dropdown counts as if typed
- */
-export function search(catalogue, query, filters = {}) {
+/** One go at a query: the ROMs and features it names, and the devices that fit, best first */
+function reading(catalogue, query, filters) {
   const { words, roms, features } = readQuery(query, catalogue);
   const romKeys = [...new Set([...roms.map(({ key }) => key), filters.rom].filter(Boolean))];
   const featureKeys = [
@@ -205,7 +214,25 @@ export function search(catalogue, query, filters = {}) {
     [...catalogue.roms, ...catalogue.features].some(({ name }) => compact(name).startsWith(last));
   const full = fitting(words);
   const devices = full.length || !typing ? full : fitting(words.slice(0, -1));
+  return {
+    words,
+    roms,
+    features,
+    named: { roms: romKeys, features: featureKeys },
+    devices: asked ? devices : [],
+  };
+}
 
+/**
+ * Everything that fits a query and the dropdowns: ROMs, brands and features by name, and the
+ * devices that fit, best first. A ROM or feature picked from a dropdown counts as if typed
+ */
+export function search(catalogue, query, filters = {}) {
+  const strict = reading(catalogue, query, filters);
+  // Filler only goes when nothing fits with it in, since "a" and "i" turn up in phone names too
+  const { words, roms, features, named, devices } = strict.devices.length
+    ? strict
+    : reading(catalogue, withoutFiller(query), filters);
   const pickedOr = (picked, items) => [
     ...new Set([...picked, ...items.filter((item) => startsAny(words, item.name))]),
   ];
@@ -214,7 +241,7 @@ export function search(catalogue, query, filters = {}) {
     roms: pickedOr(roms, catalogue.roms).map(({ key }) => key),
     features: pickedOr(features, catalogue.features).map(({ key }) => key),
     brands: catalogue.brands.filter((brand) => startsAny(words, brand.name)).map(({ key }) => key),
-    named: { roms: romKeys, features: featureKeys },
-    devices: asked ? devices : [],
+    named,
+    devices,
   };
 }
