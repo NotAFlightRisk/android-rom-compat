@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Smartphone for Snapdragon Insiders
+codenames: [picasso]
+aliases: [I007D]
+released: 2021
+soc: Qualcomm SM8350 Snapdragon 888
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

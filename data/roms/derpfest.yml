@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: DerpFest
+description: LineageOS-based ROM with Pixel extras and plenty of customisation, with Google apps built in.
+status: active
+base: lineageos
+focus: [customisation]
+google: bundled
+app_store: play-store
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  patches: best-effort
+install: [recovery]
+root: false
+links:
+  website: https://derpfest.org
+  source: https://github.com/DerpFest-AOSP
+  community: https://t.me/DerpFestAOSP
+features:
+  wallet: { status: broken, inferred: true, note: "Google says tap-to-pay doesn't run on custom ROMs or unlocked bootloaders", source: https://support.google.com/wallet/answer/12200245 }
+  push: { status: working, inferred: true, note: Google apps come built in, source: https://github.com/DerpFest-AOSP/android_vendor_derpfest/blob/d06277fee6daf0e64a109eb8a88ce66dbfa71fdb/config/derpfest.mk#L124-L125 }
+  android_auto: { status: working, inferred: true, note: Comes with the built-in Google apps, source: https://gitlab.com/pixelos-aosp/proprietary_vendor_pixel_gms-17/-/blob/7feb3322ac4a0849f32d8b95e565e73cf6774a20/common/common-vendor.mk#L149 }
