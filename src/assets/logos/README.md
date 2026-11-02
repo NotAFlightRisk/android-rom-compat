@@ -34,6 +34,7 @@ Brand, ROM and app names and logos are trademarks of their respective owners and
 | `roms/pixelos.svg` | https://pixelos.net/images/logo.svg | Trademark of PixelOS |
 | `roms/axionos.svg` | https://raw.githubusercontent.com/AxionAOSP/AxionAOSP.github.io/main/src/app/icon.svg | Trademark of AxionOS (redrawn in one colour, gradient dropped) |
 | `roms/infinityx.svg` | https://projectinfinity-x.com/assets/favicon/favicon-192x192.png | Trademark of Project Infinity X (redrawn in one colour, gradient dropped) |
+| `roms/alphadroid.svg` | https://github.com/AlphaDroid-Project/packages_apps_Settings/blob/bc107d754af1293979258a15bdfb4e5a44e307c1/res-alpha/drawable/ic_settings_alpha.xml | Trademark of AlphaDroid |
 | `software/aosp.svg` | https://unpkg.com/simple-icons@16.34.0/icons/android.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `software/fdroid.svg` | https://unpkg.com/simple-icons@16.34.0/icons/fdroid.svg | Simple Icons 16.34.0, CC0-1.0 |
 | `software/play-store.svg` | https://unpkg.com/simple-icons@16.34.0/icons/googleplay.svg | Simple Icons 16.34.0, CC0-1.0 |

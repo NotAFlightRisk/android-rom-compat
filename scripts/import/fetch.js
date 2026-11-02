@@ -56,11 +56,18 @@ export async function fetchHead(url, bytes, options = {}) {
   return Buffer.concat(chunks).subarray(0, bytes).toString('latin1');
 }
 
-/** Build zips open with a metadata file that names the security patch level */
-export async function fetchPatchLevel(zip) {
+/** Build zips open with a metadata file, which names the build's fingerprint and patch level */
+export async function fetchMetadata(zip) {
   const head = await fetchHead(zip, 4096, { signal: AbortSignal.timeout(30_000) });
-  return head.match(/^post-security-patch-level=(\d{4}-\d\d-\d\d)$/m)?.[1];
+  return Object.fromEntries(
+    Array.from(head.matchAll(/^([\w-]+)=(.*)$/gm), ([, key, value]) => [key, value]),
+  );
 }
+
+export const patchOf = (metadata) =>
+  metadata?.['post-security-patch-level']?.match(/^\d{4}-\d\d-\d\d$/)?.[0];
+
+export const fetchPatchLevel = async (zip) => patchOf(await fetchMetadata(zip));
 
 /** Runs an async function over items, a few at a time, so nobody's server gets hammered */
 export async function mapLimit(items, limit, run) {

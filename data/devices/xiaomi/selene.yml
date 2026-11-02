@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 10
+codenames: [selene]
+aliases: [Redmi 10 2022, Redmi 10 Prime, Redmi 10 Prime 2022, Redmi Note 11 4G, 21061119AG, 21061119AL, 21061119DG, 21061119BI, 21121119SG, 21121119VL, 22011119UY, 22011119TI, 21121119SC]
+released: 2021
+soc: MediaTek Helio G88
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

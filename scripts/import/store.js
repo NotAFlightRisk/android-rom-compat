@@ -81,6 +81,10 @@ if (existsSync(devicesDir)) {
 /** Whether a brand/codename already has a device file */
 export const known = (id) => existing.has(id);
 
+/** Every brand with a device file for a codename */
+export const brandsOf = (codename) =>
+  [...existing.keys()].filter((id) => id.endsWith(`/${codename}`)).map((id) => id.split('/')[0]);
+
 function ensureBrand(key, name) {
   const file = join(DATA, 'brands.yml');
   const brands = read(file) ?? [];

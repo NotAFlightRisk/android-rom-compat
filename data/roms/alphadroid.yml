@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=../../schema/rom.json
+name: AlphaDroid
+description: LineageOS-based ROM with its own look and extras picked from other ROMs, with Google apps built in, or left out on its vanilla builds.
+status: active
+base: lineageos
+focus: [customisation, performance]
+google: bundled
+app_store: play-store
+org: community
+security:
+  relockable_bootloader: false
+  verified_boot: false
+  patches: best-effort
+install: [recovery]
+root: false
+links:
+  website: https://alphadroid.org
+  source: https://github.com/AlphaDroid-Project
+  community: https://t.me/alphadroid_chat
+features:
+  wallet: { status: broken, inferred: true, note: "Google says tap-to-pay doesn't run on custom ROMs or unlocked bootloaders", source: https://support.google.com/wallet/answer/12200245 }
+  push: { status: working, inferred: true, note: 'Google apps come built in, except on the vanilla builds', source: https://github.com/AlphaDroid-Project/manifest/blob/0c7b54a73b7a382e0cbef7e6ef92b8f170be8b16/snippets/alpha.xml#L90 }
+  android_auto: { status: working, inferred: true, note: 'Comes with the built-in Google apps, except on the vanilla builds', source: https://gitlab.com/alphadroid-project/vendor_pixel_gms-16.2/-/blob/0ab8971b5845de7f6b40fd04bdde6e343cdd4f68/common/common-vendor.mk#L150 }

@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 9 Speed Edition
-codenames: [ice]
+codenames: [ice, rmx3461]
+aliases: [9 5G Speed Edition, 9 5G SE, Q3s]
+released: 2022
+soc: Qualcomm SM7325 Snapdragon 778G 5G
+hardware: [5g, cellular, fingerprint]
 bootloader:
   unlock: unknown
