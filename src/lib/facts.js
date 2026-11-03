@@ -221,6 +221,17 @@ export const knownFeatures = (features, cells) =>
     ];
   });
 
+/** Features nobody's answered yet, e.g. "VoLTE, VoWiFi and 9 more". Missing hardware is left out */
+export const uncheckedText = (features, cells) => {
+  const names = features
+    .filter(({ key }) => cells[key].value === 'unknown')
+    .map(({ name }) => name);
+  if (names.length === 0) return undefined;
+  return names.length > 3
+    ? `${names.slice(0, 2).join(', ')} and ${names.length - 2} more`
+    : listOf(names, 'and');
+};
+
 /** What a ROM, or one of its builds, says holds on every device */
 export const everywhereCells = (features, build) =>
   Object.fromEntries(
