@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 12 5G
 codenames: [sky]
-aliases: [Poco M6 Pro 5G]
+aliases: [Poco M6 Pro 5G, Redmi Note 12R, Redmi 12R, 23076RN4BI, 23076RA4BC, 23076PC4BI]
 released: 2023
 soc: Qualcomm SM4450 Snapdragon 4 Gen 2
 hardware: [5g, cellular, esim, fingerprint, nfc]

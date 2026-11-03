@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: GT7 Pro
 codenames: [pista]
-aliases: [RMX5010]
+aliases: [RMX5010, RMX5011]
 released: 2024
 soc: Qualcomm SM8750 Snapdragon 8 Elite
 hardware: [5g, cellular, fingerprint, nfc]

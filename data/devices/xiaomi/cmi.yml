@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 10 Pro
 codenames: [cmi]
-aliases: [M2001J1G]
+aliases: [M2001J1G, M2001J1E, M2001J1C]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
 hardware: [5g, cellular, fingerprint, nfc]

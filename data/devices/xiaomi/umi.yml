@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 10
 codenames: [umi]
-aliases: [M2001J2G, M2001J2I]
+aliases: [M2001J2G, M2001J2I, M2001J2E, M2001J2C]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
 hardware: [5g, cellular, fingerprint, nfc]
