@@ -1,5 +1,9 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Note 11T/11 5G/11S 5G
 codenames: [everpal]
+aliases: [Redmi Note 11T 5G, Redmi Note 11 5G, Redmi Note 11S 5G, POCO M4 Pro 5G, 21091116AI, 21091116AC, 22031116BG, 21091116AG, 22031116AI]
+released: 2021
+soc: MediaTek Dimensity 810
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
