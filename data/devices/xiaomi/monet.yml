@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 10 Lite 5G
 codenames: [monet]
-aliases: [M2002J9G]
+aliases: [M2002J9G, M2002J9S]
 released: 2020
 soc: Qualcomm SM7250 Snapdragon 765G
 hardware: [5g, cellular, fingerprint, nfc]

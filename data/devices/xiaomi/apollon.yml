@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Mi 10T
 codenames: [apollon, apollo, apollopro]
-aliases: [Mi 10T Pro, Redmi K30S Ultra, M2007J3SY, M2007J3SG, M2007J3SC]
+aliases: [Mi 10T Pro, Redmi K30S Ultra, M2007J3SY, M2007J3SG, M2007J3SC, M2007J3SP, M2007J3SI]
 released: 2020
 soc: Qualcomm SM8250 Snapdragon 865
 hardware: [5g, cellular, fingerprint, nfc]
