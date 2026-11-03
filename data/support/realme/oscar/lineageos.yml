@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261102', checked: 2026-11-02, source: https://github.com/LineageOS/android_device_realme_sm6375-common/blob/636cfb9c1e0540777fed36400d38ed15831d44f3/proprietary-files.txt#L531 }
   camera: { status: broken, note: "Only the front camera works, the rear ones aren't detected", android: 17, build: '24.0-20261019', checked: 2026-10-19, source: https://github.com/LineageOS/issues/issues/802#issuecomment-6273578299 }

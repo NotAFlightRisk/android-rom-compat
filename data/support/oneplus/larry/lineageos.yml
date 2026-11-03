@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261031', checked: 2026-10-31, source: https://github.com/LineageOS/android_device_oneplus_sm6375-common/blob/16a0967e6b5a4a23aa35e1bf857e84c543733db7/proprietary-files.txt#L522 }
   camera: { status: partial, note: Only one of the three rear cameras shows up in camera apps, android: 17, build: '24.0-20261011', checked: 2026-10-14, source: https://github.com/LineageOS/issues/issues/702 }
