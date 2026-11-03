@@ -9,3 +9,6 @@ bootloader:
   unlock: conditional
   notes: Carrier models, like Verizon's, can't be unlocked.
   source: https://grapheneos.org/install/web#prerequisites
+relock:
+  custom_key: yes
+  source: https://android.googlesource.com/platform/external/avb/+/android-14.0.0_r1/README.md#pixel-2-and-later

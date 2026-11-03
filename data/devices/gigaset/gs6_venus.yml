@@ -8,3 +8,7 @@ hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://doc.e.foundation/devices/GS6_Venus/install/
+relock:
+  custom_key: unknown
+  notes: /e/OS's guide locks it without adding a key of its own, which doesn't show it takes anyone else's.
+  source: https://doc.e.foundation/devices/GS6_Venus/install/

@@ -95,7 +95,9 @@ function ensureBrand(key, name) {
 }
 
 const fieldOrder =
-  'name slug codenames aliases released soc type hardware bootloader unlock_costs'.split(' ');
+  'name slug codenames aliases released soc type hardware bootloader unlock_costs relock'.split(
+    ' ',
+  );
 const inOrder = (device) =>
   Object.fromEntries(fieldOrder.filter((key) => key in device).map((key) => [key, device[key]]));
 

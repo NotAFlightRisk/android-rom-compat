@@ -7,3 +7,6 @@ soc: Qualcomm SM8735 Snapdragon 8s Gen 4
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/554#issuecomment-3797661551

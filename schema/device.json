@@ -45,6 +45,20 @@
       "then": { "required": ["notes"] }
     },
     "unlock_costs": { "$ref": "#/$defs/costs" },
+    "relock": {
+      "type": "object",
+      "required": ["custom_key", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "custom_key": { "enum": ["yes", "no", "unknown"] },
+        "notes": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/link" }
+      },
+      "if": {
+        "properties": { "custom_key": { "enum": ["no", "unknown"] } }
+      },
+      "then": { "required": ["notes"] }
+    },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",

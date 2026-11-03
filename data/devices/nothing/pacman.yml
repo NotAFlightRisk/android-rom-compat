@@ -7,3 +7,7 @@ soc: MediaTek Dimensity 7200 Pro
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: no
+  notes: It doesn't take a custom key, so locked it only boots Nothing's own software.
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-2905707298

@@ -7,3 +7,6 @@ soc: Qualcomm SM8250-AC Snapdragon 870
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-5295479136

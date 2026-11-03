@@ -9,3 +9,6 @@ bootloader:
   unlock: conditional
   notes: Carrier models, like Verizon's, can't be unlocked.
   source: https://grapheneos.org/install/web#prerequisites
+relock:
+  custom_key: yes
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-sailfish

@@ -7,3 +7,6 @@ soc: Qualcomm SM8350-AC Snapdragon 888+
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-2957377203

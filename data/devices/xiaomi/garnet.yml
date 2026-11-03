@@ -7,3 +7,7 @@ soc: Qualcomm SM7435-AB Snapdragon 7s Gen 2
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: no
+  notes: Locking it on anything but Xiaomi's own software bricks it.
+  source: https://github.com/chenxiaolong/avbroot/issues/405

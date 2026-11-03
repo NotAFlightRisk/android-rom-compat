@@ -8,3 +8,7 @@ hardware: [cellular]
 bootloader:
   unlock: yes
   source: https://doc.e.foundation/devices/mimir/install/
+relock:
+  custom_key: unknown
+  notes: /e/OS's guide locks it without adding a key of its own, which doesn't show it takes anyone else's.
+  source: https://doc.e.foundation/devices/mimir/install/

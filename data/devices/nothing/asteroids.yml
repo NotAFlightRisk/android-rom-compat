@@ -7,3 +7,6 @@ soc: Qualcomm SM7635 Snapdragon 7s Gen 3
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-3085658714

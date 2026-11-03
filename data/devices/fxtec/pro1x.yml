@@ -8,3 +8,6 @@ hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://wiki.lineageos.org/devices/pro1x/install/
+relock:
+  custom_key: yes
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-pro1x

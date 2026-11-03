@@ -6,3 +6,6 @@ soc: Qualcomm MSM8994 Snapdragon 810
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-angler

@@ -7,3 +7,7 @@ soc: Qualcomm SM8550 Snapdragon 8 Gen2
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: no
+  notes: It takes a custom key but ignores it, so locked it only boots Xiaomi's own software.
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-4296983515

@@ -41,6 +41,23 @@ export function unlockFact({ bootloader, brand }) {
 export const costsFact = (costs) =>
   costs && { label: 'Before you unlock', note: costs.notes, source: costs.source };
 
+const keyWords = { yes: 'Takes a custom key', no: "Doesn't take a custom key" };
+
+/** Whether the phone relocks on software the maker didn't sign, naming the ROMs that show it */
+export function customKeyFact({ relock, support }) {
+  if (!keyWords[relock?.custom_key]) return undefined;
+  const names = support
+    .filter((row) => row.active && relock.roms?.includes(row.rom.key))
+    .map((row) => row.rom.name);
+  return {
+    label: 'Relocking',
+    tone: lockTone[relock.custom_key],
+    text: keyWords[relock.custom_key],
+    note: names.length > 0 ? `Official ${listOf(names, 'and')} builds relock it.` : relock.notes,
+    source: relock.source,
+  };
+}
+
 /** "9 ROMs officially support the Pixel 7" */
 export const supportedBy = (count, title) =>
   `${plural(count, 'ROM')} officially support${count === 1 ? 's' : ''} the ${title}`;

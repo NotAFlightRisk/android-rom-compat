@@ -7,3 +7,7 @@ soc: Qualcomm SM8250 Snapdragon 865
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: no
+  notes: Locking it on anything but Xiaomi's own software bricks it.
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-lmi

@@ -4,6 +4,7 @@ import { slugify } from '../text.js';
 
 const STALE_AFTER_DAYS = 365;
 const cantRelock = { status: 'no', origin: 'rom' };
+const relocks = ({ active, relock }) => active && (relock?.status ?? relock) === 'yes';
 const byName = (key) => (a, b) => a[key].localeCompare(b[key], 'en', { sensitivity: 'base' });
 
 /** Joins the raw files into brands, ROMs and devices that point at each other */
@@ -119,6 +120,10 @@ export function buildModel(data = getData(), now = new Date()) {
       .filter(Boolean)
       .sort()
       .at(-1);
+    const relockers = device.support.filter(relocks).map((row) => row.rom.key);
+    if (!device.relock && relockers.length > 0) {
+      device.relock = { custom_key: 'yes', origin: 'rom', roms: relockers };
+    }
   }
   for (const rom of roms.values()) {
     rom.support.sort((a, b) => a.device.title.localeCompare(b.device.title));

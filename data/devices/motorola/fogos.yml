@@ -7,3 +7,6 @@ soc: Qualcomm SM6375 Snapdragon 695 / Qualcomm SM6375-AC Snapdragon 6s Gen 3
 hardware: [5g, cellular, esim, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-5241015785
