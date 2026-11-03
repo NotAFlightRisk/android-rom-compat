@@ -11,6 +11,7 @@ import {
   knownFeatures,
   maintainerOf,
   relockFact,
+  uncheckedText,
 } from '../../lib/facts.js';
 import { formatDate } from '../../lib/dates.js';
 import { reportUrl } from '../../lib/table.js';
@@ -23,6 +24,8 @@ const checks = [relockFact(row), ...knownFeatures(features, row.cells)].filter(B
 const firmware = firmwareNeed(row);
 const maintainer = maintainerOf(row);
 const builds = row.variants.filter((variant) => variant.status === 'active');
+const unchecked = uncheckedText(features, row.cells);
+const report = reportUrl(device, row);
 const id = `rom-${rom.key}`;
 ---
 
@@ -84,6 +87,12 @@ const id = `rom-${rom.key}`;
         </span>
       </p>
     )}
+    {unchecked && (
+      <p class="footnote">
+        <Icon name="report" />
+        <a href={report}>Nobody's checked {unchecked} yet</a>
+      </p>
+    )}
     <div class="actions">
       {row.install ? (
         <a class="button primary small" href={row.install}>
@@ -94,7 +103,7 @@ const id = `rom-${rom.key}`;
           {rom.name} device page <Icon name="external" />
         </a>
       )}
-      <a class="button ghost small" href={reportUrl(device, row)}>
+      <a class="button ghost small" href={report}>
         <Icon name="report" /> Report what works
       </a>
     </div>

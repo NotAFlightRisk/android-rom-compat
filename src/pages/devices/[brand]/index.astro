@@ -4,6 +4,7 @@ import PageHead from '../../../components/layout/PageHead.astro';
 import DeviceList from '../../../components/ui/DeviceList.astro';
 import Facts from '../../../components/ui/Facts.astro';
 import { getModel } from '../../../lib/data/model.js';
+import { issueUrl } from '../../../lib/site.js';
 import { costsFact, unlockFact } from '../../../lib/facts.js';
 import { plural } from '../../../lib/text.js';
 
@@ -12,6 +13,8 @@ export const getStaticPaths = () =>
 
 const { brand } = Astro.props;
 const { roms } = getModel();
+const listed = brand.devices.length > 0;
+const addPhone = `${issueUrl('add-device')}&${new URLSearchParams({ brand: brand.name })}`;
 const romNames = [
   ...new Set(brand.devices.flatMap((device) => device.support.map((row) => row.rom.name))),
 ];
@@ -29,7 +32,11 @@ const facts = [
 
 <Base
   title={`${brand.name} phones: custom ROM support`}
-  description={`Which custom ROMs run on ${brand.name} phones${romNames.length ? `: ${romNames.join(', ')}` : ''}.`}
+  description={
+    romNames.length
+      ? `Which custom ROMs run on ${brand.name} phones: ${romNames.join(', ')}.`
+      : `No custom ROM officially supports ${brand.name} phones yet.`
+  }
   crumbs={[
     { label: 'Devices', url: '/devices/' },
     { label: brand.name, url: brand.url },
@@ -40,16 +47,23 @@ const facts = [
     title={brand.name}
     logo={{ kind: 'brands', item: brand }}
     meta={[
-      plural(brand.devices.length, 'device'),
+      listed && plural(brand.devices.length, 'device'),
       brand.website && { text: new URL(brand.website).hostname, href: brand.website },
     ]}
-    views
+    views={listed}
   />
   {facts.length > 0 && <Facts panel items={facts} />}
-  <DeviceList
-    id="brand-devices"
-    label={`${brand.name} devices`}
-    devices={brand.devices}
-    roms={roms}
-  />
+  {listed ? (
+    <DeviceList
+      id="brand-devices"
+      label={`${brand.name} devices`}
+      devices={brand.devices}
+      roms={roms}
+    />
+  ) : (
+    <p>
+      None of the <a href="/roms/">ROMs we track</a> officially supports {brand.name} phones yet.
+      Know of one? <a href={addPhone}>Add the phone</a>.
+    </p>
+  )}
 </Base>

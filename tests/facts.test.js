@@ -17,6 +17,7 @@ import {
   romSecurity,
   statusText,
   stockFact,
+  uncheckedText,
   unlockFact,
 } from '../src/lib/facts.js';
 
@@ -39,6 +40,15 @@ test('cards list only the features with an answer, and say when a report was mad
     ['Notifications', 'Works', 'Reported 10 Jan 2026 on Android 15, Plus build', undefined],
     ['Widevine', 'L3', undefined, undefined],
   ]);
+});
+
+test('cards name what nobody has checked, and only the first two once the list runs long', () => {
+  const features = ['VoLTE', 'VoWiFi', '5G', 'NFC'].map((name) => ({ key: name, name }));
+  const cells = (values) =>
+    Object.fromEntries(features.map(({ key }, i) => [key, { value: values[i] ?? 'unknown' }]));
+  assert.equal(uncheckedText(features, cells([])), 'VoLTE, VoWiFi and 2 more');
+  assert.equal(uncheckedText(features, cells(['working', 'n/a'])), '5G and NFC');
+  assert.equal(uncheckedText(features, cells(['working', 'n/a', 'broken', 'partial'])), undefined);
 });
 
 test('an old report says when it was last checked instead of being called stale', () => {
