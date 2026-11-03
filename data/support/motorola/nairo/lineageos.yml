@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '23.2-20261102', checked: 2026-11-02, source: https://github.com/LineageOS/android_device_motorola_sm7250-common/blob/157c995e3a90f22e463e76b8feb00d7c285b70c0/proprietary-files.txt#L540 }
   integrity: { status: fails, note: 'Play Integrity errors out instead of giving a verdict, even with Google apps added', android: 16, build: '23.2-20260803', checked: 2026-08-04, source: https://github.com/LineageOS/issues/issues/393 }

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '4.4.2', checked: 2026-10-29, source: https://github.com/LineageOS/android_device_google_bonito/blob/9102be473e2c1d1ebefa1665bace015377bdd16a/bonito/proprietary-files-radio.txt#L79 }

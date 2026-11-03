@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '4.4.2', checked: 2026-10-28, source: https://github.com/LineageOS/android_device_sony_sm8350-common/blob/eb43581c4e7cc355ad5e5e25c6557a93dfe742ef/proprietary-files.txt#L1065 }
