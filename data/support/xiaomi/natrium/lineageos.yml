@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '22.2-20261101', checked: 2026-11-01, source: https://github.com/LineageOS/android_device_xiaomi_msm8996-common/blob/54b5000fa478da0b3818360503cca70e79aed74e/proprietary-files.txt#L401 }

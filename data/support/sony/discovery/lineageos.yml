@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261029', checked: 2026-10-29, source: https://github.com/LineageOS/android_device_sony_nile-common/blob/49e4a52d20c9a393dfc2613030f91c978d12135f/proprietary-files.txt#L510 }
