@@ -7,3 +7,6 @@ soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-3258339235

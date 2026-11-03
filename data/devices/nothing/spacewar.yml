@@ -8,3 +8,6 @@ hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://wiki.lineageos.org/devices/Spacewar/install/
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/pull/295#issuecomment-2139614184

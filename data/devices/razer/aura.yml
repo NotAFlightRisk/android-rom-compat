@@ -7,3 +7,6 @@ hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://wiki.lineageos.org/devices/aura/install/
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-3757898410

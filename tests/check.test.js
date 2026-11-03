@@ -38,6 +38,7 @@ test('a brand policy has to say where it came from, and link somewhere real', ()
   expectProblem(/^brands\.yml \[1\]\.bootloader\.source: .* isn't a full link/);
   expectProblem(/^brands\.yml \[0\]\.unlock_costs\.source: is missing/);
   expectProblem(/comet\.yml unlock_costs\.source: is missing/);
+  expectProblem(/comet\.yml relock\.notes: is missing/);
 });
 
 test('codenames, aliases and web addresses must be unique', () => {

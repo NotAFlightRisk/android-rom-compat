@@ -7,3 +7,7 @@ soc: Qualcomm SM7150-AC Snapdragon 732G
 hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: no
+  notes: It takes a custom key but ignores it, so locked it only boots Xiaomi's own software.
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-4300160967

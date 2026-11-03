@@ -109,6 +109,22 @@ It sits next to the bootloader answer on the brand page and every device page, a
 which wins over the brand's. Both need `notes` and `source`. Leave out anything that depends on
 the ROM - the feature columns cover that.
 
+`relock` says whether the phone's bootloader locks again on software its maker didn't sign, as
+`custom_key: yes` or `no`. It goes in device files only, since makers almost never say:
+
+```yaml
+relock:
+  custom_key: no
+  notes: Locking it on anything but Xiaomi's own software bricks it.
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-alioth
+```
+
+Every answer needs a `source`, like [avbroot's device list](https://github.com/chenxiaolong/avbroot/issues/299),
+and a `no` needs `notes` saying what locking it does. When the file doesn't say, a phone takes a
+custom key if an official build that still gets updates relocks it, and the device page names
+those ROMs. Use `custom_key: unknown`, with `notes`, when that relock proves nothing, like on a
+phone that ships with the ROM, or one the ROM locks without adding a key of its own.
+
 ---
 
 ## Adding support for a ROM

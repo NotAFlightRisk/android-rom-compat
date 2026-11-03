@@ -8,3 +8,7 @@ bootloader:
   unlock: yes
   notes: Unlocks with fastboot, though Brax warns OTA updates can then fail and you'd update by flashing full firmware instead.
   source: https://opensource.braxtech.net/Technical%20Guides/guides/unlock-bootloader/
+relock:
+  custom_key: unknown
+  notes: It ships with iodéOS, so iodéOS relocking it doesn't show it takes anyone else's key.
+  source: https://blog.iode.tech/brax3-privacy-phone-available-for-pre-order-with-iodeos/

@@ -7,3 +7,6 @@ soc: Qualcomm SM7250 Snapdragon 765G
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-6080978412

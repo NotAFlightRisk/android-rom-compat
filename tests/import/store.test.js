@@ -9,6 +9,7 @@ process.env.DATA_DIR = mkdtempSync(join(tmpdir(), 'store-test-'));
 after(() => rmSync(process.env.DATA_DIR, { recursive: true }));
 const kept = join(process.env.DATA_DIR, 'devices/acme/kept.yml');
 const costs = { notes: 'Gone for good.', source: 'https://example.com' };
+const relock = { custom_key: 'yes', source: 'https://example.com/key' };
 mkdirSync(join(kept, '..'), { recursive: true });
 writeFileSync(
   kept,
@@ -17,6 +18,7 @@ writeFileSync(
     codenames: ['kept'],
     bootloader: { unlock: 'unknown' },
     unlock_costs: costs,
+    relock,
   }),
 );
 const { writeUpstream, readUpstream, upsertDevice } = await import('../../scripts/import/store.js');
@@ -126,9 +128,10 @@ test('a bootloader answer gains our notes and source only if its own words match
   assert.deepEqual(refilled('open', { unlock: 'yes' }), { unlock: 'yes' });
 });
 
-test("filling a gap keeps the device's own unlock costs", () => {
+test("filling a gap keeps the device's own unlock costs and relock", () => {
   upsertDevice('Acme', { name: 'Kept', codenames: ['kept'], soc: 'Acme A1' });
   const device = parse(readFileSync(kept, 'utf8'));
   assert.equal(device.soc, 'Acme A1');
   assert.deepEqual(device.unlock_costs, costs);
+  assert.deepEqual(device.relock, relock);
 });

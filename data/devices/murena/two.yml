@@ -8,3 +8,7 @@ hardware: [cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://doc.e.foundation/devices/two/install/
+relock:
+  custom_key: unknown
+  notes: It ships locked with /e/OS, so /e/OS relocking it doesn't show it takes anyone else's key.
+  source: https://web.archive.org/web/20240524073408/https://murena.com/shop/smartphones/brand-new/murena-2/

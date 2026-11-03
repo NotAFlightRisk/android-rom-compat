@@ -8,3 +8,6 @@ hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: yes
   source: https://wiki.lineageos.org/devices/Pong/install/
+relock:
+  custom_key: yes
+  source: https://github.com/chenxiaolong/avbroot/issues/327

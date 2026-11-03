@@ -62,6 +62,28 @@ test("a device takes the brand's unlock costs, marked as such, unless it has its
   assert.deepEqual(buildModel(data).devices[0].unlock_costs, own);
 });
 
+test('a phone takes a custom key when a ROM still relocks it, unless its own file says', () => {
+  const data = loadData('tests/fixtures/good');
+  assert.deepEqual(buildModel(data).devices[0].relock, {
+    custom_key: 'yes',
+    origin: 'rom',
+    roms: ['tidyos'],
+  });
+  const own = { custom_key: 'unknown', notes: 'Ships with TidyOS.', source: 'https://acme.test' };
+  data.devices[0].data.relock = own;
+  assert.deepEqual(buildModel(data).devices[0].relock, own);
+});
+
+test("a ROM that's stopped building for a phone says nothing about its key", () => {
+  const data = loadData('tests/fixtures/good');
+  Object.assign(data.support.find(({ rom }) => rom === 'handmadeos').data, {
+    status: 'discontinued',
+    relock: 'yes',
+  });
+  assert.deepEqual(buildModel(data).devices[0].relock.roms, ['tidyos']);
+  assert.equal(model('2027-03-01').devices[0].relock, undefined);
+});
+
 test("a card's own relock beats the ROM's", () => {
   assert.deepEqual(rowOf('2026-02-01', 'tidyos').relock, { status: 'yes', note: 'Check first' });
 });

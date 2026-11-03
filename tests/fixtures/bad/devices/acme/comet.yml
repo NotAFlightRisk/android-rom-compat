@@ -4,3 +4,4 @@ aliases: [rk-2]
 hardware: [lasers]
 bootloader: { unlock: conditional }
 unlock_costs: { notes: Wipes the keys. }
+relock: { custom_key: "no", source: https://acme.test/relock }

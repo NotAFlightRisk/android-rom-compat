@@ -20,6 +20,7 @@ import {
 import {
   buildFact,
   costsFact,
+  customKeyFact,
   deviceAnswer,
   deviceType,
   stockFact,
@@ -43,6 +44,7 @@ const unlock = unlockFact(device);
 const updates = stockFact(stock);
 const facts = [
   { label: 'Bootloader', ...unlock },
+  customKeyFact(device),
   costsFact(device.unlock_costs),
   updates && { label: 'Stock Android', ...updates },
 ].filter(Boolean);

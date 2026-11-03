@@ -5,6 +5,7 @@ import { buildModel } from '../src/lib/data/model.js';
 import {
   buildFact,
   channelText,
+  customKeyFact,
   deviceAnswer,
   deviceType,
   everywhereCells,
@@ -165,6 +166,25 @@ test('relock and install needs only say what the ROM says', () => {
   assert.equal(firmwareNeed({ firmware: '14/15/16' }), 'Install stock Android 14, 15 or 16 first');
   assert.equal(channelText({ channel: 'community' }), 'Community build');
   assert.deepEqual(needsOf({ channel: 'stable' }), []);
+});
+
+test('relocking names the ROMs that show it, or keeps to what the file says', () => {
+  const { label, text, note } = customKeyFact(model('2026-02-01').devices[0]);
+  assert.deepEqual(
+    [label, text, note],
+    ['Relocking', 'Takes a custom key', 'Official TidyOS builds relock it.'],
+  );
+  const source = 'https://acme.test/brick';
+  const relock = { custom_key: 'no', notes: 'Locking bricks it.', source };
+  assert.deepEqual(customKeyFact({ relock, support: [] }), {
+    label: 'Relocking',
+    tone: 'broken',
+    text: "Doesn't take a custom key",
+    note: 'Locking bricks it.',
+    source,
+  });
+  assert.equal(customKeyFact({ relock: { custom_key: 'unknown' }, support: [] }), undefined);
+  assert.equal(customKeyFact({ support: [] }), undefined);
 });
 
 test("a ROM's relock answer gives way when its own device pages say otherwise", () => {

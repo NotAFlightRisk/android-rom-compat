@@ -6,3 +6,6 @@ soc: Qualcomm APQ8064 Snapdragon S4 Pro
 hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-mako

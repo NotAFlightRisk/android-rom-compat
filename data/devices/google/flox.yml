@@ -6,3 +6,6 @@ soc: Qualcomm MSM8960T Snapdragon S4 Pro
 type: tablet
 bootloader:
   unlock: unknown
+relock:
+  custom_key: yes
+  source: https://web.archive.org/web/20241230061707/https://divestos.org/pages/devices#device-flox
