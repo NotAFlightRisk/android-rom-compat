@@ -4,3 +4,6 @@
     unlock: "yes"
     notes: Acme phones unlock with fastboot.
     source: https://acme.test/unlock
+  unlock_costs:
+    notes: Unlocking wipes the keys for good.
+    source: https://acme.test/costs

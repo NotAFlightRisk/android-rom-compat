@@ -44,6 +44,7 @@
       },
       "then": { "required": ["notes"] }
     },
+    "unlock_costs": { "$ref": "#/$defs/costs" },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
@@ -61,6 +62,15 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*/[a-z0-9]+([_-][a-z0-9]+)*$",
       "description": "lowercase brand/codename, like google/tegu"
     },
-    "link": { "type": "string", "format": "link", "pattern": "^https?://" }
+    "link": { "type": "string", "format": "link", "pattern": "^https?://" },
+    "costs": {
+      "type": "object",
+      "required": ["notes", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "notes": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/link" }
+      }
+    }
   }
 }

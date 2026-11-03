@@ -20,7 +20,8 @@
           "notes": { "type": "string", "minLength": 1 },
           "source": { "$ref": "#/$defs/link" }
         }
-      }
+      },
+      "unlock_costs": { "$ref": "#/$defs/costs" }
     }
   },
   "$defs": {
@@ -29,6 +30,15 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "description": "lowercase letters, numbers and hyphens"
     },
-    "link": { "type": "string", "format": "link", "pattern": "^https?://" }
+    "link": { "type": "string", "format": "link", "pattern": "^https?://" },
+    "costs": {
+      "type": "object",
+      "required": ["notes", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "notes": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/link" }
+      }
+    }
   }
 }

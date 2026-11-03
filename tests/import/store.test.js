@@ -3,10 +3,22 @@ import assert from 'node:assert/strict';
 import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { parse } from 'yaml';
+import { parse, stringify } from 'yaml';
 
 process.env.DATA_DIR = mkdtempSync(join(tmpdir(), 'store-test-'));
 after(() => rmSync(process.env.DATA_DIR, { recursive: true }));
+const kept = join(process.env.DATA_DIR, 'devices/acme/kept.yml');
+const costs = { notes: 'Gone for good.', source: 'https://example.com' };
+mkdirSync(join(kept, '..'), { recursive: true });
+writeFileSync(
+  kept,
+  stringify({
+    name: 'Kept',
+    codenames: ['kept'],
+    bootloader: { unlock: 'unknown' },
+    unlock_costs: costs,
+  }),
+);
 const { writeUpstream, readUpstream, upsertDevice } = await import('../../scripts/import/store.js');
 const { today } = await import('../../src/lib/dates.js');
 
@@ -112,4 +124,11 @@ test('a bootloader answer gains our notes and source only if its own words match
     notes: 'Exploit only.',
   });
   assert.deepEqual(refilled('open', { unlock: 'yes' }), { unlock: 'yes' });
+});
+
+test("filling a gap keeps the device's own unlock costs", () => {
+  upsertDevice('Acme', { name: 'Kept', codenames: ['kept'], soc: 'Acme A1' });
+  const device = parse(readFileSync(kept, 'utf8'));
+  assert.equal(device.soc, 'Acme A1');
+  assert.deepEqual(device.unlock_costs, costs);
 });

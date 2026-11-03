@@ -5,7 +5,7 @@ import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 
 const { items, panel = false } = Astro.props;
-const shown = items.filter((item) => item.text?.length > 0);
+const shown = items.filter((item) => item.text?.length > 0 || item.note);
 ---
 
 <dl class:list={{ panel }}>
@@ -24,7 +24,7 @@ const shown = items.filter((item) => item.text?.length > 0);
             {item.text}
           </span>
         ) : (
-          <span class="answer">
+          item.text && <span class="answer">
             {item.logo && <Logo {...item.logo} size="xs" />}
             {item.href ? <a href={item.href}>{item.text}</a> : item.text}
           </span>

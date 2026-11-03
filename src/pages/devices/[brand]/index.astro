@@ -4,7 +4,7 @@ import PageHead from '../../../components/layout/PageHead.astro';
 import DeviceList from '../../../components/ui/DeviceList.astro';
 import Facts from '../../../components/ui/Facts.astro';
 import { getModel } from '../../../lib/data/model.js';
-import { unlockFact } from '../../../lib/facts.js';
+import { costsFact, unlockFact } from '../../../lib/facts.js';
 import { plural } from '../../../lib/text.js';
 
 export const getStaticPaths = () =>
@@ -16,6 +16,15 @@ const romNames = [
   ...new Set(brand.devices.flatMap((device) => device.support.map((row) => row.rom.name))),
 ];
 const policy = brand.bootloader && unlockFact({ bootloader: brand.bootloader, brand: {} });
+const facts = [
+  policy && {
+    label: 'Bootloader policy',
+    ...policy,
+    text: policy.text ?? policy.note,
+    note: policy.text && policy.note,
+  },
+  costsFact(brand.unlock_costs),
+].filter(Boolean);
 ---
 
 <Base
@@ -36,19 +45,7 @@ const policy = brand.bootloader && unlockFact({ bootloader: brand.bootloader, br
     ]}
     views
   />
-  {policy && (
-    <Facts
-      panel
-      items={[
-        {
-          label: 'Bootloader policy',
-          ...policy,
-          text: policy.text ?? policy.note,
-          note: policy.text && policy.note,
-        },
-      ]}
-    />
-  )}
+  {facts.length > 0 && <Facts panel items={facts} />}
   <DeviceList
     id="brand-devices"
     label={`${brand.name} devices`}

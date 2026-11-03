@@ -37,6 +37,10 @@ export function unlockFact({ bootloader, brand }) {
   };
 }
 
+/** What unlocking costs you for good, to sit beside the bootloader answer */
+export const costsFact = (costs) =>
+  costs && { label: 'Before you unlock', note: costs.notes, source: costs.source };
+
 /** "Tablet" or "Handheld", since a phone goes without saying */
 export const deviceType = ({ type }) => (type && type !== 'phone' ? labelOf(type) : undefined);
 

@@ -93,6 +93,22 @@ is `unknown` takes the brand's, marked as brand policy, and anything the device 
 really does hold brand-wide - most brands split it by chipset, region or Android version, so they
 stay unknown.
 
+`unlock_costs` is what unlocking takes away for good, or how it can brick the phone, in the maker's
+own words:
+
+```yaml
+- key: sony
+  name: Sony
+  unlock_costs:
+    notes: Unlocking removes the phone's DRM keys, so some preloaded content may stop working.
+    source: https://opendevices.sony.net/aosp-on-xperia-open-devices/get-started/unlock-bootloader
+```
+
+It sits next to the bootloader answer on the brand page and every device page, and in
+`/api/devices.json`, where a brand's is marked `origin: brand`. A device file can have its own,
+which wins over the brand's. Both need `notes` and `source`. Leave out anything that depends on
+the ROM - the feature columns cover that.
+
 ---
 
 ## Adding support for a ROM

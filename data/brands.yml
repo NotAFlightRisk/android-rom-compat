@@ -95,6 +95,9 @@
     unlock: conditional
     notes: Galaxy phones from outside the US and Canada unlock until they update to One UI 8, which removes the option for good, so ones that launched with it can't unlock at all. US and Canadian models lost it years ago.
     source: https://github.com/salvogiangri/UN1CA/discussions/129
+  unlock_costs:
+    notes: On Galaxy devices with Knox, installing a non-Samsung bootloader or kernel, as a custom ROM does, trips a fuse that can't be reset, so Samsung Pay and Secure Folder stop working for good, even back on stock.
+    source: https://docs.samsungknox.com/admin/knox-platform-for-enterprise/faq/
 - key: shift
   name: SHIFT
 - key: smartisan
@@ -107,6 +110,9 @@
     unlock: conditional
     notes: Only some Xperia releases can be unlocked, partly down to the operator, with a code from Sony. The service menu (*#*#7378423#*#*) says whether yours can.
     source: https://opendevices.sony.net/aosp-on-xperia-open-devices/get-started/unlock-bootloader/how-to-unlock-bootloader
+  unlock_costs:
+    notes: Unlocking removes the phone's DRM keys, so some preloaded content may stop working, and on some models, like the Xperia Z3, the camera can lose its noise reduction.
+    source: https://opendevices.sony.net/aosp-on-xperia-open-devices/get-started/unlock-bootloader
 - key: tecno
   name: TECNO
 - key: teracube
@@ -125,6 +131,9 @@
     unlock: conditional
     notes: Unlocks with Xiaomi's tool once it's bound to your account and a wait has passed (how long varies). HyperOS also needs an approved application, closed to mainland China models.
     source: https://www.mi.com/global/support/faq/details/KA-07238/
+  unlock_costs:
+    notes: Xiaomi says flashing ROMs or rolling back the system can leave a phone unusable, depending on its security measures.
+    source: https://www.mi.com/global/support/faq/details/KA-523727/
 - key: yandex
   name: Yandex
 - key: yu
