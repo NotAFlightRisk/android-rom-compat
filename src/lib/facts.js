@@ -1,6 +1,6 @@
 import { labelOf, yesNo } from './labels.js';
 import { formatDate, formatMonth, today } from './dates.js';
-import { isLink, listOf } from './text.js';
+import { isLink, listOf, plural } from './text.js';
 import { resolveCell } from './data/status.js';
 
 /** Builds read as fresh under two months old, ageing up to six, and old after that */
@@ -40,6 +40,32 @@ export function unlockFact({ bootloader, brand }) {
 /** What unlocking costs you for good, to sit beside the bootloader answer */
 export const costsFact = (costs) =>
   costs && { label: 'Before you unlock', note: costs.notes, source: costs.source };
+
+/** "9 ROMs officially support the Pixel 7" */
+export const supportedBy = (count, title) =>
+  `${plural(count, 'ROM')} officially support${count === 1 ? 's' : ''} the ${title}`;
+
+const unsupported = ({ title, support, latestBuild }) => {
+  if (support.length === 0) return `No ROM we track officially supports the ${title} yet`;
+  return support.every((row) => row.latest?.date)
+    ? `No ROM we track has released a build for the ${title} since ${formatMonth(latestBuild)}`
+    : `No ROM we track supports the ${title} any more`;
+};
+
+/** The device page in one sentence, saying no more than the data does */
+export function deviceAnswer(device) {
+  const { title, support, bootloader } = device;
+  const { unlock } = bootloader;
+  const lock =
+    unlock === 'unknown'
+      ? "we don't know if its bootloader unlocks"
+      : `its bootloader ${midSentence(unlockWords[unlock])}`;
+  const current = support.filter((row) => row.active);
+  if (current.length === 0) return `${unsupported(device)}, and ${lock}.`;
+  const newest = Math.max(...current.map((row) => row.android ?? 0));
+  const upTo = newest > 0 ? `, up to Android ${newest}` : '';
+  return `${supportedBy(current.length, title)}${upTo}, ${unlock === 'no' ? 'but' : 'and'} ${lock}.`;
+}
 
 /** "Tablet" or "Handheld", since a phone goes without saying */
 export const deviceType = ({ type }) => (type && type !== 'phone' ? labelOf(type) : undefined);

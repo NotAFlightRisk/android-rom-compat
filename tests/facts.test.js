@@ -5,6 +5,7 @@ import { buildModel } from '../src/lib/data/model.js';
 import {
   buildFact,
   channelText,
+  deviceAnswer,
   deviceType,
   everywhereCells,
   firmwareNeed,
@@ -84,6 +85,37 @@ test("the bootloader keeps the device's own note, or borrows the brand policy it
     source: 'https://a.test',
   });
   assert.equal(unlockFact({ bootloader: { unlock: 'no' }, brand }).note, undefined);
+});
+
+test('a device page answers in one sentence, and never says more than the data', () => {
+  const [device] = model('2026-02-01').devices;
+  assert.equal(
+    deviceAnswer(device),
+    '2 ROMs officially support the Acme Rocket 2, up to Android 15, and its bootloader unlocks, with conditions.',
+  );
+  const phone = (unlock, support = [], latestBuild) => ({
+    title: 'Acme Rocket',
+    bootloader: { unlock },
+    support,
+    latestBuild,
+  });
+  const ended = (date) => ({ active: false, latest: date && { date } });
+  assert.equal(
+    deviceAnswer(phone('no', [{ active: true, android: 16 }, { active: true }])),
+    "2 ROMs officially support the Acme Rocket, up to Android 16, but its bootloader doesn't unlock.",
+  );
+  assert.equal(
+    deviceAnswer(phone('yes', [ended('2024-05-02'), ended('2023-01-01')], '2024-05-02')),
+    'No ROM we track has released a build for the Acme Rocket since May 2024, and its bootloader unlocks.',
+  );
+  assert.equal(
+    deviceAnswer(phone('yes', [ended('2024-05-02'), ended()], '2024-05-02')),
+    'No ROM we track supports the Acme Rocket any more, and its bootloader unlocks.',
+  );
+  assert.equal(
+    deviceAnswer(phone('unknown')),
+    "No ROM we track officially supports the Acme Rocket yet, and we don't know if its bootloader unlocks.",
+  );
 });
 
 test('only a device that is not a phone names its type', () => {
