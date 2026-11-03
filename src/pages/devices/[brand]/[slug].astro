@@ -17,7 +17,15 @@ import {
   supportColumns,
   usedColumns,
 } from '../../../lib/table.js';
-import { buildFact, costsFact, deviceType, stockFact, unlockFact } from '../../../lib/facts.js';
+import {
+  buildFact,
+  costsFact,
+  deviceAnswer,
+  deviceType,
+  stockFact,
+  supportedBy,
+  unlockFact,
+} from '../../../lib/facts.js';
 import { formatDate } from '../../../lib/dates.js';
 import { listOf } from '../../../lib/text.js';
 
@@ -82,18 +90,15 @@ const columns = usedColumns(
 
 const romNames = current.map((row) => row.rom.name);
 const codename = device.codenames[0];
-const named = `the ${device.title} (${codename})`;
-const unsupported = device.ended
-  ? `Custom ROM support for ${named}, and whether its bootloader unlocks.`
-  : `No custom ROM officially supports ${named} yet. Here's whether its bootloader unlocks.`;
+const answer = deviceAnswer(device);
 ---
 
 <Base
   title={`${device.title} (${codename}): custom ROM support`}
   description={
     romNames.length
-      ? `Which ROMs run on the ${device.title} and what works: ${listOf(romNames, 'and')}.`
-      : unsupported
+      ? `${supportedBy(romNames.length, device.title)}: ${listOf(romNames, 'and')}.`
+      : answer
   }
   crumbs={[
     { label: 'Devices', url: '/devices/' },
@@ -130,6 +135,7 @@ const unsupported = device.ended
       ]}
       views={current.length > 0}
     >
+      <p>{answer}</p>
       {device.aliases?.length > 0 && (
         <p class="models">
           Model numbers <code>{device.aliases.join(', ')}</code>
