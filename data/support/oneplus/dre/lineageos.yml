@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261030', checked: 2026-10-30, source: https://github.com/LineageOS/android_device_oneplus_dre/blob/e8476d2dcb058c24fbf657fd1f70d3052829bfa6/proprietary-files.txt#L1203 }
   bluetooth_audio: { status: broken, note: "Headphones connect, but no media sound comes through them", android: 17, build: '24.0-20261023', checked: 2026-10-25, source: https://github.com/LineageOS/issues/issues/796#issuecomment-6400121321 }

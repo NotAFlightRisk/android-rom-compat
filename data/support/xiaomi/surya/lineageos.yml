@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 15, build: '22.2-20261102', checked: 2026-11-02, source: https://github.com/LineageOS/android_device_xiaomi_surya/blob/e5a8a8a42c95d8ad588f261bdc9d60c75ca3b3fd/proprietary-files.txt#L644 }

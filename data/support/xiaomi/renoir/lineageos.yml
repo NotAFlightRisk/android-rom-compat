@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '23.2-20261031', checked: 2026-10-31, source: https://github.com/LineageOS/android_device_xiaomi_sm8350-common/blob/ea54a321886b99fcac3dcc8f72b287d6848f7434/proprietary-files.txt#L319 }
   bluetooth_audio: { status: partial, note: 'After a call, sound can lag a couple of seconds behind video until you reconnect', android: 16, build: '23.2-20260808', checked: 2026-08-19, source: https://github.com/LineageOS/issues/issues/442 }

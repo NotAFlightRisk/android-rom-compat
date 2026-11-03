@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 16, build: '23.2-20261028', checked: 2026-10-28, source: https://github.com/LineageOS/android_device_xiaomi_garnet/blob/5b3cb512c2f07f416eaa461e2ade28cead2e2760/proprietary-files.txt#L1751 }

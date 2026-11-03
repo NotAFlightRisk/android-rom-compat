@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=../../../../schema/support.json
+features:
+  volte: { status: working, inferred: true, note: "Ships the phone's own IMS, so it should work if your carrier supports it", android: 17, build: '24.0-20261102', checked: 2026-11-02, source: https://github.com/LineageOS/android_device_motorola_sm8250-common/blob/fb5a9768a8511e15129776ba6f81341f8fed7219/proprietary-files.txt#L637 }
