@@ -1,0 +1,93 @@
+---
+import Base from '../../components/layout/Base.astro';
+import PageHead from '../../components/layout/PageHead.astro';
+import Matrix from '../../components/table/Matrix.astro';
+import { getModel } from '../../lib/data/model.js';
+import { compareRows, romPairs } from '../../lib/compare.js';
+import { plural } from '../../lib/text.js';
+
+export const getStaticPaths = () =>
+  romPairs(getModel().roms).map((pair) => ({ params: { pair: pair.key }, props: { pair } }));
+
+const { pair } = Astro.props;
+const { features, roms } = getModel();
+const [first, second] = pair.roms;
+const shared = `${plural(pair.both.length, 'device')} run both`;
+const lists = [
+  { title: shared, devices: pair.both },
+  ...pair.roms.map((rom, i) => ({
+    title: `${plural(pair.only[i].length, 'device')} only ${rom.name} supports`,
+    devices: pair.only[i],
+  })),
+].filter(({ devices }) => devices.length > 0);
+const description = `${first.name} and ${second.name} side by side: security, Google apps, Android versions and the devices each one supports. ${shared}.`;
+---
+
+<Base
+  title={`${pair.title}: features and supported devices`}
+  description={description}
+  crumbs={[
+    { label: 'ROMs', url: '/roms/' },
+    { label: pair.title, url: pair.url },
+  ]}
+  edit={[first.file, second.file]}
+>
+  <article>
+    <PageHead title={pair.title} meta={[shared, 'official builds only']}>
+      <p>
+        How <a href={first.url}>{first.name}</a> and <a href={second.url}>{second.name}</a> compare,
+        with the differences first.
+      </p>
+    </PageHead>
+
+    <Matrix
+      id="compare"
+      caption={`${pair.title} side by side`}
+      rowLabel="Compared"
+      columns={pair.roms.map((rom) => ({ key: rom.key, label: rom.name }))}
+      rows={compareRows(pair.roms, roms, features)}
+      controls={false}
+      fit
+    />
+
+    <section aria-labelledby="devices">
+      <h2 id="devices">Devices</h2>
+      {lists.map(({ title, devices }) => (
+        <details>
+          <summary>{title}</summary>
+          <ul class="devices">
+            {devices.map((device) => (
+              <li>
+                <a href={device.url}>{device.title}</a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ))}
+    </section>
+  </article>
+</Base>
+
+<style>
+  article {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  section {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .devices {
+    columns: 16rem;
+    margin: var(--space-sm) 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding-block: var(--space-2xs);
+      break-inside: avoid;
+    }
+  }
+</style>
