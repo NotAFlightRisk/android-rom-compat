@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 15C 5G
+codenames: [tornado]
+aliases: [Redmi 15R 5G, POCO C85 5G, 2508CRN2BG, 2508CRN2BE, 2508CRN2BI, 2508CRN2BR, 25082RNC1C, 2508CPC2BI]
+released: 2025
+soc: MediaTek Dimensity 6300
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

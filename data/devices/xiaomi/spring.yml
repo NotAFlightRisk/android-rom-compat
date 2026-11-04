@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 15 5G
+codenames: [spring]
+aliases: [Redmi Note 15R, POCO M7 Plus 5G, 25057RN09G, 25057RN09E, 25057RN09I, 25057RN09R, 25057RA09C, 25057PC09I]
+released: 2025
+soc: Qualcomm SM6375-AC Snapdragon 6s Gen 3
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

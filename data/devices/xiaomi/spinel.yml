@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 15
+codenames: [spinel]
+aliases: [2510DRA23G, 2510DRA23E, 2510DRA23L]
+released: 2026
+soc: MediaTek Helio G100 Ultra
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

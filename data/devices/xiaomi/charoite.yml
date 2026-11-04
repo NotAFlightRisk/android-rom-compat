@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 15 Pro
+codenames: [charoite]
+aliases: [25100RA69G]
+released: 2026
+soc: MediaTek Helio G200 Ultra
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

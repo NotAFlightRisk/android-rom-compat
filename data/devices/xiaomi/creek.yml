@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 15
+codenames: [creek]
+aliases: [POCO M7, 25062RN2DA, 25062RN2DY, 25062RN2DE, 25062RN2DL, 25062PC34G, 25062PC34E]
+released: 2025
+soc: Qualcomm SM6225 Snapdragon 685
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown
