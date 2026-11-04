@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { getModel } from './src/lib/data/model.js';
 import { getData } from './src/lib/data/load.js';
+import { romPairs } from './src/lib/compare.js';
 import { site } from './src/lib/site.js';
 
 const uploadMaps = Boolean(process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_URL);
@@ -18,6 +19,7 @@ const lastmodOf = (rows) =>
 const lastChanged = new Map([
   ...devices.map((device) => [device.url, lastmodOf(device.support)]),
   ...roms.map((rom) => [rom.url, lastmodOf(rom.support)]),
+  ...romPairs(roms).map((pair) => [pair.url, lastmodOf(pair.roms.flatMap((rom) => rom.support))]),
   ...brands.map((brand) => [
     brand.url,
     lastmodOf(brand.devices.flatMap((device) => device.support)),

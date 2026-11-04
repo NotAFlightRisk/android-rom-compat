@@ -9,6 +9,7 @@ import FilterBar from '../../components/ui/FilterBar.astro';
 import Icon from '../../components/ui/Icon.astro';
 import { getModel } from '../../lib/data/model.js';
 import { byBrand, romDeviceCard, romGlance } from '../../lib/cards.js';
+import { romPairs } from '../../lib/compare.js';
 import { deviceFilters, filterData } from '../../lib/filters.js';
 import { everywhereCells, knownFeatures, romOrg } from '../../lib/facts.js';
 import {
@@ -53,6 +54,7 @@ const everywhere = [rom, ...(rom.variants ?? [])]
   .map((build) => ({ build, items: knownFeatures(features, everywhereCells(features, build)) }))
   .filter(({ items }) => items.length > 0);
 const glance = romGlance(rom, roms);
+const pairs = romPairs(roms).filter((pair) => pair.roms.includes(rom));
 const count = plural(current.length, 'device');
 ---
 
@@ -106,6 +108,21 @@ const count = plural(current.length, 'device');
         ))}
       </div>
     </section>
+
+    {pairs.length > 0 && (
+      <section aria-labelledby="compare">
+        <h2 id="compare">Compare</h2>
+        <ul class="links">
+          {pairs.map((pair) => (
+            <li>
+              <a class="button small" href={pair.url}>
+                {pair.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     {everywhere.length > 0 && (
       <section aria-labelledby="everywhere">

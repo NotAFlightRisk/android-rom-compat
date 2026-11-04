@@ -3,8 +3,10 @@ import Base from '../components/layout/Base.astro';
 import PageHead from '../components/layout/PageHead.astro';
 import PageTree from '../components/ui/PageTree.astro';
 import { getModel } from '../lib/data/model.js';
+import { romPairs } from '../lib/compare.js';
 
 const { brands, devices, roms } = getModel();
+const pairs = romPairs(roms);
 const pages = [
   { label: 'Home', url: '/' },
   {
@@ -20,7 +22,17 @@ const pages = [
       })),
     })),
   },
-  { label: 'ROMs', url: '/roms/', children: roms.map(({ name, url }) => ({ label: name, url })) },
+  {
+    label: 'ROMs',
+    url: '/roms/',
+    children: roms.map((rom) => ({
+      label: rom.name,
+      url: rom.url,
+      children: pairs
+        .filter((pair) => pair.roms[0] === rom)
+        .map(({ title, url }) => ({ label: title, url })),
+    })),
+  },
   { label: 'Contribute', url: '/contribute/' },
   { label: 'About', url: '/about/' },
 ];

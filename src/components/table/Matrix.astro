@@ -2,10 +2,24 @@
 import Cell from './Cell.astro';
 import ColumnPicker from './ColumnPicker.astro';
 
-const { id, caption, rowLabel, columns, rows, controls = true, urlState = false } = Astro.props;
+const {
+  id,
+  caption,
+  rowLabel,
+  columns,
+  rows,
+  controls = true,
+  urlState = false,
+  fit = false,
+} = Astro.props;
 ---
 
-<div class="matrix" data-matrix data-url-state={urlState ? '' : undefined}>
+<div
+  class="matrix"
+  data-matrix
+  data-url-state={urlState ? '' : undefined}
+  data-fit={fit ? '' : undefined}
+>
   {controls && <ColumnPicker id={id} columns={columns} />}
   <div class="scroller" tabindex="0" role="region" aria-labelledby={`${id}-caption`}>
     <table id={id}>
@@ -32,7 +46,7 @@ const { id, caption, rowLabel, columns, rows, controls = true, urlState = false 
         {rows.map((row) => (
           <tr {...row.data}>
             <th scope="row">
-              <a href={row.head.href}>{row.head.label}</a>
+              {row.head.href ? <a href={row.head.href}>{row.head.label}</a> : row.head.label}
               {row.head.code && <code>{row.head.code}</code>}
               {row.head.links?.map((link) => (
                 <a class="minor" href={link.href}>
@@ -217,6 +231,22 @@ const { id, caption, rowLabel, columns, rows, controls = true, urlState = false 
 
     tbody tr:hover > * {
       background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+    }
+
+    /* A short table wraps its text and grows, so every column stays on screen */
+    &[data-fit] {
+      .scroller {
+        max-block-size: none;
+      }
+
+      th,
+      td {
+        white-space: normal;
+      }
+
+      th[scope='row'] {
+        min-inline-size: 0;
+      }
     }
   }
 </style>
