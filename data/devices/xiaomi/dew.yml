@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 15C
+codenames: [dew]
+aliases: [POCO C85, 25078RA3EA, 25078RA3EY, 25078RA3EE, 25078RA3EL, 25078PC3EG, 25078PC3EE]
+released: 2025
+soc: MediaTek Helio G81 Ultra
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

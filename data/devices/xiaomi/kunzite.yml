@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 15 5G
+codenames: [kunzite]
+aliases: [Redmi Note 15 SE 5G, 25098RA98G, 25098RA98E, 25098RA98I, 25098RA98C, 25098RA98T, 26022PCACI]
+released: 2025
+soc: Qualcomm SM6475-AB Snapdragon 6 Gen 3
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

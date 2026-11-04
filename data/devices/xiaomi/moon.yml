@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi 13
+codenames: [moon, tides]
+aliases: [POCO M6, Redmi 13x, 2404ARN45A, 2404ARN45I, 24049RN28L, 24040RN64Y, 2404APC5FG]
+released: 2024
+soc: MediaTek Helio G91 Ultra
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

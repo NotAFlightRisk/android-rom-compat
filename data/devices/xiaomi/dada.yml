@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "15"
+codenames: [dada]
+aliases: [24129PN74G, 24129PN74I, 24129PN74C]
+released: 2024
+soc: Qualcomm SM8750 Snapdragon 8 Elite
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

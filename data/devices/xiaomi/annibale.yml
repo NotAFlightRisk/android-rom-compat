@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: POCO F8 Pro
+codenames: [annibale]
+aliases: [REDMI K90, 2510DPC44G, 2510DRK44C]
+released: 2025
+soc: Qualcomm SM8750 Snapdragon 8 Elite
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
