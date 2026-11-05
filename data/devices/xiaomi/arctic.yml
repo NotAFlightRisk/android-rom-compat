@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi A7 Pro
+codenames: [arctic]
+aliases: [POCO C81 Pro, POCO C81, 25128RN17A, 25128RN17Y, 25128RN17I, 25128PC17G, 25128PC17Y, 25128PC17L]
+released: 2026
+soc: Unisoc T7250
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

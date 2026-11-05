@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi A3
+codenames: [blue]
+aliases: [POCO C61, 23129RN51X, 23129RN51H, 2312CRNCCL, 2312BPC51X, 2312BPC51H]
+released: 2024
+soc: MediaTek Helio G36
+hardware: [cellular, fingerprint]
+bootloader:
+  unlock: unknown

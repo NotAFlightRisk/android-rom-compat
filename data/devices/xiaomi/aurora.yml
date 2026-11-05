@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 14 Ultra
+codenames: [aurora]
+aliases: [24030PN60G, 24031PN0DC]
+released: 2024
+soc: Qualcomm SM8650-AB Snapdragon 8 Gen 3
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown
