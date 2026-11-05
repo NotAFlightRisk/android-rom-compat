@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "17"
+codenames: [pudding]
+aliases: [25113PN0EG, 25113PN0EC, 25113PN0EI]
+released: 2025
+soc: Qualcomm SM8850 Snapdragon 8 Elite Gen 5
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

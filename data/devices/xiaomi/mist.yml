@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 17 5G
+codenames: [mist]
+aliases: [POCO M8 Power 5G, 26081RA18G, 26021RN18C, 26021PC18I]
+released: 2026
+soc: Qualcomm Snapdragon 4 Gen 4
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

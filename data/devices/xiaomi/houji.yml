@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: "14"
+codenames: [houji]
+aliases: [23127PN0CG, 23127PN0CC]
+released: 2023
+soc: Qualcomm SM8650-AB Snapdragon 8 Gen 3
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

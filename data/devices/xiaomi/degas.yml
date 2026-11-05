@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 14T
+codenames: [degas]
+aliases: [2406APNFAG, XIG07]
+released: 2024
+soc: MediaTek Dimensity 8300 Ultra
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

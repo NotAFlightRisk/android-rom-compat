@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi Note 17
+codenames: [zephyr]
+aliases: [26012RN62A, 26012RN62Y]
+released: 2026
+soc: Qualcomm Snapdragon 6s 4G Gen 2
+hardware: [cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown
