@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Redmi A4 5G
+codenames: [warm]
+aliases: [POCO C75 5G, 24116RNC1I, 24116PCC1I]
+released: 2024
+soc: Qualcomm Snapdragon 4s Gen 2
+hardware: [5g, cellular, fingerprint]
+bootloader:
+  unlock: unknown

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: 17T
+codenames: [chagall]
+aliases: [2602DPT53G, 2602DPT53I]
+released: 2026
+soc: MediaTek Dimensity 8500 Ultra
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
