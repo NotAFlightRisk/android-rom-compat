@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pad 7
+codenames: [uke]
+aliases: [POCO Pad X1, 2410CRP4CG, 2410CRP4CC, 25099RP08G]
+released: 2024
+soc: Qualcomm SM7675-AB Snapdragon 7+ Gen 3
+type: tablet
+hardware: []
+bootloader:
+  unlock: unknown
