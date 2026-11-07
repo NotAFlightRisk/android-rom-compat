@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: If you use this data, please cite it as below.
+type: dataset
+title: Android ROM Compat
+abstract: >-
+  Which Android ROMs run on which phones, what works on them, and whether the
+  bootloader unlocks.
+authors:
+  - name: NotAFlightRisk
+url: https://android-rom-compat.peng.ly
+repository-code: https://github.com/NotAFlightRisk/android-rom-compat
+license: CC-BY-SA-4.0
+keywords:
+  - android
+  - custom-rom
+  - bootloader
+  - lineageos
+  - grapheneos
+  - open-data
