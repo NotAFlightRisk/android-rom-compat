@@ -41,8 +41,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag }}
         run: |
+          since=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 1 --json tagName -q '.[0].tagName')
+          since=${since:-$(gh api "repos/$GITHUB_REPOSITORY/tags" --paginate --jq '.[].name' | sort -V | head -n1)}
+          [ "$since" = "$TAG" ] && since=
+          gh api "repos/$GITHUB_REPOSITORY/releases/generate-notes" -f tag_name="$TAG" \
+            ${since:+-f previous_tag_name="$since"} -q .body > notes.md
           gh release create "$TAG" site.zip \
             --title "$TAG" \
-            --generate-notes \
+            --notes-file notes.md \
             --repo "$GITHUB_REPOSITORY"
           echo "Released $TAG" >> "$GITHUB_STEP_SUMMARY"
