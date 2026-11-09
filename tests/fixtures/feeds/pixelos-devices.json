@@ -1,81 +1,131 @@
-{
-  "devices": [
-    {
-      "codename": "RMX2001L1",
-      "codename_alt": "nemo",
-      "vendor": "Realme",
-      "model": "realme 6/6i(Indian)/6s/Narzo",
-      "maintainer_name": "Debayan Kar",
-      "frame": null,
-      "active": false,
-      "last_updated": 1744408586,
-      "version": 15
-    },
-    {
-      "codename": "RMX2020",
-      "codename_alt": "RMX2020",
-      "vendor": "Realme",
-      "model": "Realme C3/Realme Narzo 10A",
-      "maintainer_name": "Sarthak Roy && Koushik Dey",
-      "frame": null,
-      "active": true,
-      "last_updated": 1781814660,
-      "version": 16
-    },
-    {
-      "codename": "Spacewar",
-      "codename_alt": "A063",
-      "vendor": "Nothing",
-      "model": "Nothing Phone (1)",
-      "maintainer_name": "Abdulaziz",
-      "frame": null,
-      "active": true,
-      "last_updated": null,
-      "version": null
-    },
-    {
-      "codename": "cheetah",
-      "codename_alt": "cheetah",
-      "vendor": "Google",
-      "model": "Google Pixel 7 Pro",
-      "maintainer_name": "Kitsunejasutin",
-      "frame": null,
-      "active": false,
-      "last_updated": 1696322939,
-      "version": 13
-    },
-    {
-      "codename": "garnet",
-      "codename_alt": "garnet",
-      "vendor": "Xiaomi",
-      "model": "Redmi Note 13 Pro 5G / POCO X6 5G",
-      "maintainer_name": "AdarshGrewal",
-      "frame": null,
-      "active": true,
-      "last_updated": 1787351178,
-      "version": 17
-    },
-    {
-      "codename": "nemo",
-      "codename_alt": "RMX2001/RMX2002/RMX2003",
-      "vendor": "Realme",
-      "model": "realme 6/6i(Indian)/6s/Narzo",
-      "maintainer_name": "Debayan Kar",
-      "frame": null,
-      "active": true,
-      "last_updated": 1781894127,
-      "version": 16
-    },
-    {
-      "codename": "pipa",
-      "codename_alt": "pipa",
-      "vendor": "Xiaomi",
-      "model": "Xiaomi Pad 6",
-      "maintainer_name": "Sugakesshaa",
-      "frame": null,
-      "active": true,
-      "last_updated": 1773777218,
-      "version": 16
-    }
-  ]
-}
+[
+  {
+    "maintainers": [
+      "sarthakroy2002",
+      "Koushikdey2003"
+    ],
+    "model": "Realme C3/Realme Narzo 10A",
+    "vendor": "Realme",
+    "codename": "RMX2020",
+    "codename_alt": "RMX2020",
+    "active": true,
+    "version": "sixteen",
+    "release": "monthly",
+    "last_updated": "19 June 2026",
+    "download_link": "https://download.pixelos.net/sixteen/RMX2020/PixelOS_RMX2020-16.2-20260618-2032.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/sixteen/RMX2020/",
+    "xda": "https://xdaforums.com/t/rom-14-official-pixelos-aosp-stable.4642903/"
+  },
+  {
+    "maintainers": [
+      "kardebayan"
+    ],
+    "model": "realme 6/6i(Indian)/6s/Narzo",
+    "vendor": "Realme",
+    "codename": "RMX2001L1",
+    "codename_alt": "nemo",
+    "active": false,
+    "version": "fifteen",
+    "release": "monthly",
+    "last_updated": "14 April 2025",
+    "download_link": "https://sourceforge.net/projects/pixelos-releases/files/fifteen/RMX2001L1/PixelOS_RMX2001L1-15.0-20250411-2158.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/fifteen/RMX2001L1/",
+    "xda": null
+  },
+  {
+    "maintainers": [
+      "kardebayan"
+    ],
+    "model": "realme 6/6i(Indian)/6s/Narzo",
+    "vendor": "Realme",
+    "codename": "nemo",
+    "codename_alt": "RMX2001/RMX2002/RMX2003",
+    "active": true,
+    "version": "sixteen",
+    "release": "monthly",
+    "last_updated": "22 June 2026",
+    "download_link": "https://download.pixelos.net/sixteen/nemo/PixelOS_nemo-16.2-20260619-1837.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/sixteen/nemo/",
+    "xda": null
+  },
+  {
+    "maintainers": [
+      "Kitsunejasutin"
+    ],
+    "model": "Google Pixel 7 Pro",
+    "vendor": "Google",
+    "codename": "cheetah",
+    "codename_alt": "cheetah",
+    "active": false,
+    "version": "thirteen",
+    "release": "monthly",
+    "last_updated": "03 October 2023",
+    "download_link": "https://sourceforge.net/projects/pixelos-releases/files/thirteen/cheetah/PixelOS_cheetah-13.0-20231003-0850.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/thirteen/cheetah/",
+    "xda": "https://xdaforums.com/t/rom-13-official-pixelos-aosp-stable-23-07-2023.4608395/"
+  },
+  {
+    "maintainers": [
+      "bheatleyyy"
+    ],
+    "model": "OnePlus 15",
+    "vendor": "OnePlus",
+    "codename": "infiniti",
+    "codename_alt": "infiniti",
+    "active": true,
+    "version": "seventeen",
+    "release": "monthly",
+    "last_updated": "",
+    "download_link": "",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/seventeen/infiniti/",
+    "xda": null
+  },
+  {
+    "maintainers": [
+      "bheatleyyy"
+    ],
+    "model": "Xiaomi Pad 6",
+    "vendor": "Xiaomi",
+    "codename": "pipa",
+    "codename_alt": "pipa",
+    "active": true,
+    "version": "sixteen",
+    "release": "monthly",
+    "last_updated": "18 March 2026",
+    "download_link": "https://download.pixelos.net/sixteen/pipa/PixelOS_pipa-16.2-20260317-1955.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/sixteen/pipa/",
+    "xda": null
+  },
+  {
+    "maintainers": [
+      "AdarshGrewal"
+    ],
+    "model": "Redmi Note 13 Pro 5G / POCO X6 5G",
+    "vendor": "Xiaomi",
+    "codename": "garnet",
+    "codename_alt": "garnet",
+    "active": true,
+    "version": "seventeen",
+    "release": "monthly",
+    "last_updated": "23 September 2026",
+    "download_link": "https://download.pixelos.net/seventeen/garnet/PixelOS_garnet-17.0-20260923-0532.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/seventeen/garnet/",
+    "xda": null
+  },
+  {
+    "maintainers": [
+      "kardebayan"
+    ],
+    "model": "realme 5/5i/5s",
+    "vendor": "Realme",
+    "codename": "r5x",
+    "codename_alt": "r5x",
+    "active": false,
+    "version": "fourteen",
+    "release": "monthly",
+    "last_updated": "01 March 2023",
+    "download_link": "https://sourceforge.net/projects/pixelos-releases/files/thirteen/r5x/PixelOS_r5x-13.0-20230228-1202.zip",
+    "archive": "https://sourceforge.net/projects/pixelos-releases/files/fourteen/r5x/",
+    "xda": null
+  }
+]
