@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord CE 5G
+codenames: [ebba]
+aliases: [EB2101, EB2103]
+released: 2021
+soc: Qualcomm SM7225 Snapdragon 750G
+hardware: [5g, cellular, fingerprint, nfc]
+bootloader:
+  unlock: unknown

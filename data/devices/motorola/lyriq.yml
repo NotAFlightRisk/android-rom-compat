@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: edge 40
+codenames: [lyriq]
+aliases: [XT2303-1, XT2303-2, XT2303-3]
+released: 2023
+soc: MediaTek Dimensity 8020
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
