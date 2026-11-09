@@ -1,3 +1,4 @@
 # yaml-language-server: $schema=../../../../schema/support.json
 features:
-  volte: { status: working, android: 17, build: "20261107", checked: 2026-11-09, source: https://github.com/chenxiaolong/avbroot/issues/299#issuecomment-6732544348 }
+  volte: { status: working, android: 17, build: '24.0-20261107', checked: 2026-11-09, source: https://github.com/NotAFlightRisk/android-rom-compat/issues/156 }
+  fingerprint: { status: working, android: 17, build: '24.0-20261107', checked: 2026-11-09, source: https://github.com/NotAFlightRisk/android-rom-compat/issues/156 }
