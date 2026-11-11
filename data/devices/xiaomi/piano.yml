@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Pad 8 Pro
+codenames: [piano]
+aliases: [25091RP04G, 25091RP04C]
+released: 2025
+soc: Qualcomm SM8750 Snapdragon 8 Elite
+type: tablet
+hardware: [fingerprint]
+bootloader:
+  unlock: unknown
