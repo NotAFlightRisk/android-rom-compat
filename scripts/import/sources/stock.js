@@ -19,6 +19,7 @@ export const products = {
 const XIAOMI = 'https://trust.mi.com/bff/psti/phone/online';
 const XIAOMI_PAGE = 'https://trust.mi.com/misrc/updates/detail?tab=phone';
 const ONEPLUS = 'https://www.oneplus.com/uk/psti';
+const ASUS = 'https://www.asus.com/support/faq/1056885/';
 const LG_NOTICE =
   'https://www.lg.com/us/support/announcements-detail/notice-on-termination-of-services-of-lg-electronics-mobile-phone-software-upgrade-update-center-and-lg-bridge-USNTC20250410200140';
 
@@ -107,6 +108,16 @@ export function onePlusReleases(html) {
         source: ONEPLUS,
       },
     }));
+}
+
+/** ASUS's support list gives a year per phone, so support runs to the end of it */
+export function asusReleases(html) {
+  const rows = html.matchAll(/([^<>:]+): Hardware \d{4}\/ Software:[^<]*?through (\d{4})/g);
+  return [...rows].map(([, label, year]) => ({
+    brand: 'asus',
+    label: label.trim(),
+    row: { security_until: `${year}-12-31`, source: ASUS },
+  }));
 }
 
 /** The JSON object starting at a given index, found by counting braces outside strings */
@@ -210,7 +221,7 @@ export function fromCalyxos(devices, rows, ends) {
 }
 
 export default async function stock() {
-  const brands = new Set([...Object.values(products), 'xiaomi', 'lg']);
+  const brands = new Set([...Object.values(products), 'xiaomi', 'lg', 'asus']);
   const devices = loadData(DATA).devices.filter(({ brand }) => brands.has(brand));
 
   const releases = [];
@@ -235,6 +246,11 @@ export default async function stock() {
     .catch(() => []);
   if (!onePlus.length) failed.push('oneplus.com');
   releases.push(...onePlus);
+  const asus = await fetchText(ASUS)
+    .then(asusReleases)
+    .catch(() => []);
+  if (!asus.length) failed.push('asus.com');
+  releases.push(...asus);
   for (const page of motorolaPages) {
     const found = await fetchText(page.replace(/(\/web\/\d+)\//, '$1id_/'))
       .then((html) => motorolaReleases(html, page))
