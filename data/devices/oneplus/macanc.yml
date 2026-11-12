@@ -6,4 +6,6 @@ released: 2025
 soc: Qualcomm SM8845 Snapdragon 8 Gen 5
 hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
-  unlock: unknown
+  unlock: conditional
+  notes: Sold only in China, where you apply through OnePlus's Deep Testing app with a verified account and wait up to seven working days for one of a limited number of monthly slots.
+  source: https://bbs.oneplus.com/thread/2175833961601695750
