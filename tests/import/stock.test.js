@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import {
+  asusReleases,
   fromCalyxos,
   join,
   lgRows,
@@ -221,4 +222,14 @@ test('every LG phone has ended, and nobody else', () => {
   const rows = lgRows([device('lg', 'h850', 'G5'), device('google', 'tegu', 'Pixel 9a')]);
   assert.deepEqual(Object.keys(rows), ['h850']);
   assert.equal(rows.h850.security_until, 'ended');
+});
+
+test("ASUS's list runs support to the end of the year it gives", () => {
+  const html = `ROG Series<br>ROG Phone 3: Hardware 2023/ Software: 2 OS upgrades and
+    security updates through 2022<br>Zenfone 8 FLIP: Hardware 2024/ Software: through 2023</p>`;
+  const source = 'https://www.asus.com/support/faq/1056885/';
+  assert.deepEqual(asusReleases(html), [
+    { brand: 'asus', label: 'ROG Phone 3', row: { security_until: '2022-12-31', source } },
+    { brand: 'asus', label: 'Zenfone 8 FLIP', row: { security_until: '2023-12-31', source } },
+  ]);
 });
