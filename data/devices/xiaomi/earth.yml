@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi 12C
 codenames: [earth]
-aliases: [Redmi 12C NFC, POCO C55, 22120RN86G, 22120RN86H, 22120RN86I, 22120RN86C, 2212ARNC4L, 22127PC95G, 22127PC95H, 22127PC95I]
+aliases: [Redmi 12C NFC, POCO C55, 22120RN86G, 22126RN91Y, 22120RN86H, 22120RN86I, 22120RN86C, 2212ARNC4L, 22127PC95G, 22127PC95H, 22127PC95I]
 released: 2023
 soc: MediaTek Helio G85
 hardware: [cellular, fingerprint, nfc]
