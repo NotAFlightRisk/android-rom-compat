@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: Redmi Note 10S
 codenames: [rosemary]
-aliases: [Redmi Note 10S NFC, Redmi Note 10S Latin America, POCO M5s, M2101K7BNY]
+aliases: [Redmi Note 10S NFC, Redmi Note 10S Latin America, POCO M5s, Redmi Note 11 SE (India), M2101K7BNY, M2101K7BG, M2101K7BL, 2207117BPG, 22087RA4DI]
 released: 2021
 soc: MediaTek Helio G95
 hardware: [cellular, fingerprint, nfc]

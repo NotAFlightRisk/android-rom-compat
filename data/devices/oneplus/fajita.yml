@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../../../schema/device.json
 name: 6T
 codenames: [fajita]
-aliases: [6T (T-Mobile)]
+aliases: [6T (T-Mobile), A6010, A6013]
 released: 2018
 soc: Qualcomm SDM845 Snapdragon 845
 hardware: [cellular, fingerprint, nfc]
