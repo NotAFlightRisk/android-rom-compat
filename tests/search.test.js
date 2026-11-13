@@ -68,6 +68,13 @@ test('codenames and model numbers find their phone, however they are typed', () 
   }
 });
 
+test('a model number still finds its phone with the brand or name in front', () => {
+  for (const query of ['samsung SM-G991B', 'galaxy s21 SM-G991B', 'samsung g991b']) {
+    assert.deepEqual(names(query), ['Samsung Galaxy S21']);
+  }
+  assert.deepEqual(names('pixel SM-G991B'), []);
+});
+
 test('a ROM or feature in the query keeps only the phones where it fits', () => {
   assert.deepEqual(names('pixel lineage'), ['Google Pixel 7', 'Google Pixel 7 Pro']);
   assert.deepEqual(names('pixel volte'), ['Google Pixel 7', 'Google Pixel 7a']);
