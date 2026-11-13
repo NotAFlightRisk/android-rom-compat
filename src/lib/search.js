@@ -132,12 +132,33 @@ function fit(word, { words, otherWords, codes }) {
   return word.length > 3 && words.some((own) => nearly(word, own)) ? 1 : 0;
 }
 
+const total = (fits) => fits.reduce((sum, points) => sum + points, 0);
+
+/** Where a code sits in the words, as "Galaxy SM-G991B" splits into galaxy sm g 991 b */
+function codeRun(words, codes) {
+  for (let from = 0; from < words.length; from++) {
+    for (let to = words.length; to > from + 1; to--) {
+      const run = words.slice(from, to).join('');
+      const tail = /^[a-z]/.test(run) && run.length > 3;
+      if (/\d/.test(run) && codes.some((code) => code === run || (tail && code.endsWith(run)))) {
+        return [from, to];
+      }
+    }
+  }
+}
+
 /** Every word has to fit, unless the whole query is the device's name or a code run together */
 function score(words, device) {
   const whole = words.join('');
   if (device.whole === whole || device.codes.includes(whole)) return 100;
   const fits = words.map((word) => fit(word, device));
-  if (fits.every(Boolean)) return fits.reduce((sum, points) => sum + points, 0);
+  if (fits.every(Boolean)) return total(fits);
+  const run = codeRun(words, device.codes);
+  if (run) {
+    const rest = [...words.slice(0, run[0]), ...words.slice(run[1])];
+    const restFits = rest.map((word) => fit(word, device));
+    if (restFits.every(Boolean)) return 50 + total(restFits);
+  }
   return whole.length > 3 && device.codes.some((code) => code.includes(whole)) ? 5 : 0;
 }
 
