@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Galaxy A55 5G
+codenames: [a55x]
+aliases: [SM-A556B, SM-A556B/DS, SM-A556E, SM-A556E/DS]
+released: 2024
+soc: Samsung Exynos 1480
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: no
+  notes: No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.
+  source: https://wiki.lineageos.org/devices/a55x/
