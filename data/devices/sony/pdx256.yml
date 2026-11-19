@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 1 VII
+codenames: [pdx256]
+aliases: [XQ-FS54, XQ-FS72]
+released: 2025
+soc: Qualcomm SM8750-AB Snapdragon 8 Elite
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown

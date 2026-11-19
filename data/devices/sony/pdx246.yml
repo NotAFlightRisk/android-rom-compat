@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Xperia 10 VI
+codenames: [pdx246]
+aliases: [XQ-ES54, XQ-ES72]
+released: 2024
+soc: Qualcomm SM6450 Snapdragon 6 Gen 1
+hardware: [5g, cellular, esim, fingerprint, nfc]
+bootloader:
+  unlock: unknown
