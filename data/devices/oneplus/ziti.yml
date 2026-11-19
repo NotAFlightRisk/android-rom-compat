@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: Nord CE 3 5G
+codenames: [ziti]
+aliases: [Nord CE3 5G, CPH2569]
+bootloader:
+  unlock: unknown
