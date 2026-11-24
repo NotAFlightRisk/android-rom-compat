@@ -3,5 +3,8 @@ name: DC-1
 codenames: [jagar]
 released: 2024
 soc: MediaTek Helio G99
+type: tablet
+hardware: []
 bootloader:
-  unlock: unknown
+  unlock: yes
+  source: https://wiki.lineageos.org/devices/jagar/install/
