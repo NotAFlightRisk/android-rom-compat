@@ -2,5 +2,8 @@
 name: Nord CE 3 5G
 codenames: [ziti]
 aliases: [Nord CE3 5G, CPH2569]
+released: 2023
+soc: Qualcomm Snapdragon 782G
+hardware: [5g, cellular, fingerprint, nfc]
 bootloader:
   unlock: unknown
