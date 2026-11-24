@@ -4,12 +4,20 @@ import { isoDate } from '../../../src/lib/dates.js';
 
 const SITE = 'https://download.lineage.microg.org';
 
+const versionOf = (build) =>
+  build.version ?? build.files[0].filename.match(/^lineage-([\d.]+)-/)?.[1] ?? '';
+
 /** A row from a microG builds response, or undefined when there are no builds */
 export function parseBuilds(builds, codename) {
-  const [build] = builds.toSorted((a, b) => b.datetime - a.datetime);
+  // old branches still get the odd rebuild, so the newest version beats the newest date
+  const [build] = builds.toSorted(
+    (a, b) =>
+      versionOf(b).localeCompare(versionOf(a), 'en', { numeric: true }) ||
+      b.datetime - a.datetime,
+  );
   if (!build) return undefined;
   const [file] = build.files;
-  const version = build.version ?? file.filename.match(/^lineage-([\d.]+)-/)?.[1];
+  const version = versionOf(build);
   const latest = {
     ...(version && { version }),
     date: isoDate(build.datetime * 1000),

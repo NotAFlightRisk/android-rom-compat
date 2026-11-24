@@ -14,6 +14,12 @@ test('the newest build wins even though the feed lists oldest first', () => {
   });
 });
 
+test('a fresh rebuild of an older version loses to the newer version', () => {
+  const newest = builds.at(-1);
+  const rebuild = { ...newest, version: '20.0', datetime: newest.datetime + 86400 };
+  assert.equal(parseBuilds([newest, rebuild], 'FP4').latest.version, '23.2');
+});
+
 test('version falls back to the filename', () => {
   const [build] = builds;
   const { version, ...rest } = build;
