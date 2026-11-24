@@ -49,10 +49,15 @@ test('an active device gets android, firmware, relock and the upstream codename 
   });
 });
 
+test('not unlockable is a no, bar Samsung, whose brand policy answers', () => {
+  const { bootloader } = entry('drg').device;
+  assert.equal(bootloader.unlock, 'no');
+  assert.equal(bootloader.source, 'https://wiki.lineageos.org/devices/DRG/');
+  assert.deepEqual(entry('dm1q').device.bootloader, {});
+});
+
 test('ims and esim quirks become features with a note', () => {
-  const { device, row } = entry('dm1q');
-  assert.equal(device.bootloader.unlock, 'no');
-  assert.equal(device.bootloader.source, 'https://wiki.lineageos.org/devices/dm1q/');
+  const { row } = entry('dm1q');
   const statuses = Object.entries(row.features).map(([key, cell]) => [key, cell.status]);
   assert.deepEqual(statuses, [
     ['esim', 'partial'],
