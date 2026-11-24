@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: P26
+codenames: [p26]
+released: 2025
+soc: MediaTek Helio G99
+hardware: [cellular, nfc]
+bootloader:
+  unlock: unknown

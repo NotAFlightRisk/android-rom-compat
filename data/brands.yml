@@ -17,6 +17,8 @@
   name: BQ
 - key: braxtech
   name: Braxtech
+- key: daylight
+  name: Daylight
 - key: essential
   name: Essential
 - key: fairphone

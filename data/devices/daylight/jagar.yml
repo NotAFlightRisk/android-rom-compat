@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../../schema/device.json
+name: DC-1
+codenames: [jagar]
+released: 2024
+soc: MediaTek Helio G99
+bootloader:
+  unlock: unknown
