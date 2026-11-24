@@ -95,7 +95,7 @@
   name: Samsung
   bootloader:
     unlock: conditional
-    notes: Galaxy phones from outside the US and Canada unlock until they update to One UI 8, which removes the option for good, so ones that launched with it can't unlock at all. US and Canadian models lost it years ago.
+    notes: Galaxy phones and tablets from outside the US and Canada unlock until they update to One UI 8, which removes the option for good, so ones that launched with it can't unlock at all. US and Canadian models lost it years ago.
     source: https://github.com/salvogiangri/UN1CA/discussions/129
   unlock_costs:
     notes: On Galaxy devices with Knox, installing a non-Samsung bootloader or kernel, as a custom ROM does, trips a fuse that can't be reset, so Samsung Pay and Secure Folder stop working for good, even back on stock.

@@ -39,6 +39,9 @@ const quirks = {
 const locked =
   'No official way to unlock it, so installing a ROM means an unofficial method, at your own risk.';
 
+/** On Samsung the flag means One UI 8, which its brand policy covers */
+const notUnlockable = (file) => file.is_unlockable === false && file.vendor !== 'Samsung';
+
 /** One entry per codename from the wiki's device files, variants folded into the first */
 export function parseWiki(texts) {
   const files = texts
@@ -77,7 +80,7 @@ function parseDevice(codename, [first, ...variants], codenames) {
       soc: [...socs].join(' / ') || undefined,
       type: typeOf(first.type),
       hardware: [...new Set([first, ...variants].flatMap(hardwareOf))].sort(),
-      bootloader: first.is_unlockable === false ? { unlock: 'no', notes: locked, source } : {},
+      bootloader: notUnlockable(first) ? { unlock: 'no', notes: locked, source } : {},
     },
     row: {
       status: maintainers.length ? 'active' : 'discontinued',
