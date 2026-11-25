@@ -60,8 +60,8 @@ test('ims and esim quirks become features with a note', () => {
   const { row } = entry('dm1q');
   const statuses = Object.entries(row.features).map(([key, cell]) => [key, cell.status]);
   assert.deepEqual(statuses, [
-    ['esim', 'partial'],
-    ['volte', 'partial'],
+    ['esim', 'broken'],
+    ['volte', 'broken'],
     ['vowifi', 'broken'],
   ]);
   for (const cell of Object.values(row.features)) {
