@@ -11,17 +11,12 @@ const BUILDS = 'https://download.lineageos.org/api/v2/devices';
 const quirks = {
   ims: {
     volte: {
-      status: 'partial',
-      note: 'No IMS on LineageOS here, so whether calls work depends on your carrier',
+      status: 'broken',
+      note: 'No IMS on LineageOS here, so no 4G calls, and whether you can call at all depends on your carrier',
     },
     vowifi: { status: 'broken', note: 'No IMS on LineageOS here, so no Wi-Fi calling' },
   },
-  esim: {
-    esim: {
-      status: 'partial',
-      note: "LineageOS can't set up eSIMs on this device, physical SIMs are fine",
-    },
-  },
+  esim: { esim: { status: 'broken', note: "LineageOS can't add or switch eSIMs on this device" } },
   nfc: { nfc: { status: 'broken', note: "LineageOS doesn't support NFC on this device" } },
   aux_cameras: {
     camera: {
