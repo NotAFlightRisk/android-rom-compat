@@ -3,7 +3,7 @@ name: Nexus 5
 codenames: [hammerhead]
 released: 2013
 soc: Qualcomm MSM8974 Snapdragon 800
-hardware: [cellular]
+hardware: [cellular, nfc]
 bootloader:
   unlock: unknown
 relock:
