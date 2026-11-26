@@ -12,7 +12,7 @@ export const nav = [
 export const editUrl = (file) => `${site.repo}/edit/main/${file.slice(file.indexOf('data/'))}`;
 export const issueUrl = (template) => `${site.repo}/issues/new?template=${template}.yml`;
 
-// Shown at the end of the about page, with their logos in public/apps
+// Shown at the end of the about page
 export const relatedApps = [
   {
     slug: 'fineprint',
