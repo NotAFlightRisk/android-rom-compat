@@ -3,7 +3,7 @@ import Base from '../components/layout/Base.astro';
 import PageHead from '../components/layout/PageHead.astro';
 import Icon from '../components/ui/Icon.astro';
 import { staleText, statusText } from '../lib/facts.js';
-import { site } from '../lib/site.js';
+import { relatedApps, site } from '../lib/site.js';
 
 const sources = [
   [
@@ -139,6 +139,28 @@ const dataset = {
     </dl>
   </section>
 
+  <section aria-labelledby="related">
+    <h2 id="related">More privacy projects</h2>
+    <ul class="related">
+      {relatedApps.map(({ slug, name, about, url }) => (
+        <li class="card">
+          <img src={`/apps/${slug}.svg`} alt="" width="32" height="32" loading="lazy" />
+          <a class="stretch" href={url}>
+            {name}
+          </a>
+          <p>{about}</p>
+          <a
+            class="source"
+            href={`https://github.com/NotAFlightRisk/${slug}`}
+            aria-label={`${name} source code`}
+          >
+            <Icon name="source" /> Source
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <section aria-labelledby="licences">
     <h2 id="licences">Licences</h2>
     <dl class="pairs">
@@ -164,6 +186,44 @@ const dataset = {
 </Base>
 
 <style>
+  .related {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .card {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-2xs) var(--space-sm);
+    }
+
+    img {
+      grid-row: span 3;
+    }
+
+    .stretch {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .source {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      justify-self: start;
+      font-size: var(--text-sm);
+    }
+  }
+
   .stale {
     --icon: url('/icons/stale.svg');
   }
